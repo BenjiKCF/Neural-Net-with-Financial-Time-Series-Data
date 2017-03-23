@@ -16,6 +16,9 @@ By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons i
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.
 By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.815 accuracy.
 
+# Update:
+Recurrent neural network with LSTM will be added promptly. Also, new parameter will also be adjusted.
+
 # Acknowledgement:
 Thanks to google, I have created this neural network with tensorflow that can run on any computer without using the google cloud database. The original tutorial is on here https://www.youtube.com/watch?time_continue=1&v=iBs59GlXhIA.
 

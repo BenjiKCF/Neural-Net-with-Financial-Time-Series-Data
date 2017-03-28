@@ -22,6 +22,7 @@ By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons i
 26/03/2016 1. Recurrent neural network with LSTM are added to the code. Keras with tensorflow are also implemented. 2. Tensorboard for neural network visualization are also added to the code.
 
 # Future Update:
+Price will be corrected without divided by 100.
 Parameters will also be adjusted. Sentiment analysis from tweets will be added too.
 
 # Acknowledgement:

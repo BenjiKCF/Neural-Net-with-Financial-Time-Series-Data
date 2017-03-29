@@ -11,7 +11,6 @@ This script can download the data of 7 indexes from online provider, form a pand
 
 # Result:
 LSTM result:
-![alt tag](http://imgur.com/p9CARYr)
 Old version result:
 By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
@@ -22,6 +21,8 @@ By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons i
 26/03/2016 1. Recurrent neural network with LSTM are added to the code. Keras with tensorflow are also implemented. 2. Tensorboard for neural network visualization are also added to the code.
 
 # Future Update:
+The code for data have some serious problem. It is not predicting the future day but it predicts the same day.
+
 Price will be corrected without divided by 100 and upload a trained model to here.
 Parameters will also be adjusted. Sentiment analysis from tweets will be added too.
 I will also train the model with 3000 US stocks.

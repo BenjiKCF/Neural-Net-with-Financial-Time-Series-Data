@@ -21,6 +21,7 @@ By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons i
 26/03/2016 1. Recurrent neural network with LSTM are added to the code. Keras with tensorflow are also implemented. 2. Tensorboard for neural network visualization are also added to the code.
 
 # Future Update:
+Data will all be normalized before putting into model.
 The current code is to use the open price and high price of the same day to predict the close price.
 I will try to modify it so that it uses more data to predict the price of stock.
 

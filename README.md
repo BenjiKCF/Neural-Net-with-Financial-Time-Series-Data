@@ -11,7 +11,9 @@ This script can download the data of 7 indexes from online provider, form a pand
 
 # Result:
 LSTM result:
-Old version result:
+Will be updated after normalizing the closing price.
+
+Old version result: 
 By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.

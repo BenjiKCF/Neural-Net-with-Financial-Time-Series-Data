@@ -28,11 +28,13 @@ By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons i
 
 14/03/2017 Second update
 1. Normalized adjusted close price. 
-2. Added more variable to predict the adjusted close price
-3. More accurate result, significantly less mean square error
-4. Extra visualization for close price
-5. Denormalization will be fixed soon
-6. Twitter sentiment analysis is currently on testing stage
+2. A new data downloader has been implemented for simplicity
+3. Added more variable to predict the adjusted close price
+4. More accurate result, significantly less mean square error
+5. Extra visualization for close price
+6. Denormalization will be fixed soon
+7. Twitter sentiment analysis is currently on testing stage
+ 
 
 # Future Update:
 2. Current day data can be predicted with a live stock data downloader.

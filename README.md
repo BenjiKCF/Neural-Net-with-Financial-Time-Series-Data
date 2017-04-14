@@ -10,20 +10,31 @@ as technological advancement, we can analyze large scale data with neural networ
 This script can download the data of 7 indexes from online provider, form a pandas DataFrame that is compatitble with the TensorFlow library and finally apply a neural network to it. The codes are indifferent to the original code in google cloud platform because of a) update to avoid using depricated codes and b) simplify it for understanding.
 
 # Result:
-LSTM result:
-Will be updated after normalizing the closing price.
+LSTM result (100epochs, LSTM128 > LSTM128 > 16relu > 1linear):
+Train Score: 0.00032 MSE (0.02 RMSE)
+Test Score: 0.00046 MSE (0.02 RMSE)
 
-Old version result: 
+Old neural network result (Google cloud approach for classification only): 
 By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.
 By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.815 accuracy.
 
 # Update:
-26/03/2016 1. Recurrent neural network with LSTM are added to the code. Keras with tensorflow are also implemented. 2. Tensorboard for neural network visualization are also added to the code.
+26/03/2017 First update
+1. Recurrent neural network with LSTM are added to the code. 
+2. Keras with tensorflow are also implemented. 
+3. Tensorboard for neural network visualization are also added to the code.
+
+14/03/2017 Second update
+1. Normalized adjusted close price. 
+2. Added more variable to predict the adjusted close price
+3. More accurate result, significantly less mean square error
+4. Extra visualization for close price
+5. Denormalization will be fixed soon
+6. Twitter sentiment analysis is currently on testing stage
 
 # Future Update:
-1. Data will all be normalized before putting into model.
 2. Current day data can be predicted with a live stock data downloader.
 3. The current code is to use the open price and high price of the same day to predict the close price. I will try to modify it so that it uses more data to predict the price of stock.
 4. Sentiment analysis from tweets and wall street journal will be added too.

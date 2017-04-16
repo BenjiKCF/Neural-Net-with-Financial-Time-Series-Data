@@ -9,10 +9,17 @@ as technological advancement, we can analyze large scale data with neural networ
 
 This script can download the data of 7 indexes from online provider, form a pandas DataFrame that is compatitble with the TensorFlow library and finally apply a neural network to it. The codes are indifferent to the original code in google cloud platform because of a) update to avoid using depricated codes and b) simplify it for understanding.
 
-# Result:
-LSTM result (100epochs, LSTM128 > LSTM128 > 16relu > 1linear):
-Train Score: 0.00032 MSE (0.02 RMSE)
-Test Score: 0.00046 MSE (0.02 RMSE)
+# Result: 
+LSTM result 
+
+100epochs, LSTM128 > LSTM128 > 16relu > 1linear 
+Train Score: 0.00032 MSE (0.02 RMSE) Test Score: 0.00046 MSE (0.02 RMSE)
+
+100epochs, LSTM80 > LSTM80 > 32relu > 1linear 
+Train Score: 0.00039 MSE (0.02 RMSE) Test Score: 0.00258 MSE (0.05 RMSE)
+
+100epochs, LSTM128 > LSTM128 > 64relu > 1linear 
+Train Score: 0.00029 MSE (0.02 RMSE) Test Score: 0.00060 MSE (0.02 RMSE)
 
 Old neural network result (Google cloud approach for classification only): 
 By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
@@ -34,7 +41,10 @@ By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons i
 5. Extra visualization for close price
 6. Denormalization will be fixed soon
 7. Twitter sentiment analysis is currently on testing stage
- 
+
+16/03/2017 Second update
+1. Updated denormalization 
+2. More test results available
 
 # Future Update:
 1. Current day data can be predicted with a live stock data downloader.

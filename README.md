@@ -10,7 +10,7 @@ as technological advancement, we can analyze large scale data with neural networ
 This script can download the data of 7 indexes from online provider, form a pandas DataFrame that is compatitble with the TensorFlow library and finally apply a neural network to it. The codes are indifferent to the original code in google cloud platform because of a) update to avoid using depricated codes and b) simplify it for understanding.
 
 # Result: 
-LSTM result 
+LSTM result: 
 
 100epochs, LSTM128 > LSTM128 > 16relu > 1linear 
 Train Score: 0.00032 MSE (0.02 RMSE) Test Score: 0.00046 MSE (0.02 RMSE)
@@ -26,6 +26,10 @@ By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in 
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.
 By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.815 accuracy.
+
+# How to use it:
+The main file should be named as "LSTM_Stock_prediction-date.ipynb"
+Run this jupyter notebook with all prerequisite installed. 
 
 # Update:
 26/03/2017 First update

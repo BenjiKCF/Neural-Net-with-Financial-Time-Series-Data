@@ -51,7 +51,7 @@ Run this jupyter notebook with all prerequisite installed.
 2. More test results available
 
 18/04/2017 Fourth update
-1. Updated fundamental data from data for NYSE 
+1. Updated fundamental data from Kaggle for NYSE 
 
 # Future Update:
 1. Current day data can be predicted with a live stock data downloader.

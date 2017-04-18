@@ -37,7 +37,7 @@ Run this jupyter notebook with all prerequisite installed.
 2. Keras with tensorflow are also implemented. 
 3. Tensorboard for neural network visualization are also added to the code.
 
-14/03/2017 Second update
+14/04/2017 Second update
 1. Normalized adjusted close price. 
 2. A new data downloader has been implemented for simplicity
 3. Added more variable to predict the adjusted close price
@@ -46,15 +46,19 @@ Run this jupyter notebook with all prerequisite installed.
 6. Denormalization will be fixed soon
 7. Twitter sentiment analysis is currently on testing stage
 
-16/03/2017 Second update
+16/04/2017 Third update
 1. Updated denormalization 
 2. More test results available
+
+18/04/2017 Fourth update
+1. Updated fundamental data from data for NYSE 
 
 # Future Update:
 1. Current day data can be predicted with a live stock data downloader.
 2. The current code is to use the open price and high price of the same day to predict the close price. I will try to modify it so that it uses more data to predict the price of stock.
 3. Sentiment analysis from tweets and wall street journal will be added too.
 4. I will also train the model with 3000 US stocks.
+
 
 # Acknowledgement:
 Thanks to google, I have created this neural network with tensorflow, which is an amazing tool that can run on any computer without using the google cloud database. The original tutorial for version 1 is on here, https://www.youtube.com/watch?time_continue=1&v=iBs59GlXhIA and  my LSTM prediction model is based on https://github.com/etai83/lstm_stock_prediction.

@@ -29,9 +29,13 @@ Train Score: 0.00029 MSE (0.02 RMSE) Test Score: 0.00060 MSE (0.02 RMSE)
 
 Old neural network result (Version1):
 (Google cloud approach for classification only)
+
 By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
+
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
+
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.
+
 By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.815 accuracy.
 
 # How to use it:

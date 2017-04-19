@@ -57,6 +57,10 @@ Run this jupyter notebook with all prerequisite installed.
 18/04/2017 Fourth update
 1. Updated fundamental data from Kaggle for NYSE 
 
+19/04/2017 Fifth update
+1. Supporting Python 3.5 on Windows 10
+2. Significant improvement on accuracy
+
 # Future Update:
 1. Current day data can be predicted with a live stock data downloader.
 2. The current code is to use the open price and high price of the same day to predict the close price. I will try to modify it so that it uses more data to predict the price of stock.

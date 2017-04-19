@@ -10,8 +10,11 @@ as technological advancement, we can analyze large scale data with neural networ
 This script can download the data of 7 indexes from online provider, form a pandas DataFrame that is compatitble with the TensorFlow library and finally apply a neural network to it. The codes are indifferent to the original code in google cloud platform because of a) update to avoid using depricated codes and b) simplify it for understanding.
 
 # Result:
+300epochs, LSTM128 > LSTM128 > 32relu > 1linear 
 Lastest LSTM result (Version3):
-will be updated promptly.
+
+Train Score: 0.00012 MSE (0.01 RMSE)
+Test Score: 0.00018 MSE (0.01 RMSE)
 
 Old LSTM result (Version1): 
 

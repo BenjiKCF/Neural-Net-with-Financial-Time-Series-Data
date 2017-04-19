@@ -9,8 +9,11 @@ as technological advancement, we can analyze large scale data with neural networ
 
 This script can download the data of 7 indexes from online provider, form a pandas DataFrame that is compatitble with the TensorFlow library and finally apply a neural network to it. The codes are indifferent to the original code in google cloud platform because of a) update to avoid using depricated codes and b) simplify it for understanding.
 
-# Result: 
-LSTM result: 
+# Result:
+Lastest LSTM result (Version3):
+will be updated promptly.
+
+Old LSTM result (Version1): 
 
 100epochs, LSTM128 > LSTM128 > 16relu > 1linear 
 Train Score: 0.00032 MSE (0.02 RMSE) Test Score: 0.00046 MSE (0.02 RMSE)
@@ -21,7 +24,8 @@ Train Score: 0.00039 MSE (0.02 RMSE) Test Score: 0.00258 MSE (0.05 RMSE)
 100epochs, LSTM128 > LSTM128 > 64relu > 1linear 
 Train Score: 0.00029 MSE (0.02 RMSE) Test Score: 0.00060 MSE (0.02 RMSE)
 
-Old neural network result (Google cloud approach for classification only): 
+Old neural network result (Version2):
+(Google cloud approach for classification only)
 By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
 By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.
@@ -58,6 +62,8 @@ Run this jupyter notebook with all prerequisite installed.
 2. The current code is to use the open price and high price of the same day to predict the close price. I will try to modify it so that it uses more data to predict the price of stock.
 3. Sentiment analysis from tweets and wall street journal will be added too.
 4. I will also train the model with 3000 US stocks.
+5. New python notebook for Python 3.5 on Windows 10
+6. Regularization will be added to avoid overfitting.
 
 
 # Acknowledgement:

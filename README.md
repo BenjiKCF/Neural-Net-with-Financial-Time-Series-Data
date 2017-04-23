@@ -12,6 +12,8 @@ This script can download the data of indexes from online provider, form a pandas
 # Result:
 Lastest LSTM result (Version3):
 
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Result.png)
+
 300epochs, LSTM128 > LSTM128 > 32relu > 1linear 
 Train Score: 0.00012 MSE (0.01 RMSE) Test Score: 0.00018 MSE (0.01 RMSE)
 

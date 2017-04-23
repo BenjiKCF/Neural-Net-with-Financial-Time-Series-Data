@@ -3,11 +3,11 @@
 # Introduction:
 
 Time series Data forms the most paramount part of the quantitative analysis. Today, with the huge amount of data avilable online as well 
-as technological advancement, we can analyze large scale data with neural network, which is not available before. Most importantly, this neural network predicts the future movement of the index and acheives a reasonably well result. In this example, we will predict the SP500.
+as technological advancement, we can analyze large scale data with recurrent neural network easily. Most importantly, this neural network predicts the future movement of the index and acheives a reasonably well result (0.01RMSE on Test set data). In this example, we will predict the SP500.
 
 # Content:
 
-This script can download the data of indexes from online provider, form a pandas DataFrame that is compatitble with the TensorFlow library and Keras. Finally apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.
+This script can download the data of indexes from online provider, form a pandas DataFrame that contains open, high, low, close and is compatitble with the TensorFlow library and Keras. Finally apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.
 
 # Result:
 Lastest LSTM result (Version3):

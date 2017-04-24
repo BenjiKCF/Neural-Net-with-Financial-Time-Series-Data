@@ -78,6 +78,7 @@ Run this jupyter notebook with all prerequisite installed.
 6. Regularization will be added to avoid overfitting.
 7. Auto selection for hyperparameter
 8. Switch to Object oriented programming
+9. Zipline will be used for backtesting
 
 
 # Acknowledgement:

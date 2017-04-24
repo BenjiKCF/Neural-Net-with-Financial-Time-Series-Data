@@ -77,6 +77,7 @@ Run this jupyter notebook with all prerequisite installed.
 4. I will also train the model with 3000 US stocks.
 5. New python notebook for Python 3.5 on Windows 10
 6. Regularization will be added to avoid overfitting.
+7. Auto selection for hyperparameter
 
 
 # Acknowledgement:

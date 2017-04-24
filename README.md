@@ -2,12 +2,11 @@
 
 # Introduction:
 
-Time series Data forms the most paramount part of the quantitative analysis. Today, with the huge amount of data avilable online as well 
-as technological advancement, we can analyze large scale data with recurrent neural network easily. Most importantly, this neural network predicts the future movement of the index and acheives a reasonably well result (0.01RMSE on Test set data). In this example, we will predict the SP500.
+Time-series Data forms the most paramount part of the quantitative analysis. Today, with the huge amount of data available online as well as technological advancement, we can analyze large scale data with recurrent neural network easily. Most importantly, this neural network predicts the future movement of the index and achieves a reasonably well result (0.01RMSE on Test set data). In this example, we will predict the SP500.
 
 # Content:
 
-This script can download the data of indexes from online provider, form a pandas DataFrame that contains open, high, low, close and is compatitble with the TensorFlow library and Keras. Finally apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.
+This script downloads the data of stock or indexes from the online provider, form a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. Finally, apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.t.
 
 # Result:
 Lastest LSTM result (Version3):
@@ -46,9 +45,9 @@ Run this jupyter notebook with all prerequisite installed.
 
 # Update:
 26/03/2017 First update
-1. Recurrent neural network with LSTM are added to the code. 
-2. Keras with tensorflow are also implemented. 
-3. Tensorboard for neural network visualization are also added to the code.
+1. Recurrent neural network with LSTM is added to the code. 
+2. Keras with tensorflow is also implemented. 
+3. Tensorboard for neural network visualization is also added to the code.
 
 14/04/2017 Second update
 1. Normalized adjusted close price. 
@@ -68,7 +67,7 @@ Run this jupyter notebook with all prerequisite installed.
 
 19/04/2017 Fifth update
 1. Supporting Python 3.5 on Windows 10
-2. Significant improvement on accuracy
+2. Significant improvement in accuracy
 
 # Future Update:
 1. Current day data can be predicted with a live stock data downloader.
@@ -82,7 +81,7 @@ Run this jupyter notebook with all prerequisite installed.
 
 
 # Acknowledgement:
-Thanks to google, I have created this neural network with tensorflow, which is an amazing tool that can run on any computer without using the google cloud database. The original tutorial for version 1 is on here, https://www.youtube.com/watch?time_continue=1&v=iBs59GlXhIA and  my LSTM prediction model is based on https://github.com/etai83/lstm_stock_prediction.
+Thanks to google, I have created this neural network with tensorflow, which is an amazing tool that can run on any computer without using the google cloud database. The original tutorial for version 1 is on here, https://www.youtube.com/watch?time_continue=1&v=iBs59GlXhIA and my LSTM prediction model is based on https://github.com/etai83/lstm_stock_prediction.
 
-I WELCOME you to work together on this interesting project.
+I WELCOME you to work together on this interesting project and improve the model.
 

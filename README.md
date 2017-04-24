@@ -78,6 +78,7 @@ Run this jupyter notebook with all prerequisite installed.
 5. New python notebook for Python 3.5 on Windows 10
 6. Regularization will be added to avoid overfitting.
 7. Auto selection for hyperparameter
+8. Switch to Object oriented programming
 
 
 # Acknowledgement:

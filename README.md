@@ -11,7 +11,7 @@ This script downloads the data of stock or indexes from the online provider, for
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result.png)
+![Alt text]()
 
 Train Score: 0.00002 MSE (0.00 RMSE)
 

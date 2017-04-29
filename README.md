@@ -17,6 +17,10 @@ Train Score: 0.00002 MSE (0.00 RMSE)
 
 Test Score: 0.00012 MSE (0.01 RMSE)
 
+# Hyperparameter
+Currently, I am testing for the best hyperparameter for this model.
+For dropout, the result is shown as below.
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/dropout.png)
 
 # How to use it:
 The main file should be named as "LSTM_Stock_prediction-date.ipynb"

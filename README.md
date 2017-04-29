@@ -11,10 +11,11 @@ This script downloads the data of stock or indexes from the online provider, for
 # Result:
 Lastest LSTM result (Version3):
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Result.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result.png)
 
-300epochs, LSTM128 > LSTM128 > 32relu > 1linear 
-Train Score: 0.00012 MSE (0.01 RMSE) Test Score: 0.00018 MSE (0.01 RMSE)
+Train Score: 0.00002 MSE (0.00 RMSE)
+
+Test Score: 0.00012 MSE (0.01 RMSE)
 
 
 # How to use it:

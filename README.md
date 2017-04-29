@@ -8,6 +8,21 @@ Time-series Data forms the most paramount part of the quantitative analysis. Tod
 
 This script downloads the data of stock or indexes from the online provider, form a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. The prediction is based on the open, high, low in the same day to predict the adjusted close price in the very last minute or hour. (This method maybe inappropriate because the high and low data may not be available until the very end of the day, new version of prediction will be provided to address this problem.) Finally, apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.t.
 
+# Disadvantage of this model:
+I believe in the  efficient market hypothesis (EMH) that price cannot be predicted based on previous price. And this model is breaking the rule of it since it uses high, low data in the same day, which should be a future data. I wish to improve it if I can get my hands on hourly market data from 9:30 to 16:00. 
+
+# Future improvement:
+1. Hourly data for this model.
+2. Uses more fundamental data to predict the price of stock.
+3. Sentiment analysis
+4. Train the model with 3000 US stocks.
+5. Deep Q learning for portfolio optimization and risk
+6. Regularization will be added to avoid overfitting.
+7. Quantopian Zipline will be used for backtesting
+8. Auto selection for the best hyperparameter
+
+
+
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:
 
@@ -60,17 +75,6 @@ Run this jupyter notebook with all prerequisite installed.
 2. 7 years of test data 
 3. Object oriented programming
 4. Fine tune for dropout will be added soon
-
-
-# Future Update:
-1. Current day data can be predicted with a live stock data downloader.
-2. The current code is to use the open price and high price of the same day to predict the close price. I will try to modify it so that it uses more data to predict the price of stock.
-3. Sentiment analysis from tweets and wall street journal will be added too.
-4. I will also train the model with 3000 US stocks.
-5. New python notebook for Python 3.5 on Windows 10
-6. Regularization will be added to avoid overfitting.
-7. Quantopian Zipline will be used for backtesting
-8. Auto selection for the best hyperparameter
 
 
 # Acknowledgement:

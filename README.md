@@ -17,28 +17,6 @@ Lastest LSTM result (Version3):
 Train Score: 0.00012 MSE (0.01 RMSE) Test Score: 0.00018 MSE (0.01 RMSE)
 
 
-Old LSTM result (Version2): 
-
-100epochs, LSTM128 > LSTM128 > 16relu > 1linear 
-Train Score: 0.00032 MSE (0.02 RMSE) Test Score: 0.00046 MSE (0.02 RMSE)
-
-100epochs, LSTM80 > LSTM80 > 32relu > 1linear 
-Train Score: 0.00039 MSE (0.02 RMSE) Test Score: 0.00258 MSE (0.05 RMSE)
-
-100epochs, LSTM128 > LSTM128 > 64relu > 1linear 
-Train Score: 0.00029 MSE (0.02 RMSE) Test Score: 0.00060 MSE (0.02 RMSE)
-
-Old neural network result (Version1):
-(Google cloud approach for classification only)
-
-By running 10000 epochs, with 5 neruons in the first hidden layer, 3 neruons in the second hidden layer and 2outputs, it achieves a 0.737 accuracy.
-
-By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs, it achieves a 0.806 accuracy.
-
-By running 10000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.77 accuracy.
-
-By running 50000 epochs, with 50 neruons in the first hidden layer, 30 neruons in the second hidden layer and 2 outputs with dropout rate of 0.2, it achieves a 0.815 accuracy.
-
 # How to use it:
 The main file should be named as "LSTM_Stock_prediction-date.ipynb"
 Run this jupyter notebook with all prerequisite installed. 
@@ -69,6 +47,13 @@ Run this jupyter notebook with all prerequisite installed.
 1. Supporting Python 3.5 on Windows 10
 2. Significant improvement in accuracy
 
+29/04/2017 Sixth update
+1. ^GSPC Data since 1970 has been added, more training data, higher accuracy
+2. 7 years of test data 
+3. Object oriented programming
+4. Fine tune for dropout will be added soon
+
+
 # Future Update:
 1. Current day data can be predicted with a live stock data downloader.
 2. The current code is to use the open price and high price of the same day to predict the close price. I will try to modify it so that it uses more data to predict the price of stock.
@@ -76,9 +61,8 @@ Run this jupyter notebook with all prerequisite installed.
 4. I will also train the model with 3000 US stocks.
 5. New python notebook for Python 3.5 on Windows 10
 6. Regularization will be added to avoid overfitting.
-7. Auto selection for hyperparameter
-8. Switch to Object oriented programming
-9. Zipline will be used for backtesting
+7. Zipline will be used for backtesting
+8. Auto selection for the best hyperparameter
 
 
 # Acknowledgement:

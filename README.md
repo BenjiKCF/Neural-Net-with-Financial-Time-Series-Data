@@ -9,7 +9,7 @@ Time-series Data forms the most paramount part of the quantitative analysis. Tod
 This script downloads the data of stock or indexes from the online provider, form a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. Finally, apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.t.
 
 # Result:
-Lastest LSTM result (Version3):
+Lastest LSTM model result for 7 years of testing data that has not been trained:
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result.png)
 

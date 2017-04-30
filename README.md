@@ -36,10 +36,13 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 Currently, I am testing for the best hyperparameter for this model.
 
 For dropout, the result is shown as below.
+
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/dropout.png)
 
 For epochs less than 100 would be ideal.
+
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs.png)
+
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs2.png)
 
 # How to use it:

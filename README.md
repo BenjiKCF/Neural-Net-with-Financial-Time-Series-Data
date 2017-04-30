@@ -28,9 +28,9 @@ Lastest LSTM model result for 7 years of testing data that has not been trained:
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result2.png)
 
-Train Score: 0.00002 MSE (0.00 RMSE)
+Train Score: 0.00006 MSE (0.01 RMSE)
 
-Test Score: 0.00012 MSE (0.01 RMSE)
+Test Score: 0.00029 MSE (0.02 RMSE)
 
 # Hyperparameter
 Currently, I am testing for the best hyperparameter for this model.

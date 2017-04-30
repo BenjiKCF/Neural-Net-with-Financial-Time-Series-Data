@@ -6,7 +6,11 @@ Time-series Data forms the most paramount part of the quantitative analysis. Tod
 
 # Content:
 
-This script downloads the data of stock or indexes from the online provider, form a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. The prediction is based on the open, high, low in the same day to predict the adjusted close price in the very last minute or hour. (This method maybe inappropriate because the high and low data may not be available until the very end of the day, new version of prediction will be provided to address this problem.) Finally, apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.t.
+This script downloads the data of stock or indexes from the online provider, form a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. The prediction is based on the open, high, low in the same day to predict the adjusted close price in the very last minute or hour. (This method maybe inappropriate because the high and low data may not be available until the very end of the day, new version of prediction will be provided to address this problem.) Finally, apply a neural network to it. Finally, a visualized graph will be presented to compare the accuracy of it.
+
+# How it works:
+
+The concept of this model is mimicking technical analysis which uses the past price as well as the current high, low in the same day to predict the closing price.
 
 # Disadvantage of this model:
 I believe in the  efficient market hypothesis (EMH) that price cannot be predicted based on previous price. And this model is breaking the rule of it since it uses high, low data in the same day, which should be a future data. I wish to improve it if I can get my hands on hourly market data from 9:30 to 16:00. 

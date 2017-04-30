@@ -26,7 +26,7 @@ I believe in the  efficient market hypothesis (EMH) that price cannot be predict
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result1.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result2.png)
 
 Train Score: 0.00002 MSE (0.00 RMSE)
 
@@ -34,11 +34,13 @@ Test Score: 0.00012 MSE (0.01 RMSE)
 
 # Hyperparameter
 Currently, I am testing for the best hyperparameter for this model.
+
 For dropout, the result is shown as below.
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/dropout.png)
 
-For epochs, the result is probably less than a 100 epochs, more test will be conducted
+For epochs less than 100 would be ideal.
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs2.png)
 
 # How to use it:
 The main file should be named as "LSTM_Stock_prediction-date.ipynb"

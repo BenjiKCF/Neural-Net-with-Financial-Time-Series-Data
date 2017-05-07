@@ -49,6 +49,10 @@ For epochs less than 100 would be ideal.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs2.png)
 
+For number of neurons, [256, 256, 32, 1] and [512, 512, 32, 1] would be ideal for this model.
+
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/neurons.png)
+
 # How to use it:
 The main file should be named as "LSTM_Stock_prediction-date.ipynb"
 Run this jupyter notebook with all prerequisite installed. 

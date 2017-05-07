@@ -4,14 +4,16 @@
 Time series is an important part of financial analysis. Today, you have more data, more data sources, and more frequent data. New sources include new exchanges, social media and news sources. Today, delivery frequency has been increased from dozens of messages every day to hundreds of thousands of messages per second. Therefore, the results will bring more and more analytical techniques. Most modern analytical techniques are not different, and they all have a statistical basis, but their applicability follows the available computational capabilities. The increase in available computing power is faster than the increase in the number of time series data, so it is now possible to analyze large-scale time series in an unprecedented way. This neural network predicts the future movement of the index and achieves a reasonably well result.
 
 # Content:
+It downloads the stock/ index data from an online information provider, then forms a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. Finally, a LSTM recurrent neural network will be implemented to train and predict. It also creates a visualized result for the ease of presentation. Optimized Hyperparameters arre also provided at the end.
 
-This notebook downloads the data of stock or indexes from the online information provider, form a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. Finally, apply a recurrent neural network to the data and create a visualized graph. Hyperparameter is also provided at the end for choosing optimal hyperparameter.
+# How it works:
+The efficient market hypothesis (EMH) states that price cannot be predicted based on previous price and this model clearly violates the EMH. It attempts to understand the market sentiment behind price trends rather than analyzing a security's fundamental attributes. In order to strengthen the market sentiment analysis, a sentiment analysis model or event driven prediction model will be added. Hopefully, the result would be slightly better than a random guess.
 
 # Versions
 After receiving feedbacks that stock price should not be predicted with the data from the same date. From now on, there will be 2 versions with the similar method to predict the stock price.
 
 1. Prediction with 21 previous days and today open high low (Original) (Regression)
-Prototype of all models.
+Prototype of all models. Hourly data will be used once suitable data provider has been found.
 
 Filename: LSTM_Stock_prediction_20170507.ipynb
 
@@ -26,11 +28,6 @@ Filename: TBA
 With version 3, it can classify gain and loss of today.
 
 Filename: TBA
-
-
-
-# How it works:
-The efficient market hypothesis (EMH) states that price cannot be predicted based on previous price and this model clearly violates the EMH. It attempts to understand the market sentiment behind price trends rather than analyzing a security's fundamental attributes. In order to strengthen the market sentiment analysis, a sentiment analysis model or event driven prediction model will be added. Hopefully, the result would be slightly better than a random guess.
 
 # Future improvement:
 1. Moving average will be added
@@ -111,18 +108,10 @@ Run this jupyter notebook with all prerequisite installed.
 # References:
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
 
-G. E. P. Box, G. M. Jenkins, and G. C. Reinsel. Time series analysis: forecasting and control, volume
-734. Wiley, 2011.
+Box, G. E., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). Time series analysis: forecasting and control. John Wiley & Sons.
 
-H. Jaeger. The "echo state" approach to analysing and training recurrent neural networks-with an
-erratum note. Tecnical report GMD report, 148, 2001.
+Jaeger, H. (2001). The “echo state” approach to analysing and training recurrent neural networks-with an erratum note. Bonn, Germany: German National Research Center for Information Technology GMD Technical Report, 148(34), 13.
 
-H. Jaeger. Tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the" echo
-state network" approach. GMD-Forschungszentrum Informationstechnik, 2002.
+Jaeger, H. (2002). Tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the" echo state network" approach (Vol. 5). GMD-Forschungszentrum Informationstechnik.
 
-Wolfgang Maass, Thomas Natschlager, and Henry Markram. Real-time computing without stable states:
-A new framework for neural computation based on perturbations. Neural Computation, 14(11):2531–
-2560, November 2002.
-
-I WELCOME you to work together on this interesting project and improve the model.
-
+Maass, W., Natschläger, T., & Markram, H. (2002). Real-time computing without stable states: A new framework for neural computation based on perturbations. Neural computation, 14(11), 2531-2560.

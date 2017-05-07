@@ -13,6 +13,7 @@ The efficient market hypothesis (EMH) states that price cannot be predicted base
 After receiving feedbacks that stock price should not be predicted with the data from the same date. From now on, there will be 2 versions with the similar method to predict the stock price.
 
 1. Prediction with 21 previous days and today open high low (Original) (Regression)
+
 Prototype of all models. Hourly data will be used once suitable data provider has been found.
 
 Filename: LSTM_Stock_prediction_20170507.ipynb
@@ -65,10 +66,6 @@ For epochs, the result is shown as below. Epochs less than 100 would be sufficie
 For number of neurons, [256, 256, 32, 1] and [512, 512, 32, 1] would be ideal for this model.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/neurons.png)
-
-# How to use it:
-The main file should be named as "LSTM_Stock_prediction-date.ipynb"
-Run this jupyter notebook with all prerequisite installed. 
 
 # Update:
 26/03/2017 First update

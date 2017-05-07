@@ -12,23 +12,14 @@ The efficient market hypothesis (EMH) states that price cannot be predicted base
 # Versions
 After receiving feedbacks that stock price should not be predicted with the data from the same date. From now on, there will be 2 versions with the similar method to predict the stock price.
 
-1. Prediction with 21 previous days and today open high low (Original) (Regression)
-
-Prototype of all models. Hourly data will be used once suitable data provider has been found.
+1. Prediction with 22 previous days (Original) (Regression)
 
 Filename: LSTM_Stock_prediction_20170507.ipynb
 
-2. Prediction with 22 previous days (Modified) (Regression)
-
-With version 2, it can avoid using "future" data for predition.
+2. Prediction with 22 previous days (Modified) (Classification)
 
 Filename: TBA
 
-3. Prediction with 22 previous days (Modified) (Classification)
-
-With version 3, it can classify gain and loss of today.
-
-Filename: TBA
 
 # Future improvement:
 1. Moving average will be added

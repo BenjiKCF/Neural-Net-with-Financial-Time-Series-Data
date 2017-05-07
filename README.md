@@ -93,5 +93,21 @@ Run this jupyter notebook with all prerequisite installed.
 # Acknowledgement:
 Thanks to google, I have created this neural network with tensorflow, which is an amazing tool that can run on any computer without using the google cloud database. The original tutorial for version 1 is on here, https://www.youtube.com/watch?time_continue=1&v=iBs59GlXhIA and my LSTM prediction model is based on https://github.com/etai83/lstm_stock_prediction.
 
+# References:
+Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
+
+G. E. P. Box, G. M. Jenkins, and G. C. Reinsel. Time series analysis: forecasting and control, volume
+734. Wiley, 2011.
+
+H. Jaeger. The "echo state" approach to analysing and training recurrent neural networks-with an
+erratum note. Tecnical report GMD report, 148, 2001.
+
+H. Jaeger. Tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the" echo
+state network" approach. GMD-Forschungszentrum Informationstechnik, 2002.
+
+Wolfgang Maass, Thomas Natschlager, and Henry Markram. Real-time computing without stable states:
+A new framework for neural computation based on perturbations. Neural Computation, 14(11):2531–
+2560, November 2002.
+
 I WELCOME you to work together on this interesting project and improve the model.
 

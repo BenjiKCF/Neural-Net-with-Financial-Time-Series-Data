@@ -62,9 +62,9 @@ For weight decay, 0.8 would be good, but further testing will also be conducted.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/decay.png)
 
-For the days of stock price included (window), 22 days would be ideal.
+For the days of stock price included (window), after serveral tests, 10 days would be ideal.
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/days.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/window.png)
 
 # Update:
 26/03/2017 First update

@@ -58,9 +58,9 @@ For number of neurons, [256, 256, 32, 1] and [512, 512, 32, 1] would be ideal fo
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/neurons.png)
 
-For weight decay, 0.8 would be good, but further testing will also be conducted.
+For weight decay, after serveral tests, 0.4 and 0.5 would be good.
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/decay.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/decay2.png)
 
 For the days of stock price included (window), after serveral tests, 10 days would be ideal.
 

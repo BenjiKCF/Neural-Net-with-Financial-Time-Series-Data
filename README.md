@@ -50,13 +50,21 @@ For dropout, the result is shown as below. Dropout of 0.2, 0.3 would be fantasti
 
 For epochs, the result is shown as below. Epochs less than 100 would be sufficient.
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs.png)
-
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs2.png)
+
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs.png)
 
 For number of neurons, [256, 256, 32, 1] and [512, 512, 32, 1] would be ideal for this model.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/neurons.png)
+
+For weight decay, 0.8 would be good, but further testing will also be conducted.
+
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/decay.png)
+
+For the days of stock price included (window), 22 days would be ideal.
+
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/days.png)
 
 # Update:
 26/03/2017 First update
@@ -90,8 +98,10 @@ For number of neurons, [256, 256, 32, 1] and [512, 512, 32, 1] would be ideal fo
 3. Object oriented programming
 4. Hyperparameters for dropout has been tested
 
-29/04/2017 Seventh update
-1. Hyperparameters for epochs and structure of model have been tested.
+08/05/2017 Seventh update
+1. All Hyperparameters have been tested and results have been uploaded.
+2. Fixed comment for the data loader
+3. More technical analysis like volume, moving average and other indexes will be added
 
 # References:
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.

@@ -42,6 +42,7 @@ Train Score: 0.00006 MSE (0.01 RMSE)
 Test Score: 0.00029 MSE (0.02 RMSE)
 
 # Hyperparameter
+# The following result will be deleted and modified soon because it was based on testing data, not crossvalidation data.
 After serveral tests,
 
 For dropout, the result is shown as below. Dropout of 0.2, 0.3 would be fantastic

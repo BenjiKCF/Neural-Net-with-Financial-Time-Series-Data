@@ -19,6 +19,10 @@ import h5py
 from keras import backend as K
 
 def get_stock_data(stock_name, normalize=True, ma=[]):
+    """
+    Return a dataframe of that stock and normalize all the values. 
+    (Optional: create moving average)
+    """
     start = datetime.datetime(1950, 1, 1)
     end = datetime.date.today()
     df = web.DataReader(stock_name, "yahoo", start, end)
@@ -43,12 +47,15 @@ def get_stock_data(stock_name, normalize=True, ma=[]):
 #print get_stock_data(stock_name, normalize=True, ma=[5,10])
 
 def plot_stock(stock_name):
-    df = get_stock_data(stock_name, normalize=True)
     print(df.head())
+    plt.subplot(211)
     plt.plot(df['Adj Close'], color='red', label='Adj Close')
     plt.legend(loc='best')
+    plt.subplot(212)
+    plt.plot(df['Pct'], color='blue', label='Percentage change')
+    plt.legend(loc='best')
     plt.show()
-
+    
 def load_data(stock, seq_len):
     amount_of_features = len(stock.columns)
     data = stock.as_matrix()
@@ -73,13 +80,13 @@ def load_data(stock, seq_len):
 
     return [X_train, y_train, X_test, y_test]
 
-def build_model(layers, neurons, dropout, decay):
+def build_model(shape, neurons, dropout, decay):
     model = Sequential()
 
-    model.add(LSTM(neurons[0], input_shape=(layers[1], layers[0]), return_sequences=True))
+    model.add(LSTM(neurons[0], input_shape=(shape[0], shape[1]), return_sequences=True))
     model.add(Dropout(dropout))
 
-    model.add(LSTM(neurons[1], input_shape=(layers[1], layers[0]), return_sequences=False))
+    model.add(LSTM(neurons[1], input_shape=(shape[0], shape[1]), return_sequences=False))
     model.add(Dropout(dropout))
 
     model.add(Dense(neurons[2],kernel_initializer="uniform",activation='relu'))
@@ -142,16 +149,23 @@ def quick_measure(stock_name, seq_len, dropout, shape, neurons, epochs, decay):
     trainScore, testScore = model_score(model, X_train, y_train, X_test, y_test)
     return trainScore, testScore
 
-def buy_sell_hold(*args):
+def buy_sell_hold_pos(*args):
     cols = [float(c) for c in args]
-    # 3% = 11% of data, 2% = 18% of data
-    requirement = 0.02
+    requirement = 0.005
     for col in cols:
         if col >= requirement:
             return 1
+        else:
+            return 0
+
+def buy_sell_hold_neg(*args):
+    cols = [float(c) for c in args]
+    requirement = 0.005
+    for col in cols:
         if col <= -requirement:
-            return -1
-    return 0
+            return 1
+        else:
+            return 0
 
 def get_stock_data_classification(stock_name, normalize=True, ma=[]):
     '''Rise = +1, Fall = -1, otherwise = 0'''
@@ -177,15 +191,26 @@ def get_stock_data_classification(stock_name, normalize=True, ma=[]):
             for moving in ma:
                 df['{}ma'.format(moving)] = min_max_scaler.fit_transform(df['{}ma'.format(moving)].values.reshape(-1,1))
 
-    df['Class'] = list(map(buy_sell_hold, df['Pct']))
-
+    df['Pos'] = list(map(buy_sell_hold_pos, df['Pct']))
+    df['Neg'] = list(map(buy_sell_hold_neg, df['Pct']))
+    
     if normalize:
         min_max_scaler = preprocessing.MinMaxScaler()
         df['Pct'] = min_max_scaler.fit_transform(df.Pct.values.reshape(-1,1))
 
     return df
 
-df = get_stock_data_classification('GSPC')#.to_csv('lstmcheck.csv')
+# df = get_stock_data_classification('GSPC')#.to_csv('lstmcheck.csv')
+
+def plot_stock_classification(df):
+    print(df.head())
+    plt.subplot(211)
+    plt.plot(df['Adj Close'], color='red', label='Adj Close')
+    plt.legend(loc='best')
+    plt.subplot(212)
+    plt.plot(df['Pct'], color='blue', label='Percentage change')
+    plt.legend(loc='best')
+    plt.show()
 
 def load_data_classification(stock, seq_len, split):
     amount_of_features = len(stock.columns)
@@ -201,10 +226,10 @@ def load_data_classification(stock, seq_len, split):
 
     train = result[:int(row), :] # 90% date
     X_train = train[:, :-1] # all data until day m
-    y_train = train[:, -1][:,-1] # day m + 1 class
+    y_train = train[:, -1, -2:] # day m + 1 class
 
     X_test = result[int(row):, :-1]
-    y_test = result[int(row):, -1][:,-1]
+    y_test = result[int(row):, -1, -2:]
 
     X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], amount_of_features))
     X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], amount_of_features))
@@ -217,19 +242,20 @@ def load_data_classification(stock, seq_len, split):
 def root_mean_squared_error(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
 
-def build_model_classification(layers, neurons, dropout, decay):
+def build_model_classification(shape, neurons, dropout, decay):
     model = Sequential()
 
-    model.add(LSTM(neurons[0], input_shape=(layers[1], layers[0]), return_sequences=True))
+    model.add(LSTM(neurons[0], input_shape=(shape[0], shape[1]), return_sequences=True))
     model.add(Dropout(dropout))
 
-    model.add(LSTM(neurons[1], input_shape=(layers[1], layers[0]), return_sequences=False))
+    model.add(LSTM(neurons[1]))
     model.add(Dropout(dropout))
 
-    model.add(Dense(neurons[2],kernel_initializer="uniform",activation='relu'))
-    model.add(Dense(neurons[3],kernel_initializer="uniform",activation='linear'))
+    model.add(Dense(neurons[2], activation='relu'))
+    model.add(Dense(neurons[3], activation='linear'))
+    model.add(Activation('softmax'))
     # model = load_model('my_LSTM_stock_model1000.h5')
     adam = keras.optimizers.Adam(decay=decay)
-    model.compile(loss=root_mean_squared_error,optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy',optimizer='adam', metrics=['accuracy'])
     model.summary()
     return model

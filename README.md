@@ -6,10 +6,6 @@ Time series is an important part of financial analysis. Today, you have more dat
 # Content:
 It downloads the stock/ index data from an online information provider, then forms a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. Finally, a LSTM recurrent neural network will be implemented to train and predict. It also creates a visualized result for the ease of presentation. Optimized Hyperparameters arre also provided at the end.
 
-# Error
-1. Please notice that I created this model with pandas 0.19.2 and I will update it to support pandas 0.20
-2. Recently, pandas datareader is not available for downloading stock data, I am currently working on downloading data from Quandl.
-
 # How it works:
 The efficient market hypothesis (EMH) states that price cannot be predicted based on previous price and this model clearly violates the EMH. It attempts to understand the market sentiment behind price trends rather than analyzing a security's fundamental attributes. In order to strengthen the market sentiment analysis, a sentiment analysis model or event driven prediction model will be added. Hopefully, the result would be slightly better than a random guess. The model is currently overfitting and more updates will be provided.
 

@@ -20,10 +20,17 @@ After receiving feedbacks that stock price is very close to the previous price a
 
 Filename: LSTM_Stock_prediction_20170507.ipynb
 
+Currently not working, but all of the hyperparameter testing results are in it.
+
 2. Prediction with 22 previous days (Modified) (Classification)
 
 Filename: TBA
 
+3. Prediction with 22 previous days (Using Quandl database) (Regression)
+
+Filename: LSTM_Stock_prediction_20170528(Quandl).ipynb
+
+Latest update, using Quandl Database instead of pandas datareader.
 
 # Future improvement:
 1. Moving average will be added
@@ -107,6 +114,14 @@ For the days of stock price included (window), after serveral tests, 10 days wou
 1. All Hyperparameters have been tested and results have been uploaded.
 2. Fixed comment for the data loader
 3. More technical analysis like volume, moving average and other indexes will be added
+
+28/05/2017 Eighth update
+1. Using Quandl instead of Pandas datareader
+2. Correlation heatmap has been addded
+3. Using Adjusted OHLCV for the network
+4. All functions can be loaded from lstmstock.py
+5. A Quandl api key is provided temporarily for those who do not own a quandl account
+6. Moving averages have been added
 
 # References:
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.

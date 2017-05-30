@@ -10,7 +10,7 @@ It downloads the stock/ index data from an online information provider, then for
 The efficient market hypothesis (EMH) states that price cannot be predicted based on previous price and this model clearly violates the EMH. It attempts to understand the market sentiment behind price trends rather than analyzing a security's fundamental attributes. In order to strengthen the market sentiment analysis, a sentiment analysis model or event driven prediction model will be added. Hopefully, the result would be slightly better than a random guess. The model is currently overfitting and more updates will be provided.
 
 # Versions
-After receiving feedbacks that stock price is very close to the previous price and thus regression is inappropriate. From now on, there will be 2 methods to predict the stock price.
+After receiving feedbacks that stock price is very close to the previous price and thus regression is inappropriate. From now on, there will be 3 methods to predict the stock price.
 
 1. Prediction with 22 previous days (Original) (Regression)
 
@@ -18,25 +18,25 @@ Filename: LSTM_Stock_prediction_20170507.ipynb
 
 Currently not working, but all of the hyperparameter testing results are in it.
 
-2. Prediction with 22 previous days (Modified) (Classification)
 
-Filename: TBA
-
-3. Prediction with 22 previous days (Using Quandl database) (Regression)
+2. Prediction with 22 previous days (Using Quandl database) (Regression)
 
 Filename: LSTM_Stock_prediction_20170528(Quandl).ipynb
 
 Latest update, using Quandl Database instead of pandas datareader.
 
+
+3. Prediction with 22 previous days (Modified) (Classification)
+
+Filename: TBA
+
 # Future improvement:
-1. Moving average will be added
-2. Uses more fundamental data to predict the price of stock.
-3. Sentiment analysis
-4. Train the model with 3000 US stocks.
-5. Deep Q learning for portfolio optimization and risk
-6. Regularization will be added to avoid overfitting.
-7. Quantopian Zipline will be used for backtesting
-8. LSTM convolutions network 
+1. Uses more fundamental data to predict the price of stock.
+2. Sentiment analysis
+3. Train the model with 3000 US stocks.
+4. Deep Q learning for portfolio optimization and risk
+5. Quantopian Zipline will be used for backtesting
+6. GRU and LSTM comparison
 
 
 # Result:
@@ -49,7 +49,7 @@ Train Score: 0.00006 MSE (0.01 RMSE)
 Test Score: 0.00029 MSE (0.02 RMSE)
 
 # Hyperparameter
-# The following result will be deleted and modified soon because it was based on testing data, not crossvalidation data.
+# The following result will be deleted and modified soon because new model has been deployed.
 After serveral tests,
 
 For dropout, the result is shown as below. Dropout of 0.2, 0.3 would be fantastic

@@ -119,6 +119,12 @@ For the days of stock price included (window), after serveral tests, 10 days wou
 5. A Quandl api key is provided temporarily for those who do not own a quandl account
 6. Moving averages have been added
 
+# How to use Quandl
+With this link, you should be able to get the historic price data of a particular stock after login. 
+Use Export > Python > api key and insert the api key to your model.
+https://www.quandl.com/product/WIKIP/WIKI/PRICES-Quandl-End-Of-Day-Stocks-Info
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/quandl.png)
+
 # References:
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
 

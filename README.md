@@ -16,7 +16,7 @@ After receiving feedbacks that stock price is very close to the previous price a
 
 Filename: LSTM_Stock_prediction_20170507.ipynb
 
-Currently not working, but all of the hyperparameter testing results are in it.
+Currently not working, but all of the reserach results are in it.
 
 
 2. Prediction with 22 previous days (Using Quandl database) (Regression)
@@ -32,9 +32,9 @@ Filename: TBA
 
 # Future improvement:
 1. Uses more fundamental data to predict the price of stock.
-2. Sentiment analysis
+2. Sentiment analysis or event driven analysis
 3. Train the model with 3000 US stocks.
-4. Deep Q learning for portfolio optimization and risk
+4. Deep Q ／ reinforcement learning for portfolio optimization and risk
 5. Quantopian Zipline will be used for backtesting
 6. GRU and LSTM comparison
 

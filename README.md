@@ -37,7 +37,9 @@ Filename: TBA
 4. Deep Q ／ reinforcement learning for portfolio optimization and risk
 5. Quantopian Zipline will be used for backtesting
 6. GRU and LSTM comparison
+7. Applying Learn to learn for this model
 
+Currently I am working on another project, I will resume to this project soon with a big update.
 
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:

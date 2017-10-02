@@ -34,7 +34,7 @@ Using News for sentiment analysis for that day.
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/result2.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
 
 Train Score: 0.00006 MSE (0.01 RMSE)
 

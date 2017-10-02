@@ -84,8 +84,7 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 5. A Quandl api key is provided temporarily for those who do not own a quandl account
 6. Moving averages have been added
 
-# Big update
-02/10/2017 Nineth update
+02/10/2017 Nineth update (Big update)
 1. Event driven analysis
 2. Switched to Tensorflow LSTM model
 

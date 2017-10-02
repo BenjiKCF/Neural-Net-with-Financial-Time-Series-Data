@@ -1,45 +1,35 @@
 # Neural-Network-with-Financial-Time-Series-Data
 
-# Introduction:
-Time series is an important part of financial analysis. Today, you have more data, more data sources, and higher frequency of data. New sources include new exchanges, social media and news sources. Today, delivery frequency has been increased from dozens of messages every day to hundreds of thousands of messages per second. Therefore, the results will bring more and more analytical techniques. Most modern analytical techniques are not different, and they all have a statistical basis, but their applicability follows the available computational capabilities. The increase in available computing power is faster than the increase in the number of time series data, so it is now possible to analyze large-scale time series in an unprecedented way. This neural network predicts the future movement of the index and achieves a reasonably well result.
-
 # Content:
-It downloads the stock/ index data from an online information provider, then forms a pandas DataFrame that contains open, high, low, close and is compatible with the TensorFlow library and Keras. Finally, a LSTM recurrent neural network will be implemented to train and predict. It also creates a visualized result for the ease of presentation. Optimized Hyperparameters arre also provided at the end.
-
-# How it works:
-The efficient market hypothesis (EMH) states that price cannot be predicted based on previous price and this model clearly violates the EMH. It attempts to understand the market sentiment behind price trends rather than analyzing a security's fundamental attributes. In order to strengthen the market sentiment analysis, a sentiment analysis model or event driven prediction model will be added. Hopefully, the result would be slightly better than a random guess. The model is currently overfitting and more updates will be provided.
+This is an evnet driven model that uses stock price data together with the New York Times News to form a LSTM recurrent neural network.
 
 # Versions
-After receiving feedbacks that stock price is very close to the previous price and thus regression is inappropriate. From now on, there will be 3 methods to predict the stock price.
+There are 3 models. The first 2 models are based on price and volume data alone. The third model is an event driven model that uses sentiment analysis on news data to predict the stock price. 
 
-1. Prediction with 22 previous days (Original) (Regression)
+1. Prediction with 22 previous days
 
 Filename: LSTM_Stock_prediction_20170507.ipynb
 
-Currently not working, but all of the reserach results are in it.
+Currently not working, but the model is optimized.
 
-
-2. Prediction with 22 previous days (Using Quandl database) (Regression)
+2. Prediction with 22 previous days
 
 Filename: LSTM_Stock_prediction_20170528(Quandl).ipynb
 
-Latest update, using Quandl Database instead of pandas datareader.
+Using Quandl Database instead of pandas datareader. Not optimized.
 
+3. Event driven model with 3 previous days (Using CSV file for price data)
 
-3. Prediction with 22 previous days (Modified) (Classification)
+Filename: Event_driven_LSTM_Stock_prediction.ipynb
 
-Filename: TBA
+Using News for sentiment analysis for that day.
+
 
 # Future improvement:
-1. Uses more fundamental data to predict the price of stock.
-2. Sentiment analysis or event driven analysis
-3. Train the model with 3000 US stocks.
-4. Deep Q ／ reinforcement learning for portfolio optimization and risk
-5. Quantopian Zipline will be used for backtesting
-6. GRU and LSTM comparison
-7. Applying Learn to learn for this model
-
-Currently I am working on another project, I will resume to this project soon with a big update.
+1. Optimize hyperparameter
+2. Technical indicator will be added to the features
+3. More data will be trained
+4. Quantopian Zipline will be used for backtesting
 
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:
@@ -49,32 +39,6 @@ Lastest LSTM model result for 7 years of testing data that has not been trained:
 Train Score: 0.00006 MSE (0.01 RMSE)
 
 Test Score: 0.00029 MSE (0.02 RMSE)
-
-# Hyperparameter
-# The following result will be deleted and modified soon because new model has been deployed.
-After serveral tests,
-
-For dropout, the result is shown as below. Dropout of 0.2, 0.3 would be fantastic
-
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/dropout.png)
-
-For epochs, the result is shown as below. Epochs less than 100 would be sufficient.
-
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs2.png)
-
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/epochs.png)
-
-For number of neurons, [256, 256, 32, 1] and [512, 512, 32, 1] would be ideal for this model.
-
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/neurons.png)
-
-For weight decay, after serveral tests, 0.4 and 0.5 would be good.
-
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/decay2.png)
-
-For the days of stock price included (window), after serveral tests, 10 days would be ideal.
-
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/window.png)
 
 # Update:
 26/03/2017 First update
@@ -120,6 +84,11 @@ For the days of stock price included (window), after serveral tests, 10 days wou
 4. All functions can be loaded from lstmstock.py
 5. A Quandl api key is provided temporarily for those who do not own a quandl account
 6. Moving averages have been added
+
+# Big update
+02/10/2017 Nineth update
+1. Event driven analysis
+2. Switched to Tensorflow LSTM model
 
 # How to use Quandl
 With this link, you should be able to get the historic price data of a particular stock after login. 

@@ -1,6 +1,4 @@
 # Neural-Network-with-Financial-Time-Series-Data
-
-# Content:
 This is an evnet driven model that uses stock price data together with the New York Times News to form a LSTM recurrent neural network.
 
 # Versions
@@ -30,6 +28,7 @@ Using News for sentiment analysis for that day.
 2. Technical indicator will be added to the features
 3. More data will be trained
 4. Quantopian Zipline will be used for backtesting
+5. Twitter sentiment analysis will be added
 
 # Result:
 Lastest LSTM model result for 7 years of testing data that has not been trained:

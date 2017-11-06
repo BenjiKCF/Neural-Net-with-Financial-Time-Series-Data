@@ -86,7 +86,9 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 6. Moving averages have been added
 
 02/10/2017 Nineth update (Big update)
+
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Dataframe.png)
+
 1. Event driven analysis
 2. Switched to Tensorflow LSTM model
 

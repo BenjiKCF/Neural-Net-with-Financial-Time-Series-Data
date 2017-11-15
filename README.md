@@ -92,6 +92,9 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 1. Event driven analysis
 2. Switched to Tensorflow LSTM model
 
+# Future update
+I have successfully applied technical Indicators (ie Stochastics Oscillator, MACD, ATR) to the model. I will combine it with the event driven one to create a larger model with better hyperparameter optimization.
+
 # How to use Quandl
 With this link, you should be able to get the historic price data of a particular stock after login. 
 Use Export > Python > api key and insert the api key to your model.

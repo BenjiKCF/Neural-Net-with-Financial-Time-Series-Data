@@ -100,7 +100,7 @@ Also, I have installed Quantopian Zipline locally, so that I can backtest the mo
 # How to use Quandl
 With this link, you should be able to get the historic price data of a particular stock after login. 
 Use Export > Python > api key and insert the api key to your model.
-https://www.quandl.com/product/WIKIP/WIKI/PRICES-Quandl-End-Of-Day-Stocks-Info
+https://www.quandl.com/databases/WIKIP
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/quandl.png)
 
 # References:

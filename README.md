@@ -95,8 +95,7 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 # Future update
 I have successfully applied technical Indicators (ie Stochastics Oscillator, MACD, ATR) to the model. I will combine it with the event driven one to create a larger model with better hyperparameter optimization.
 
-# Drawback  
-Currently, the evaluation metrics is using mean square error. It is not appropriate because the price difference is pretty similar to previous day. I will change it to a classification model soon.
+Also, I have installed Quantopian Zipline locally, so that I can backtest the model. However, I do not have a trading strategy. Please feel free to contact me to share your thought.
 
 # How to use Quandl
 With this link, you should be able to get the historic price data of a particular stock after login. 

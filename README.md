@@ -1,38 +1,23 @@
 # Neural-Network-with-Financial-Time-Series-Data
 An evnet driven model that uses financial time series data, technical indicators and New York Times headlines to form a Gated Recurrent Unit neural network.
 
-# Versions
-There are 3 models. The first 2 models are based on price and volume data alone. The third model is an event driven model that uses sentiment analysis on news data to predict the stock price. 
 
-1. Prediction with 22 previous days
+# Latest Result:
 
-Filename: LSTM_Stock_prediction_20170507.ipynb
+The current GRU model result for predicting daily log return by using sentiment analysis and technical indicators.
 
-Currently not working, but the model is optimized.
+For 5 years
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Predicted_vs_True_all.png)
 
-2. Prediction with 22 previous days
-
-Filename: LSTM_Stock_prediction_20170528(Quandl).ipynb
-
-Using Quandl Database instead of pandas datareader. Not optimized.
-
-3. Event driven model with 3 previous days (Using CSV file for price data)
-
-Filename: Event_driven_LSTM_Stock_prediction.ipynb
-
-Using News for sentiment analysis for that day.
+For 1 year
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Predicted_vs_True_all_last%20300.png)
 
 
-# Future improvement:
-1. Optimize hyperparameter
-2. Technical indicator will be added to the features
-3. More data will be trained
-4. Quantopian Zipline will be used for backtesting
-5. Twitter sentiment analysis will be added
-6. More indexes will be included
+# Old model Result
 
-# Result:
-Lastest LSTM model result for 7 years of testing data that has not been trained:
+This old model uses LSTM to predict stock price.
+
+LSTM model result for 7 years of testing data that has not been trained on:
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
 
@@ -103,6 +88,7 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 1. Hyperas will be used to optmize hyperparameters.
 2. Deep Feature Synthesis will be used for auto feature engineering.
 3. Quantopian zipline will be used for backtesting the model.
+4. Fix data leakage problem my separate normalization for training and testing data.
 
 # How to use Quandl
 With this link, you should be able to get the historic price data of a particular stock after login. 

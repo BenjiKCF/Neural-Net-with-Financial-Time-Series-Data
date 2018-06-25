@@ -1,4 +1,6 @@
 # Neural-Network-with-Financial-Time-Series-Data
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png)
+
 An evnet driven model that uses financial time series data, technical indicators and New York Times headlines to form a Gated Recurrent Unit neural network.
 
 

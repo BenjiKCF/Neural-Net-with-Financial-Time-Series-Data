@@ -1,5 +1,5 @@
 # Neural-Network-with-Financial-Time-Series-Data
-An evnet driven model that uses financial time series data with New York Times information to form a LSTM recurrent neural network.
+An evnet driven model that uses financial time series data, technical indicators and New York Times headlines to form a Gated Recurrent Unit neural network.
 
 # Versions
 There are 3 models. The first 2 models are based on price and volume data alone. The third model is an event driven model that uses sentiment analysis on news data to predict the stock price. 
@@ -85,17 +85,24 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 5. A Quandl api key is provided temporarily for those who do not own a quandl account
 6. Moving averages have been added
 
-02/10/2017 Nineth update (Big update)
+02/10/2017 Nineth update
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Dataframe.png)
 
 1. Event driven analysis
 2. Switched to Tensorflow LSTM model
 
-# Future update
-I have successfully applied technical Indicators (ie Stochastics Oscillator, MACD, ATR) to the model. I will combine it with the event driven one to create a larger model with better hyperparameter optimization.
+25/06/2018 Tenth update 
+1. Complete rewrite of News downloader, removed Newsapi in order to get full access to NYTImes data for free
+2. Moving Average Convergence/Divergence oscillator (MACD), Stochastic Oscillator, Average True Range are added to train the model.
+3. log return is now used as target variable. 
+4. Keras on top of Tensorflow is used.
+5. Randomized Search from SKLearn is used for optimization.
 
-Also, I have installed Quantopian Zipline locally, so that I can backtest the model. However, I do not have a trading strategy. Please feel free to contact me to share your thought.
+# Future update
+1. Hyperas will be used to optmize hyperparameters.
+2. Deep Feature Synthesis will be used for auto feature engineering.
+3. Quantopian zipline will be used for backtesting the model.
 
 # How to use Quandl
 With this link, you should be able to get the historic price data of a particular stock after login. 

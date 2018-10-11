@@ -3,7 +3,7 @@
 
 An evnet driven model that implements the latest techniques to predict log return of any financial asset.
 
-It first uses a parsimonious rule-based Model for Sentiment Analysis for the New York Times. Then it combines serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) as training data to train a LSTM neural network by stochastic gradient descent with warm restart and cosine annealing with Nvidia CuDNN.
+It first uses a parsimonious rule-based Model for Sentiment Analysis for the New York Times. Then it combines serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) as training data to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing with Nvidia CuDNN.
 
 
 # Latest Result:
@@ -32,6 +32,12 @@ This is the LSTM cell we used in the model.
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/lstm.png)
 
 The reason it is faster than normal LSTM cell is due to the implementation of CuDNNLSTM and batch normalization in the model.
+
+# Stochastic Gradient descent with restart (SGDR)
+
+![](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/SGDR.png)
+
+This picture is from the paper snapshot ensembles, which uses each iteration as a new ensemble model.
 
 # Update:
 26/03/2017 First update

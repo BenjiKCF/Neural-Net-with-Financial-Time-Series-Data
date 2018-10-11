@@ -25,6 +25,13 @@ Train Score: 0.00006 MSE (0.01 RMSE)
 
 Test Score: 0.00029 MSE (0.02 RMSE)
 
+# LSTM cell 
+
+This is the LSTM cell we used in the model.
+
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/lstm.png)
+
+The reason it is faster than normal LSTM cell is due to the implementation of CuDNNLSTM and batch normalization in the model.
 
 # Update:
 26/03/2017 First update
@@ -110,6 +117,8 @@ https://www.quandl.com/databases/WIKIP
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
 
 Box, G. E., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). Time series analysis: forecasting and control. John Wiley & Sons.
+
+Gu, J., Wang, Z., Kuen, J., Ma, L., Shahroudy, A., Shuai, B., ... & Cai, J. (2015). Recent advances in convolutional neural networks. arXiv preprint arXiv:1512.07108.
 
 Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 

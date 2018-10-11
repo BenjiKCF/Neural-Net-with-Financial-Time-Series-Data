@@ -1,17 +1,13 @@
 # Neural-Network-with-Financial-Time-Series-Data
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png)
 
-An evnet driven model that uses financial time series data, technical indicators and New York Times headlines to form a Gated Recurrent Unit neural network.
+An evnet driven model that uses financial time series data, technical indicators and New York Times headlines to form a LSTM neural network with CuDNN.
 
 
 # Latest Result:
 
-The current GRU model result for predicting daily log return by using sentiment analysis and technical indicators.
+The current LSTM model result for predicting daily log return by using sentiment analysis and technical indicators.
 
-For 5 years
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Predicted_vs_True_all.png)
-
-For 1 year
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Predicted_vs_True_all_last%20300.png)
 
 
@@ -26,6 +22,7 @@ LSTM model result for 7 years of testing data that has not been trained on:
 Train Score: 0.00006 MSE (0.01 RMSE)
 
 Test Score: 0.00029 MSE (0.02 RMSE)
+
 
 # Update:
 26/03/2017 First update
@@ -85,6 +82,15 @@ Test Score: 0.00029 MSE (0.02 RMSE)
 3. log return is now used as target variable. 
 4. Keras on top of Tensorflow is used.
 5. Randomized Search from SKLearn is used for optimization.
+
+11/10/2018 Eleventh update
+Serveral state of the art techniques are applied
+1. CuDNN LSTM is used to accelerate training
+2. Stochastic gradient descent with warm restart
+3. Cosine annealing 
+4. Neat splitting method
+5. Dataset is provided 
+6. HDF files are used to accelerate reading time
 
 # Future update
 1. Hyperas will be used to optmize hyperparameters.

@@ -17,7 +17,7 @@ This old model uses LSTM to predict stock price.
 
 LSTM model result for 7 years of testing data that has not been trained on:
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/result_20181011.png)
 
 Train Score: 0.00006 MSE (0.01 RMSE)
 

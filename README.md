@@ -1,7 +1,9 @@
 # Neural-Network-with-Financial-Time-Series-Data
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png)
 
-An evnet driven model that uses financial time series data, technical indicators and New York Times headlines to form a LSTM neural network with CuDNN.
+An evnet driven model that implements the latest techniques to predict log return of any financial asset.
+
+It first uses a parsimonious rule-based Model for Sentiment Analysis for the New York Times. Then it combines serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) as training data to train a LSTM neural network by stochastic gradient descent with warm restart and cosine annealing with Nvidia CuDNN.
 
 
 # Latest Result:
@@ -17,7 +19,7 @@ This old model uses LSTM to predict stock price.
 
 LSTM model result for 7 years of testing data that has not been trained on:
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/result_20181011.png)
+![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
 
 Train Score: 0.00006 MSE (0.01 RMSE)
 
@@ -108,6 +110,8 @@ https://www.quandl.com/databases/WIKIP
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
 
 Box, G. E., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). Time series analysis: forecasting and control. John Wiley & Sons.
+
+Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 
 Jaeger, H. (2001). The “echo state” approach to analysing and training recurrent neural networks-with an erratum note. Bonn, Germany: German National Research Center for Information Technology GMD Technical Report, 148(34), 13.
 

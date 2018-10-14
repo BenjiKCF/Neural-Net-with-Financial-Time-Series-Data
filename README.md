@@ -1,45 +1,40 @@
-# Neural-Network-with-Financial-Time-Series-Data
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png)
-
-An evnet driven model that implements the latest techniques to predict log return of any financial asset.
-
-It first uses a parsimonious rule-based Model for Sentiment Analysis for the New York Times. Then it combines serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) as training data to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing with Nvidia CuDNN.
+<div align="center">
+  <img src="https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png"><br><br>
+</div>
 
 
-# Latest Result:
+**Neural-Network-with-Financial-Time-Series-Data** is an open source software project for neural network to predict daily log return of any financial asset. The project includes a parsimonious rule-based Model for Sentiment Analysis for the New York Times and serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself.  
 
-The current LSTM model result for predicting daily log return by using sentiment analysis and technical indicators.
+
+## Latest Result:
+
+The current LSTM model result for predicting daily log return.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Predicted_vs_True_all_last%20300.png)
 
 
-# Old model Result
+## Old model Result
 
 This old model uses LSTM to predict stock price.
 
-LSTM model result for 7 years of testing data that has not been trained on:
-
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
 
-Train Score: 0.00006 MSE (0.01 RMSE)
 
-Test Score: 0.00029 MSE (0.02 RMSE)
-
-# LSTM cell 
+## LSTM cell 
 
 This is the LSTM cell we used in the model.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/lstm.png)
 
-The reason it is faster than normal LSTM cell is due to the implementation of CuDNNLSTM and batch normalization in the model.
+It is **faster** than normal LSTM cell because of the implementation of CuDNN LSTM and batch normalization in the model.
 
-# Stochastic Gradient descent with restart (SGDR)
+## Stochastic Gradient descent with restart (SGDR)
 
 ![](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/SGDR.png)
 
-This picture is from the paper snapshot ensembles, which uses each iteration as a new ensemble model.
+The figure is from the paper snapshot ensembles, which uses each iteration as a new ensemble model.
 
-# Update:
+## Update:
 26/03/2017 First update
 1. Recurrent neural network with LSTM is added to the code. 
 2. Keras with tensorflow is also implemented. 
@@ -107,19 +102,20 @@ Serveral state of the art techniques are applied
 5. Dataset is provided 
 6. HDF files are used to accelerate reading time
 
-# Future update
-1. Hyperas will be used to optmize hyperparameters.
+## Future update
+1. Bayesian search will be used to optmize hyperparameters.
 2. Deep Feature Synthesis will be used for auto feature engineering.
 3. Quantopian zipline will be used for backtesting the model.
-4. Fix data leakage problem my separate normalization for training and testing data.
 
-# How to use Quandl
-With this link, you should be able to get the historic price data of a particular stock after login. 
+
+## How to use Quandl
+If you want to train your neural network on more data, feel free to load the data directly from Quandl.
+You should be able to get the historic price data of a particular stock after login. 
 Use Export > Python > api key and insert the api key to your model.
 https://www.quandl.com/databases/WIKIP
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/quandl.png)
 
-# References:
+## References:
 Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
 
 Box, G. E., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). Time series analysis: forecasting and control. John Wiley & Sons.

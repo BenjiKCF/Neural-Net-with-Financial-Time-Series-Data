@@ -3,7 +3,7 @@
 </div>
 
 
-**Neural-Net-with-Financial-Time-Series-Data** is an open source software project for neural network to predict daily log return of any financial asset. The project includes a parsimonious rule-based Model for Sentiment Analysis for the New York Times and serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself.  
+**Neural-Net-with-Financial-Time-Series-Data** is an open source software project for neural network to predict daily log return of any financial asset. The project includes a parsimonious rule-based Model for Sentiment Analysis for the New York Times and serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself. Hyperparameters are fine-tuned by Bayesian search. 
 
 
 ## Latest Result:
@@ -15,7 +15,7 @@ The current LSTM model result for predicting daily log return.
 
 ## Old model Result
 
-This old model uses LSTM to predict stock price.
+This old model uses LSTM to predict stock price. Please note that the neural network output is normalized and after scaling the result would have a scaled error and hence it is not practical.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
 
@@ -98,14 +98,20 @@ Serveral state of the art techniques are applied
 1. CuDNN LSTM is used to accelerate training
 2. Stochastic gradient descent with warm restart
 3. Cosine annealing 
-4. Neat splitting method
-5. Dataset is provided 
-6. HDF files are used to accelerate reading time
+4. Use Bayesian search to optmize hyperparameters.
+5. New splitting method
+6. Dataset is provided 
+7. HDF files are used to accelerate reading time
 
 ## Future update
-1. Bayesian search will be used to optmize hyperparameters.
-2. Deep Feature Synthesis will be used for auto feature engineering.
+1. Deep Feature Synthesis or featuretools will be used for auto feature engineering.
+2. A stratified sampling will be used.
 3. Quantopian zipline will be used for backtesting the model.
+4. RMSprop should not be used in the code, it just happened that I uploaded the old version to GitHub. SGD is proven to be more effective than any adaptive gradient descent method in RNN. ASGD will be implemented.
+5. Attention or Neural Cache model will be added.
+6. Drop-connect will be used. Together with ASGD, the model will be similar to the state of the art AWD-LSTM model for language processing.
+7. One cycle policy Learning rate schedule will be used to replace SGD with warm restart.
+8. Pytorch or Fastai will be used instead of Tensorflow due to its flexibility to applying new techniques from papers.
 
 
 ## How to use Quandl

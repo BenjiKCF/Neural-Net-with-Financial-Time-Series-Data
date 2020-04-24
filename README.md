@@ -103,17 +103,6 @@ Serveral state of the art techniques are applied
 6. Dataset is provided 
 7. HDF files are used to accelerate reading time
 
-## Future update
-1. Deep Feature Synthesis or featuretools will be used for auto feature engineering.
-2. A stratified sampling will be used.
-3. Quantopian zipline will be used for backtesting the model.
-4. RMSprop should not be used in the code, it just happened that I uploaded the old version to GitHub. SGD is proven to be more effective than any adaptive gradient descent method in RNN. ASGD will be implemented.
-5. Attention or Neural Cache model will be added.
-6. Drop-connect will be used. Together with ASGD, the model will be similar to the state of the art AWD-LSTM model for language processing.
-7. One cycle policy Learning rate schedule will be used to replace SGD with warm restart.
-8. Pytorch or Fastai will be used instead of Tensorflow due to its flexibility to applying new techniques from papers.
-
-
 ## How to use Quandl
 If you want to train your neural network on more data, feel free to load the data directly from Quandl.
 You should be able to get the historic price data of a particular stock after login. 

@@ -1,6 +1,7 @@
 <div align="center">
   <img src="https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png"><br><br>
 </div>
+
 ![https://tracking.gitads.io/?repo=Neural-Net-with-Financial-Time-Series-Data](https://images.gitads.io/Neural-Net-with-Financial-Time-Series-Data)
 
 

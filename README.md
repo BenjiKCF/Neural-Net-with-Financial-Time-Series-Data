@@ -4,6 +4,8 @@
 
 Neural-Net-with-Financial-Time-Series-Data is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
 <a href="tracking.gitads.io/?repo=Neural-Net-with-Financial-Time-Series-Data"><img src="images.gitads.io/Neural-Net-with-Financial-Time-Series-Data" alt="GitAds"/></a>
+[![](https://images.gitads.io/Neural-Net-with-Financial-Time-Series-Data)](https://tracking.gitads.io/?repo=Neural-Net-with-Financial-Time-Series-Data)
+
 
 **Neural-Net-with-Financial-Time-Series-Data** is an open source software project for neural network to predict daily log return of any financial asset. The project includes a parsimonious rule-based Model for Sentiment Analysis  the New York Times and serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself. Hyperparameters are fine-tuned by Bayesian search. 
 

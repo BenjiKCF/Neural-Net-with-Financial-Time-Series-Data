@@ -1,13 +1,10 @@
-Neural-Net-with-Financial-Time-Series-Data is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
-<a href="https://tracking.gitads.io/?repo=Neural-Net-with-Financial-Time-Series-Data"><img src="https://images.gitads.io/Neural-Net-with-Financial-Time-Series-Data" alt="GitAds"/></a>
-
 <div align="center">
   <img src="https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png"><br><br>
 </div>
 
 
 
-**Neural-Net-with-Financial-Time-Series-Data** is an open source software project for neural network to predict daily log return of any financial asset. The project includes a parsimonious rule-based Model for Sentiment Analysis  the New York Times and serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself. Hyperparameters are fine-tuned by Bayesian search. 
+**Neural-Net-with-Financial-Time-Series-Data** is an open source software project using endogenous factors to predict daily log return of financial asset. The project includes serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself. Hyperparameters are fine-tuned by Bayesian search. 
 
 
 ## Latest Result:
@@ -18,7 +15,7 @@ The current LSTM model result for predicting daily log return.
 
 ## Old model Result
 
-This old model uses LSTM to predict stock price. Please note that the neural network output is normalized and after scaling the result would have a scaled error and hence it is not practical.
+This old model uses LSTM to predict stock price.
 
 ![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
 
@@ -31,11 +28,6 @@ This is the LSTM cell we used in the model.
 
 It is **faster** than normal LSTM cell because of the implementation of CuDNN LSTM and batch normalization in the model.
 
-## Stochastic Gradient descent with restart (SGDR)
-
-![](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/SGDR.png)
-
-The figure is from the paper snapshot ensembles, which uses each iteration as a new ensemble model.
 
 ## Update:
 26/03/2017 First update

@@ -1,0 +1,163 @@
+{
+  "status": "completed",
+  "started_at_utc": "2026-11-26T18:02:48.644054+00:00",
+  "settings": {
+    "provider": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+    "checkpoint": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint",
+    "output": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm3-loop-pilot",
+    "epochs": 3,
+    "train_samples": 256,
+    "valid_samples": 128,
+    "context_length": 128,
+    "batch_size": 4,
+    "lr": 0.001,
+    "seed": 42,
+    "device": "cpu",
+    "optimizer": "AdamW",
+    "weight_decay": 0.0,
+    "gradient_clip_norm": 1.0,
+    "backend": {
+      "num_threads": 2,
+      "loop_start": 8,
+      "loop_end": 12,
+      "loop_steps": 2,
+      "adapter_rank": 8,
+      "gate_scale": 0.1
+    }
+  },
+  "segments": {
+    "train": [
+      "1990-03-28",
+      "2007-05-04"
+    ],
+    "valid": [
+      "2007-05-09",
+      "2013-01-18"
+    ],
+    "test": [
+      "2013-01-24",
+      "2018-10-08"
+    ]
+  },
+  "label": "Ref($close, -2) / Ref($close, -1) - 1",
+  "selection": "minimum sampled validation RMSE across epoch zero and all declared epochs",
+  "sampling": "balanced instrument quotas; evenly spaced eligible dates within each instrument",
+  "test_evaluated": false,
+  "pretraining_overlap": "unknown",
+  "python": "3.12.14",
+  "packages": {
+    "financial-ts-qlib": "2.2.0",
+    "pyqlib": "0.9.7",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "torch": "2.15.0+cpu",
+    "timesfm": "3.0.2"
+  },
+  "synthetic": false,
+  "provider_fingerprint": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "checkpoint_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint/config.json",
+      "bytes": 1273,
+      "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint/model.safetensors",
+      "bytes": 1322898824,
+      "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/loop_experiment.py",
+      "bytes": 22345,
+      "sha256": "1da85d90e970857857a62694e3ca53a62d8a46b50d31eb0aeef060c45266188a"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/timesfm_loop.py",
+      "bytes": 15573,
+      "sha256": "3aa6c5ea2b85943e3ff8201b58456c090b592331b60e44e9b2d427bf63e2b9ad"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/workflow.py",
+      "bytes": 23700,
+      "sha256": "2727d3f588754faa168dbc0e000fd07ca504338ee4f0ca80a74cf16bdea2a6b4"
+    }
+  ],
+  "data_manifest": {
+    "schema_version": 1,
+    "frequency": "day",
+    "calendar": "union_of_observed_input_dates",
+    "start_date": "1990-01-02",
+    "end_date": "2018-10-10",
+    "sessions": 7252,
+    "observations": 7252,
+    "instruments": [
+      "SPX"
+    ],
+    "fields": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "factor"
+    ],
+    "sources": [
+      {
+        "file": "^GSPC.csv",
+        "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+        "rows": 7252,
+        "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+      }
+    ],
+    "missing_bars": "NaN; no forward fill"
+  },
+  "samples_file": {
+    "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm3-loop-pilot/samples.json",
+    "bytes": 130478,
+    "sha256": "fc83195f0083237f1b8232ed401b0c842ccfc8926c2e1c7f59b6b183bfa894d7"
+  },
+  "last_price_read": "2013-01-23",
+  "sample_counts": {
+    "train": 256,
+    "valid": 128
+  },
+  "target_normalization": {
+    "fit_partition": "train",
+    "mean": 0.0007839964237064123,
+    "scale": 0.009315037165177708
+  },
+  "parameters": {
+    "total": 330732737,
+    "trainable": 21761,
+    "base": 330710976,
+    "base_frozen": true,
+    "optimizer_names": [
+      "model.transformer_stack.refinements.0.gate.weight",
+      "model.transformer_stack.refinements.0.gate.bias",
+      "model.transformer_stack.refinements.0.adapter_down.weight",
+      "model.transformer_stack.refinements.0.adapter_up.weight"
+    ]
+  },
+  "baseline_parity": {
+    "contexts": 4,
+    "max_forecast_absolute_error": 0.0,
+    "rtol": 1e-06,
+    "atol": 1e-06
+  },
+  "optimizer_updates": 192,
+  "training_examples_seen": 768,
+  "last_completed_epoch": 3,
+  "finished_at_utc": "2026-11-26T18:05:40.688536+00:00",
+  "elapsed_seconds": 172.04454855800032,
+  "adapter_file": {
+    "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm3-loop-pilot/adapter.pt",
+    "bytes": 89437,
+    "sha256": "d3cbb5eccd7ac2f7077a12625556a5c1016be6347ed846a8582d3507c22e7cd5"
+  }
+}

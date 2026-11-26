@@ -1,0 +1,167 @@
+{
+  "verification_date": "2026-11-27",
+  "purpose": "Software modernization validation; not a claim of trading profitability",
+  "tests": {
+    "passed": 60,
+    "environment": "Linux, Python 3.12 CPU"
+  },
+  "synthetic_check": {
+    "models": [
+      "lightgbm",
+      "transformer"
+    ],
+    "predictions_per_model": 576,
+    "backtests_completed": true,
+    "costs_applied": true
+  },
+  "saved_transformer_replay": {
+    "predictions": 576,
+    "index_exact_match": true,
+    "max_absolute_difference": 0.0,
+    "preprocessing_refitted": false
+  },
+  "historical_data": {
+    "file": "^GSPC.csv",
+    "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+    "observations": 7252,
+    "start": "1990-01-02",
+    "end": "2018-10-10",
+    "provider_fingerprint": {
+      "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+      "file_count": 8,
+      "bytes": 253870
+    }
+  },
+  "environment": {
+    "financial-ts-qlib": "2.0.0",
+    "pyqlib": "0.9.7",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "lightgbm": "4.7.0",
+    "mlflow": "2.22.5",
+    "torch": "2.15.0+cpu",
+    "filelock": "3.29.7"
+  },
+  "models": {
+    "lightgbm": {
+      "config": {
+        "provider_uri": ".data/spx-history",
+        "region": "us",
+        "instruments": "all",
+        "output_dir": "runs/spx-lightgbm",
+        "experiment_name": "financial_ts",
+        "seed": 42,
+        "warmup_sessions": 60,
+        "segments": {
+          "train": [
+            "1990-03-28",
+            "2007-05-04"
+          ],
+          "valid": [
+            "2007-05-09",
+            "2013-01-18"
+          ],
+          "test": [
+            "2013-01-24",
+            "2018-10-08"
+          ]
+        },
+        "model": {
+          "name": "lightgbm",
+          "params": {
+            "num_boost_round": 300,
+            "early_stopping_rounds": 30,
+            "learning_rate": 0.03,
+            "num_leaves": 31,
+            "min_data_in_leaf": 30,
+            "num_threads": 2
+          }
+        },
+        "backtest": {
+          "enabled": false,
+          "topk": 5,
+          "n_drop": 1,
+          "account": 100000,
+          "risk_degree": 0.95,
+          "benchmark": null,
+          "open_cost": 0.001,
+          "close_cost": 0.001,
+          "min_cost": 0.0
+        }
+      },
+      "metrics": {
+        "prediction_count": 1438,
+        "evaluated_count": 1438,
+        "rmse": 0.007730527380540985,
+        "mae": 0.00544931003469326,
+        "zero_return_rmse": 0.007732932455837727,
+        "directional_accuracy": 0.5424200278164116,
+        "pooled_pearson_correlation": -0.016267888046180658
+      }
+    },
+    "transformer": {
+      "config": {
+        "provider_uri": ".data/spx-history",
+        "region": "us",
+        "instruments": "all",
+        "output_dir": "runs/spx-transformer",
+        "experiment_name": "financial_ts",
+        "seed": 42,
+        "warmup_sessions": 60,
+        "sequence_length": 20,
+        "segments": {
+          "train": [
+            "1990-03-28",
+            "2007-05-04"
+          ],
+          "valid": [
+            "2007-05-09",
+            "2013-01-18"
+          ],
+          "test": [
+            "2013-01-24",
+            "2018-10-08"
+          ]
+        },
+        "model": {
+          "name": "transformer",
+          "params": {
+            "d_model": 64,
+            "nhead": 4,
+            "num_layers": 2,
+            "dropout": 0.1,
+            "n_epochs": 30,
+            "early_stop": 5,
+            "batch_size": 128,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "device": "cpu",
+            "n_jobs": 0,
+            "num_threads": 2
+          }
+        },
+        "backtest": {
+          "enabled": false,
+          "topk": 5,
+          "n_drop": 1,
+          "account": 100000,
+          "risk_degree": 0.95,
+          "benchmark": null,
+          "open_cost": 0.001,
+          "close_cost": 0.001,
+          "min_cost": 0.0
+        }
+      },
+      "metrics": {
+        "prediction_count": 1438,
+        "evaluated_count": 1438,
+        "rmse": 0.007793713236387397,
+        "mae": 0.005533731731907289,
+        "zero_return_rmse": 0.007732932455837727,
+        "directional_accuracy": 0.4972183588317107,
+        "pooled_pearson_correlation": -0.025674231959856995
+      }
+    }
+  },
+  "interpretation": "On this single old holdout, LightGBM is essentially tied with the zero-return forecast and the Transformer is worse. No statistically established edge, current-market generalization, or live execution has been demonstrated."
+}

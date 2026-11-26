@@ -1,0 +1,44 @@
+name: Modern Qlib workflow
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install CPU PyTorch
+        run: python -m pip install 'torch>=2.5,<3' --index-url https://download.pytorch.org/whl/cpu
+      - name: Install project
+        run: python -m pip install -e '.[dev,neural]'
+      - name: Lint
+        run: ruff check src tests
+      - name: Test data, leakage boundaries, model, and workflow
+        run: python -m pytest -q
+      - name: Offline end-to-end demo
+        run: fts demo --model all --epochs 1 --output runs/ci-demo
+      - name: Upload inspectable demo results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-check-python-${{ matrix.python-version }}
+          path: |
+            runs/ci-demo/comparison.json
+            runs/ci-demo/*/metrics.json
+            runs/ci-demo/*/run.json
+            runs/ci-demo/*/predictions.csv
+            runs/ci-demo/*/portfolio.csv
+            runs/ci-demo/*/learning_curves.json
+          if-no-files-found: ignore

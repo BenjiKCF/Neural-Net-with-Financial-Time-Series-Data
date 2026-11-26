@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "financial-ts-qlib"
+version = "2.1.0"
+description = "Reproducible financial time-series research with Qlib and PyTorch"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "pyqlib==0.9.7",
+    "numpy>=1.26,<2",
+    "pandas>=2.2,<3",
+    "lightgbm>=4.6,<5",
+    "mlflow>=2.20,<3",
+    "filelock>=3.16,<3.30",
+    "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+neural = ["torch>=2.5,<3"]
+timesfm = ["torch>=2.5,<3", "timesfm[torch]==3.0.2"]
+dev = ["pytest>=8,<9", "ruff>=0.11,<1"]
+
+[project.scripts]
+fts = "financial_ts.cli:main"
+
+[project.urls]
+Repository = "https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: executes Qlib feature extraction, training, and backtesting"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+include = ["src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

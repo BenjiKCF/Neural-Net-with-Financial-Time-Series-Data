@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "financial-ts-qlib"
-version = "2.0.0"
+version = "2.1.0"
 description = "Reproducible financial time-series research with Qlib and PyTorch"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
@@ -20,6 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 neural = ["torch>=2.5,<3"]
+timesfm = ["torch>=2.5,<3", "timesfm[torch]==3.0.2"]
 dev = ["pytest>=8,<9", "ruff>=0.11,<1"]
 
 [project.scripts]

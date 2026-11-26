@@ -28,7 +28,7 @@ jobs:
       - name: Test data, leakage boundaries, model, and workflow
         run: python -m pytest -q
       - name: Offline end-to-end demo
-        run: fts demo --model both --epochs 2 --output runs/ci-demo
+        run: fts demo --model all --epochs 1 --output runs/ci-demo
       - name: Upload inspectable demo results
         if: always()
         uses: actions/upload-artifact@v4
@@ -40,4 +40,5 @@ jobs:
             runs/ci-demo/*/run.json
             runs/ci-demo/*/predictions.csv
             runs/ci-demo/*/portfolio.csv
+            runs/ci-demo/*/learning_curves.json
           if-no-files-found: ignore

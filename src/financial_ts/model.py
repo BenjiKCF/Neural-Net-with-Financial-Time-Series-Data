@@ -1,4 +1,4 @@
-"""A CPU/GPU PyTorch temporal Transformer implementing Qlib's model API.
+"""Shared CPU/GPU Qlib training for small time-series architectures.
 
 Each sample contains only the historical window ending on its prediction date.
 Labels are fetched separately during fitting and are never requested at inference.
@@ -7,17 +7,22 @@ Feature normalization belongs to the external, training-fitted Qlib handler.
 
 from __future__ import annotations
 
+import copy
 import math
 import random
+import time
 from typing import Any
 
 import numpy as np
 import pandas as pd
 import torch
 from qlib.data.dataset.handler import DataHandlerLP
+from qlib.log import get_module_logger
 from qlib.model.base import Model
 from torch import nn
 from torch.utils.data import DataLoader, Dataset
+
+from financial_ts.catalog import NEURAL_MODELS, build_mini_encoder
 
 
 class _Windows(Dataset):
@@ -84,7 +89,7 @@ class _TemporalEncoder(nn.Module):
         return self.head(encoded[:, -1, :]).squeeze(-1)
 
 
-class TemporalTransformerModel(Model):
+class SequenceForecastModel(Model):
     """Regress one future return from a Qlib ``TSDatasetH`` historical window.
 
     ``device='auto'`` chooses CUDA when available, otherwise CPU. Target mean and
@@ -109,6 +114,9 @@ class TemporalTransformerModel(Model):
         device: str = "auto",
         n_jobs: int = 0,
         num_threads: int = 2,
+        architecture: str = "transformer",
+        architecture_kwargs: dict | None = None,
+        aux_loss_weight: float = 0.01,
     ):
         for name, value in {
             "d_feat": d_feat,
@@ -130,6 +138,16 @@ class TemporalTransformerModel(Model):
             raise ValueError("dropout must be between 0 (inclusive) and 1 (exclusive)")
         if not np.isfinite(lr) or lr <= 0 or not np.isfinite(weight_decay) or weight_decay < 0:
             raise ValueError("lr must be positive and weight_decay nonnegative, both finite")
+        if architecture not in NEURAL_MODELS:
+            raise ValueError(f"architecture must be one of {NEURAL_MODELS}")
+        if architecture_kwargs is not None and not isinstance(architecture_kwargs, dict):
+            raise ValueError("architecture_kwargs must be a mapping")
+        if not np.isfinite(aux_loss_weight) or aux_loss_weight < 0:
+            raise ValueError("aux_loss_weight must be finite and nonnegative")
+        if set(architecture_kwargs or {}) & {"d_feat", "d_model", "nhead", "num_layers", "dropout"}:
+            raise ValueError("Set common dimensions directly, not inside architecture_kwargs")
+        if architecture == "transformer" and architecture_kwargs:
+            raise ValueError("The plain Transformer has no additional architecture_kwargs")
 
         self.d_feat, self.d_model, self.nhead = d_feat, d_model, nhead
         self.num_layers, self.dropout = num_layers, dropout
@@ -137,13 +155,18 @@ class TemporalTransformerModel(Model):
         self.lr, self.weight_decay, self.seed = lr, weight_decay, seed
         self.n_jobs, self.num_threads = n_jobs, num_threads
         self.device = self._resolve_device(device)
+        self.architecture = architecture
+        self.architecture_kwargs = copy.deepcopy(architecture_kwargs or {})
+        self.aux_loss_weight = aux_loss_weight
         # These attributes are public so Qlib's Serializable retains them.
-        self.model: _TemporalEncoder | None = None
+        self.model: nn.Module | None = None
         self.fitted = False
         self.target_mean_ = 0.0
         self.target_scale_ = 1.0
         self.evals_result_: dict[str, list[float]] = {"train": [], "valid": []}
         self.best_epoch_: int | None = None
+        self.parameter_count_: int | None = None
+        self.fit_seconds_: float | None = None
 
     @staticmethod
     def _resolve_device(device: str) -> torch.device:
@@ -173,7 +196,7 @@ class TemporalTransformerModel(Model):
         sampler = dataset.prepare(segment, col_set="feature", data_key=data_key, dtype=np.float32)
         if not hasattr(sampler, "get_index") or not hasattr(sampler, "config"):
             raise TypeError(
-                "TemporalTransformerModel requires TSDatasetH, which returns a TSDataSampler."
+                "SequenceForecastModel requires TSDatasetH, which returns a TSDataSampler."
             )
         sampler.config(fillna_type="none")
         index = sampler.get_index()
@@ -197,7 +220,7 @@ class TemporalTransformerModel(Model):
         for index in range(len(labels)):
             window = np.asarray(labels[index])
             if window.ndim != 2 or window.shape[1] != 1 or not window.shape[0]:
-                raise ValueError("TemporalTransformerModel supports exactly one label column")
+                raise ValueError("SequenceForecastModel supports exactly one label column")
             targets[index] = window[-1, 0]
         if not np.isfinite(targets).all():
             raise ValueError(
@@ -235,6 +258,7 @@ class TemporalTransformerModel(Model):
 
     def fit(self, dataset: Any, evals_result: dict | None = None):
         """Train using learning data, select the best epoch on validation only."""
+        started = time.perf_counter()
         self.fitted = False
         self.best_epoch_ = None
         self.evals_result_ = {"train": [], "valid": []}
@@ -260,9 +284,21 @@ class TemporalTransformerModel(Model):
             torch.cuda.manual_seed_all(self.seed)
             torch.backends.cudnn.benchmark = False
             torch.backends.cudnn.deterministic = True
-        self.model = _TemporalEncoder(
-            self.d_feat, self.d_model, self.nhead, self.num_layers, self.dropout
-        ).to(self.device)
+        dimensions = dict(
+            d_feat=self.d_feat,
+            d_model=self.d_model,
+            nhead=self.nhead,
+            num_layers=self.num_layers,
+            dropout=self.dropout,
+        )
+        if self.architecture == "transformer":
+            self.model = _TemporalEncoder(**dimensions)
+        else:
+            self.model = build_mini_encoder(
+                self.architecture, **dimensions, **self.architecture_kwargs
+            )
+        self.model = self.model.to(self.device)
+        self.parameter_count_ = sum(parameter.numel() for parameter in self.model.parameters())
         optimizer = torch.optim.AdamW(
             self.model.parameters(), lr=self.lr, weight_decay=self.weight_decay
         )
@@ -278,7 +314,9 @@ class TemporalTransformerModel(Model):
             for features, padding, targets in train_loader:
                 optimizer.zero_grad(set_to_none=True)
                 predicted = self.model(features.to(self.device), padding.to(self.device))
-                loss = nn.functional.mse_loss(predicted, targets.to(self.device))
+                mse = nn.functional.mse_loss(predicted, targets.to(self.device))
+                auxiliary = getattr(self.model, "aux_loss", 0.0)
+                loss = mse + self.aux_loss_weight * auxiliary
                 if not torch.isfinite(loss):
                     raise ValueError(
                         "Training loss became non-finite; check features and learning rate"
@@ -288,12 +326,21 @@ class TemporalTransformerModel(Model):
                     self.model.parameters(), max_norm=1.0, error_if_nonfinite=True
                 )
                 optimizer.step()
-                total += loss.item() * len(targets)
+                # Compare forecasting error, not architecture-specific regularizers.
+                total += mse.item() * len(targets)
                 count += len(targets)
 
             valid_loss = self._validation_loss(valid_loader)
             self.evals_result_["train"].append(total / count * self.target_scale_**2)
             self.evals_result_["valid"].append(valid_loss * self.target_scale_**2)
+            get_module_logger("SequenceForecastModel").info(
+                "%s epoch %d/%d: train RMSE %.8f, validation RMSE %.8f",
+                self.architecture,
+                epoch,
+                self.n_epochs,
+                np.sqrt(self.evals_result_["train"][-1]),
+                np.sqrt(self.evals_result_["valid"][-1]),
+            )
             if valid_loss < best_loss:
                 best_loss, stale_epochs, self.best_epoch_ = valid_loss, 0, epoch
                 best_state = {
@@ -310,6 +357,7 @@ class TemporalTransformerModel(Model):
         self.model.load_state_dict(best_state)
         self.model.eval()
         self.fitted = True
+        self.fit_seconds_ = time.perf_counter() - started
         if evals_result is not None:
             evals_result.update(
                 {name: values.copy() for name, values in self.evals_result_.items()}
@@ -335,3 +383,7 @@ class TemporalTransformerModel(Model):
         if not np.isfinite(values).all():
             raise ValueError("Inference produced non-finite predictions")
         return pd.Series(values, index=index, name="score")
+
+
+class TemporalTransformerModel(SequenceForecastModel):
+    """Backward-compatible name for the original plain-Transformer baseline."""

@@ -1,0 +1,4306 @@
+{
+  "schema_version": 1,
+  "report_date_hong_kong": "2026-11-27",
+  "created_at_utc": "2026-11-26T17:28:20.264653+00:00",
+  "status": "completed",
+  "data": {
+    "provider": {
+      "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+      "file_count": 8,
+      "bytes": 253870
+    },
+    "label": "Ref($close, -2) / Ref($close, -1) - 1",
+    "feature_count": 157,
+    "segments": {
+      "train": [
+        "1990-03-28",
+        "2007-05-04"
+      ],
+      "valid": [
+        "2007-05-09",
+        "2013-01-18"
+      ],
+      "test": [
+        "2013-01-24",
+        "2018-10-08"
+      ]
+    },
+    "data_manifest": {
+      "schema_version": 1,
+      "frequency": "day",
+      "calendar": "union_of_observed_input_dates",
+      "start_date": "1990-01-02",
+      "end_date": "2018-10-10",
+      "sessions": 7252,
+      "observations": 7252,
+      "instruments": [
+        "SPX"
+      ],
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "factor"
+      ],
+      "sources": [
+        {
+          "file": "^GSPC.csv",
+          "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+          "rows": 7252,
+          "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+        }
+      ],
+      "missing_bars": "NaN; no forward fill"
+    }
+  },
+  "protocol": {
+    "seeds": [
+      7,
+      42,
+      2026
+    ],
+    "scratch_models": [
+      "lightgbm",
+      "transformer",
+      "deepseek_v41_mini",
+      "glm54_mini",
+      "qwen4_mini",
+      "timesfm3_mini"
+    ],
+    "max_neural_epochs": 12,
+    "early_stopping_patience": 4,
+    "neural_context_sessions": 32,
+    "neural_width": 32,
+    "neural_heads": 4,
+    "architecture_specific_depth_setting": 2,
+    "layer_semantics": {
+      "deepseek_v41_mini": "2 encoder plus 2 decoder layers",
+      "glm54_mini": "2 shared blocks, 2 passes",
+      "qwen4_mini": "2 groups, each 3 gated-delta plus 1 sparse mixer",
+      "timesfm3_mini": "2 temporal/variate mixing layers"
+    },
+    "selection": "Every seed retained; early stopping on validation only; no test-set optimization or automatic winner selection.",
+    "allocation": "Models use different parameter counts and computation despite common neural context and AdamW settings. LightGBM uses single-date factors and boosting.",
+    "declared_protocols": [
+      {
+        "status": "completed",
+        "created_at_utc": "2026-11-26T17:14:24.151640+00:00",
+        "models": [
+          "lightgbm",
+          "transformer",
+          "timesfm3_mini"
+        ],
+        "seeds": [
+          7,
+          42,
+          2026
+        ],
+        "provider_fingerprint": {
+          "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+          "file_count": 8,
+          "bytes": 253870
+        },
+        "selection": "early stopping on validation only; no automatic winner selected from test scores",
+        "comparability": "all scratch models share factors, target and chronological splits; neural models share 32-session context and AdamW budget; LightGBM uses one factor row and boosting; parameter counts and effective depth differ",
+        "holdout": "exploratory historical comparison; a previously inspected interval is not a fresh final holdout",
+        "pretrained": "official TimesFM3 is a separate fixed-weight replay with 256-session price context and unknown pretraining overlap",
+        "configs": [
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/lightgbm/seed-7",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 7,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "lightgbm",
+              "params": {
+                "num_boost_round": 300,
+                "early_stopping_rounds": 30,
+                "num_threads": 2
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/lightgbm/seed-42",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 42,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "lightgbm",
+              "params": {
+                "num_boost_round": 300,
+                "early_stopping_rounds": 30,
+                "num_threads": 2
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/lightgbm/seed-2026",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 2026,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "lightgbm",
+              "params": {
+                "num_boost_round": 300,
+                "early_stopping_rounds": 30,
+                "num_threads": 2
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/transformer/seed-7",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 7,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "transformer",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/transformer/seed-42",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 42,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "transformer",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/transformer/seed-2026",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 2026,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "transformer",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/timesfm3_mini/seed-7",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 7,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "timesfm3_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/timesfm3_mini/seed-42",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 42,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "timesfm3_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-baselines/timesfm3_mini/seed-2026",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 2026,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "timesfm3_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          }
+        ],
+        "finished_at_utc": "2026-11-26T17:18:53.180969+00:00"
+      },
+      {
+        "status": "completed",
+        "created_at_utc": "2026-11-26T17:14:24.140228+00:00",
+        "models": [
+          "deepseek_v41_mini"
+        ],
+        "seeds": [
+          7,
+          42,
+          2026
+        ],
+        "provider_fingerprint": {
+          "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+          "file_count": 8,
+          "bytes": 253870
+        },
+        "selection": "early stopping on validation only; no automatic winner selected from test scores",
+        "comparability": "all scratch models share factors, target and chronological splits; neural models share 32-session context and AdamW budget; LightGBM uses one factor row and boosting; parameter counts and effective depth differ",
+        "holdout": "exploratory historical comparison; a previously inspected interval is not a fresh final holdout",
+        "pretrained": "official TimesFM3 is a separate fixed-weight replay with 256-session price context and unknown pretraining overlap",
+        "configs": [
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-deepseek/deepseek_v41_mini/seed-7",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 7,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "deepseek_v41_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-deepseek/deepseek_v41_mini/seed-42",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 42,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "deepseek_v41_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-deepseek/deepseek_v41_mini/seed-2026",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 2026,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "deepseek_v41_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          }
+        ],
+        "finished_at_utc": "2026-11-26T17:21:57.772235+00:00"
+      },
+      {
+        "status": "completed",
+        "created_at_utc": "2026-11-26T17:14:24.146583+00:00",
+        "models": [
+          "glm54_mini",
+          "qwen4_mini"
+        ],
+        "seeds": [
+          7,
+          42,
+          2026
+        ],
+        "provider_fingerprint": {
+          "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+          "file_count": 8,
+          "bytes": 253870
+        },
+        "selection": "early stopping on validation only; no automatic winner selected from test scores",
+        "comparability": "all scratch models share factors, target and chronological splits; neural models share 32-session context and AdamW budget; LightGBM uses one factor row and boosting; parameter counts and effective depth differ",
+        "holdout": "exploratory historical comparison; a previously inspected interval is not a fresh final holdout",
+        "pretrained": "official TimesFM3 is a separate fixed-weight replay with 256-session price context and unknown pretraining overlap",
+        "configs": [
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-hybrid/glm54_mini/seed-7",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 7,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "glm54_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-hybrid/glm54_mini/seed-42",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 42,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "glm54_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-hybrid/glm54_mini/seed-2026",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 2026,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "glm54_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-hybrid/qwen4_mini/seed-7",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 7,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "qwen4_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-hybrid/qwen4_mini/seed-42",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 42,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "qwen4_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          },
+          {
+            "provider_uri": ".data/spx-history",
+            "output_dir": "runs/architecture-benchmark-hybrid/qwen4_mini/seed-2026",
+            "experiment_name": "architecture_comparison",
+            "region": "us",
+            "instruments": "all",
+            "seed": 2026,
+            "warmup_sessions": 60,
+            "sequence_length": 32,
+            "segments": null,
+            "model": {
+              "name": "qwen4_mini",
+              "params": {
+                "d_model": 32,
+                "nhead": 4,
+                "num_layers": 2,
+                "dropout": 0.1,
+                "n_epochs": 12,
+                "early_stop": 4,
+                "batch_size": 128,
+                "lr": 0.001,
+                "weight_decay": 0.0001,
+                "device": "cpu",
+                "num_threads": 2,
+                "aux_loss_weight": 0.01
+              }
+            },
+            "backtest": {
+              "enabled": false
+            }
+          }
+        ],
+        "finished_at_utc": "2026-11-26T17:26:53.071456+00:00"
+      }
+    ],
+    "parallel_execution": "Three separate processes ran subsets concurrently; wall-clock times are recorded but not a controlled speed comparison."
+  },
+  "software_validation": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "packages": {
+      "financial-ts-qlib": "2.1.0",
+      "pyqlib": "0.9.7",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "lightgbm": "4.7.0",
+      "mlflow": "2.22.5",
+      "torch": "2.15.0+cpu",
+      "filelock": "3.29.7",
+      "timesfm": "3.0.2"
+    },
+    "pytest": {
+      "passed": 114,
+      "warnings": 11,
+      "seconds": 25.67
+    },
+    "mechanism_tests": "causality, padding, routing/expert gradients, loop sharing, sparse cache/index reuse, delta recurrence, residual gates, prefix normalization/refinement",
+    "qlib_replay": "All four mini architectures trained with real Qlib; saved model and dataset replay matched every score/index exactly with scaler refitting forbidden.",
+    "offline_synthetic_demo": {
+      "lightgbm": {
+        "prediction_count": 576,
+        "finite_predictions": true,
+        "backtest_completed": true,
+        "positive_transaction_costs": true
+      },
+      "transformer": {
+        "prediction_count": 576,
+        "finite_predictions": true,
+        "backtest_completed": true,
+        "positive_transaction_costs": true
+      },
+      "deepseek_v41_mini": {
+        "prediction_count": 576,
+        "finite_predictions": true,
+        "backtest_completed": true,
+        "positive_transaction_costs": true
+      },
+      "glm54_mini": {
+        "prediction_count": 576,
+        "finite_predictions": true,
+        "backtest_completed": true,
+        "positive_transaction_costs": true
+      },
+      "qwen4_mini": {
+        "prediction_count": 576,
+        "finite_predictions": true,
+        "backtest_completed": true,
+        "positive_transaction_costs": true
+      },
+      "timesfm3_mini": {
+        "prediction_count": 576,
+        "finite_predictions": true,
+        "backtest_completed": true,
+        "positive_transaction_costs": true
+      }
+    },
+    "official_pretrained_runtime": "Actual checkpoint on Python 3.12 CPU; CI adapter tests use a mock and never download weights.",
+    "benchmark_cli_json_regression": {
+      "unit_tests_passed": true,
+      "actual_single_model_cli_completed": true,
+      "actual_cli_run": "runs/benchmark-cli-json-smoke",
+      "training_behavior_changed": false
+    },
+    "gpu_verified": false
+  },
+  "source_snapshot": {
+    "base_commit_before_working_tree_changes": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+    "trained_from_modified_working_tree": true,
+    "file_sha256": {
+      ".github/workflows/ci.yml": "f5d0a74c3fb11f8446e9cb68d957dd1f995ebb3ad8f45d7a3773356dbc3bc245",
+      "configs/deepseek_v41_mini.yaml": "f87265699846ddf280c00af2c804a5db71be7a897b5b5a6564cdf159dca54bbe",
+      "configs/glm54_mini.yaml": "64439882dc1f36c4151baba2286759b74a12650c3a3d4b5c23f8c04943ed0d2a",
+      "configs/lightgbm.yaml": "eb25e5f90e0d088feaf3d00324e09d8a1f5a372082255babafbe427eaf5687d7",
+      "configs/qwen4_mini.yaml": "7bc3b5b259ce51149aa9d4040eb91ad720c9530cefee3cc41b408f9458e15897",
+      "configs/timesfm3_mini.yaml": "ff05b921009988907ccf09b5905d0c4a667f95a46666e2a2775e477b47b26d81",
+      "configs/timesfm3_pretrained.yaml": "3ecce2864723c4c31674cbc28a5571072946254c99589ccf061f2c656dba9306",
+      "configs/transformer.yaml": "013f60683fc88f7d4b5c9c8470e12f9dfd220451e40242c98c7ad9dc744a8de5",
+      "pyproject.toml": "7190681777ab86a06f73e15a2f066c44db399b8d640d3790b33fc2cf4f23069f",
+      "src/financial_ts/__init__.py": "561776b253894924335a554284899a85fcc76de69bbb36af2a28eb408a7d106f",
+      "src/financial_ts/architectures/__init__.py": "93ab517c6719aabe2d84546b058ef20c3f24aac6e005003e5d103b37a28f1d01",
+      "src/financial_ts/architectures/deepseek.py": "9bac6c850fe0f45ed77c7e6610f5c47af871a1a03eaab32b8097a1407fe57c3b",
+      "src/financial_ts/architectures/glm.py": "feb373eb8b98102341eb845f780af1c6ef8572d39ed6b3faa2a2b8f69be077e8",
+      "src/financial_ts/architectures/qwen.py": "9cf042bbc04edb4fa39c3f24dac84ad28e1835b623153d917298b3803c2331cb",
+      "src/financial_ts/architectures/timesfm.py": "7b34f744756b4817a9b6c08be24e95e0ca6cbfa1783d951cb686615da173ba48",
+      "src/financial_ts/benchmark.py": "ab850a45e0a97bee171ffd7c19caa94081931841a049390dc5a6f9729190b2fd",
+      "src/financial_ts/catalog.py": "1da512c5de9248eb866ae7947bbdffa52ce79507d425e41c6d0762964a413903",
+      "src/financial_ts/cli.py": "c612d9d068b33b92194237be8a7e0e5c650dde4f8b8cbd05e2d42fef61d443a7",
+      "src/financial_ts/data.py": "4ea3638aa65d68edd0f62d2d8f8ee469360ae679f90f02695dd5c036dda82998",
+      "src/financial_ts/handler.py": "4369b48ae254c5c81579c00b62ecd1d450e1a6188ea403fd1d1f9d3cf4c6eaa9",
+      "src/financial_ts/model.py": "f1ff159c607d4e412bf11e07627d311690cc99ff76a2977f745a3e7c788bf4a0",
+      "src/financial_ts/record.py": "66c21c30c3a020d2f24aebb21b84e9b9aa76ea4191b7aa199ca152a0e4bb9cf5",
+      "src/financial_ts/timesfm_pretrained.py": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce",
+      "src/financial_ts/workflow.py": "2727d3f588754faa168dbc0e000fd07ca504338ee4f0ca80a74cf16bdea2a6b4",
+      "tests/test_architecture_workflow.py": "2bbeb830c4cdd893794e1c1f987c556254a47d39fae4a59975a0b27884199b18",
+      "tests/test_benchmark.py": "5f2195514bb87a2e31e42e7cba19efec83edcacc368235e799e2a05efde6371d",
+      "tests/test_data.py": "f32b89d66591fbbf79a96a18c2a2f25d55089cb846ac1fcf8cfdc725f36f8034",
+      "tests/test_deepseek.py": "254198e3e11b16e135e1c4d68474fd13de4962758577e09593f657db24cb8f06",
+      "tests/test_glm_qwen.py": "d568c9fd6f4fa8aa56465a36076f7eaeb30ce5515ab4046d4b09a956ed1e0ef3",
+      "tests/test_model.py": "3ac62d08dc4aa866750201892c6559e69809095043eacd5279173a7dbf1b61ec",
+      "tests/test_splits.py": "c5b1abe53c19a50c2e6b5624631a06f8a26c18477b04cd778e37850a29ce5289",
+      "tests/test_timesfm.py": "58d2176ffd384577b10a0c6168cb1a3f6b92ffb8de50f923e155f5c766402e69",
+      "tests/test_timesfm_pretrained.py": "0e8b01fe290b0bf7c28f5de0e940d7657a85343624dde81d527f2988e9e26528",
+      "tests/test_workflow.py": "c580592ea55ee421635142edacb534027b7a824fee912b295bd2b6adda3e2265"
+    },
+    "note": "Official replay predates documentation-only adapter wording changes and additional metadata export; inference behavior is unchanged. The benchmark return-value JSON serialization was corrected after trial processes started; saved trial/config/metric files were complete and forecasting computations were unchanged."
+  },
+  "scratch": {
+    "aggregate": [
+      {
+        "model": "lightgbm",
+        "runs": 3,
+        "parameter_count": null,
+        "test_rmse_mean": 0.007730527380540985,
+        "test_rmse_std_across_seeds": 0.0,
+        "test_mae_mean": 0.00544931003469326,
+        "validation_rmse_mean": 0.015989848702600968,
+        "zero_return_rmse": 0.007732932455837727
+      },
+      {
+        "model": "transformer",
+        "runs": 3,
+        "parameter_count": 30561,
+        "test_rmse_mean": 0.007775452834870395,
+        "test_rmse_std_across_seeds": 2.0574722339267383e-05,
+        "test_mae_mean": 0.005538891779656161,
+        "validation_rmse_mean": 0.01599797510876483,
+        "zero_return_rmse": 0.007732932455837727
+      },
+      {
+        "model": "deepseek_v41_mini",
+        "runs": 3,
+        "parameter_count": 103969,
+        "test_rmse_mean": 0.007883185659740288,
+        "test_rmse_std_across_seeds": 3.097760586541122e-05,
+        "test_mae_mean": 0.005634298637480768,
+        "validation_rmse_mean": 0.016011344637513882,
+        "zero_return_rmse": 0.007732932455837727
+      },
+      {
+        "model": "glm54_mini",
+        "runs": 3,
+        "parameter_count": 45189,
+        "test_rmse_mean": 0.00787864419114189,
+        "test_rmse_std_across_seeds": 3.437060651347432e-05,
+        "test_mae_mean": 0.005659728268467226,
+        "validation_rmse_mean": 0.01602341543479453,
+        "zero_return_rmse": 0.007732932455837727
+      },
+      {
+        "model": "qwen4_mini",
+        "runs": 3,
+        "parameter_count": 122258,
+        "test_rmse_mean": 0.007836208743123537,
+        "test_rmse_std_across_seeds": 2.633089589443388e-05,
+        "test_mae_mean": 0.005608505079022992,
+        "validation_rmse_mean": 0.016011507106995226,
+        "zero_return_rmse": 0.007732932455837727
+      },
+      {
+        "model": "timesfm3_mini",
+        "runs": 3,
+        "parameter_count": 30157,
+        "test_rmse_mean": 0.007724588636229951,
+        "test_rmse_std_across_seeds": 2.429777662685634e-06,
+        "test_mae_mean": 0.005450619793884309,
+        "validation_rmse_mean": 0.015993702226317467,
+        "zero_return_rmse": 0.007732932455837727
+      }
+    ],
+    "runs": [
+      {
+        "summary": {
+          "model": "lightgbm",
+          "seed": 7,
+          "parameter_count": null,
+          "best_epoch": null,
+          "epochs_run": null,
+          "best_boosting_iteration": 6,
+          "validation_rmse": 0.015989848702600968,
+          "test_rmse": 0.007730527380540985,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.00544931003469326,
+          "directional_accuracy": 0.5424200278164116,
+          "prediction_count": 1438,
+          "fit_seconds": null,
+          "elapsed_seconds": 3.936088070000096
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:14:27.862934+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 7,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 3.936088070000096,
+          "recorder_id": "f6e0e56ed5254d309fec1c13a481da50",
+          "experiment_id": "668902339429847399",
+          "finished_at_utc": "2026-11-26T17:14:31.750697+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007730527380540985,
+          "mae": 0.00544931003469326,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5424200278164116,
+          "pooled_pearson_correlation": -0.016267888046180658,
+          "qlib_metrics": {
+            "l2.valid": 0.00025870810089345225,
+            "l2.train": 8.096163660023089e-05
+          },
+          "model_details": {
+            "name": "lightgbm",
+            "parameter_count": null,
+            "best_epoch": null,
+            "epochs_run": null,
+            "validation_rmse": 0.015989848702600968,
+            "fit_seconds": null,
+            "pretrained": false,
+            "best_boosting_iteration": 6
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/lightgbm/seed-7",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 7,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "lightgbm",
+            "params": {
+              "num_boost_round": 300,
+              "early_stopping_rounds": 30,
+              "num_threads": 2
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": null
+      },
+      {
+        "summary": {
+          "model": "lightgbm",
+          "seed": 42,
+          "parameter_count": null,
+          "best_epoch": null,
+          "epochs_run": null,
+          "best_boosting_iteration": 6,
+          "validation_rmse": 0.015989848702600968,
+          "test_rmse": 0.007730527380540985,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.00544931003469326,
+          "directional_accuracy": 0.5424200278164116,
+          "prediction_count": 1438,
+          "fit_seconds": null,
+          "elapsed_seconds": 1.1059109380003065
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:14:31.796790+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 42,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 1.1059109380003065,
+          "recorder_id": "e9c77c5fd9bb475d8f66bde18a2f21f3",
+          "experiment_id": "539230304287680228",
+          "finished_at_utc": "2026-11-26T17:14:32.858842+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007730527380540985,
+          "mae": 0.00544931003469326,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5424200278164116,
+          "pooled_pearson_correlation": -0.016267888046180658,
+          "qlib_metrics": {
+            "l2.valid": 0.00025870810089345225,
+            "l2.train": 8.096163660023089e-05
+          },
+          "model_details": {
+            "name": "lightgbm",
+            "parameter_count": null,
+            "best_epoch": null,
+            "epochs_run": null,
+            "validation_rmse": 0.015989848702600968,
+            "fit_seconds": null,
+            "pretrained": false,
+            "best_boosting_iteration": 6
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/lightgbm/seed-42",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 42,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "lightgbm",
+            "params": {
+              "num_boost_round": 300,
+              "early_stopping_rounds": 30,
+              "num_threads": 2
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": null
+      },
+      {
+        "summary": {
+          "model": "lightgbm",
+          "seed": 2026,
+          "parameter_count": null,
+          "best_epoch": null,
+          "epochs_run": null,
+          "best_boosting_iteration": 6,
+          "validation_rmse": 0.015989848702600968,
+          "test_rmse": 0.007730527380540985,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.00544931003469326,
+          "directional_accuracy": 0.5424200278164116,
+          "prediction_count": 1438,
+          "fit_seconds": null,
+          "elapsed_seconds": 1.369127930999639
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:14:32.902422+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 2026,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 1.369127930999639,
+          "recorder_id": "42baf762f3904acaa4c6ef0feee5e04e",
+          "experiment_id": "556852977575356740",
+          "finished_at_utc": "2026-11-26T17:14:34.230620+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007730527380540985,
+          "mae": 0.00544931003469326,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5424200278164116,
+          "pooled_pearson_correlation": -0.016267888046180658,
+          "qlib_metrics": {
+            "l2.valid": 0.00025870810089345225,
+            "l2.train": 8.096163660023089e-05
+          },
+          "model_details": {
+            "name": "lightgbm",
+            "parameter_count": null,
+            "best_epoch": null,
+            "epochs_run": null,
+            "validation_rmse": 0.015989848702600968,
+            "fit_seconds": null,
+            "pretrained": false,
+            "best_boosting_iteration": 6
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/lightgbm/seed-2026",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 2026,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "lightgbm",
+            "params": {
+              "num_boost_round": 300,
+              "early_stopping_rounds": 30,
+              "num_threads": 2
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": null
+      },
+      {
+        "summary": {
+          "model": "transformer",
+          "seed": 7,
+          "parameter_count": 30561,
+          "best_epoch": 2,
+          "epochs_run": 6,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.016001617671079077,
+          "test_rmse": 0.0077472992646096485,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005503495762963682,
+          "directional_accuracy": 0.4993045897079277,
+          "prediction_count": 1438,
+          "fit_seconds": 24.857409050000115,
+          "elapsed_seconds": 25.98183325900027
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:14:34.271626+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 7,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 25.98183325900027,
+          "recorder_id": "c656abc60e1f471aafbca1132f69b347",
+          "experiment_id": "147995105615604159",
+          "finished_at_utc": "2026-11-26T17:15:00.217557+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.0077472992646096485,
+          "mae": 0.005503495762963682,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4993045897079277,
+          "pooled_pearson_correlation": 0.008418304355048919,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "transformer",
+            "parameter_count": 30561,
+            "best_epoch": 2,
+            "epochs_run": 6,
+            "validation_rmse": 0.016001617671079077,
+            "fit_seconds": 24.857409050000115,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/transformer/seed-7",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 7,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "transformer",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010288916513250488,
+            9.872918895869039e-05,
+            9.783505783642304e-05,
+            9.720868098964764e-05,
+            9.825617863525604e-05,
+            9.792784939119182e-05
+          ],
+          "valid": [
+            0.000256170529724095,
+            0.00025605176809139017,
+            0.0002564581833771655,
+            0.0002608330662921555,
+            0.0002568343583895126,
+            0.00025625892585458537
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "transformer",
+          "seed": 42,
+          "parameter_count": 30561,
+          "best_epoch": 3,
+          "epochs_run": 7,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015996791284078635,
+          "test_rmse": 0.0077831647822034005,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005547720600429454,
+          "directional_accuracy": 0.47009735744089015,
+          "prediction_count": 1438,
+          "fit_seconds": 24.06776635099959,
+          "elapsed_seconds": 25.61751140899969
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:15:00.261382+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 42,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 25.61751140899969,
+          "recorder_id": "c4aa61324cd041c38d11c403af7cb099",
+          "experiment_id": "301334574591777436",
+          "finished_at_utc": "2026-11-26T17:15:25.837499+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.0077831647822034005,
+          "mae": 0.005547720600429454,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.47009735744089015,
+          "pooled_pearson_correlation": 0.009634433947518818,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "transformer",
+            "parameter_count": 30561,
+            "best_epoch": 3,
+            "epochs_run": 7,
+            "validation_rmse": 0.015996791284078635,
+            "fit_seconds": 24.06776635099959,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/transformer/seed-42",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 42,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "transformer",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010350071274549871,
+            9.924453855435984e-05,
+            9.838707975432915e-05,
+            9.778019747359321e-05,
+            9.78275469523229e-05,
+            9.741543127540622e-05,
+            9.709223639473385e-05
+          ],
+          "valid": [
+            0.0002577338654133338,
+            0.00025682990428856317,
+            0.0002558973313863742,
+            0.00025635608591297694,
+            0.0002570533380110369,
+            0.000257988772390995,
+            0.0002580685022981268
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "transformer",
+          "seed": 2026,
+          "parameter_count": 30561,
+          "best_epoch": 6,
+          "epochs_run": 10,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015995516371136793,
+          "test_rmse": 0.007795894457798137,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005565458975575347,
+          "directional_accuracy": 0.4909596662030598,
+          "prediction_count": 1438,
+          "fit_seconds": 35.294471574,
+          "elapsed_seconds": 36.81204142599972
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:15:25.911527+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 2026,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 36.81204142599972,
+          "recorder_id": "68e4e7480db24f65bee84e8d63e2a7aa",
+          "experiment_id": "684029845189770030",
+          "finished_at_utc": "2026-11-26T17:16:02.652985+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007795894457798137,
+          "mae": 0.005565458975575347,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4909596662030598,
+          "pooled_pearson_correlation": 0.014415798736558018,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "transformer",
+            "parameter_count": 30561,
+            "best_epoch": 6,
+            "epochs_run": 10,
+            "validation_rmse": 0.015995516371136793,
+            "fit_seconds": 35.294471574,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/transformer/seed-2026",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 2026,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "transformer",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010500047767226987,
+            9.933039236463144e-05,
+            9.803258815844035e-05,
+            9.925043498609726e-05,
+            9.781807128966718e-05,
+            9.721314929125203e-05,
+            9.709105121332305e-05,
+            9.564102761011355e-05,
+            9.496208704245704e-05,
+            9.454604453440736e-05
+          ],
+          "valid": [
+            0.0002574527166130366,
+            0.00025604429845517494,
+            0.00025744087557904964,
+            0.0002561706687802266,
+            0.00025648237679601723,
+            0.0002558565439793052,
+            0.00025724829901222374,
+            0.00025774599329950957,
+            0.0002585585805880533,
+            0.0002570643106616582
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "deepseek_v41_mini",
+          "seed": 7,
+          "parameter_count": 103969,
+          "best_epoch": 1,
+          "epochs_run": 5,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.01602049349525119,
+          "test_rmse": 0.007898486040097666,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005625316930259305,
+          "directional_accuracy": 0.5069541029207232,
+          "prediction_count": 1438,
+          "fit_seconds": 123.46958045400015,
+          "elapsed_seconds": 129.05890483600024
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:14:27.803392+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 7,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 129.05890483600024,
+          "recorder_id": "ca8678a19d19422b996191263ebd7c88",
+          "experiment_id": "834274592343288242",
+          "finished_at_utc": "2026-11-26T17:16:36.809060+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007898486040097666,
+          "mae": 0.005625316930259305,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5069541029207232,
+          "pooled_pearson_correlation": -0.01931862631061061,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "deepseek_v41_mini",
+            "parameter_count": 103969,
+            "best_epoch": 1,
+            "epochs_run": 5,
+            "validation_rmse": 0.01602049349525119,
+            "fit_seconds": 123.46958045400015,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-deepseek/deepseek_v41_mini/seed-7",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 7,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "deepseek_v41_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010467531175741101,
+            9.850647720253253e-05,
+            9.715639801192567e-05,
+            9.53329287615379e-05,
+            9.398543196271571e-05
+          ],
+          "valid": [
+            0.00025665621183138573,
+            0.00025831303407083516,
+            0.0002575660191837812,
+            0.00026011596960574476,
+            0.00026151016920893105
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "deepseek_v41_mini",
+          "seed": 42,
+          "parameter_count": 103969,
+          "best_epoch": 4,
+          "epochs_run": 8,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.01599592900675662,
+          "test_rmse": 0.007839984915861005,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005614638143852699,
+          "directional_accuracy": 0.5201668984700973,
+          "prediction_count": 1438,
+          "fit_seconds": 188.45143975499968,
+          "elapsed_seconds": 191.39402562899977
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:16:36.845294+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 42,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 191.39402562899977,
+          "recorder_id": "9bdfd680866148e1bc9dacca4d8ead1c",
+          "experiment_id": "230925329869639691",
+          "finished_at_utc": "2026-11-26T17:19:48.205095+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007839984915861005,
+          "mae": 0.005614638143852699,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5201668984700973,
+          "pooled_pearson_correlation": 0.023224589568981095,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "deepseek_v41_mini",
+            "parameter_count": 103969,
+            "best_epoch": 4,
+            "epochs_run": 8,
+            "validation_rmse": 0.01599592900675662,
+            "fit_seconds": 188.45143975499968,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-deepseek/deepseek_v41_mini/seed-42",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 42,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "deepseek_v41_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010605379435790379,
+            9.829904298951274e-05,
+            9.677672009468464e-05,
+            9.56471628853154e-05,
+            9.307970277037013e-05,
+            9.009047222669606e-05,
+            8.666062380938091e-05,
+            8.192201407903689e-05
+          ],
+          "valid": [
+            0.00025686713989417803,
+            0.0002560060423653976,
+            0.0002560925401057542,
+            0.0002558697447891978,
+            0.000259529903059706,
+            0.0002622010397263043,
+            0.0002656902510503302,
+            0.0002693981346635671
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "deepseek_v41_mini",
+          "seed": 2026,
+          "parameter_count": 103969,
+          "best_epoch": 2,
+          "epochs_run": 6,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.01601761141053383,
+          "test_rmse": 0.007911086023262192,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005662940838330301,
+          "directional_accuracy": 0.4951321279554937,
+          "prediction_count": 1438,
+          "fit_seconds": 126.33063623199996,
+          "elapsed_seconds": 129.5580142259996
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:19:48.243378+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 2026,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 129.5580142259996,
+          "recorder_id": "b23dfcbf40304088bca09e5182ec602c",
+          "experiment_id": "702258915062158883",
+          "finished_at_utc": "2026-11-26T17:21:57.765404+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007911086023262192,
+          "mae": 0.005662940838330301,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4951321279554937,
+          "pooled_pearson_correlation": -0.019645881588858098,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "deepseek_v41_mini",
+            "parameter_count": 103969,
+            "best_epoch": 2,
+            "epochs_run": 6,
+            "validation_rmse": 0.01601761141053383,
+            "fit_seconds": 126.33063623199996,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-deepseek/deepseek_v41_mini/seed-2026",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 2026,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "deepseek_v41_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010424672415712709,
+            9.861109651546743e-05,
+            9.653449229047696e-05,
+            9.480439730253532e-05,
+            9.226836194775218e-05,
+            8.968202661767189e-05
+          ],
+          "valid": [
+            0.0002578613209240875,
+            0.0002565638752988635,
+            0.0002601144114204807,
+            0.00025865775839526567,
+            0.00026016258810862694,
+            0.00026384893080524393
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "glm54_mini",
+          "seed": 7,
+          "parameter_count": 45189,
+          "best_epoch": 1,
+          "epochs_run": 5,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.01602964020135445,
+          "test_rmse": 0.007920409165667417,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005723044098302337,
+          "directional_accuracy": 0.4902642559109875,
+          "prediction_count": 1438,
+          "fit_seconds": 52.18009061599969,
+          "elapsed_seconds": 56.203103049999754
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:14:28.014998+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 7,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 56.203103049999754,
+          "recorder_id": "5e13efc6c5dc41c6b3e4679b4e564b64",
+          "experiment_id": "555421194941691376",
+          "finished_at_utc": "2026-11-26T17:15:24.148562+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007920409165667417,
+          "mae": 0.005723044098302337,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4902642559109875,
+          "pooled_pearson_correlation": 0.0075649011722811734,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "glm54_mini",
+            "parameter_count": 45189,
+            "best_epoch": 1,
+            "epochs_run": 5,
+            "validation_rmse": 0.01602964020135445,
+            "fit_seconds": 52.18009061599969,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-hybrid/glm54_mini/seed-7",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 7,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "glm54_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010191694251481568,
+            9.892416922054333e-05,
+            9.766576482425778e-05,
+            9.710444690845733e-05,
+            9.748080176069472e-05
+          ],
+          "valid": [
+            0.00025694936498487877,
+            0.00025759680485466346,
+            0.0002574583935209066,
+            0.00026116617616843445,
+            0.00025750241522227757
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "glm54_mini",
+          "seed": 42,
+          "parameter_count": 45189,
+          "best_epoch": 3,
+          "epochs_run": 7,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.01601515070977666,
+          "test_rmse": 0.00783622631288389,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005627412907313423,
+          "directional_accuracy": 0.480528511821975,
+          "prediction_count": 1438,
+          "fit_seconds": 69.84578044599994,
+          "elapsed_seconds": 71.88969759199972
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:15:24.184153+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 42,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 71.88969759199972,
+          "recorder_id": "8bb909e5904a4dfbb0edd95fff1c1b25",
+          "experiment_id": "992724018029697921",
+          "finished_at_utc": "2026-11-26T17:16:36.040113+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.00783622631288389,
+          "mae": 0.005627412907313423,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.480528511821975,
+          "pooled_pearson_correlation": 0.020711843282918894,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "glm54_mini",
+            "parameter_count": 45189,
+            "best_epoch": 3,
+            "epochs_run": 7,
+            "validation_rmse": 0.01601515070977666,
+            "fit_seconds": 69.84578044599994,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-hybrid/glm54_mini/seed-42",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 42,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "glm54_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010376735413773113,
+            9.88291105425843e-05,
+            9.869966102312068e-05,
+            9.802667495813669e-05,
+            9.716688623967607e-05,
+            9.67536920203072e-05,
+            9.569037901020744e-05
+          ],
+          "valid": [
+            0.00025737142760751423,
+            0.00025719563274163854,
+            0.0002564850522568599,
+            0.00025743406691602265,
+            0.0002579545124039702,
+            0.00026092821003663945,
+            0.0002598596159747073
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "glm54_mini",
+          "seed": 2026,
+          "parameter_count": 45189,
+          "best_epoch": 2,
+          "epochs_run": 6,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.01602545539325248,
+          "test_rmse": 0.007879297094874357,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005628727799785917,
+          "directional_accuracy": 0.47983310152990266,
+          "prediction_count": 1438,
+          "fit_seconds": 63.77388999699997,
+          "elapsed_seconds": 65.70309986999973
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:16:36.102160+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 2026,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 65.70309986999973,
+          "recorder_id": "459819696a3c48bda48dd366a45b02a2",
+          "experiment_id": "341874599758465126",
+          "finished_at_utc": "2026-11-26T17:17:41.746757+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007879297094874357,
+          "mae": 0.005628727799785917,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.47983310152990266,
+          "pooled_pearson_correlation": -0.040405056625748094,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "glm54_mini",
+            "parameter_count": 45189,
+            "best_epoch": 2,
+            "epochs_run": 6,
+            "validation_rmse": 0.01602545539325248,
+            "fit_seconds": 63.77388999699997,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-hybrid/glm54_mini/seed-2026",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 2026,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "glm54_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010373276375680438,
+            9.930248493070646e-05,
+            9.79315325459511e-05,
+            9.79648419778393e-05,
+            9.67263780350648e-05,
+            9.623813233969885e-05
+          ],
+          "valid": [
+            0.0002576739052181743,
+            0.00025681522056112506,
+            0.0002583077438068432,
+            0.0002575375040673324,
+            0.0002572019271839614,
+            0.0002582818972375644
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "qwen4_mini",
+          "seed": 7,
+          "parameter_count": 122258,
+          "best_epoch": 1,
+          "epochs_run": 5,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.016042381099494362,
+          "test_rmse": 0.007851079432836399,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005651581148200685,
+          "directional_accuracy": 0.4951321279554937,
+          "prediction_count": 1438,
+          "fit_seconds": 160.86242423900012,
+          "elapsed_seconds": 164.2259817600002
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:17:41.800416+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 7,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 164.2259817600002,
+          "recorder_id": "73b5e215f805417b8826602330b17736",
+          "experiment_id": "294442783981040746",
+          "finished_at_utc": "2026-11-26T17:20:25.975625+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007851079432836399,
+          "mae": 0.005651581148200685,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4951321279554937,
+          "pooled_pearson_correlation": 0.021021910060935036,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "qwen4_mini",
+            "parameter_count": 122258,
+            "best_epoch": 1,
+            "epochs_run": 5,
+            "validation_rmse": 0.016042381099494362,
+            "fit_seconds": 160.86242423900012,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-hybrid/qwen4_mini/seed-7",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 7,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "qwen4_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010278680541645423,
+            9.800561976422568e-05,
+            9.58389310435905e-05,
+            9.296563604286295e-05,
+            9.019356413393828e-05
+          ],
+          "valid": [
+            0.0002573579913414139,
+            0.00025744308364953646,
+            0.0002586300511349357,
+            0.0002668021073532225,
+            0.000263651052364674
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "qwen4_mini",
+          "seed": 42,
+          "parameter_count": 122258,
+          "best_epoch": 3,
+          "epochs_run": 7,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015995748572491947,
+          "test_rmse": 0.00785833893662688,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.0056216695411671945,
+          "directional_accuracy": 0.4965229485396384,
+          "prediction_count": 1438,
+          "fit_seconds": 213.93502447100036,
+          "elapsed_seconds": 217.76787356100021
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:20:26.022857+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 42,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 217.76787356100021,
+          "recorder_id": "7038db0513114b77a0f912342bfac7b0",
+          "experiment_id": "176136406908019867",
+          "finished_at_utc": "2026-11-26T17:24:03.746615+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.00785833893662688,
+          "mae": 0.0056216695411671945,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4965229485396384,
+          "pooled_pearson_correlation": 0.025683758996662982,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "qwen4_mini",
+            "parameter_count": 122258,
+            "best_epoch": 3,
+            "epochs_run": 7,
+            "validation_rmse": 0.015995748572491947,
+            "fit_seconds": 213.93502447100036,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-hybrid/qwen4_mini/seed-42",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 42,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "qwen4_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.0001008779213034259,
+            9.761478684065573e-05,
+            9.638139962475683e-05,
+            9.385526876916251e-05,
+            8.942755134156005e-05,
+            8.47396145676472e-05,
+            7.997183402658072e-05
+          ],
+          "valid": [
+            0.00025699940484256263,
+            0.000256629554797055,
+            0.0002558639723943782,
+            0.00025649509677954865,
+            0.00026172155200875394,
+            0.0002699022426214161,
+            0.0002792514337782237
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "qwen4_mini",
+          "seed": 2026,
+          "parameter_count": 122258,
+          "best_epoch": 2,
+          "epochs_run": 6,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015996391648999363,
+          "test_rmse": 0.007799207859907336,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005552264547701094,
+          "directional_accuracy": 0.4909596662030598,
+          "prediction_count": 1438,
+          "fit_seconds": 166.37566235299983,
+          "elapsed_seconds": 169.31600528700028
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:24:03.790408+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 2026,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 169.31600528700028,
+          "recorder_id": "80f853ee61914b92a5fb4ec41f4d1703",
+          "experiment_id": "661302364906211302",
+          "finished_at_utc": "2026-11-26T17:26:53.065180+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007799207859907336,
+          "mae": 0.005552264547701094,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.4909596662030598,
+          "pooled_pearson_correlation": -0.007098182946131111,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "qwen4_mini",
+            "parameter_count": 122258,
+            "best_epoch": 2,
+            "epochs_run": 6,
+            "validation_rmse": 0.015996391648999363,
+            "fit_seconds": 166.37566235299983,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-hybrid/qwen4_mini/seed-2026",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 2026,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "qwen4_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            0.00010229387965117213,
+            9.860179585843132e-05,
+            9.644637801448348e-05,
+            9.534307943500866e-05,
+            9.26722003171745e-05,
+            8.885364004787407e-05
+          ],
+          "valid": [
+            0.00025800072143481026,
+            0.00025588454578817654,
+            0.0002577145773756258,
+            0.0002587735638459317,
+            0.0002599736879198083,
+            0.00026229727700507614
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "timesfm3_mini",
+          "seed": 7,
+          "parameter_count": 30157,
+          "best_epoch": 1,
+          "epochs_run": 5,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015998000607227898,
+          "test_rmse": 0.007722697205495975,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005451394602131386,
+          "directional_accuracy": 0.5382475660639777,
+          "prediction_count": 1438,
+          "fit_seconds": 42.45544485299979,
+          "elapsed_seconds": 44.34700066200003
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:16:02.713790+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 7,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 44.34700066200003,
+          "recorder_id": "37e20f57b2874f26aeac21868366b0ea",
+          "experiment_id": "673289923496639706",
+          "finished_at_utc": "2026-11-26T17:16:47.002823+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007722697205495975,
+          "mae": 0.005451394602131386,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5382475660639777,
+          "pooled_pearson_correlation": 0.010817596008786437,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "timesfm3_mini",
+            "parameter_count": 30157,
+            "best_epoch": 1,
+            "epochs_run": 5,
+            "validation_rmse": 0.015998000607227898,
+            "fit_seconds": 42.45544485299979,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/timesfm3_mini/seed-7",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 7,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "timesfm3_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            9.876401588066185e-05,
+            9.857085954792421e-05,
+            9.805923579952305e-05,
+            9.742650130941494e-05,
+            9.767212054528725e-05
+          ],
+          "valid": [
+            0.00025593602342886417,
+            0.00025660806384150307,
+            0.00025624514651378895,
+            0.00025848401689014696,
+            0.00025695175007147303
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "timesfm3_mini",
+          "seed": 42,
+          "parameter_count": 30157,
+          "best_epoch": 5,
+          "epochs_run": 9,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015998366784014277,
+          "test_rmse": 0.00772304988051257,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.0054480253601530085,
+          "directional_accuracy": 0.5250347705146036,
+          "prediction_count": 1438,
+          "fit_seconds": 75.03683043599995,
+          "elapsed_seconds": 76.8565682389999
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:16:47.044097+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 42,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 76.8565682389999,
+          "recorder_id": "80511ec5332e44c49b09472002895e45",
+          "experiment_id": "871290377062602467",
+          "finished_at_utc": "2026-11-26T17:18:03.861456+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.00772304988051257,
+          "mae": 0.0054480253601530085,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5250347705146036,
+          "pooled_pearson_correlation": 0.039552797236437585,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "timesfm3_mini",
+            "parameter_count": 30157,
+            "best_epoch": 5,
+            "epochs_run": 9,
+            "validation_rmse": 0.015998366784014277,
+            "fit_seconds": 75.03683043599995,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/timesfm3_mini/seed-42",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 42,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "timesfm3_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            9.880474073311563e-05,
+            9.84988196803614e-05,
+            9.821762470394595e-05,
+            9.810095169161927e-05,
+            9.770832096922576e-05,
+            9.701465644918749e-05,
+            9.63001975168528e-05,
+            9.474795325505531e-05,
+            9.258166199505437e-05
+          ],
+          "valid": [
+            0.00025616187458870195,
+            0.00025598209079463963,
+            0.0002564798534359713,
+            0.00025637834128591254,
+            0.0002559477397558514,
+            0.0002588013844644027,
+            0.0002700878395096536,
+            0.00025983136540406966,
+            0.00026336885033810466
+          ]
+        }
+      },
+      {
+        "summary": {
+          "model": "timesfm3_mini",
+          "seed": 2026,
+          "parameter_count": 30157,
+          "best_epoch": 2,
+          "epochs_run": 6,
+          "best_boosting_iteration": null,
+          "validation_rmse": 0.015984739287710232,
+          "test_rmse": 0.007728018822681306,
+          "zero_return_rmse": 0.007732932455837727,
+          "test_mae": 0.005452439419368534,
+          "directional_accuracy": 0.5250347705146036,
+          "prediction_count": 1438,
+          "fit_seconds": 47.34480602800022,
+          "elapsed_seconds": 49.30972654700008
+        },
+        "metadata": {
+          "status": "completed",
+          "started_at_utc": "2026-11-26T17:18:03.964586+00:00",
+          "python": "3.12.14",
+          "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+          "packages": {
+            "financial-ts-qlib": "2.1.0",
+            "pyqlib": "0.9.7",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3",
+            "lightgbm": "4.7.0",
+            "mlflow": "2.22.5",
+            "torch": "2.15.0+cpu",
+            "filelock": "3.29.7",
+            "timesfm": "3.0.2"
+          },
+          "provider": {
+            "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+            "file_count": 8,
+            "bytes": 253870
+          },
+          "label": "Ref($close, -2) / Ref($close, -1) - 1",
+          "feature_count": 157,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "seed": 2026,
+          "config_file": "resolved_config.json",
+          "task_file": "qlib_task.yaml",
+          "instruments": [
+            "SPX"
+          ],
+          "synthetic": false,
+          "data_manifest": {
+            "schema_version": 1,
+            "frequency": "day",
+            "calendar": "union_of_observed_input_dates",
+            "start_date": "1990-01-02",
+            "end_date": "2018-10-10",
+            "sessions": 7252,
+            "observations": 7252,
+            "instruments": [
+              "SPX"
+            ],
+            "fields": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "factor"
+            ],
+            "sources": [
+              {
+                "file": "^GSPC.csv",
+                "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+                "rows": 7252,
+                "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+              }
+            ],
+            "missing_bars": "NaN; no forward fill"
+          },
+          "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+          "git_dirty": true,
+          "elapsed_seconds": 49.30972654700008,
+          "recorder_id": "79e0a1ec50dd4cab86a992e2e32d6dc2",
+          "experiment_id": "143122544838464458",
+          "finished_at_utc": "2026-11-26T17:18:53.174449+00:00"
+        },
+        "metrics": {
+          "prediction_count": 1438,
+          "evaluated_count": 1438,
+          "unavailable_label_count": 0,
+          "rmse": 0.007728018822681306,
+          "mae": 0.005452439419368534,
+          "zero_return_rmse": 0.007732932455837727,
+          "directional_accuracy": 0.5250347705146036,
+          "pooled_pearson_correlation": -0.010759774117920324,
+          "qlib_metrics": {},
+          "model_details": {
+            "name": "timesfm3_mini",
+            "parameter_count": 30157,
+            "best_epoch": 2,
+            "epochs_run": 6,
+            "validation_rmse": 0.015984739287710232,
+            "fit_seconds": 47.34480602800022,
+            "pretrained": false
+          }
+        },
+        "config": {
+          "provider_uri": ".data/spx-history",
+          "output_dir": "runs/architecture-benchmark-baselines/timesfm3_mini/seed-2026",
+          "experiment_name": "architecture_comparison",
+          "region": "us",
+          "instruments": "all",
+          "seed": 2026,
+          "warmup_sessions": 60,
+          "sequence_length": 32,
+          "segments": {
+            "train": [
+              "1990-03-28",
+              "2007-05-04"
+            ],
+            "valid": [
+              "2007-05-09",
+              "2013-01-18"
+            ],
+            "test": [
+              "2013-01-24",
+              "2018-10-08"
+            ]
+          },
+          "model": {
+            "name": "timesfm3_mini",
+            "params": {
+              "d_model": 32,
+              "nhead": 4,
+              "num_layers": 2,
+              "dropout": 0.1,
+              "n_epochs": 12,
+              "early_stop": 4,
+              "batch_size": 128,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "device": "cpu",
+              "num_threads": 2,
+              "aux_loss_weight": 0.01
+            }
+          },
+          "backtest": {
+            "enabled": false
+          }
+        },
+        "learning_curves": {
+          "train": [
+            9.880283171221498e-05,
+            9.849558297781819e-05,
+            9.796523788542626e-05,
+            9.826361440834311e-05,
+            9.786559828278509e-05,
+            9.724226534348286e-05
+          ],
+          "valid": [
+            0.0002557008788581627,
+            0.000255511890096067,
+            0.00025698832705193944,
+            0.00025563773250351603,
+            0.00025650804530561534,
+            0.0002563740147617892
+          ]
+        }
+      }
+    ]
+  },
+  "pretrained_timesfm3": {
+    "metadata": {
+      "status": "completed",
+      "started_at_utc": "2026-11-26T17:09:11.242539+00:00",
+      "python": "3.12.14",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "packages": {
+        "financial-ts-qlib": "2.1.0",
+        "pyqlib": "0.9.7",
+        "numpy": "1.26.4",
+        "pandas": "2.3.3",
+        "lightgbm": "4.7.0",
+        "mlflow": "2.22.5",
+        "torch": "2.15.0+cpu",
+        "filelock": "3.29.7",
+        "timesfm": "3.0.2"
+      },
+      "provider": {
+        "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+        "file_count": 8,
+        "bytes": 253870
+      },
+      "label": "Ref($close, -2) / Ref($close, -1) - 1",
+      "feature_count": 157,
+      "segments": {
+        "train": [
+          "1990-03-28",
+          "2007-05-04"
+        ],
+        "valid": [
+          "2007-05-09",
+          "2013-01-18"
+        ],
+        "test": [
+          "2013-01-24",
+          "2018-10-08"
+        ]
+      },
+      "seed": null,
+      "config_file": "resolved_config.json",
+      "task_file": "qlib_task.yaml",
+      "instruments": [
+        "SPX"
+      ],
+      "synthetic": false,
+      "data_manifest": {
+        "schema_version": 1,
+        "frequency": "day",
+        "calendar": "union_of_observed_input_dates",
+        "start_date": "1990-01-02",
+        "end_date": "2018-10-10",
+        "sessions": 7252,
+        "observations": 7252,
+        "instruments": [
+          "SPX"
+        ],
+        "fields": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "factor"
+        ],
+        "sources": [
+          {
+            "file": "^GSPC.csv",
+            "sha256": "e798ac64cf923cad773239bb169eb98ee131fcd3d1357bf8174ea58857452f9a",
+            "rows": 7252,
+            "adjustment": "raw_yahoo_ohlc_times_adj_close_over_close_and_volume_divided_by_factor"
+          }
+        ],
+        "missing_bars": "NaN; no forward fill"
+      },
+      "git_commit": "f6fb29f5d6864bb3215b161778847e60acfdf426",
+      "git_dirty": true,
+      "pretraining_overlap": "unknown; historical replay is not a clean unseen holdout",
+      "elapsed_seconds": 155.88948825599982,
+      "recorder_id": "c59c048fa3ce4e839c7fff699457451c",
+      "experiment_id": "912609215772953581",
+      "finished_at_utc": "2026-11-26T17:11:47.093224+00:00"
+    },
+    "metrics": {
+      "prediction_count": 1438,
+      "evaluated_count": 1438,
+      "unavailable_label_count": 0,
+      "rmse": 0.007808991801931468,
+      "mae": 0.005446945781973672,
+      "zero_return_rmse": 0.007732932455837727,
+      "directional_accuracy": 0.5396383866481224,
+      "pooled_pearson_correlation": 0.049457034008282774,
+      "qlib_metrics": {},
+      "model_details": {
+        "name": "timesfm3_pretrained",
+        "parameter_count": 330710976,
+        "best_epoch": null,
+        "epochs_run": null,
+        "validation_rmse": null,
+        "fit_seconds": 5.846127687000262,
+        "pretrained": true
+      }
+    },
+    "config": {
+      "provider_uri": ".data/spx-history",
+      "region": "us",
+      "instruments": "all",
+      "output_dir": "runs/official-timesfm3-spx",
+      "experiment_name": "financial_ts",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "segments": {
+        "train": [
+          "1990-03-28",
+          "2007-05-04"
+        ],
+        "valid": [
+          "2007-05-09",
+          "2013-01-18"
+        ],
+        "test": [
+          "2013-01-24",
+          "2018-10-08"
+        ]
+      },
+      "model": {
+        "name": "timesfm3_pretrained",
+        "params": {
+          "checkpoint_path": ".data/timesfm3-checkpoint",
+          "context_length": 256,
+          "batch_size": 8,
+          "device": "cpu",
+          "num_threads": 2
+        }
+      },
+      "backtest": {
+        "enabled": false,
+        "topk": 5,
+        "n_drop": 1,
+        "account": 100000,
+        "risk_degree": 0.95,
+        "benchmark": null,
+        "open_cost": 0.001,
+        "close_cost": 0.001,
+        "min_cost": 0.0
+      }
+    },
+    "independent_audit": {
+      "source_run": "runs/official-timesfm3-spx",
+      "audit_scope": "Independent artifact, label alignment, checkpoint provenance, and sampled real inference review",
+      "prediction_count": 1438,
+      "label_alignment": {
+        "rows_verified": 1438,
+        "expression": "Ref($close, -2) / Ref($close, -1) - 1",
+        "independent_calculation": "provider_close.shift(-2) / provider_close.shift(-1) - 1",
+        "exact_float32_equality": true,
+        "prediction_and_label_indices_identical": true,
+        "unique_and_finite_predictions": true
+      },
+      "real_checkpoint_replay": {
+        "indices": [
+          {
+            "datetime": "2013-01-24",
+            "instrument": "SPX"
+          },
+          {
+            "datetime": "2015-12-01",
+            "instrument": "SPX"
+          },
+          {
+            "datetime": "2018-10-08",
+            "instrument": "SPX"
+          }
+        ],
+        "context_lengths": [
+          256,
+          256,
+          256
+        ],
+        "captured_contexts_equal_provider_history_through_each_date": true,
+        "future_context_observations": 0,
+        "forecast_horizon": 2,
+        "score_expression": "forecast_close[t+2] / forecast_close[t+1] - 1",
+        "exact_forecast_ratio_equality": true,
+        "max_difference_from_saved_scores": 0.0
+      },
+      "saved_adapter": {
+        "filename": "params.pkl",
+        "bytes": 450,
+        "contains_loaded_forecaster": false,
+        "contains_model_weights": false,
+        "parameter_count": 330710976,
+        "fit_seconds": 5.846127687000262
+      },
+      "independently_recomputed_metrics": {
+        "rmse": 0.007808991801931468,
+        "zero_return_rmse": 0.007732932455837727,
+        "exact_match_to_recorded_metrics": true
+      },
+      "checkpoint": {
+        "repository": "google/timesfm-3.0-pytorch",
+        "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+        "revision_verified_from_local_download_metadata": true,
+        "config_sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6",
+        "weights_sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da",
+        "weights_sha256_computed_from_actual_file": true,
+        "weights_sha256_matches_download_metadata": true,
+        "weights_bytes": 1322898824
+      },
+      "dependencies": {
+        "official_package": "timesfm==3.0.2",
+        "official_package_requires_python": ">=3.10",
+        "actual_runtime_python": "3.12.14",
+        "actual_runtime_torch": "2.15.0+cpu",
+        "installed_torch_requires_python": ">=3.11",
+        "python_3_10_resolution": "Requires a compatible older torch within the declared >=2.5,<3 range; torch2.5.1 metadata permits >=3.8.0 and publishes a cp310 wheel.",
+        "actual_pretrained_python_3_10_or_3_11_execution_performed": false
+      },
+      "price_semantics": "Provider $close in price units, including upstream adjustments. Yahoo input conversion applies Adj Close / Close to OHLC. Model input and label use the same adjusted close series.",
+      "limitations": [
+        "Pretraining overlap with the historical market data is unknown.",
+        "The full replay RMSE is slightly worse than the zero-return baseline.",
+        "Saved adapter reload requires access to the separately stored local checkpoint."
+      ],
+      "audit_modifications": "Only documentation/docstring wording was corrected; runtime behavior and saved benchmark artifacts were unchanged."
+    }
+  },
+  "baselines": {
+    "zero_return_rmse": 0.007732932455837727,
+    "always_positive_direction_accuracy": 0.5431154381084841
+  },
+  "predictions": {
+    "file": "reports/architecture_predictions.csv",
+    "rows": 1438,
+    "model_score_columns": 19,
+    "sha256": "4900f5ff856c0d7c1e740f8320ca1490c594e9b926914c1dea8984f0c6e9d03b",
+    "alignment": "All 19 model runs have identical indices and raw labels; every scratch RMSE was recomputed from CSV after restoring Qlib float32 labels. This combined CSV stores their exact float32 values as float64 decimal strings."
+  },
+  "limitations": [
+    "The 2013-2018 historical interval was previously inspected; this is exploratory, not a fresh untouched final holdout.",
+    "One index and one chronological split do not establish current-market generalization or profitability.",
+    "Population standard deviation across three seeds is initialization dispersion, not a confidence interval.",
+    "Mini models are original from-scratch numerical adaptations, not pretrained or distilled flagship models.",
+    "Official TimesFM3 uses 256 provider closes, fixed external weights, and unknown pretraining overlap; it is separate from the supervised comparison.",
+    "No portfolio simulation is attached to the nontradable index comparison; costed portfolio execution is tested on synthetic instruments."
+  ]
+}

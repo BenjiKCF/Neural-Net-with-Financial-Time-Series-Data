@@ -1,8 +1,40 @@
-# Legacy notebook audit
+# Legacy audit and removal inventory
 
-The 2017–2018 notebooks remain available as historical material. The supported
-workflow is now the Qlib package and CLI described in the main README. The legacy
+The supported workflow is the Qlib package, CLI, tests, and configuration files
+described in the main README. The obsolete 2017–2018 notebook chain and its
+unused assets have been removed from the current working tree. The legacy
 notebooks were inspected as source, not executed, during migration.
+
+The original material remains available in [Git history at commit
+`15e0640c799e106c3a3fb8901e25663a13197574`](https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/tree/15e0640c799e106c3a3fb8901e25663a13197574).
+References to notebook numbers and historical paths below refer to that snapshot.
+
+## What was removed
+
+This revision removes **27 obsolete files**:
+
+| Category | Files | Historical paths and reason |
+| --- | ---: | --- |
+| Notebooks | 11 | Six numbered notebooks at the root and five under `Old version/`; the broken download/preprocess/train chain is replaced by the maintained package. |
+| Python scripts | 2 | `Old version/lstmstock.py` and `Old version/oldversion1.py`; obsolete TensorFlow execution paths. |
+| Output images | 9 | `Photos/`; legacy screenshots and figures are not current validation evidence. |
+| HDF5 artifacts | 2 | `data2.h5` and `data/LSTM_Stock_prediction_20170501.h5`; cached legacy data/model artifacts have no role in the new workflow. |
+| Unused CSVs | 3 | `data/DJIA_indices_data.csv`, `kaggle_finance/fundamentals.csv`, and `kaggle_finance/securities.csv`; none is consumed by the supported examples. |
+
+`^GSPC.csv` is retained because it is the input to the documented offline
+historical forecasting example and architecture comparison. The current
+Transformer and LightGBM implementations are also retained as comparison
+baselines: they are maintained Qlib models, independent of the removed code.
+
+Four compact architecture adaptations now share the same Qlib data and training
+interface. Their scope and primary sources are documented in the
+[DeepSeek](architectures/deepseek.md), [GLM/Qwen](architectures/glm_qwen.md), and
+[TimesFM](architectures/timesfm.md) notes. They train from random initialization;
+the optional official pretrained TimesFM adapter has a separate checkpoint,
+license, and evaluation provenance. Current execution evidence belongs in
+[architecture-validation.md](architecture-validation.md) and
+[architecture_benchmark.json](../reports/architecture_benchmark.json); the
+earlier [validation report](validation.md) records the initial two-model migration.
 
 ## Why dependency upgrades alone are insufficient
 

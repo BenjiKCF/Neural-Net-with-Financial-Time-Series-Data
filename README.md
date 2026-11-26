@@ -1,10 +1,10 @@
 # Neural Networks with Financial Time-Series Data
 
-**A reproducible Qlib research workflow with a PyTorch temporal Transformer and a LightGBM benchmark.**
+**A reproducible Qlib workflow for compact DeepSeek V4.1, GLM-5.4, Qwen4, and TimesFM 3 architecture experiments, with Transformer and LightGBM comparison baselines.**
 
-Version 2 replaces the supported execution path of the original 2017–2018 TensorFlow/Keras project. It includes validated daily OHLCV ingestion, causal feature processing, chronological training/validation/test splits, prediction exports, experiment tracking, and optional portfolio backtesting.
+Version 2.1 adds four independently implemented PyTorch models trained from random initialization, plus a separate adapter for Google's official pretrained TimesFM 3. The shared workflow includes validated daily OHLCV ingestion, causal feature processing, chronological training/validation/test splits, prediction exports, experiment tracking, and optional portfolio backtesting.
 
-The original notebooks, data, and images remain available as historical material. Start with the commands below for the maintained workflow. See [the legacy audit](docs/legacy-audit.md) for the concrete compatibility and evaluation problems addressed.
+The obsolete notebooks, scripts, cached models/data, and output images have been removed from the working tree. The original material remains in [Git history at commit `15e0640`](https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/tree/15e0640c799e106c3a3fb8901e25663a13197574); `^GSPC.csv` is retained for the offline historical example. See [the legacy audit](docs/legacy-audit.md) for the cleanup inventory and evaluation problems addressed.
 
 ## What is included
 
@@ -12,16 +12,35 @@ The original notebooks, data, and images remain available as historical material
 | --- | --- |
 | Data | Local adjusted CSV → validated Qlib binary provider; supports the bundled Yahoo-style index CSV |
 | Features | 157 OHLCV-computable factors from Qlib Alpha158; excludes the true-VWAP field unavailable in ordinary OHLCV |
-| Neural model | PyTorch temporal Transformer over 20 historical sessions, positional encoding, AdamW, clipping, validation early stopping |
-| Benchmark model | Qlib LightGBM with validation early stopping |
+| Trainable architectures | Four compact numeric adaptations of DeepSeek-V4.1-Flash-1017, GLM-5.4, Qwen4, and TimesFM 3 |
+| Comparison baselines | PyTorch temporal Transformer and Qlib LightGBM |
+| Optional fixed-weight model | Official pretrained TimesFM 3 through an explicit local-checkpoint adapter |
+| Neural training | Historical windows, AdamW, gradient clipping, auxiliary routing/index losses where applicable, validation early stopping |
 | Splits | Chronological 60/20/20 by default, with label-horizon purging using actual provider sessions |
 | Preprocessing | Robust feature normalization fitted on training dates only; raw return labels |
 | Evaluation | RMSE, MAE, zero-return forecast baseline, directional accuracy; daily IC/Rank IC for multiple instruments |
 | Portfolio | Optional Qlib top-k strategy, next-close execution, explicit trading costs, gross/net reports |
 | Reproducibility | Seed, resolved task, source/provider hashes, package versions, git revision, MLflow records |
-| Verification | Offline synthetic demo, unit/integration tests, CPU CI |
+| Verification | Offline all-model demo, mechanism and integration tests, CPU CI, reproducible multi-seed historical comparison |
 
 A successful demo verifies the software. It does not establish profitable forecasting or trading.
+
+## Model choices and provenance
+
+The four `*_mini` models implement selected mechanisms disclosed for the named versions. They use continuous financial factors and a scalar return head, with dimensions reduced for CPU experiments. **They contain no pretrained or distilled flagship weights and inherit none of the source models' pretrained capabilities or published performance.** The architecture notes distinguish implemented, adapted, and omitted mechanisms and link the primary sources.
+
+| Model name / configuration | Architecture retained in the numeric adaptation | Details |
+| --- | --- | --- |
+| [`deepseek_v41_mini`](configs/deepseek_v41_mini.yaml) | **DeepSeek-V4.1-Flash-1017**: causal encoder/decoder, CSA2-inspired compressed retrieval, shared decoder KV and index reuse, four-stream mHC, routed and shared experts | [DeepSeek notes](docs/architectures/deepseek.md) |
+| [`glm54_mini`](configs/glm54_mini.yaml) | **GLM-5.4**: repeated shared blocks, separate per-pass gates, reused global KV/indices plus current local KV, sparse experts | [GLM notes](docs/architectures/glm_qwen.md#glm-54-adaptation) |
+| [`qwen4_mini`](configs/qwen4_mini.yaml) | **Qwen4**: three gated-delta mixers per sparse-attention mixer, four gated residual streams, sparse experts, causal numeric substitute for lexical N-grams | [Qwen notes](docs/architectures/glm_qwen.md#qwen4-adaptation) |
+| [`timesfm3_mini`](configs/timesfm3_mini.yaml) | **TimesFM 3**: temporal/variate attention, patched latent variates, contiguous masked horizon, prefix normalization and forecast-statistic refinement | [TimesFM notes](docs/architectures/timesfm.md#timesfm3_mini) |
+| [`transformer`](configs/transformer.yaml) | Plain temporal Transformer for comparison | Shared Qlib training and target |
+| [`lightgbm`](configs/lightgbm.yaml) | Gradient-boosted trees for comparison | Single-date factors with validation early stopping |
+
+The supplied mini configurations use width 32, four heads, a 32-session history, and a maximum of 12 epochs. `num_layers` has architecture-specific meaning: DeepSeek counts layers per encoder/decoder stage, GLM counts shared blocks, Qwen counts four-mixer groups, and TimesFM counts temporal/variate mixing layers. Equal settings therefore do not imply equal depth, parameters, or compute. Run artifacts report the actual parameter count.
+
+`timesfm3_pretrained` is an additional, separate choice using [Google's official TimesFM 3 checkpoint](https://huggingface.co/google/timesfm-3.0-pytorch). Its weights have a separate noncommercial license; see [official pretrained inference](#official-pretrained-timesfm-3). List all accepted model names with `fts models` after installation.
 
 ## Install
 
@@ -53,14 +72,16 @@ python -m pip install -e .
 fts demo --output runs/demo-lightgbm
 ```
 
-For the neural model:
+For all six trainable models, including the four new architectures:
 
 ```bash
 python -m pip install -e ".[neural]"
-fts demo --model both --epochs 3 --output runs/demo-both
+fts demo --model all --epochs 2 --device cpu --output runs/demo-all
 ```
 
-The demo creates synthetic data locally and exercises feature generation, both requested models, prediction recording, portfolio simulation, and cost reporting. After dependencies are installed it requires no network access or API keys. Choose a new output path for each run.
+The demo creates synthetic data locally and exercises feature generation, training, prediction recording, portfolio simulation, and cost reporting. `--model all` runs LightGBM, the Transformer, and all four minis; it writes a `comparison.json` plus a directory per model. After dependencies are installed it requires no network access or API keys. It does not load or download the optional official checkpoint. Choose a new output path for each run.
+
+Use `--model deepseek_v41_mini` (or another model name) for a single architecture. The existing `--model both` option runs only the LightGBM and Transformer baselines.
 
 For a smaller **Linux/Windows CPU-only** PyTorch install, install PyTorch before the neural extra:
 
@@ -85,11 +106,52 @@ The repository already contains `^GSPC.csv`, so this path also works offline:
 fts import-csv --csv "^GSPC.csv" --symbol SPX --provider .data/spx-history
 fts train --config configs/lightgbm.yaml --provider .data/spx-history --output runs/spx-lightgbm --no-backtest
 fts train --config configs/transformer.yaml --provider .data/spx-history --output runs/spx-transformer --device cpu --no-backtest
+fts train --config configs/deepseek_v41_mini.yaml --provider .data/spx-history --output runs/spx-deepseek --device cpu --no-backtest
 ```
 
 This is a historical **single-index forecasting** example. The index itself is not a directly tradable security, so these commands evaluate predictions without a portfolio simulation. Cross-sectional label normalization is deliberately absent: ranking or z-scoring a single instrument would destroy its target.
 
 The bundled data is old. Replace it with a recent, appropriately licensed dataset for current-market research.
+
+### Reproduce the three-seed architecture comparison
+
+After importing the provider above, run the declared six-model comparison:
+
+```bash
+fts benchmark --provider .data/spx-history --output runs/spx-architecture-benchmark --models lightgbm transformer deepseek_v41_mini glm54_mini qwen4_mini timesfm3_mini --seeds 7 42 2026 --epochs 12 --device cpu
+```
+
+This trains each model under each seed. All six use the same 157 factors, delayed-return target, and chronological partitions; the five neural models use the same 32-session context and optimizer settings. LightGBM receives one factor row and uses boosting. Neural parameter counts, effective depth, and runtime differ. Early stopping uses validation only; the command does not choose a winner from test scores or run a portfolio backtest.
+
+The output contains the declared `protocol.json`, individual run directories, per-run `comparison.csv`, mean/dispersion `aggregate.csv`, and `comparison.json`. The protocol records the provider fingerprint and complete configurations before training. The final comparison includes parameter counts, epochs, validation and test metrics, and timing. Dispersion across three seeds is a measure of initialization sensitivity, not a statistical confidence interval.
+
+See [architecture validation](docs/architecture-validation.md) and its [machine-readable evidence](reports/architecture_benchmark.json) for recorded results and limitations. These results are an exploratory comparison on historical data; a previously inspected test interval is not a fresh final holdout. The earlier two-model modernization evidence is retained separately in [docs/validation.md](docs/validation.md).
+
+### Official pretrained TimesFM 3
+
+The small supervised `timesfm3_mini` and the official `timesfm3_pretrained` adapter have different training histories and input contracts. The adapter loads fixed Google weights, forecasts two future closes from up to 256 historical closes, and converts them to the same delayed-return target. It uses each instrument independently in univariate mode; `fit` loads weights without fitting to this repository's labels. Its default context also differs from the scratch neural models' 32-session factor windows.
+
+Install the optional official implementation:
+
+```bash
+python -m pip install -e ".[timesfm]"
+```
+
+Obtain the [official checkpoint](https://huggingface.co/google/timesfm-3.0-pytorch/tree/43046b85ec22d584a13f8098c2ed39c889e129c2) separately, retaining its license, and set `model.params.checkpoint_path` in [configs/timesfm3_pretrained.yaml](configs/timesfm3_pretrained.yaml) to its local directory. The directory must contain `config.json` and `model.safetensors`. The adapter does not download weights, and this repository does not redistribute them.
+
+```bash
+fts train --config configs/timesfm3_pretrained.yaml --provider .data/spx-history --output runs/spx-timesfm3-pretrained --device cpu --no-backtest
+```
+
+For a separately recorded fixed-weight comparison through the benchmark CLI:
+
+```bash
+fts benchmark --provider .data/spx-history --output runs/spx-timesfm3-official --models timesfm3_pretrained --timesfm-checkpoint /absolute/path/to/timesfm-3.0-pytorch --device cpu
+```
+
+The pretrained model runs once rather than repeating identical fixed weights for each seed. Its pretraining overlap with the bundled historical market data is unknown, so this is a pretrained inference experiment with different provenance from the scratch models. Checkpoint loading and inference evidence must be identified separately from mocked adapter tests.
+
+Google's code is Apache-2.0, while the checkpoint uses the separate [TimesFM Non-Commercial License v1.0](https://huggingface.co/google/timesfm-3.0-pytorch/blob/43046b85ec22d584a13f8098c2ed39c889e129c2/LICENSE), restricted to noncommercial, nonproduction use and prohibiting redistribution of the model or derivatives. The code license does not grant commercial rights to the weights. The [TimesFM architecture notes](docs/architectures/timesfm.md) document the adapter, pinned implementation, checkpoint revision, and limitations.
 
 ## Import your own market data
 
@@ -108,7 +170,7 @@ The rows above only illustrate the schema; training needs substantially more his
 ```bash
 fts import-csv --csv /path/to/market.csv --provider .data/market
 fts train --config configs/lightgbm.yaml --provider .data/market --output runs/market-lightgbm
-fts train --config configs/transformer.yaml --provider .data/market --output runs/market-transformer
+fts train --config configs/qwen4_mini.yaml --provider .data/market --output runs/market-qwen --no-backtest
 ```
 
 A directory of per-symbol CSV files is also accepted. Without a `symbol` column, the filename stem supplies the symbol, or use `--symbol` for one CSV. Header names are case-insensitive, and Yahoo `Date`/`Adj Close` names are recognized.
@@ -153,11 +215,29 @@ segments:
 
 These are illustrative ranges and must lie inside your actual provider. The validator resolves included sessions and rejects overlapping label horizons or insufficient future coverage. It does not approximate a two-session gap with two elapsed days.
 
-Feature normalization is fitted on training dates and reused for validation and test. Neural target standardization is also fitted only on training labels and inverted before prediction. Early stopping sees validation data only. Training batches may shuffle within their already fixed partition. Historical sequence context may extend before a validation/test boundary; no sequence uses observations later than its own prediction timestamp.
+Feature normalization is fitted on training dates and reused for validation and test. For the scratch neural models, target standardization is also fitted only on training labels and inverted before prediction. Early stopping sees validation data only. Training batches may shuffle within their already fixed partition. Historical sequence context may extend before a validation/test boundary; no sequence uses observations later than its own prediction timestamp.
 
 ## Configure models and backtesting
 
-Edit [configs/lightgbm.yaml](configs/lightgbm.yaml) or [configs/transformer.yaml](configs/transformer.yaml). Paths are relative to your working directory; the examples assume the repository root. Both models use the same feature definitions, raw target, split rules, and evaluation exports. The Transformer also receives historical windows.
+Choose a YAML from the [model table](#model-choices-and-provenance), then set the provider, output directory, and training parameters. Paths are relative to your working directory; these examples assume the repository root. The six trainable models share feature definitions, the raw target, split rules, and evaluation exports. Neural models additionally receive historical windows. The official TimesFM adapter reads provider-adjusted close histories and is documented separately above.
+
+Set common neural dimensions directly under `model.params`. Architecture-specific options belong under `architecture_kwargs`, for example:
+
+```yaml
+model:
+  name: glm54_mini
+  params:
+    d_model: 32
+    nhead: 4
+    num_layers: 2
+    aux_loss_weight: 0.01
+    architecture_kwargs:
+      loop_steps: 2
+      sparse_k: 8
+      local_window: 4
+```
+
+The shared trainer adds the weighted auxiliary loss for models that expose one, while reporting and early-stopping on forecast MSE. Target scaling is undone before evaluation.
 
 For a US equity universe with at least five instruments, set the desired portfolio parameters and run:
 
@@ -193,8 +273,9 @@ Each completed output directory includes:
 | File/directory | Contents |
 | --- | --- |
 | `predictions.csv` | Exact datetime/instrument index, model score, and raw delayed-return label |
-| `metrics.json` | Forecast metrics, zero-return baseline, Qlib statistics, portfolio results when enabled |
-| `portfolio.csv` | Daily portfolio return, benchmark return, trading costs, turnover, and account values |
+| `metrics.json` | Forecast metrics, zero-return baseline, parameter/training details, Qlib statistics, portfolio results when enabled |
+| `learning_curves.json` | Training and validation forecast MSE by epoch for scratch neural models |
+| `portfolio.csv` | Daily portfolio return, benchmark return, trading costs, turnover, and account values; present when backtesting is enabled |
 | `resolved_config.json` | Effective paths, dates, model settings, and execution configuration |
 | `qlib_task.yaml` | Resolved native Qlib task for inspection/replay in the installed environment |
 | `run.json` | Run status, seed-containing configuration reference, data/source hashes, package versions, git revision |
@@ -202,7 +283,7 @@ Each completed output directory includes:
 
 A failed run records its error where possible. Run directories are never silently overwritten. Use a new name for the next attempt.
 
-The model implements Qlib's `fit(dataset)` and `predict(dataset, segment="test")` interface. Neural inference requests features only, retains a final one-sample batch, and returns scores in the original units and exact sample order.
+The model adapters implement Qlib's `fit(dataset)` and `predict(dataset, segment="test")` interface. Inference never requests labels, retains a final one-sample batch, and returns scores in the original units and exact sample order. Saved scratch models retain their learned parameters. A saved official TimesFM adapter retains its configuration and local checkpoint path; restoring it requires the checkpoint to remain available.
 
 ## Development and verification
 
@@ -210,12 +291,12 @@ The model implements Qlib's `fit(dataset)` and `predict(dataset, segment="test")
 python -m pip install -e ".[dev,neural]"
 ruff check src tests
 python -m pytest -q
-fts demo --model both --epochs 2 --output runs/check
+fts demo --model all --epochs 2 --device cpu --output runs/check-all
 ```
 
-The tests cover CSV adjustment/validation, actual Qlib binary round-trips, calendar-aware purging, train-only preprocessing under future-data perturbation, small-batch neural training, singleton inference, label/index alignment, and portfolio costs. CI runs on Python 3.10 and 3.12 with CPU PyTorch.
+The tests cover CSV adjustment/validation, actual Qlib binary round-trips, calendar-aware purging, train-only preprocessing under future-data perturbation, small-batch neural training, singleton inference, label/index alignment, and portfolio costs. Architecture tests exercise causal masks, padding isolation, sparse expert/router gradients, learned indexers, memory reuse, gated-delta recurrence, residual-stream gates, patch normalization/refinement, and saved-model replay. The pretrained adapter has separate contract tests. CI uses Python 3.10 and 3.12 with CPU PyTorch.
 
-The old notebooks and `Old version/` are historical references, excluded from the supported package and CI. Their obsolete downloaders and dependency/API patterns are described in [docs/legacy-audit.md](docs/legacy-audit.md).
+Read [docs/architecture-validation.md](docs/architecture-validation.md) for execution evidence from this revision rather than inferring model quality from a passing software check. The earlier [modernization validation](docs/validation.md) records the initial two-baseline migration. The removed notebook chain and its evaluation defects are documented in [docs/legacy-audit.md](docs/legacy-audit.md).
 
 ## References
 

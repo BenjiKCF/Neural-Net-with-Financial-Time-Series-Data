@@ -9,12 +9,15 @@ import json
 import math
 import platform
 import subprocess
+import time
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
 import yaml
+
+from financial_ts.catalog import MODEL_NAMES, NEURAL_MODELS
 
 LABEL = "Ref($close, -2) / Ref($close, -1) - 1"
 LABEL_HORIZON = 2
@@ -153,18 +156,28 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
         }
         defaults.update(params)
         model = {"class": "LGBModel", "module_path": "qlib.contrib.model.gbdt", "kwargs": defaults}
-    elif name == "transformer":
+    elif name in NEURAL_MODELS:
         if "d_feat" in params and params["d_feat"] != FEATURE_COUNT:
             raise ValueError(f"This OHLCV handler requires d_feat={FEATURE_COUNT}.")
-        defaults = {"d_feat": FEATURE_COUNT, "seed": seed}
+        if "architecture" in params:
+            raise ValueError(
+                "Choose the architecture with model.name, not model.params.architecture."
+            )
+        defaults = {"d_feat": FEATURE_COUNT, "seed": seed, "architecture": name}
         defaults.update(params)
         model = {
-            "class": "TemporalTransformerModel",
+            "class": "SequenceForecastModel",
             "module_path": "financial_ts.model",
             "kwargs": defaults,
         }
+    elif name == "timesfm3_pretrained":
+        model = {
+            "class": "OfficialTimesFM3Model",
+            "module_path": "financial_ts.timesfm_pretrained",
+            "kwargs": params,
+        }
     else:
-        raise ValueError("model.name must be lightgbm or transformer.")
+        raise ValueError(f"model.name must be one of {MODEL_NAMES}.")
     handler = {
         "class": "OHLCVAlpha158",
         "module_path": "financial_ts.handler",
@@ -188,7 +201,7 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
         },
     }
     dataset_kwargs = {"handler": handler, "segments": segments}
-    if name == "transformer":
+    if name in NEURAL_MODELS:
         step_len = config.get("sequence_length", 20)
         if not isinstance(step_len, int) or step_len < 1:
             raise ValueError("sequence_length must be a positive integer.")
@@ -196,7 +209,7 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
     task = {
         "model": model,
         "dataset": {
-            "class": "TSDatasetH" if name == "transformer" else "DatasetH",
+            "class": "TSDatasetH" if name in NEURAL_MODELS else "DatasetH",
             "module_path": "qlib.data.dataset",
             "kwargs": dataset_kwargs,
         },
@@ -292,6 +305,7 @@ def run_workflow(config: dict) -> dict:
     from qlib.data import D
     from qlib.model.trainer import task_train
 
+    started = time.perf_counter()
     config = copy.deepcopy(config)
     provider = Path(config.get("provider_uri", ".data/qlib")).expanduser().resolve()
     output = Path(config.get("output_dir", "runs/research")).expanduser().resolve()
@@ -377,7 +391,7 @@ def run_workflow(config: dict) -> dict:
         "label": LABEL,
         "feature_count": FEATURE_COUNT,
         "segments": segments,
-        "seed": task["model"]["kwargs"]["seed"],
+        "seed": task["model"]["kwargs"].get("seed"),
         "config_file": "resolved_config.json",
         "task_file": "qlib_task.yaml",
         "instruments": sorted(available),
@@ -396,6 +410,7 @@ def run_workflow(config: dict) -> dict:
         "mlflow",
         "torch",
         "filelock",
+        "timesfm",
     ):
         try:
             metadata["packages"][package] = importlib.metadata.version(package)
@@ -458,6 +473,34 @@ def run_workflow(config: dict) -> dict:
             "pooled_pearson_correlation": finite["score"].corr(finite["label"]),
             "qlib_metrics": recorder.list_metrics(),
         }
+        fitted_model = recorder.load_object("params.pkl")
+        history = getattr(fitted_model, "evals_result_", {})
+        valid_history = history.get("valid", [])
+        metrics["model_details"] = {
+            "name": config.get("model", {}).get("name", "lightgbm"),
+            "parameter_count": getattr(fitted_model, "parameter_count_", None),
+            "best_epoch": getattr(fitted_model, "best_epoch_", None),
+            "epochs_run": len(valid_history) if valid_history else None,
+            "validation_rmse": float(np.sqrt(min(valid_history))) if valid_history else None,
+            "fit_seconds": getattr(fitted_model, "fit_seconds_", None),
+            "pretrained": config.get("model", {}).get("name") == "timesfm3_pretrained",
+        }
+        if config.get("model", {}).get("name", "lightgbm") == "lightgbm":
+            booster = fitted_model.model
+            valid_l2 = booster.best_score.get("valid", {}).get("l2")
+            metrics["model_details"]["validation_rmse"] = (
+                float(np.sqrt(valid_l2)) if valid_l2 is not None else None
+            )
+            metrics["model_details"]["best_boosting_iteration"] = booster.best_iteration
+        if config.get("model", {}).get("name") == "timesfm3_pretrained":
+            metadata["checkpoint_config_sha256"] = fitted_model.checkpoint_config_sha256_
+            metadata["checkpoint_size_bytes"] = fitted_model.checkpoint_size_bytes_
+            metadata["pretraining_overlap"] = (
+                "unknown; historical replay is not a clean unseen holdout"
+            )
+        if history:
+            _save_json(output / "learning_curves.json", history)
+        del fitted_model
         if backtest_enabled:
             report = recorder.load_object("portfolio_analysis/report_normal_1day.pkl")
             report.to_csv(output / "portfolio.csv")
@@ -476,6 +519,7 @@ def run_workflow(config: dict) -> dict:
         _save_json(output / "metrics.json", metrics)
         metadata.update(
             status="completed",
+            elapsed_seconds=time.perf_counter() - started,
             recorder_id=recorder.info["id"],
             experiment_id=recorder.info["experiment_id"],
             finished_at_utc=pd.Timestamp.now(tz="UTC").isoformat(),

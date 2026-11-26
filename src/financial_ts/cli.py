@@ -7,6 +7,8 @@ import json
 import sys
 from pathlib import Path
 
+from financial_ts.catalog import MODEL_NAMES, NEURAL_MODELS, TRAINABLE_MODELS
+
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -29,7 +31,7 @@ def _parser() -> argparse.ArgumentParser:
     train.add_argument("--provider", type=Path, help="Override provider_uri")
     train.add_argument("--output", type=Path, help="Override output_dir; must be new/empty")
     train.add_argument(
-        "--device", choices=["auto", "cpu", "cuda"], help="Transformer device override"
+        "--device", choices=["auto", "cpu", "cuda"], help="Neural model device override"
     )
     group = train.add_mutually_exclusive_group()
     group.add_argument("--backtest", action="store_true")
@@ -42,11 +44,22 @@ def _parser() -> argparse.ArgumentParser:
         default=Path("runs/demo"),
         help="New directory for all demo artifacts",
     )
-    demo.add_argument("--model", choices=["lightgbm", "transformer", "both"], default="lightgbm")
+    demo.add_argument("--model", choices=[*TRAINABLE_MODELS, "both", "all"], default="lightgbm")
     demo.add_argument("--seed", type=int, default=42)
     demo.add_argument("--device", choices=["auto", "cpu", "cuda"], default="cpu")
-    demo.add_argument(
-        "--epochs", type=int, default=3, help="Short Transformer smoke-training limit"
+    demo.add_argument("--epochs", type=int, default=3, help="Short neural smoke-training limit")
+    commands.add_parser("models", help="List trainable models and official pretrained TimesFM3")
+    benchmark = commands.add_parser("benchmark", help="Run a declared model/seed comparison")
+    benchmark.add_argument("--provider", type=Path, required=True)
+    benchmark.add_argument("--output", type=Path, default=Path("runs/architecture-benchmark"))
+    benchmark.add_argument(
+        "--models", nargs="+", choices=MODEL_NAMES, default=list(TRAINABLE_MODELS)
+    )
+    benchmark.add_argument("--seeds", nargs="+", type=int, default=[7, 42, 2026])
+    benchmark.add_argument("--epochs", type=int, default=12)
+    benchmark.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    benchmark.add_argument(
+        "--timesfm-checkpoint", type=Path, help="Local official TimesFM3 checkpoint"
     )
     return parser
 
@@ -75,7 +88,22 @@ def main(argv: list[str] | None = None) -> int:
         from financial_ts.data import create_demo_csv, import_csv
         from financial_ts.workflow import load_config, run_workflow
 
-        if args.command == "import-csv":
+        if args.command == "models":
+            print("\n".join(MODEL_NAMES))
+        elif args.command == "benchmark":
+            from financial_ts.benchmark import run_benchmark
+
+            result = run_benchmark(
+                args.provider,
+                args.output,
+                args.models,
+                args.seeds,
+                args.epochs,
+                args.device,
+                args.timesfm_checkpoint,
+            )
+            print(json.dumps(result["aggregate"], indent=2))
+        elif args.command == "import-csv":
             print(json.dumps(import_csv(args.csv, args.provider, args.symbol), indent=2))
         elif args.command == "train":
             config = load_config(args.config)
@@ -84,8 +112,13 @@ def main(argv: list[str] | None = None) -> int:
             if args.output:
                 config["output_dir"] = str(args.output)
             if args.device:
-                if config.get("model", {}).get("name") != "transformer":
-                    raise ValueError("--device applies to the transformer configuration only.")
+                name = config.get("model", {}).get("name")
+                if name not in (*NEURAL_MODELS, "timesfm3_pretrained"):
+                    raise ValueError("--device applies to neural model configurations only.")
+                if name == "timesfm3_pretrained" and args.device == "auto":
+                    import torch
+
+                    args.device = "cuda" if torch.cuda.is_available() else "cpu"
                 config["model"].setdefault("params", {})["device"] = args.device
             if args.backtest or args.no_backtest:
                 config.setdefault("backtest", {})["enabled"] = args.backtest
@@ -96,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
                 raise ValueError(f"Demo output already exists: {root}. Choose a new --output.")
             if args.epochs < 1:
                 raise ValueError("--epochs must be positive.")
-            if args.model in {"transformer", "both"}:
+            if args.model != "lightgbm":
                 try:
                     import torch  # noqa: F401
                 except ImportError as exc:
@@ -115,7 +148,13 @@ def main(argv: list[str] | None = None) -> int:
             (provider / "metadata.json").write_text(
                 json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
             )
-            models = ["lightgbm", "transformer"] if args.model == "both" else [args.model]
+            models = (
+                list(TRAINABLE_MODELS)
+                if args.model == "all"
+                else ["lightgbm", "transformer"]
+                if args.model == "both"
+                else [args.model]
+            )
             comparison = {}
             for name in models:
                 params = (

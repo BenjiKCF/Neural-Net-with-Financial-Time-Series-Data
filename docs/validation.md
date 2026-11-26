@@ -1,5 +1,9 @@
 # Modernization verification — 27 November 2026
 
+This is the historical verification of the initial two-model migration. For the
+four added architectures, three-seed comparison, and actual TimesFM 3 checkpoint
+replay, use [architecture-validation.md](architecture-validation.md).
+
 The supported Qlib workflow was executed on Linux with Python 3.12 and CPU PyTorch.
 The machine-readable evidence is in [modernization_validation.json](../reports/modernization_validation.json).
 

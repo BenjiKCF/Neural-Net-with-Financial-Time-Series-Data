@@ -1,0 +1,32 @@
+# Paths are relative to your current working directory (run from the repository root).
+provider_uri: .data/qlib
+region: us
+instruments: all
+output_dir: runs/lightgbm
+experiment_name: financial_ts
+seed: 42
+warmup_sessions: 60
+
+# null: chronological 60/20/20 with two actual trading sessions purged at boundaries.
+# Explicit ranges are also supported and validated; include two later sessions in the provider.
+segments: null
+model:
+  name: lightgbm
+  params:
+    num_boost_round: 300
+    early_stopping_rounds: 30
+    learning_rate: 0.03
+    num_leaves: 31
+    min_data_in_leaf: 30
+    num_threads: 2
+
+backtest:
+  enabled: false
+  topk: 5
+  n_drop: 1
+  account: 100000
+  risk_degree: 0.95
+  benchmark: null # null means cash; use a benchmark present in your provider, e.g. SPY.
+  open_cost: 0.001
+  close_cost: 0.001
+  min_cost: 0.0

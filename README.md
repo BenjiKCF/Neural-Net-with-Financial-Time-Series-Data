@@ -1,121 +1,226 @@
-<div align="center">
-  <img src="https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Logo.png"><br><br>
-</div>
+# Neural Networks with Financial Time-Series Data
 
+**A reproducible Qlib research workflow with a PyTorch temporal Transformer and a LightGBM benchmark.**
 
+Version 2 replaces the supported execution path of the original 2017–2018 TensorFlow/Keras project. It includes validated daily OHLCV ingestion, causal feature processing, chronological training/validation/test splits, prediction exports, experiment tracking, and optional portfolio backtesting.
 
-**Neural-Net-with-Financial-Time-Series-Data** is an open source software project using endogenous factors to predict daily log return of financial asset. The project includes serveral technical indicators (ie. Stochastics, Moving Average Convergence/Divergence oscillator) to train a LSTM neural network by stochastic gradient descent with warm restart(SGDR) and cosine annealing. This flexible architecture enables you to deploy with Nvidia CuDNN computation without rewriting code by yourself. Hyperparameters are fine-tuned by Bayesian search. 
+The original notebooks, data, and images remain available as historical material. Start with the commands below for the maintained workflow. See [the legacy audit](docs/legacy-audit.md) for the concrete compatibility and evaluation problems addressed.
 
+## What is included
 
-## Latest Result:
+| Component | Current implementation |
+| --- | --- |
+| Data | Local adjusted CSV → validated Qlib binary provider; supports the bundled Yahoo-style index CSV |
+| Features | 157 OHLCV-computable factors from Qlib Alpha158; excludes the true-VWAP field unavailable in ordinary OHLCV |
+| Neural model | PyTorch temporal Transformer over 20 historical sessions, positional encoding, AdamW, clipping, validation early stopping |
+| Benchmark model | Qlib LightGBM with validation early stopping |
+| Splits | Chronological 60/20/20 by default, with label-horizon purging using actual provider sessions |
+| Preprocessing | Robust feature normalization fitted on training dates only; raw return labels |
+| Evaluation | RMSE, MAE, zero-return forecast baseline, directional accuracy; daily IC/Rank IC for multiple instruments |
+| Portfolio | Optional Qlib top-k strategy, next-close execution, explicit trading costs, gross/net reports |
+| Reproducibility | Seed, resolved task, source/provider hashes, package versions, git revision, MLflow records |
+| Verification | Offline synthetic demo, unit/integration tests, CPU CI |
 
-The current LSTM model result for predicting daily log return.
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Predicted_vs_True_all_last%20300.png)
+A successful demo verifies the software. It does not establish profitable forecasting or trading.
 
+## Install
 
-## Old model Result
+Use **Python 3.10–3.12** in a fresh virtual environment. Python 3.12 is the locally verified environment.
 
-This old model uses LSTM to predict stock price.
+```bash
+git clone https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data.git
+cd Neural-Net-with-Financial-Time-Series-Data
+python -m venv .venv
+```
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/20170510result.png)
+Activate it on macOS/Linux:
 
+```bash
+source .venv/bin/activate
+```
 
-## LSTM cell 
+Or in Windows PowerShell:
 
-This is the LSTM cell we used in the model.
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/lstm.png)
+Install the base workflow and run the offline LightGBM check:
 
-It is **faster** than normal LSTM cell because of the implementation of CuDNN LSTM and batch normalization in the model.
+```bash
+python -m pip install --upgrade pip
+python -m pip install -e .
+fts demo --output runs/demo-lightgbm
+```
 
+For the neural model:
 
-## Update:
-26/03/2017 First update
-1. Recurrent neural network with LSTM is added to the code. 
-2. Keras with tensorflow is also implemented. 
-3. Tensorboard for neural network visualization is also added to the code.
+```bash
+python -m pip install -e ".[neural]"
+fts demo --model both --epochs 3 --output runs/demo-both
+```
 
-14/04/2017 Second update
-1. Normalized adjusted close price. 
-2. A new data downloader has been implemented for simplicity
-3. Added more variable to predict the adjusted close price
-4. More accurate result, significantly less mean square error
-5. Extra visualization for close price
-6. Denormalization will be fixed soon
-7. Twitter sentiment analysis is currently on testing stage
+The demo creates synthetic data locally and exercises feature generation, both requested models, prediction recording, portfolio simulation, and cost reporting. After dependencies are installed it requires no network access or API keys. Choose a new output path for each run.
 
-16/04/2017 Third update
-1. Updated denormalization 
-2. More test results available
+For a smaller **Linux/Windows CPU-only** PyTorch install, install PyTorch before the neural extra:
 
-18/04/2017 Fourth update
-1. Updated fundamental data from Kaggle for NYSE 
+```bash
+python -m pip install "torch>=2.5,<3" --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e ".[neural]"
+```
 
-19/04/2017 Fifth update
-1. Supporting Python 3.5 on Windows 10
-2. Significant improvement in accuracy
+For NVIDIA GPU training, install a CUDA-enabled PyTorch build appropriate to the machine using the [official installation selector](https://pytorch.org/get-started/locally/). Set `device: cuda` or pass `--device cuda`. `auto` selects CUDA if available, otherwise CPU; CPU also works on macOS. GPU execution has not been validated by this repository's CPU CI.
 
-29/04/2017 Sixth update
-1. ^GSPC Data since 1970 has been added, more training data, higher accuracy
-2. 7 years of test data 
-3. Object oriented programming
-4. Hyperparameters for dropout has been tested
+### Dependency policy
 
-08/05/2017 Seventh update
-1. All Hyperparameters have been tested and results have been uploaded.
-2. Fixed comment for the data loader
-3. More technical analysis like volume, moving average and other indexes will be added
+The installable baseline is pinned to `pyqlib==0.9.7`, the published PyPI release checked for this modernization. MLflow and filelock are bounded to avoid known fresh-install compatibility changes; NumPy/Pandas major versions are also bounded. Exact versions are recorded in each `run.json`.
 
-28/05/2017 Eighth update
-1. Using Quandl instead of Pandas datareader
-2. Correlation heatmap has been addded
-3. Using Adjusted OHLCV for the network
-4. All functions can be loaded from lstmstock.py
-5. A Quandl api key is provided temporarily for those who do not own a quandl account
-6. Moving averages have been added
+Upstream [Qlib v0.9.8](https://github.com/microsoft/qlib/releases/tag/v0.9.8) is a newer **source** release with artifact-loading hardening. It was not published on PyPI when this migration was verified. This package does not claim compatibility with an untested source upgrade. The supported CLI uses data-only YAML and numeric market data and only reloads artifacts just created by its own run. Qlib 0.9.7 pickle artifacts must come from trusted local training; never unpickle downloaded models or datasets from an untrusted source.
 
-02/10/2017 Nineth update
+## Run on the original S&P 500 history
 
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/Dataframe.png)
+The repository already contains `^GSPC.csv`, so this path also works offline:
 
-1. Event driven analysis
-2. Switched to Tensorflow LSTM model
+```bash
+fts import-csv --csv "^GSPC.csv" --symbol SPX --provider .data/spx-history
+fts train --config configs/lightgbm.yaml --provider .data/spx-history --output runs/spx-lightgbm --no-backtest
+fts train --config configs/transformer.yaml --provider .data/spx-history --output runs/spx-transformer --device cpu --no-backtest
+```
 
-25/06/2018 Tenth update 
-1. Complete rewrite of News downloader, removed Newsapi in order to get full access to NYTImes data for free
-2. Moving Average Convergence/Divergence oscillator (MACD), Stochastic Oscillator, Average True Range are added to train the model.
-3. log return is now used as target variable. 
-4. Keras on top of Tensorflow is used.
-5. Randomized Search from SKLearn is used for optimization.
+This is a historical **single-index forecasting** example. The index itself is not a directly tradable security, so these commands evaluate predictions without a portfolio simulation. Cross-sectional label normalization is deliberately absent: ranking or z-scoring a single instrument would destroy its target.
 
-11/10/2018 Eleventh update
-Serveral state of the art techniques are applied
-1. CuDNN LSTM is used to accelerate training
-2. Stochastic gradient descent with warm restart
-3. Cosine annealing 
-4. Use Bayesian search to optmize hyperparameters.
-5. New splitting method
-6. Dataset is provided 
-7. HDF files are used to accelerate reading time
+The bundled data is old. Replace it with a recent, appropriately licensed dataset for current-market research.
 
-## How to use Quandl
-If you want to train your neural network on more data, feel free to load the data directly from Quandl.
-You should be able to get the historic price data of a particular stock after login. 
-Use Export > Python > api key and insert the api key to your model.
-https://www.quandl.com/databases/WIKIP
-![Alt text](https://github.com/BenjiKCF/Neural-Network-with-Financial-Time-Series-Data/blob/master/Photos/quandl.png)
+## Import your own market data
 
-## References:
-Bernal, A., Fok, S., & Pidaparthi, R. (2012). Financial Market Time Series Prediction with Recurrent Neural Networks.
+Supported long-form CSV columns:
 
-Box, G. E., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). Time series analysis: forecasting and control. John Wiley & Sons.
+```csv
+date,symbol,open,high,low,close,volume
+2024-01-02,AAA,100,102,99,101,1000000
+2024-01-03,AAA,101,103,100,102,1100000
+2024-01-02,BBB,50,51,49,50.5,500000
+2024-01-03,BBB,50.5,52,50,51.5,600000
+```
 
-Gu, J., Wang, Z., Kuen, J., Ma, L., Shahroudy, A., Shuai, B., ... & Cai, J. (2015). Recent advances in convolutional neural networks. arXiv preprint arXiv:1512.07108.
+The rows above only illustrate the schema; training needs substantially more history.
 
-Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
+```bash
+fts import-csv --csv /path/to/market.csv --provider .data/market
+fts train --config configs/lightgbm.yaml --provider .data/market --output runs/market-lightgbm
+fts train --config configs/transformer.yaml --provider .data/market --output runs/market-transformer
+```
 
-Jaeger, H. (2001). The “echo state” approach to analysing and training recurrent neural networks-with an erratum note. Bonn, Germany: German National Research Center for Information Technology GMD Technical Report, 148(34), 13.
+A directory of per-symbol CSV files is also accepted. Without a `symbol` column, the filename stem supplies the symbol, or use `--symbol` for one CSV. Header names are case-insensitive, and Yahoo `Date`/`Adj Close` names are recognized.
 
-Jaeger, H. (2002). Tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the" echo state network" approach (Vol. 5). GMD-Forschungszentrum Informationstechnik.
+**Adjustment contract:**
 
-Maass, W., Natschläger, T., & Markram, H. (2002). Real-time computing without stable states: A new framework for neural computation based on perturbations. Neural computation, 14(11), 2531-2560.
+- With `Adj Close`/`adj_close`, the input is treated as raw Yahoo-style OHLCV. The importer computes `factor = adj_close / close`, multiplies every OHLC price by it, and divides volume by it.
+- Without `adj_close`, OHLCV must already use a consistent adjustment convention, or describe a security without relevant corporate actions. An optional `factor` is retained without adjusting a second time; otherwise it is 1.
+- True VWAP is not recoverable from a daily OHLCV bar. The feature handler excludes `VWAP0` instead of substituting a made-up value.
+
+Dates must be daily, timezone-naive session dates. Duplicate symbol/date pairs, invalid prices, inconsistent bars, unsafe symbols, and negative volumes are rejected. Missing instrument bars remain missing. The calendar is the union of observed dates; provide every relevant market session because sessions absent from every input instrument cannot be reconstructed.
+
+Each import writes `metadata.json` with source hashes, adjustment semantics, and coverage. Existing populated providers are protected from accidental replacement.
+
+The importer accepts a historical universe you supply; it does not reconstruct historical index membership or delisted securities. A current constituent list can introduce survivorship bias. Vendor revisions and corporate-action adjustments also need point-in-time scrutiny before interpreting performance.
+
+## Target, timing, and leakage controls
+
+At the close of session **t**, the model uses features available through that close and predicts:
+
+```text
+close[t+2] / close[t+1] - 1
+```
+
+This is Qlib's delayed next-session **simple return** target. It allows a decision after close t and entry at close t+1. The old notebooks targeted next-day log returns, so their screenshots are not comparable to this workflow's metrics.
+
+Default splits:
+
+1. Reserve the first 60 sessions for feature history.
+2. Divide the remaining prediction period chronologically at approximately 60% / 20% / 20%.
+3. Remove the final two feature dates before each next partition so their labels cannot cross the boundary.
+4. Reserve two sessions after the last prediction for observed labels. Portfolio runs reserve one additional real session for Qlib's executor boundary.
+
+You may specify explicit ranges in YAML:
+
+```yaml
+segments:
+  train: [2000-01-03, 2010-12-28]
+  valid: [2011-01-03, 2014-12-29]
+  test: [2015-01-05, 2018-06-29]
+```
+
+These are illustrative ranges and must lie inside your actual provider. The validator resolves included sessions and rejects overlapping label horizons or insufficient future coverage. It does not approximate a two-session gap with two elapsed days.
+
+Feature normalization is fitted on training dates and reused for validation and test. Neural target standardization is also fitted only on training labels and inverted before prediction. Early stopping sees validation data only. Training batches may shuffle within their already fixed partition. Historical sequence context may extend before a validation/test boundary; no sequence uses observations later than its own prediction timestamp.
+
+## Configure models and backtesting
+
+Edit [configs/lightgbm.yaml](configs/lightgbm.yaml) or [configs/transformer.yaml](configs/transformer.yaml). Paths are relative to your working directory; the examples assume the repository root. Both models use the same feature definitions, raw target, split rules, and evaluation exports. The Transformer also receives historical windows.
+
+For a US equity universe with at least five instruments, set the desired portfolio parameters and run:
+
+```bash
+fts train --config configs/lightgbm.yaml --provider .data/market --output runs/market-portfolio --backtest
+```
+
+Relevant configuration:
+
+```yaml
+backtest:
+  enabled: true
+  topk: 5
+  n_drop: 1
+  account: 100000
+  risk_degree: 0.95
+  benchmark: SPY  # must exist in the provider; null is an explicit zero-return cash benchmark
+  open_cost: 0.001
+  close_cost: 0.001
+  min_cost: 0.0
+```
+
+The default costs are illustrative 10-basis-point fees per buy/sell. Replace them with assumptions suitable for the instruments and broker. Backtesting uses next-session close prices, fractional shares, and a long-only top-k portfolio. It does not model order-book fills, market impact, borrow, taxes, or latency, and final positions are marked to market without forced liquidation. Results include actual simulated cost deductions.
+
+The supplied portfolio assumptions are for US-market research. Chinese-market feature/model training can use a compatible provider with `region: cn`; portfolio simulation is rejected until appropriate exchange rules are implemented.
+
+For serious evaluation, predeclare model selection criteria, use multiple chronological/walk-forward periods, include realistic costs and a defensible benchmark, and reserve a fresh final holdout. This repository provides one transparent holdout workflow, not an automatic strategy search or live-trading system.
+
+## Run artifacts
+
+Each completed output directory includes:
+
+| File/directory | Contents |
+| --- | --- |
+| `predictions.csv` | Exact datetime/instrument index, model score, and raw delayed-return label |
+| `metrics.json` | Forecast metrics, zero-return baseline, Qlib statistics, portfolio results when enabled |
+| `portfolio.csv` | Daily portfolio return, benchmark return, trading costs, turnover, and account values |
+| `resolved_config.json` | Effective paths, dates, model settings, and execution configuration |
+| `qlib_task.yaml` | Resolved native Qlib task for inspection/replay in the installed environment |
+| `run.json` | Run status, seed-containing configuration reference, data/source hashes, package versions, git revision |
+| `mlruns/` | Qlib/MLflow model, fitted dataset metadata, predictions, and analysis artifacts |
+
+A failed run records its error where possible. Run directories are never silently overwritten. Use a new name for the next attempt.
+
+The model implements Qlib's `fit(dataset)` and `predict(dataset, segment="test")` interface. Neural inference requests features only, retains a final one-sample batch, and returns scores in the original units and exact sample order.
+
+## Development and verification
+
+```bash
+python -m pip install -e ".[dev,neural]"
+ruff check src tests
+python -m pytest -q
+fts demo --model both --epochs 2 --output runs/check
+```
+
+The tests cover CSV adjustment/validation, actual Qlib binary round-trips, calendar-aware purging, train-only preprocessing under future-data perturbation, small-batch neural training, singleton inference, label/index alignment, and portfolio costs. CI runs on Python 3.10 and 3.12 with CPU PyTorch.
+
+The old notebooks and `Old version/` are historical references, excluded from the supported package and CI. Their obsolete downloaders and dependency/API patterns are described in [docs/legacy-audit.md](docs/legacy-audit.md).
+
+## References
+
+- [Microsoft Qlib](https://github.com/microsoft/qlib)
+- [Qlib data and adjustment conventions](https://qlib.readthedocs.io/en/stable/component/data.html)
+- [Qlib benchmark implementations](https://github.com/microsoft/qlib/tree/v0.9.7/examples/benchmarks)
+- [Qlib PyPI distribution](https://pypi.org/project/pyqlib/)
+- [PyTorch](https://pytorch.org/)

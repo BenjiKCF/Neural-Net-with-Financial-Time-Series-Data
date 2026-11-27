@@ -1,0 +1,143 @@
+name: Finalize audited chenditc CSI300 results
+
+on:
+  push:
+    branches: [codex/finalize-chenditc-20261127]
+    paths: [.github/workflows/chenditc-finalize.yml, scripts/finalize_chenditc.py]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chenditc-finalize-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/codex/finalize-chenditc-20261127'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      actions: read
+    env:
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install pinned CPU runtime and native Qlib chart dependencies
+        run: |
+          python -m pip install 'torch==2.15.0' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[neural,dev,visualization]'
+      - name: Test finalizer and existing implementation before publication
+        run: |
+          python -m py_compile scripts/finalize_chenditc.py
+          ruff check src tests
+          pytest -q
+      - name: Recover original completed model workers
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45928631920
+          pattern: chenditc-20261126-*
+          path: runs/finalize-input/workers
+      - name: Recover all twelve successful official inference shards
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45931274928
+          pattern: official-shard-*
+          path: runs/finalize-input/shards
+      - name: Verify pinned provider
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: fts download-chenditc --release 2026-11-26 --provider .data/chenditc/2026-11-26
+      - name: Assemble, replay, independently audit all 12 setups, and render native charts
+        run: |
+          python scripts/finalize_chenditc.py \
+            --workers runs/finalize-input/workers \
+            --shards runs/finalize-input/shards \
+            --provider .data/chenditc/2026-11-26 \
+            --output runs/finalize-output
+          cat runs/finalize-output/bundle/reports/chenditc_csi300/verification/finalization_receipt.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload only audited numerical evidence and generated documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: audited-chenditc-publication
+          path: runs/finalize-output/bundle/
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: recover
+    if: github.ref == 'refs/heads/codex/finalize-chenditc-20261127'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: audited-chenditc-publication
+          path: runs/publication
+      - name: Copy only verified report paths and commit to the follow-up branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = codex/finalize-chenditc-20261127
+          python - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+          root = Path('runs/publication')
+          report = root / 'reports/chenditc_csi300'
+          audit = json.loads((report / 'audit.json').read_text())
+          comparison = json.loads((report / 'comparison.json').read_text())
+          assert audit['status'] == 'passed' and not audit['pending_models'] and not audit['failures']
+          assert len(audit['audited_models']) == 12 and len(comparison['models']) == 12
+          assert comparison['status'] == 'completed' and not comparison['pending']
+          assert set(audit['audited_models']) == {m['model'] for m in comparison['models']}
+          allowed_roots = {'README.md', 'docs', 'reports'}
+          assert {p.name for p in root.iterdir()} == allowed_roots
+          allowed_suffixes = {'.json', '.csv', '.gz', '.yaml', '.png', '.html', '.md'}
+          for p in root.rglob('*'):
+              assert not p.is_symlink()
+              if p.is_file():
+                  relative = p.relative_to(root)
+                  assert p.suffix in allowed_suffixes
+                  assert (str(relative) in {'README.md', 'docs/chenditc-benchmark.md'}
+                          or relative.parts[:3] == ('docs', 'assets', 'qlib')
+                          or relative.parts[:2] == ('reports', 'chenditc_csi300'))
+                  target = Path(relative)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(p, target)
+          PY
+          git add README.md docs/chenditc-benchmark.md docs/assets/qlib reports/chenditc_csi300
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish complete audited CSI300 comparison and native Qlib gallery'
+          git push origin HEAD:refs/heads/codex/finalize-chenditc-20261127
+      - name: Open follow-up PR only after tests and full audit succeed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh pr create --base master --head codex/finalize-chenditc-20261127 \
+            --title 'Complete audited chenditc CSI300 benchmark and native Qlib gallery' \
+            --body 'Follow-up to #21. Recovers existing successful model artifacts without retraining; publishes the complete 12-setup comparison only after the full independent audit and tests pass. Adds native Qlib plots and interactive report for the validation-selected model. Corporate-action settlement remains an explicit limitation; no investable-return claim.'; then
+            echo '::warning::The audited branch was pushed, but GitHub may disallow workflow-created PRs. Open the follow-up PR from codex/finalize-chenditc-20261127.'
+          fi

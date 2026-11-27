@@ -10,7 +10,7 @@
 
 **Train financial forecasters, backtest stock portfolios, and inspect Qlib's native diagnostics.** The primary research workflow now uses the latest verified [chenditc Qlib dataset](https://github.com/chenditc/investment_data/releases): daily China-market data with a historical CSI300 universe. Compare eight trainable architectures and four optional official TimesFM variants on a common recent period.
 
-[**Start here**](docs/getting-started.md) · [**Data & results**](#results) · [**Qlib charts**](#native-qlib-diagnostics) · [**Models**](#model-catalog) · [**CSI300 protocol**](docs/chenditc-benchmark.md) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3)
+[**Start here**](docs/getting-started.md) · [**Data & results**](#results) · [**Qlib charts**](#native-qlib-diagnostics) · [**Models**](#model-catalog) · [**CSI300 protocol**](docs/chenditc-benchmark.md) · [**Production roadmap**](docs/production-roadmap.md) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3)
 
 | Start small | Compare fairly | Inspect the evidence |
 | --- | --- | --- |
@@ -409,6 +409,26 @@ See [the loop architecture and API](docs/architectures/timesfm-loop.md), [checkp
 
 </details>
 
+## Toward production
+
+The completed 12-setup CSI300 campaign provides an audited research foundation.
+The [production roadmap](docs/production-roadmap.md) turns the next recommendations
+into focused implementation PRs with acceptance criteria. The known corporate-action
+valuation issue, one-seed evaluation, and inspected historical test period still
+limit what the results establish.
+
+| Priority | Planned work | Evidence needed |
+| --- | --- | --- |
+| Data and accounting | Point-in-time availability, instrument lifecycles, realistic tradability and costs. | Sourced event fixtures, reconciled positions/cash, and separately versioned replays. |
+| Stronger evaluation | Rolling folds, multiple seeds, simple/Qlib baselines, IC and ranking objectives. | Complete trial history, causal selection, paired uncertainty estimates, and a fresh confirmation period. |
+| DL research | MASTER-style cross-stock attention; regime MoE; LightGBM–DL ensembles; multi-horizon, uncertainty, pretraining and adaptation experiments. | Controlled ablations and measurable value over the existing baselines. |
+| Reliable operation | Immutable inference bundles, registry, daily scheduling, monitoring, rollback and shadow runs. | Replay parity, freshness checks, failure recovery, and reviewed deployment evidence. |
+
+**These are planned capabilities.** The proposed QuantFormer-MoE architecture is a
+research candidate; the roadmap defines how to evaluate it and when to retain a
+simpler model. Start with the [first implementation PRs](docs/production-roadmap.md#first-implementation-prs)
+and use the [promotion gates](docs/production-roadmap.md#promotion-gates) to assess progress.
+
 ## Explore further
 
 | I want to… | Read this |
@@ -416,6 +436,7 @@ See [the loop architecture and API](docs/architectures/timesfm-loop.md), [checkp
 | Install it and understand my first output | [Getting started](docs/getting-started.md) |
 | Download chenditc data, reproduce CSI300, or interpret native Qlib plots | [CSI300 benchmark guide](docs/chenditc-benchmark.md) |
 | Change features, models, splits, or portfolio costs | [Workflow and configuration](docs/workflow-guide.md) |
+| Plan stronger DL experiments and production operation | [Production roadmap and acceptance gates](docs/production-roadmap.md) |
 | Inspect the archived six-model SPX benchmark | [Original validation report](docs/architecture-validation.md) |
 | Inspect the archived TimesFM comparison and SPY backtest | [Common-period research and backtest](docs/financial-research.md) |
 | Understand the architecture adaptations | [DeepSeek](docs/architectures/deepseek.md) · [GLM/Qwen](docs/architectures/glm_qwen.md) · [TimesFM](docs/architectures/timesfm.md) |
@@ -433,3 +454,4 @@ python -m pytest -q
 CI exercises Python 3.10 and 3.12 with CPU PyTorch, including the eight-model offline demo and the saved historical backtest. Actual official-checkpoint experiments are documented separately; CI uses small test doubles and does not download those weights.
 
 Built with [Microsoft Qlib](https://github.com/microsoft/qlib) and [PyTorch](https://pytorch.org/). The [dependency policy](docs/workflow-guide.md#dependency-policy) explains the supported versions. Legacy notebooks and unused artifacts were removed; the original material remains in Git history.
+

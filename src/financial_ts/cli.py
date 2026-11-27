@@ -75,6 +75,59 @@ def _parser() -> argparse.ArgumentParser:
     loop.add_argument("--lr", type=float, default=0.001)
     loop.add_argument("--seed", type=int, default=42)
     loop.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    research = commands.add_parser("research", help="Fit the fixed small-model candidate campaign")
+    research.add_argument("--provider", type=Path, required=True)
+    research.add_argument("--output", type=Path, default=Path("runs/model-research"))
+    research.add_argument("--seeds", nargs="+", type=int, default=[7, 42, 2026])
+    research.add_argument("--epochs", type=int, default=12)
+    research.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    papers = commands.add_parser(
+        "research-papers",
+        help="Test ES and directional weight editing on the selected mini ensemble",
+    )
+    papers.add_argument("--provider", type=Path, required=True)
+    papers.add_argument("--base-runs", type=Path, default=Path("runs/model-research"))
+    papers.add_argument("--spy-csv", type=Path, required=True)
+    papers.add_argument("--output", type=Path, default=Path("runs/paper-posttraining"))
+    papers.add_argument("--fit-samples", type=int, default=512)
+    papers.add_argument("--population", type=int, default=12)
+    papers.add_argument("--generations", type=int, default=8)
+    comparison = commands.add_parser(
+        "compare-timesfm", help="Compare frozen, loop and adapter-only TimesFM on common dates"
+    )
+    comparison.add_argument("--provider", type=Path, required=True)
+    comparison.add_argument("--checkpoint", type=Path, required=True)
+    comparison.add_argument("--output", type=Path, default=Path("runs/timesfm-comparison"))
+    comparison.add_argument(
+        "--original-evidence", type=Path, default=Path("reports/timesfm_loop_pilot")
+    )
+    comparison.add_argument("--resume", action="store_true")
+    comparison.add_argument(
+        "--allow-numerical-replication",
+        action="store_true",
+        help="Explicitly retain a same-recipe retrain when exact archived predictions cannot be reproduced",
+    )
+    backtest = commands.add_parser(
+        "backtest", help="Replay saved forecasts as delayed-close long/cash SPY strategies"
+    )
+    backtest.add_argument("--predictions", type=Path, required=True)
+    backtest.add_argument("--spy-csv", type=Path, required=True)
+    backtest.add_argument("--output", type=Path, default=Path("runs/backtest"))
+    backtest.add_argument("--costs-bps", nargs="+", type=float, default=[0, 5, 10, 20])
+    report = commands.add_parser(
+        "compare-research",
+        help="Join completed experiments and export common scores and SPY backtests",
+    )
+    report.add_argument(
+        "--historical-predictions", type=Path, default=Path("reports/architecture_predictions.csv")
+    )
+    report.add_argument(
+        "--historical-report", type=Path, default=Path("reports/architecture_benchmark.json")
+    )
+    report.add_argument("--scratch", type=Path, default=Path("runs/model-research"))
+    report.add_argument("--timesfm", type=Path, default=Path("runs/timesfm-comparison"))
+    report.add_argument("--spy-csv", type=Path, required=True)
+    report.add_argument("--output", type=Path, default=Path("runs/financial-comparison"))
     return parser
 
 
@@ -104,6 +157,78 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "models":
             print("\n".join(MODEL_NAMES))
+        elif args.command == "research-papers":
+            from financial_ts.paper_research import run_paper_research
+
+            result = run_paper_research(
+                args.provider,
+                args.base_runs,
+                args.spy_csv,
+                args.output,
+                fit_samples=args.fit_samples,
+                population=args.population,
+                generations=args.generations,
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "research":
+            from financial_ts.research import run_scratch_research
+
+            result = run_scratch_research(
+                args.provider, args.output, seeds=args.seeds, epochs=args.epochs, device=args.device
+            )
+            print(json.dumps(result["metrics"], indent=2, allow_nan=False))
+        elif args.command == "compare-timesfm":
+            from financial_ts.timesfm_comparison import run_timesfm_comparison
+
+            result = run_timesfm_comparison(
+                args.provider,
+                args.checkpoint,
+                args.output,
+                args.original_evidence,
+                resume=args.resume,
+                allow_numerical_replication=args.allow_numerical_replication,
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "backtest":
+            from financial_ts.comparison import run_saved_backtest
+
+            result = run_saved_backtest(
+                args.predictions, args.spy_csv, args.output, costs_bps=args.costs_bps
+            )
+            print(
+                json.dumps(
+                    {
+                        "output_dir": result["output_dir"],
+                        "strategies": len({row["model"] for row in result["metrics"]}),
+                        "cost_scenarios_bps": args.costs_bps,
+                        "result_rows": len(result["metrics"]),
+                        "files": ["metrics.csv", "ledger.csv", "settings.json"],
+                    },
+                    indent=2,
+                    allow_nan=False,
+                )
+            )
+        elif args.command == "compare-research":
+            from financial_ts.comparison import build_financial_comparison
+
+            result = build_financial_comparison(
+                args.historical_predictions,
+                args.historical_report,
+                args.scratch,
+                args.timesfm,
+                args.spy_csv,
+                args.output,
+            )
+            print(
+                json.dumps(
+                    {
+                        "output_dir": result["output_dir"],
+                        "models": int(result["metrics"]["model"].nunique()),
+                        "test_count": result["settings"]["test_count"],
+                    },
+                    indent=2,
+                )
+            )
         elif args.command == "finetune-timesfm":
             from financial_ts.loop_experiment import run_loop_experiment
 

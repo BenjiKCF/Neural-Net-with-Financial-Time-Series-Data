@@ -1,0 +1,376 @@
+{
+  "status": "completed",
+  "created_at_utc": "2026-11-26T23:42:10.095198+00:00",
+  "models": [
+    "timesfm3_mini",
+    "multiscale_residual_mixer",
+    "regime_linear_moe"
+  ],
+  "seeds": [
+    7,
+    42,
+    2026
+  ],
+  "configs": [
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-7",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 7,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "timesfm3_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-42",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "timesfm3_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-2026",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 2026,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "timesfm3_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/multiscale_residual_mixer/seed-7",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 7,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "multiscale_residual_mixer",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/multiscale_residual_mixer/seed-42",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "multiscale_residual_mixer",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/multiscale_residual_mixer/seed-2026",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 2026,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "multiscale_residual_mixer",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/regime_linear_moe/seed-7",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 7,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "regime_linear_moe",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/regime_linear_moe/seed-42",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "regime_linear_moe",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    },
+    {
+      "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+      "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/regime_linear_moe/seed-2026",
+      "experiment_name": "architecture_comparison",
+      "region": "us",
+      "instruments": "all",
+      "seed": 2026,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": null,
+      "model": {
+        "name": "regime_linear_moe",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 12,
+          "early_stop": 4,
+          "batch_size": 128,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": false
+      }
+    }
+  ],
+  "label": "Ref($close, -2) / Ref($close, -1) - 1",
+  "provider_fingerprint": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "source_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/research.py",
+      "bytes": 14751,
+      "sha256": "2e11993ada2f0693f688bf8888206f1e45d24dc9d832e53be772b4a215a8011b"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/model.py",
+      "bytes": 18229,
+      "sha256": "f1ff159c607d4e412bf11e07627d311690cc99ff76a2977f745a3e7c788bf4a0"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/workflow.py",
+      "bytes": 23700,
+      "sha256": "2727d3f588754faa168dbc0e000fd07ca504338ee4f0ca80a74cf16bdea2a6b4"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/catalog.py",
+      "bytes": 940,
+      "sha256": "f5dfc23927a9549decd1dd02298f3d7cb2989d8ec9b8d4c721c44451c3db0774"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/architectures/financial.py",
+      "bytes": 10368,
+      "sha256": "8bc39bb74d44a12f9511dd6ed1e6e5642f5e00832ef72ad22a0d444a284867fb"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/architectures/timesfm.py",
+      "bytes": 11185,
+      "sha256": "7b34f744756b4817a9b6c08be24e95e0ca6cbfa1783d951cb686615da173ba48"
+    }
+  ],
+  "selection": "all model epochs and all forecast shrinkage coefficients selected on validation; selection.json saved before first test prediction",
+  "ensembles": "equal weights across every declared seed; equal weights across three architecture ensembles",
+  "shrinkage": {
+    "grid": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "anchor": "training-label mean",
+    "tie_break": "smaller gamma"
+  },
+  "holdout": "previously inspected historical interval; not a fresh final holdout",
+  "backtest_policy": "fixed score>0 long/cash; next-session close execution; SPY adjusted-close returns; costs 0,5,10,20bps one-way",
+  "bootstrap": {
+    "block_length": 20,
+    "draws": 2000,
+    "seed": 913
+  },
+  "packages": {
+    "financial-ts-qlib": "2.2.0",
+    "torch": "2.15.0+cpu",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "pyqlib": "0.9.7"
+  },
+  "segments": {
+    "train": [
+      "1990-03-28",
+      "2007-05-04"
+    ],
+    "valid": [
+      "2007-05-09",
+      "2013-01-18"
+    ],
+    "test": [
+      "2013-01-24",
+      "2018-10-08"
+    ]
+  },
+  "finished_at_utc": "2026-11-26T23:45:55.970946+00:00",
+  "elapsed_seconds": 225.8757989149999
+}

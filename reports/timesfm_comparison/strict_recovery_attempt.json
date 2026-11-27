@@ -1,0 +1,88 @@
+{
+  "status": "failed",
+  "started_at_utc": "2026-11-26T23:43:33.595464+00:00",
+  "settings": {
+    "epochs": 3,
+    "train_samples": 256,
+    "valid_samples": 128,
+    "context_length": 128,
+    "batch_size": 4,
+    "lr": 0.001,
+    "seed": 42,
+    "device": "cpu"
+  },
+  "label": "Ref($close, -2) / Ref($close, -1) - 1",
+  "original_evidence": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot",
+  "original_evidence_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/learning_curves.json",
+      "bytes": 719,
+      "sha256": "912a208db856b5abcd9756e244fca416ac489c90f6195c8bf06b6bca08531826"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/manifest.json",
+      "bytes": 5183,
+      "sha256": "df6afe112441a7bb2f5c76c12fa1390baf15a204158dd144bb09bf7b910d27bb"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/metrics.json",
+      "bytes": 637,
+      "sha256": "8112d90d55e0adee011e3d406b8008c5a9cdbec26b3d8e973586126918452c0b"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/samples.json",
+      "bytes": 130478,
+      "sha256": "fc83195f0083237f1b8232ed401b0c842ccfc8926c2e1c7f59b6b183bfa894d7"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/validation_predictions.csv",
+      "bytes": 24438,
+      "sha256": "56273fdaae41325341d698291df144888d72e103bd1489b93d9ac4a59f96fd66"
+    }
+  ],
+  "provider_fingerprint": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "checkpoint_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint/config.json",
+      "bytes": 1273,
+      "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint/model.safetensors",
+      "bytes": 1322898824,
+      "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/timesfm_comparison.py",
+      "bytes": 25617,
+      "sha256": "3144322e390981a307bdd266a02ecd7a7a02fdce58aa92084fbcf40bd9b2b7da"
+    }
+  ],
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "torch": "2.15.0+cpu",
+    "pyqlib": "0.9.7"
+  },
+  "control": {
+    "name": "gated_adapter_only",
+    "formula": "h + (1 + gate(h)) * adapter(h)",
+    "initial_parameters": "identical tensors under the same constructor seed",
+    "parameter_matched": true,
+    "compute_matched": false,
+    "gate_role": "modulates the adapter, whereas the loop gate modulates shared-block replay"
+  },
+  "selection": "original sampled validation only; epoch zero and all fixed-budget epochs eligible",
+  "test_used_for_training_or_selection": false,
+  "full_validation_used_for_selection": false,
+  "test_status": "previously inspected historical interval; not a fresh final holdout",
+  "pretraining_overlap": "unknown",
+  "error": "ValueError: Recovery does not reproduce the original validation_rmse curve.",
+  "elapsed_seconds": 136.7245934609998
+}

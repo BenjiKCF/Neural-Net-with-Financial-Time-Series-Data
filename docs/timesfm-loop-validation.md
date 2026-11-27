@@ -6,6 +6,12 @@ completed 192 optimizer updates with the original 330,710,976 parameters frozen.
 Validation selected epoch 2. This establishes a working conversion and training
 path; it does not establish a looping-specific forecasting advantage.
 
+**Follow-up:** a [common-period evaluation](#follow-up-evaluation-on-common-periods)
+now compares a fresh same-recipe loop retrain, the frozen checkpoint, and a
+parameter-matched gated adapter-only control. The loop improves on the frozen
+checkpoint but does not beat zero return or the previously reported TimesFM
+mini. The original pilot tables and evidence below remain unchanged.
+
 The run completed on **27 November 2026, Hong Kong time**. Machine-readable
 timestamps are preserved in UTC. All numerical evidence below comes from the
 [saved run manifest](../reports/timesfm_loop_pilot/manifest.json),
@@ -129,16 +135,111 @@ profitability claim for this pilot. Pretraining overlap with historical market
 data is unknown.
 
 Both the repeated shared block and the adapter are new. Their combined effect
-cannot isolate a benefit from looping. The next causal comparison would use a
-matched adapter-only control with the same adapter rank and placement, data,
-optimizer, compute accounting, training budget, and validation selection. More
-seeds and an independently justified evaluation period are also needed for a
-stronger performance conclusion.
+cannot isolate a benefit from looping. The follow-up below adds a gated
+adapter-only control with matched trainable parameters, initialization, data,
+optimizer, training budget, and selection. Its gate has a different role and
+it uses less compute. More seeds, a stricter compute/architecture ablation,
+and an independently justified evaluation period are still needed for a
+stronger causal or performance conclusion.
 
 This pilot uses 128-close contexts and validation rows. The earlier official
 TimesFM benchmark uses 256-close contexts and 1,438 test rows. Their RMSE values
 must not be ranked against each other. The existing six-model test benchmark
 and its source hashes are preserved unchanged.
+
+## Follow-up: evaluation on common periods
+
+The subsequent comparison completed on **27 November 2026 at 08:01:37 Hong
+Kong time**. It uses 128-close contexts for all three official-checkpoint
+variants, the same return target, all **1,436 validation dates**, and exactly
+the **1,438 test dates** used in the existing architecture benchmark. All test
+labels and their order match that benchmark exactly.
+
+| Model | Full validation RMSE ↓ | Test RMSE ↓ |
+| --- | ---: | ---: |
+| Zero-return reference | **0.01599491** | **0.00773293** |
+| Frozen TimesFM 3, 128-close context | 0.01620599 | 0.00790151 |
+| Loop fine-tuning, fresh same-recipe retrain | 0.01615178 | 0.00787693 |
+| Parameter-matched gated adapter-only control | 0.01615656 | 0.00788071 |
+
+The loop retrain has **0.3111% lower test RMSE** than the frozen model under
+this common input protocol. It is **1.8621% worse than zero return** and
+**1.9721% worse** than the prior TimesFM mini mean, 0.00772459. That mini uses
+32-session factor windows and random initialization; it is a different input
+and training regime, while the test dates and labels are shared.
+
+The validation/test scale difference is mostly visible in the target itself:
+zero return has RMSE 0.01599491 on the full 2007–2013 validation interval and
+0.00773293 on the 2013–2018 test interval, a ratio of approximately **2.0684**.
+The original 128-row sampled-validation score around 0.016 therefore cannot
+be ranked directly against the old test score around 0.0077. The selected
+adapter's small sampled-validation advantage over zero return also did not
+extend to the full validation interval.
+
+[Complete comparison and provenance](../reports/timesfm_comparison/comparison.json)
+· [All aligned predictions](../reports/timesfm_comparison/all_period_predictions.csv)
+· [Shared backtest, plots, and new candidate models](financial-research.md)
+
+### Numerical replication, not restoration of the original adapter
+
+The original local adapter was unavailable in the restored execution
+environment. The original recipe was run **once**, with identical checkpoint
+and provider bytes, loop training sources, sample records, seed, and recorded
+package versions. The strict numerical comparison failed; this failure is
+[preserved](../reports/timesfm_comparison/strict_recovery_attempt.json).
+
+| Reproduction check | Observation |
+| --- | --- |
+| Original selected sampled-validation RMSE | 0.0158700501993 |
+| Fresh retrain selected sampled-validation RMSE | 0.0158702974238 |
+| Selected epoch | 2 in both runs |
+| Maximum learning-curve RMSE discrepancy | 2.4722e-7 |
+| Maximum selected-score discrepancy over all 128 rows | 8.4155e-6 |
+| RMSE between those 128 selected-score vectors | 1.7757e-6 |
+| Checked context/label records | All 384 match exactly |
+| Adapter archive hash | Different |
+
+The comparison resumed using that one retrain, with no additional training
+attempt to force agreement. Its status is **`numerical_replication_only`**,
+and the test/backtest forecast represents this fresh retrain. The original
+adapter's exact test performance was not measured. Small prediction changes
+can alter a trading signal's sign, so the distinction matters for backtesting.
+The current platform, CPU capability, and Torch parallel configuration are
+recorded. Original CPU details were not recorded; the cause of the drift is
+not established.
+
+The retrain ran from 07:43:33 to 07:45:50 Hong Kong time. The continued control
+and evaluation run began at 07:49:50; both adapter selections were frozen at
+**07:52:08**, before the first test-price query. Machine-readable timestamps
+remain in UTC. The two original loop training modules were preserved
+byte-for-byte. The comparison source SHA-256 was
+`a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc`;
+the manifests retain the remaining source/checkpoint hashes and versions.
+
+### Completed gated adapter-only control
+
+Both variants start with the same gate and rank-8 adapter tensors and train
+**21,761 parameters** under the same 256-training/128-validation-sample budget,
+seed, minibatch order, optimizer, three epochs, and epoch-zero eligibility.
+Both selected epoch 2. Full validation and test scoring began after selection
+and did not change either checkpoint.
+
+The control inserts `h + (1 + gate(h)) * adapter(h)` after layer 11 and executes
+the original 20 layers. The loop uses
+`h + gate(h) * (F_shared(h) - h) + adapter(h)` and executes 24 layer applications.
+The trainable parameter counts match, but the gate's role and computation
+budget differ. The small test gap, 0.00787693 versus 0.00788071, does not
+establish a benefit specifically caused by looping. This remains one seed on
+a previously inspected historical interval, with unknown pretraining overlap.
+
+The [comparison archive](../reports/timesfm_comparison) contains 13
+allowlisted JSON/CSV files: the comparison, aligned predictions, strict-check
+failure, and both runs' manifests, metrics, learning curves, sample records,
+and sampled-validation predictions. They are byte-identical copies of the
+run outputs. Checkpoint and adapter tensors are excluded. The
+[`recovered_loop` directory](../reports/timesfm_comparison/recovered_loop)
+retains the original run layout; its recorded status explicitly identifies
+the fresh numerical retrain.
 
 ## Reproduce the pilot
 
@@ -169,3 +270,27 @@ permits noncommercial, nonproduction research and prohibits redistribution of
 the model and its derivatives. **The original checkpoint and learned adapter
 weights are excluded from this repository.** The manifest retains the local
 adapter's hash for provenance, but the binary is intentionally not published.
+
+### Reproduce the common-period comparison
+
+With the same imported provider and local official checkpoint, run:
+
+```bash
+python -m financial_ts.timesfm_comparison --provider .data/my-spx --checkpoint .data/timesfm3-checkpoint --output runs/my-timesfm-comparison --original-evidence reports/timesfm_loop_pilot
+```
+
+This checks checkpoint/provider identity, performs one original-recipe
+retrain, and checks all recorded sampled predictions before training the
+control. If strict numerical reproduction fails, inspect the generated
+comparison and retrain evidence. A completed retrain that stopped before
+control training and test evaluation can be explicitly continued as a fresh
+numerical replication:
+
+```bash
+python -m financial_ts.timesfm_comparison --provider .data/my-spx --checkpoint .data/timesfm3-checkpoint --output runs/my-timesfm-comparison --original-evidence reports/timesfm_loop_pilot --resume --allow-numerical-replication
+```
+
+That continuation reuses the saved retrain and preserves the failed strict
+attempt. It does not rerun training to seek closer agreement. Changed source,
+checkpoint/provider bytes, sampled contexts/labels, or selected epoch remain
+errors. Completed comparisons cannot be overwritten.

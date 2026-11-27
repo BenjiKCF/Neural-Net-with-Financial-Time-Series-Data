@@ -1,0 +1,21 @@
+model,display_name,category,parameter_count,ensemble_members,validation_rmse,test_rmse,parameter_count_per_member,trainable_parameter_count
+zero_return,Zero return,reference,0.0,1,0.01599491226564579,0.00773293244483498,,
+training_mean,Training mean,reference,1.0,1,0.015996571819094165,0.007719567789422932,,
+lightgbm,LightGBM,archived_seed_ensemble,,3,,0.007730527380540985,,
+transformer,Transformer,archived_seed_ensemble,91683.0,3,,0.007760395225643089,30561.0,
+deepseek_v41_mini,DeepSeek mini,archived_seed_ensemble,311907.0,3,,0.007822108418492865,103969.0,
+glm54_mini,GLM loop mini,archived_seed_ensemble,135567.0,3,,0.007843880195733932,45189.0,
+qwen4_mini,Qwen mini,archived_seed_ensemble,366774.0,3,,0.007794880247257393,122258.0,
+timesfm3_mini,TimesFM mini (archived),archived_seed_ensemble,90471.0,3,,0.007716514029337252,30157.0,
+timesfm3_pretrained_256,Official TimesFM (256 closes),archived_pretrained,330710976.0,1,,0.0078089918019314634,,
+timesfm3_mini_retrained,TimesFM mini (retrained),new_seed_ensemble,90471.0,3,0.015975581258729565,0.0077069311488270125,,
+timesfm3_mini_shrunk,TimesFM mini + shrinkage,validation_shrinkage,90471.0,3,0.015975581258729565,0.0077069311488270125,,
+multiscale_residual_mixer,Multiscale residual mixer,new_seed_ensemble,43185.0,3,0.016034260844496037,0.007825469506675486,,
+multiscale_residual_mixer_shrunk,Multiscale mixer + shrinkage,validation_shrinkage,43185.0,3,0.015993838724884586,0.007731769396327157,,
+regime_linear_moe,Regime linear experts,new_seed_ensemble,9798.0,3,0.016033703528307058,0.00782310194091146,,
+regime_linear_moe_shrunk,Regime experts + shrinkage,validation_shrinkage,9798.0,3,0.015993810083741983,0.007731330714449237,,
+three_architecture_blend,Three-architecture blend,new_seed_ensemble,143454.0,9,0.01599941892139988,0.007767586925310991,,
+three_architecture_blend_shrunk,Architecture blend + shrinkage,validation_shrinkage,143454.0,9,0.015990070398949945,0.0077346760361342165,,
+timesfm3_frozen_128,Official TimesFM (128 closes),pretrained_replay,330710976.0,1,0.016205993936852774,0.007901508906858774,,0.0
+timesfm3_loop_128,TimesFM loop + adapter (retrained),pretrained_adaptation,330732737.0,1,0.016151782117190292,0.00787692707888102,,21761.0
+timesfm3_adapter_only_128,TimesFM gated adapter only,pretrained_adaptation,330732737.0,1,0.016156563300739234,0.007880707294984812,,21761.0

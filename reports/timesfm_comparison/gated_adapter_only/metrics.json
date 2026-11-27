@@ -1,0 +1,17 @@
+{
+  "best_epoch": 2,
+  "baseline_validation_rmse": 0.016005099952096837,
+  "selected_validation_rmse": 0.01589499742774479,
+  "epochs_run": 3,
+  "optimizer_updates": 192,
+  "selected_checkpoint_updates": 128,
+  "training_examples_seen": 768,
+  "parameter_count": 330732737,
+  "trainable_parameter_count": 21761,
+  "selected_gate_change_l2": 0.4758415864674045,
+  "selected_adapter_change_l2": 2.0478357703037453,
+  "initial_baseline_max_score_error": 0.0,
+  "adapter_replay_max_score_error": 0.0,
+  "adapter_replay_contexts": 128,
+  "test_used_for_training_or_selection": false
+}

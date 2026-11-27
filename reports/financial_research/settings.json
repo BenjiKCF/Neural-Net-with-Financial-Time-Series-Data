@@ -1,0 +1,320 @@
+{
+  "policy": "long if score > 0, otherwise cash; fixed for every model",
+  "signal_instrument": "SPX",
+  "execution_asset": "SPY",
+  "price_basis": "supplied dividend/split-adjusted close; total-return proxy",
+  "signal_time": "after close t",
+  "entry_time": "close of next observed session t+1",
+  "exit_time": "close of following observed session t+2",
+  "session_calendar": "supplied price index; completeness is a data-source requirement",
+  "costs_bps": [
+    0.0,
+    5.0,
+    10.0,
+    20.0
+  ],
+  "primary_cost_bps": 5.0,
+  "cost_assumption": "one-way proportional cost on traded notional, not a quoted fee",
+  "initial_equity": 1.0,
+  "initial_position": "cash",
+  "terminal_liquidation": true,
+  "cash_return": 0.0,
+  "shorting": false,
+  "leverage": false,
+  "taxes": "not modeled",
+  "annualization": "CAGR uses actual elapsed days/365.25; volatility/Sharpe use 252",
+  "threshold_selection": "none; threshold fixed at zero",
+  "test_count": 1438,
+  "validation_count": 1436,
+  "selected_by_validation": "timesfm3_mini_retrained",
+  "strategy_model_mapping": {
+    "zero_return": "zero_return",
+    "training_mean": "training_mean",
+    "timesfm3_mini__ensemble": "timesfm3_mini_retrained",
+    "timesfm3_mini__ensemble__shrunk": "timesfm3_mini_shrunk",
+    "multiscale_residual_mixer__ensemble": "multiscale_residual_mixer",
+    "multiscale_residual_mixer__ensemble__shrunk": "multiscale_residual_mixer_shrunk",
+    "regime_linear_moe__ensemble": "regime_linear_moe",
+    "regime_linear_moe__ensemble__shrunk": "regime_linear_moe_shrunk",
+    "three_architecture_blend": "three_architecture_blend",
+    "three_architecture_blend__shrunk": "three_architecture_blend_shrunk"
+  },
+  "display_names": {
+    "zero_return": "Zero return",
+    "training_mean": "Training mean",
+    "lightgbm": "LightGBM",
+    "transformer": "Transformer",
+    "deepseek_v41_mini": "DeepSeek mini",
+    "glm54_mini": "GLM loop mini",
+    "qwen4_mini": "Qwen mini",
+    "timesfm3_mini": "TimesFM mini (archived)",
+    "timesfm3_mini_retrained": "TimesFM mini (retrained)",
+    "timesfm3_pretrained_256": "Official TimesFM (256 closes)",
+    "timesfm3_frozen_128": "Official TimesFM (128 closes)",
+    "timesfm3_loop_128": "TimesFM loop + adapter (retrained)",
+    "timesfm3_adapter_only_128": "TimesFM gated adapter only",
+    "multiscale_residual_mixer": "Multiscale residual mixer",
+    "regime_linear_moe": "Regime linear experts",
+    "timesfm3_mini_shrunk": "TimesFM mini + shrinkage",
+    "multiscale_residual_mixer_shrunk": "Multiscale mixer + shrinkage",
+    "regime_linear_moe_shrunk": "Regime experts + shrinkage",
+    "three_architecture_blend": "Three-architecture blend",
+    "three_architecture_blend_shrunk": "Architecture blend + shrinkage",
+    "cash": "Cash",
+    "buy_and_hold": "SPY buy and hold"
+  },
+  "descriptors": {
+    "zero_return": {
+      "category": "reference",
+      "parameter_count": 0,
+      "ensemble_members": 1
+    },
+    "training_mean": {
+      "category": "reference",
+      "parameter_count": 1,
+      "ensemble_members": 1
+    },
+    "lightgbm": {
+      "category": "archived_seed_ensemble",
+      "parameter_count": null,
+      "parameter_count_per_member": null,
+      "ensemble_members": 3
+    },
+    "transformer": {
+      "category": "archived_seed_ensemble",
+      "parameter_count": 91683,
+      "parameter_count_per_member": 30561,
+      "ensemble_members": 3
+    },
+    "deepseek_v41_mini": {
+      "category": "archived_seed_ensemble",
+      "parameter_count": 311907,
+      "parameter_count_per_member": 103969,
+      "ensemble_members": 3
+    },
+    "glm54_mini": {
+      "category": "archived_seed_ensemble",
+      "parameter_count": 135567,
+      "parameter_count_per_member": 45189,
+      "ensemble_members": 3
+    },
+    "qwen4_mini": {
+      "category": "archived_seed_ensemble",
+      "parameter_count": 366774,
+      "parameter_count_per_member": 122258,
+      "ensemble_members": 3
+    },
+    "timesfm3_mini": {
+      "category": "archived_seed_ensemble",
+      "parameter_count": 90471,
+      "parameter_count_per_member": 30157,
+      "ensemble_members": 3
+    },
+    "timesfm3_pretrained_256": {
+      "category": "archived_pretrained",
+      "parameter_count": 330710976,
+      "ensemble_members": 1
+    },
+    "timesfm3_mini_retrained": {
+      "category": "new_seed_ensemble",
+      "parameter_count": 90471,
+      "ensemble_members": 3
+    },
+    "timesfm3_mini_shrunk": {
+      "category": "validation_shrinkage",
+      "parameter_count": 90471,
+      "ensemble_members": 3
+    },
+    "multiscale_residual_mixer": {
+      "category": "new_seed_ensemble",
+      "parameter_count": 43185,
+      "ensemble_members": 3
+    },
+    "multiscale_residual_mixer_shrunk": {
+      "category": "validation_shrinkage",
+      "parameter_count": 43185,
+      "ensemble_members": 3
+    },
+    "regime_linear_moe": {
+      "category": "new_seed_ensemble",
+      "parameter_count": 9798,
+      "ensemble_members": 3
+    },
+    "regime_linear_moe_shrunk": {
+      "category": "validation_shrinkage",
+      "parameter_count": 9798,
+      "ensemble_members": 3
+    },
+    "three_architecture_blend": {
+      "category": "new_seed_ensemble",
+      "parameter_count": 143454,
+      "ensemble_members": 9
+    },
+    "three_architecture_blend_shrunk": {
+      "category": "validation_shrinkage",
+      "parameter_count": 143454,
+      "ensemble_members": 9
+    },
+    "timesfm3_frozen_128": {
+      "category": "pretrained_replay",
+      "parameter_count": 330710976,
+      "ensemble_members": 1,
+      "trainable_parameter_count": 0
+    },
+    "timesfm3_loop_128": {
+      "category": "pretrained_adaptation",
+      "parameter_count": 330732737,
+      "ensemble_members": 1,
+      "trainable_parameter_count": 21761
+    },
+    "timesfm3_adapter_only_128": {
+      "category": "pretrained_adaptation",
+      "parameter_count": 330732737,
+      "ensemble_members": 1,
+      "trainable_parameter_count": 21761
+    }
+  },
+  "forecast_target": "Ref($close, -2) / Ref($close, -1) - 1",
+  "selection": "scratch winner/calibration chosen on full validation; official variants retain pilot-sample selection; all trading rules fixed",
+  "comparability": "all test RMSE uses identical SPX rows; portfolio uses next-close SPY total-return proxy; seed ensembles are averaged forecasts, not mean seed RMSE",
+  "holdout": "previously inspected historical interval; exploratory research",
+  "pretraining_overlap": "unknown for all official TimesFM variants",
+  "timesfm_replication": {
+    "status": "numerical_replication_only",
+    "strict_failures": [
+      "epoch 2 validation_rmse curve",
+      "epoch 3 train_rmse curve",
+      "all-row baseline_score predictions",
+      "all-row selected_score predictions"
+    ],
+    "numerical_replication_explicitly_enabled": true,
+    "interpretation": "fresh same-protocol retrain; not restoration of the original adapter",
+    "rtol": 1e-05,
+    "atol": 1e-08,
+    "validation_rows_checked": 128,
+    "sample_records_checked": 384,
+    "max_curve_absolute_error": 2.4722448514410966e-07,
+    "max_score_absolute_errors": {
+      "baseline_score": 1.217051928126267e-07,
+      "selected_score": 8.415534507477673e-06
+    },
+    "mean_score_absolute_errors": {
+      "baseline_score": 1.3862692088001394e-08,
+      "selected_score": 1.1511050433451325e-06
+    },
+    "rmse_between_prediction_sets": {
+      "baseline_score": 3.657002142642208e-08,
+      "selected_score": 1.7756580916510366e-06
+    },
+    "original_selected_validation_rmse": 0.01587005019929787,
+    "retrained_selected_validation_rmse": 0.015870297423783014,
+    "selected_epoch": 2,
+    "adapter_archive_sha256_equal": false,
+    "original_packages": {
+      "financial-ts-qlib": "2.2.0",
+      "pyqlib": "0.9.7",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "torch": "2.15.0+cpu",
+      "timesfm": "3.0.2"
+    },
+    "recovered_packages": {
+      "financial-ts-qlib": "2.2.0",
+      "pyqlib": "0.9.7",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "torch": "2.15.0+cpu",
+      "timesfm": "3.0.2"
+    }
+  },
+  "period_scale": {
+    "full_validation_zero_rmse": 0.01599491226564579,
+    "test_zero_rmse": 0.00773293244483498
+  },
+  "sources": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/architecture_predictions.csv",
+      "bytes": 591561,
+      "sha256": "4900f5ff856c0d7c1e740f8320ca1490c594e9b926914c1dea8984f0c6e9d03b"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/architecture_benchmark.json",
+      "bytes": 141717,
+      "sha256": "07a38a810b39762dc3949aed0d02c3a480baa3a839246f80b147cf5eadf77d71"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/backtest/spy_daily.csv",
+      "bytes": 373480,
+      "sha256": "f4b86809c060a572b6731a3b0bedd69f7285efa9b397a61b50094e5797f6186e"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/test_predictions.csv",
+      "bytes": 639615,
+      "sha256": "0c03eafb240ad25e289d54d69539a4bb5597cbbb80ab4f01cdf4a7e4153aff0f"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/validation_predictions.csv",
+      "bytes": 639259,
+      "sha256": "d3e33324a93a81b57d575fbf2c073003446c98b1f0f033029fecc124f4421f9d"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/selection.json",
+      "bytes": 3690,
+      "sha256": "15134ee44f2ecf38a0e1a491147d9c3b2c0dff9e52f0c92b008ada1192d0dba0"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/metrics.json",
+      "bytes": 13468,
+      "sha256": "d924da9d8f6142cc4dda4b6a04904baf2199b7b453a984448dda4ed9639b4e30"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/protocol.json",
+      "bytes": 11695,
+      "sha256": "b0d870fcad3cb4cac9940ae3b7f80373b257a95fb0f15b6c490c61adef31ad6c"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm-comparison/all_period_predictions.csv",
+      "bytes": 638070,
+      "sha256": "de9cdf98a9b6e46d2fe5ce705f63b84bddc3cd8d1680d57819ada093c472142e"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm-comparison/comparison.json",
+      "bytes": 11158,
+      "sha256": "766f07fb56f04097ce35dc8b13651b515e473744c707f47b035b5dd242655e06"
+    }
+  ],
+  "created_at_utc": "2026-11-27T00:05:16.555106+00:00",
+  "spy_provenance": {
+    "source": "Yahoo Finance public chart response",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=1136073600&period2=1539388800&interval=1d&events=div%2Csplits",
+    "historical_prices_page": "https://finance.yahoo.com/quote/SPY/history/",
+    "adjustment_definition": "https://help.yahoo.com/kb/SLN28256.html",
+    "acquisition": "offline normalization of a previously downloaded raw response",
+    "received_at_utc": "2026-11-26T23:32:13.587631+00:00",
+    "requested_start": "2006-01-01",
+    "requested_end_inclusive": "2018-10-12",
+    "symbol": "SPY",
+    "currency": "USD",
+    "session_timezone": "America/New_York",
+    "rows": 3218,
+    "first_session": "2006-01-03",
+    "last_session": "2018-10-12",
+    "dividend_events": 51,
+    "split_events": 0,
+    "price_basis": "adj_close includes dividend/split adjustments; do not add dividends twice",
+    "normalization": "Source values unchanged; timestamps mapped to exchange-local session dates",
+    "missing_bars": "rejected; no filling",
+    "files": [
+      {
+        "name": "spy_raw.json",
+        "bytes": 361031,
+        "sha256": "40574887f3b2a59baf29b1f0a06a56695d0eb194e96b47002e70e27c28071701"
+      },
+      {
+        "name": "spy_daily.csv",
+        "bytes": 373480,
+        "sha256": "f4b86809c060a572b6731a3b0bedd69f7285efa9b397a61b50094e5797f6186e"
+      }
+    ]
+  }
+}

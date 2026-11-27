@@ -1,0 +1,176 @@
+{
+  "reference": "timesfm3_mini",
+  "comparisons": {
+    "zero_return": {
+      "rmse_difference": 1.6418415497728052e-05,
+      "lower_95": -2.629167926071398e-06,
+      "upper_95": 3.772281697672858e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "training_mean": {
+      "rmse_difference": 3.0537600856795494e-06,
+      "lower_95": -1.1248845611867017e-05,
+      "upper_95": 1.7351226101288056e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "lightgbm": {
+      "rmse_difference": 1.4013351203732982e-05,
+      "lower_95": -1.4459119285017128e-05,
+      "upper_95": 4.656814555417076e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "transformer": {
+      "rmse_difference": 4.388119630583699e-05,
+      "lower_95": 1.5751092324866767e-06,
+      "upper_95": 8.863047028925097e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "deepseek_v41_mini": {
+      "rmse_difference": 0.00010559438915561277,
+      "lower_95": 4.6150966179068904e-05,
+      "upper_95": 0.0001632302463733145,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "glm54_mini": {
+      "rmse_difference": 0.0001273661663966797,
+      "lower_95": 6.565128650628944e-05,
+      "upper_95": 0.00019644074666986034,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "qwen4_mini": {
+      "rmse_difference": 7.836621792014099e-05,
+      "lower_95": 2.1314310604177482e-05,
+      "upper_95": 0.0001391782783505808,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "timesfm3_pretrained_256": {
+      "rmse_difference": 9.247777259421136e-05,
+      "lower_95": -1.7436362788594515e-05,
+      "upper_95": 0.00019902198924553127,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "timesfm3_mini_retrained": {
+      "rmse_difference": -9.58288051023954e-06,
+      "lower_95": -2.829907858543446e-05,
+      "upper_95": 8.299133760905023e-06,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "timesfm3_mini_shrunk": {
+      "rmse_difference": -9.58288051023954e-06,
+      "lower_95": -2.829907858543446e-05,
+      "upper_95": 8.299133760905023e-06,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "multiscale_residual_mixer": {
+      "rmse_difference": 0.00010895547733823403,
+      "lower_95": 5.509396104397485e-05,
+      "upper_95": 0.00016705613875367335,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "multiscale_residual_mixer_shrunk": {
+      "rmse_difference": 1.5255366989905088e-05,
+      "lower_95": -1.0237736732290804e-06,
+      "upper_95": 3.253793422995334e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "regime_linear_moe": {
+      "rmse_difference": 0.00010658791157420848,
+      "lower_95": 5.300789770667322e-05,
+      "upper_95": 0.00016424797092806374,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "regime_linear_moe_shrunk": {
+      "rmse_difference": 1.4816685111985334e-05,
+      "lower_95": -1.3939789575302413e-06,
+      "upper_95": 3.186118859479793e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "three_architecture_blend": {
+      "rmse_difference": 5.1072895973738874e-05,
+      "lower_95": 1.5359774095253294e-05,
+      "upper_95": 9.017224788552446e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "three_architecture_blend_shrunk": {
+      "rmse_difference": 1.816200679696442e-05,
+      "lower_95": -6.725460181469496e-07,
+      "upper_95": 3.7851145170199355e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "timesfm3_frozen_128": {
+      "rmse_difference": 0.00018499487752152155,
+      "lower_95": 5.724271184829191e-05,
+      "upper_95": 0.0003303423262804971,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "timesfm3_loop_128": {
+      "rmse_difference": 0.00016041304954376827,
+      "lower_95": 4.2578412499198554e-05,
+      "upper_95": 0.0002942109773380959,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "timesfm3_adapter_only_128": {
+      "rmse_difference": 0.00016419326564755948,
+      "lower_95": 4.4645685567488186e-05,
+      "upper_95": 0.0002996987707856092,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    }
+  }
+}

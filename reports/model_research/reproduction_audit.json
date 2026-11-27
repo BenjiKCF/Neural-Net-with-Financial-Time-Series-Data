@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "saved_at_utc": "2026-11-26T23:57:35.722905+00:00",
+  "scope": "Read-only investigation of scratch TimesFM mini; not the official pretrained TimesFM adaptation.",
+  "status": "trajectory_not_exactly_reproduced_cause_unresolved",
+  "conclusion": "No current runner, resolved config, sampled data array, seed initialization, first batch, or initial forward discrepancy was found. This does not prove the archived runtime had identical derived arrays or numerical kernels. Cross-host numerical differences remain plausible but are not an established cause. Preserve archived and rerun results separately.",
+  "no_additional_full_training_performed": true,
+  "current_platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "archived_platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python_version_current": "3.12.14",
+  "python_version_archived": "3.12.14",
+  "packages": {
+    "financial-ts-qlib": {
+      "archived": "2.1.0",
+      "current": "2.2.0"
+    },
+    "torch": {
+      "archived": "2.15.0+cpu",
+      "current": "2.15.0+cpu"
+    },
+    "numpy": {
+      "archived": "1.26.4",
+      "current": "1.26.4"
+    },
+    "pandas": {
+      "archived": "2.3.3",
+      "current": "2.3.3"
+    },
+    "pyqlib": {
+      "archived": "0.9.7",
+      "current": "0.9.7"
+    }
+  },
+  "core_source_hashes": {
+    "src/financial_ts/model.py": {
+      "archived_sha256": "f1ff159c607d4e412bf11e07627d311690cc99ff76a2977f745a3e7c788bf4a0",
+      "current_sha256": "f1ff159c607d4e412bf11e07627d311690cc99ff76a2977f745a3e7c788bf4a0",
+      "equal": true
+    },
+    "src/financial_ts/architectures/timesfm.py": {
+      "archived_sha256": "7b34f744756b4817a9b6c08be24e95e0ca6cbfa1783d951cb686615da173ba48",
+      "current_sha256": "7b34f744756b4817a9b6c08be24e95e0ca6cbfa1783d951cb686615da173ba48",
+      "equal": true
+    },
+    "src/financial_ts/handler.py": {
+      "archived_sha256": "4369b48ae254c5c81579c00b62ecd1d450e1a6188ea403fd1d1f9d3cf4c6eaa9",
+      "current_sha256": "4369b48ae254c5c81579c00b62ecd1d450e1a6188ea403fd1d1f9d3cf4c6eaa9",
+      "equal": true
+    },
+    "src/financial_ts/workflow.py": {
+      "archived_sha256": "2727d3f588754faa168dbc0e000fd07ca504338ee4f0ca80a74cf16bdea2a6b4",
+      "current_sha256": "2727d3f588754faa168dbc0e000fd07ca504338ee4f0ca80a74cf16bdea2a6b4",
+      "equal": true
+    },
+    "src/financial_ts/data.py": {
+      "archived_sha256": "4ea3638aa65d68edd0f62d2d8f8ee469360ae679f90f02695dd5c036dda82998",
+      "current_sha256": "4ea3638aa65d68edd0f62d2d8f8ee469360ae679f90f02695dd5c036dda82998",
+      "equal": true
+    },
+    "src/financial_ts/benchmark.py": {
+      "archived_sha256": "ab850a45e0a97bee171ffd7c19caa94081931841a049390dc5a6f9729190b2fd",
+      "current_sha256": "ab850a45e0a97bee171ffd7c19caa94081931841a049390dc5a6f9729190b2fd",
+      "equal": true
+    }
+  },
+  "provider_fingerprint_current": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "provider_fingerprint_archived": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "config_checks": {
+    "resolved_tasks_equal": true,
+    "segments_equal": true,
+    "difference_before_resolution": "Only provider/output paths and explicit versus unresolved segment dates; no model hyperparameter differences.",
+    "sequence_length": 32,
+    "warmup_sessions": 60,
+    "d_model": 32,
+    "nhead": 4,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "n_epochs": 12,
+    "early_stop": 4,
+    "batch_size": 128,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "device": "cpu",
+    "num_threads": 2,
+    "aux_loss_weight": 0.01
+  },
+  "qlib_call_path_inspection": {
+    "source": ".venv/lib/python3.12/site-packages/qlib/model/trainer.py:_exe_task",
+    "legacy_path": "Initialize model; initialize dataset; auto_filter_kwargs(model.fit)(dataset, reweighter=None); save artifacts; generate records.",
+    "direct_path": "Initialize dataset; read label-only samplers; initialize model; model.fit(dataset).",
+    "seed_boundary": "SequenceForecastModel.fit resets Python, NumPy and Torch seeds after sampler preparation and before encoder and DataLoader construction.",
+    "assessment": "No input conversion, precision context or seeding difference found in Qlib task_train wrapper."
+  },
+  "isolated_current_runtime_diagnostic": {
+    "method": "Reconstructed legacy and direct runner paths in one separate subprocess. Compared both tasks, full train/validation sampler arrays and targets, identity indices, initialized encoder, first shuffled batch and first training-mode forward. No optimizer step was run.",
+    "comparison_scope": "Both paths executed now; hashes are not archived-derived-array evidence.",
+    "observed_at_utc_approx": "2026-11-26T23:47:53Z",
+    "train": {
+      "sample_count": 4312,
+      "feature_array_equal": true,
+      "index_equal": true,
+      "targets_equal": true,
+      "feature_dtype": "float32",
+      "target_dtype": "float64",
+      "feature_array_sha256": "a55dff838aab93f2689358e046cba94c2b0193e49793e08c15091948a41cea64",
+      "target_sha256": "3dcb8025eaf8798f71cc0445615f0c9f55b87364df524c14ad7a63165a0dab90",
+      "target_mean": 0.00039403997569004547,
+      "target_std": 0.009910113949118967
+    },
+    "valid": {
+      "sample_count": 1436,
+      "feature_array_equal": true,
+      "index_equal": true,
+      "targets_equal": true,
+      "feature_dtype": "float32",
+      "target_dtype": "float64",
+      "feature_array_sha256": "05ff7f28007566c6cf53fc982c78f058b460afb3878b1732dee3ff1bede7e976",
+      "target_sha256": "88f623ea130e744527658be4c614cba1c968ad44a91b2c5866c90fd31e2a64fc",
+      "target_mean": 0.00012965172446205756,
+      "target_std": 0.015994386790872922
+    },
+    "initial_parameter_sha256_both_paths": "77b830f057f35f6d4d5dc3e12f2597c9fc43f8368e94b05f20a23ffb84de1053",
+    "first_shuffled_batch_hashes_equal": true,
+    "first_training_forward_equal": true,
+    "first_training_forward_max_abs_difference": 0.0,
+    "torch_cpu_capability": "AVX512",
+    "torch_git_version": "d0f2af8b66b20da4baa50644c0cd3f887a2eae2e",
+    "torch_build_observed": {
+      "gcc": "13.3",
+      "cxx": "202002",
+      "mkl": "2024.2 build 20240605",
+      "mkldnn": "3.13.3",
+      "mkldnn_git": "b38f97eb6f2173513112f15a0481750b8a66e901",
+      "openmp": "201511",
+      "cuda_enabled": false,
+      "mkl_enabled": true,
+      "mkldnn_enabled": true,
+      "openmp_enabled": true
+    }
+  },
+  "trials": [
+    {
+      "seed": 7,
+      "archived_best_epoch": 1,
+      "current_best_epoch": 8,
+      "archived_epochs_run": 5,
+      "current_epochs_run": 12,
+      "archived_test_rmse": 0.007722697205495975,
+      "current_test_rmse": 0.007718890634834617,
+      "archived_learning_curves": {
+        "train": [
+          9.876401588066185e-05,
+          9.857085954792421e-05,
+          9.805923579952305e-05,
+          9.742650130941494e-05,
+          9.767212054528725e-05
+        ],
+        "valid": [
+          0.00025593602342886417,
+          0.00025660806384150307,
+          0.00025624514651378895,
+          0.00025848401689014696,
+          0.00025695175007147303
+        ]
+      },
+      "current_learning_curves": {
+        "train": [
+          9.876321379148296e-05,
+          9.872701736419754e-05,
+          9.81011972034125e-05,
+          9.760441383163551e-05,
+          9.730646058469096e-05,
+          9.641110116494542e-05,
+          9.54210971335343e-05,
+          9.459148834812172e-05,
+          9.285397330219364e-05,
+          9.032232011462438e-05,
+          8.918905178478462e-05,
+          8.809111808218531e-05
+        ],
+        "valid": [
+          0.00025590356177939067,
+          0.0002566452790974401,
+          0.0002559656241223551,
+          0.0002563686112701029,
+          0.00025571587917962645,
+          0.0002558951387085924,
+          0.00025640761038401286,
+          0.00025552438505912296,
+          0.00026016281691205545,
+          0.00025587798393021606,
+          0.0002619529720666334,
+          0.00025888914545014205
+        ]
+      },
+      "epoch_1_train_mse_difference_current_minus_archived": -8.020891788886085e-10,
+      "epoch_1_valid_mse_difference_current_minus_archived": -3.246164947349334e-08
+    },
+    {
+      "seed": 42,
+      "archived_best_epoch": 5,
+      "current_best_epoch": 2,
+      "archived_epochs_run": 9,
+      "current_epochs_run": 6,
+      "archived_test_rmse": 0.00772304988051257,
+      "current_test_rmse": 0.007723401545685239,
+      "archived_learning_curves": {
+        "train": [
+          9.880474073311563e-05,
+          9.84988196803614e-05,
+          9.821762470394595e-05,
+          9.810095169161927e-05,
+          9.770832096922576e-05,
+          9.701465644918749e-05,
+          9.63001975168528e-05,
+          9.474795325505531e-05,
+          9.258166199505437e-05
+        ],
+        "valid": [
+          0.00025616187458870195,
+          0.00025598209079463963,
+          0.0002564798534359713,
+          0.00025637834128591254,
+          0.0002559477397558514,
+          0.0002588013844644027,
+          0.0002700878395096536,
+          0.00025983136540406966,
+          0.00026336885033810466
+        ]
+      },
+      "current_learning_curves": {
+        "train": [
+          9.880948774697118e-05,
+          9.852603132739148e-05,
+          9.817356475308738e-05,
+          9.814558531424384e-05,
+          9.776255598617155e-05,
+          9.690879646869865e-05
+        ],
+        "valid": [
+          0.0002562477928850281,
+          0.00025611133198961934,
+          0.00025632234784300875,
+          0.0002564500239390519,
+          0.0002562868196536284,
+          0.0002578435105208357
+        ]
+      },
+      "epoch_1_train_mse_difference_current_minus_archived": 4.747013855553573e-09,
+      "epoch_1_valid_mse_difference_current_minus_archived": 8.591829632617013e-08
+    },
+    {
+      "seed": 2026,
+      "archived_best_epoch": 2,
+      "current_best_epoch": 2,
+      "archived_epochs_run": 6,
+      "current_epochs_run": 6,
+      "archived_test_rmse": 0.007728018822681306,
+      "current_test_rmse": 0.007724970613227185,
+      "archived_learning_curves": {
+        "train": [
+          9.880283171221498e-05,
+          9.849558297781819e-05,
+          9.796523788542626e-05,
+          9.826361440834311e-05,
+          9.786559828278509e-05,
+          9.724226534348286e-05
+        ],
+        "valid": [
+          0.0002557008788581627,
+          0.000255511890096067,
+          0.00025698832705193944,
+          0.00025563773250351603,
+          0.00025650804530561534,
+          0.0002563740147617892
+        ]
+      },
+      "current_learning_curves": {
+        "train": [
+          9.880345033546786e-05,
+          9.838086200471532e-05,
+          9.793676216652858e-05,
+          9.839708886156862e-05,
+          9.803196759116328e-05,
+          9.700227321054322e-05
+        ],
+        "valid": [
+          0.0002556664419854771,
+          0.00025546646491916185,
+          0.0002576101171964439,
+          0.0002560542066611119,
+          0.00025622708173956475,
+          0.000257384203422213
+        ]
+      },
+      "epoch_1_train_mse_difference_current_minus_archived": 6.186232528841706e-10,
+      "epoch_1_valid_mse_difference_current_minus_archived": -3.4436872685590127e-08
+    }
+  ],
+  "archived_fingerprints_not_recorded": [
+    "CPU capability and processor identity",
+    "Full numerical library build and kernel configuration",
+    "Initialized parameter hash",
+    "Derived feature and target array hashes"
+  ],
+  "evidence_files": [
+    {
+      "path": "reports/architecture_benchmark.json",
+      "bytes": 141717,
+      "sha256": "07a38a810b39762dc3949aed0d02c3a480baa3a839246f80b147cf5eadf77d71"
+    },
+    {
+      "path": "runs/model-research/protocol.json",
+      "bytes": 11695,
+      "sha256": "b0d870fcad3cb4cac9940ae3b7f80373b257a95fb0f15b6c490c61adef31ad6c"
+    },
+    {
+      "path": "runs/model-research/metrics.json",
+      "bytes": 13468,
+      "sha256": "d924da9d8f6142cc4dda4b6a04904baf2199b7b453a984448dda4ed9639b4e30"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "model_training_performed": false,
+  "preprocessing": "reconstructed using only the recorded training partition",
+  "provider_fingerprint": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "absolute_tolerance": 1e-10,
+  "checkpoints_verified": 9,
+  "unique_states_evaluated": 5,
+  "rows": {
+    "valid": 1436,
+    "test": 1438
+  },
+  "max_absolute_error": 0.0,
+  "models": {
+    "baseline": {
+      "state_sha256": "f337cf7d801e37872e526f76a96a2b022b05b7405c7f245ecdc33463687828ef",
+      "inference_reused_from": "baseline",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "directional_edit": {
+      "state_sha256": "f337cf7d801e37872e526f76a96a2b022b05b7405c7f245ecdc33463687828ef",
+      "inference_reused_from": "baseline",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "random_edit": {
+      "state_sha256": "ab14fa27456173b20d344cf5f36d6683f29020f9e70bf00acb8d24812a16eb7a",
+      "inference_reused_from": "random_edit",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "es_seed_7": {
+      "state_sha256": "d5427fdefe401edefb9f79fa47fdc97a06c511b4d5614b42549f3bd987320d11",
+      "inference_reused_from": "es_seed_7",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "combined_seed_7": {
+      "state_sha256": "d5427fdefe401edefb9f79fa47fdc97a06c511b4d5614b42549f3bd987320d11",
+      "inference_reused_from": "es_seed_7",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "es_seed_42": {
+      "state_sha256": "844c538b43bcd9c01ff1690eaa86174267216544f49c5e7dc10a8c8add66cbde",
+      "inference_reused_from": "es_seed_42",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "combined_seed_42": {
+      "state_sha256": "844c538b43bcd9c01ff1690eaa86174267216544f49c5e7dc10a8c8add66cbde",
+      "inference_reused_from": "es_seed_42",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "es_seed_2026": {
+      "state_sha256": "20402a1ecf8cc4b1475bf70c333dc7a13ae685d849dd60c0a64a8935e713aee7",
+      "inference_reused_from": "es_seed_2026",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    },
+    "combined_seed_2026": {
+      "state_sha256": "20402a1ecf8cc4b1475bf70c333dc7a13ae685d849dd60c0a64a8935e713aee7",
+      "inference_reused_from": "es_seed_2026",
+      "max_absolute_error": {
+        "valid": 0.0,
+        "test": 0.0
+      }
+    }
+  },
+  "packages": {
+    "torch": "2.15.0+cpu",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "pyqlib": "0.9.7"
+  }
+}

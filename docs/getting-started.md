@@ -1,6 +1,6 @@
 # Getting started: your first successful run
 
-This guide installs the project on your computer and runs all six trainable
+This guide installs the project on your computer and runs all eight trainable
 models on generated example data. You need internet access for installation;
 afterward, the demo needs **no API keys, downloaded market data, or GPU**.
 Copy commands into Terminal on macOS/Linux or PowerShell on Windows, one line at
@@ -123,14 +123,15 @@ fts demo --model all --epochs 1 --device cpu --output runs/my-first-demo
 ```
 
 Leave the terminal open until the command finishes. It generates synthetic
-prices, trains LightGBM, the Transformer, and the four mini models, then exports
-predictions and simulated portfolio results. Runtime depends on your computer.
+prices, trains LightGBM, the Transformer, four mini models, and two new financial
+architectures, then exports predictions and simulated portfolio results.
+Runtime depends on your computer.
 
 Open `runs/my-first-demo` in your file manager:
 
 | File or folder | What to look at |
 | --- | --- |
-| `comparison.json` | Forecast metrics for all six models. |
+| `comparison.json` | Forecast metrics for all eight models. |
 | Each model's `predictions.csv` | Dates, instruments, predictions, and observed targets. |
 | Each model's `metrics.json` | Forecast errors and portfolio statistics. |
 | Each model's `portfolio.csv` | Simulated daily returns and transaction costs. |
@@ -159,10 +160,39 @@ This old index dataset is a research example; `--no-backtest` avoids treating th
 index itself as a directly tradable security.
 
 For a longer comparison, `fts benchmark --provider .data/my-spx --output runs/my-benchmark`
-runs all six trainable models under three seeds, with up to 12 neural epochs.
-That is 18 training runs, substantially more work than the one-epoch demo.
+runs all eight trainable models under three seeds, with up to 12 neural epochs.
+That is 24 training runs, substantially more work than the one-epoch demo.
 See the [benchmark instructions](../README.md#reproduce-the-three-seed-architecture-comparison)
 and [recorded validation](architecture-validation.md) before interpreting results.
+
+## 7. Replay the recorded SPY backtest
+
+You can inspect a real historical simulation without training any model or
+downloading more data. The repository includes the recorded forecasts and the
+SPY adjusted-price window used in the [research report](financial-research.md).
+Run this command from the repository root after activating your environment:
+
+```bash
+fts backtest --predictions reports/financial_research/predictions.csv --spy-csv reports/financial_research/spy_prices.csv --output runs/my-backtest
+```
+
+| Output | How to use it |
+| --- | --- |
+| `runs/my-backtest/metrics.csv` | Compare each strategy's return, annualized return, Sharpe ratio, drawdown, exposure and trade count. |
+| `runs/my-backtest/ledger.csv` | Inspect every signal, execution date, position, fee and portfolio value. |
+| `runs/my-backtest/settings.json` | Read the timing rule, price convention and cost assumptions. |
+
+The default runs four cost scenarios: **0, 5, 10 and 20 basis points each way**.
+Five basis points is 0.05% of traded notional on a purchase or sale. The rule holds
+SPY after a positive prediction and holds cash otherwise; a signal after today's
+close trades at the next session's close. Cash earns zero, and the simulation
+charges for the final sale. It uses adjusted-price returns as a historical proxy,
+not actual broker fills.
+
+The README's headline results use the **5-basis-point** rows. SPY buy-and-hold
+outperformed every model strategy there, even though the newly trained TimesFM
+mini ensemble had the best forecast RMSE. This is why both the forecast table
+and the backtest matter. Choose a new output folder if you repeat the command.
 
 ## If something goes wrong
 

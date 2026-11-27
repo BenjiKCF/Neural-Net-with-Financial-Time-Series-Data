@@ -1,0 +1,212 @@
+{
+  "status": "passed",
+  "method": "Independent saved-forecast checks and explicit cash/share accounting; no project imports",
+  "test_observations": 1438,
+  "validation_observations": 1436,
+  "forecast_models": 11,
+  "maximum_forecast_metric_absolute_difference": 0.0,
+  "selection": {
+    "primary_seed": 42,
+    "selected_by_validation": "es_seed_42",
+    "selected_alphas": {
+      "directional_edit": 0.0,
+      "random_edit": 0.1
+    },
+    "selected_generations": {
+      "es_seed_7": 8,
+      "combined_seed_7": 8,
+      "es_seed_42": 8,
+      "combined_seed_42": 8,
+      "es_seed_2026": 3,
+      "combined_seed_2026": 3
+    },
+    "candidate_evaluations": 576,
+    "zero_directional_alpha_makes_combined_identical_to_es": true
+  },
+  "portfolio": {
+    "portfolio_scenarios": 52,
+    "primary_ledger_rows": 18694,
+    "primary_ledger_fields_checked": [
+      "asset_return",
+      "cost_factor",
+      "drawdown",
+      "entry_date",
+      "entry_trade",
+      "exit_date",
+      "exit_trade",
+      "exposure_turnover",
+      "gross_equity",
+      "gross_return",
+      "liquidation_cost",
+      "liquidation_factor",
+      "liquidation_notional",
+      "liquidation_trade",
+      "net_equity",
+      "net_return",
+      "position",
+      "previous_position",
+      "score",
+      "signal_date",
+      "starting_equity",
+      "trade_cost",
+      "traded_notional"
+    ],
+    "maximum_metric_absolute_difference": 2.4331231474050696e-14,
+    "maximum_ledger_absolute_difference": 9.769962616701378e-15,
+    "published_price_rows": 1440
+  },
+  "registered_source_snapshots": [
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/source/paper_research.py",
+      "bytes": 24815,
+      "sha256": "c8efaf2d01977b5aeb9cf45ddbc5623928a5fb130a7c7612da4f16c59b4c4512"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/source/posttraining.py",
+      "bytes": 15369,
+      "sha256": "b798602515872dc387d3f7816e10caf0ea6b1a35e071cb4ddd856b4f74fee185"
+    }
+  ],
+  "selection_sha256": "7897b1e25ba45ca0ad18e02107f8d082b5456c68c4704ea7f0a625ba5b3aec35",
+  "checkpoint_evidence": {
+    "status": "passed",
+    "checkpoints": [
+      {
+        "model": "baseline",
+        "state_sha256": "f337cf7d801e37872e526f76a96a2b022b05b7405c7f245ecdc33463687828ef",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/baseline.pt",
+        "bytes": 406099,
+        "sha256": "8b38a8aebb94876019349d9ba645824e6f9d14f5ad083bb04dde704998051860"
+      },
+      {
+        "model": "directional_edit",
+        "state_sha256": "f337cf7d801e37872e526f76a96a2b022b05b7405c7f245ecdc33463687828ef",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/directional_edit.pt",
+        "bytes": 407059,
+        "sha256": "b7c3cbb7f02f88e282c4aa6634cfeba4b6d2394f8d0eccd56d7c27fec3042634"
+      },
+      {
+        "model": "random_edit",
+        "state_sha256": "ab14fa27456173b20d344cf5f36d6683f29020f9e70bf00acb8d24812a16eb7a",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/random_edit.pt",
+        "bytes": 406459,
+        "sha256": "262211cc19a60554149792a05f57c223d6e5a4acd445f2e1bb2c73a24557706e"
+      },
+      {
+        "model": "es_seed_7",
+        "state_sha256": "d5427fdefe401edefb9f79fa47fdc97a06c511b4d5614b42549f3bd987320d11",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/es_seed_7.pt",
+        "bytes": 406219,
+        "sha256": "c49ccdf93340bc2b19210e2fa7c1f8834933a5b8bf898382f9bb9691c21b5ab2"
+      },
+      {
+        "model": "combined_seed_7",
+        "state_sha256": "d5427fdefe401edefb9f79fa47fdc97a06c511b4d5614b42549f3bd987320d11",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/combined_seed_7.pt",
+        "bytes": 406939,
+        "sha256": "a88984d1ff47dcc7b0a9b4306b359d5d8910b09b9f6621d8a93bffcfc974597f"
+      },
+      {
+        "model": "es_seed_42",
+        "state_sha256": "844c538b43bcd9c01ff1690eaa86174267216544f49c5e7dc10a8c8add66cbde",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/es_seed_42.pt",
+        "bytes": 406339,
+        "sha256": "89be23cb55f8a6b5885f1c1fa907f5dd08cab35a32ed00c3f46eabd3d8836f7e"
+      },
+      {
+        "model": "combined_seed_42",
+        "state_sha256": "844c538b43bcd9c01ff1690eaa86174267216544f49c5e7dc10a8c8add66cbde",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/combined_seed_42.pt",
+        "bytes": 407059,
+        "sha256": "1625416db8eaa305284dbc77d75643f077d2a8e2d55edd3138c22e5396f25eef"
+      },
+      {
+        "model": "es_seed_2026",
+        "state_sha256": "20402a1ecf8cc4b1475bf70c333dc7a13ae685d849dd60c0a64a8935e713aee7",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/es_seed_2026.pt",
+        "bytes": 406579,
+        "sha256": "eeb6dc76ba187b6b08c3eb612d63a7909af82d80ee3912da5c43afa88324fa59"
+      },
+      {
+        "model": "combined_seed_2026",
+        "state_sha256": "20402a1ecf8cc4b1475bf70c333dc7a13ae685d849dd60c0a64a8935e713aee7",
+        "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/checkpoints/combined_seed_2026.pt",
+        "bytes": 407299,
+        "sha256": "9450b2bf0a2c184ed0d8aa104c4a71eb31eb79367a82850b4afdc3d7f1201978"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/protocol.json",
+      "bytes": 5184,
+      "sha256": "0dfad1e23ef69e2aa4cbbcb3ed327dc4ab50dd15cb56196938305d6be6d1fc2d"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/summary.json",
+      "bytes": 14455,
+      "sha256": "7f86e87f3c744c67e7ca6d879bd733eb42db3b53c673aab4a497bdd61db540e7"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/selection.json",
+      "bytes": 13352,
+      "sha256": "7897b1e25ba45ca0ad18e02107f8d082b5456c68c4704ea7f0a625ba5b3aec35"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/search_history.json",
+      "bytes": 60461,
+      "sha256": "1d89bf4fbd82b4e6e76cbd5db4a038cf3af21a1e75e5cdf44ea3666bfadd4670"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/fit_samples.json",
+      "bytes": 27645,
+      "sha256": "179d0b5ced9e48938adf48c857fcc94374ea63f078f86fbc4355656a700a3eaf"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/directions.json",
+      "bytes": 6264,
+      "sha256": "d978f401fcc5d68f82bce3fc3b3d03f18fe8a698fa8493e38308119945b7a3e8"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/predictions.csv",
+      "bytes": 382549,
+      "sha256": "6b72fa675a04b3ec20bc26d4724a0a6296d9c3348568dffd4361e0f8de8e4bb0"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/validation_predictions.csv",
+      "bytes": 382583,
+      "sha256": "356a980aca12d1839ec943f643dd7954db06981109f7488bfc7f260fdcdba1a4"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/metrics.csv",
+      "bytes": 1496,
+      "sha256": "e8537d070907844070c83d64592e657b56d668c728bdb09d0922e3264cb1ff8b"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/backtest_metrics.csv",
+      "bytes": 12705,
+      "sha256": "9f02efe644dabdd33b7f5dc03887000ecfead5d59373d61fc14fcb728ef3ec90"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/backtest_settings.json",
+      "bytes": 941,
+      "sha256": "776b49ed4b167d2cbe8d3c27d20397c2497acb41aba30c1f75e334c27848bc6a"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/equity.csv",
+      "bytes": 4384159,
+      "sha256": "b599d682ce841ef48a5cd4c92fcb73e6329ab86efea1ca7e292427c96c0a5fed"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/paper_posttraining/spy_prices.csv",
+      "bytes": 48264,
+      "sha256": "b80498a2bda56e41fab77bab63ca1df29c06f9df926d46f8ccfa22328ba09e7a"
+    }
+  ],
+  "limitations": [
+    "Verifies recorded chronology and selection hashes, not externally witnessed execution timestamps.",
+    "Does not retrain models or independently regenerate every forecast from features.",
+    "The historical test interval was previously inspected; this audit does not establish prospective superiority.",
+    "Uses the supplied complete-session SPY adjusted-close series as a total-return proxy, not historical fills."
+  ]
+}

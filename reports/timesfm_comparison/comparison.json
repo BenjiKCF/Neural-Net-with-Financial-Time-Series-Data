@@ -1,0 +1,312 @@
+{
+  "status": "completed",
+  "started_at_utc": "2026-11-26T23:49:50.326669+00:00",
+  "settings": {
+    "epochs": 3,
+    "train_samples": 256,
+    "valid_samples": 128,
+    "context_length": 128,
+    "batch_size": 4,
+    "lr": 0.001,
+    "seed": 42,
+    "device": "cpu"
+  },
+  "label": "Ref($close, -2) / Ref($close, -1) - 1",
+  "original_evidence": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot",
+  "original_evidence_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/learning_curves.json",
+      "bytes": 719,
+      "sha256": "912a208db856b5abcd9756e244fca416ac489c90f6195c8bf06b6bca08531826"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/manifest.json",
+      "bytes": 5183,
+      "sha256": "df6afe112441a7bb2f5c76c12fa1390baf15a204158dd144bb09bf7b910d27bb"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/metrics.json",
+      "bytes": 637,
+      "sha256": "8112d90d55e0adee011e3d406b8008c5a9cdbec26b3d8e973586126918452c0b"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/samples.json",
+      "bytes": 130478,
+      "sha256": "fc83195f0083237f1b8232ed401b0c842ccfc8926c2e1c7f59b6b183bfa894d7"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/reports/timesfm_loop_pilot/validation_predictions.csv",
+      "bytes": 24438,
+      "sha256": "56273fdaae41325341d698291df144888d72e103bd1489b93d9ac4a59f96fd66"
+    }
+  ],
+  "provider_fingerprint": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "checkpoint_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint/config.json",
+      "bytes": 1273,
+      "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint/model.safetensors",
+      "bytes": 1322898824,
+      "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/src/financial_ts/timesfm_comparison.py",
+      "bytes": 30482,
+      "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+    }
+  ],
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "torch": "2.15.0+cpu",
+    "pyqlib": "0.9.7"
+  },
+  "execution_environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "processor": "",
+    "python": "3.12.14",
+    "cpu_count": 9,
+    "torch_cpu_capability": "AVX512",
+    "torch_parallel_info": "ATen/Parallel:\n\tat::get_num_threads() : 9\n\tat::get_num_interop_threads() : 9\nOpenMP 201511 (a.k.a. OpenMP 4.5)\n\tomp_get_max_threads() : 9\nIntel(R) oneAPI Math Kernel Library Version 2024.2-Product Build 20240605 for Intel(R) 64 architecture applications\n\tmkl_get_max_threads() : 9\nIntel(R) MKL-DNN v3.13.3 (Git Hash b38f97eb6f2173513112f15a0481750b8a66e901)\nstd::thread::hardware_concurrency() : 9\nEnvironment variables:\n\tOMP_NUM_THREADS : [not set]\n\tMKL_NUM_THREADS : [not set]\nATen parallel backend: OpenMP\n",
+    "configured_model_threads": 2,
+    "original_pilot_cpu_details": "not recorded; exact cross-host identity is not assumed"
+  },
+  "resumed_without_retraining": true,
+  "control": {
+    "name": "gated_adapter_only",
+    "formula": "h + (1 + gate(h)) * adapter(h)",
+    "initial_parameters": "identical tensors under the same constructor seed",
+    "parameter_matched": true,
+    "compute_matched": false,
+    "gate_role": "modulates the adapter, whereas the loop gate modulates shared-block replay"
+  },
+  "selection": "original sampled validation only; epoch zero and all fixed-budget epochs eligible",
+  "test_used_for_training_or_selection": false,
+  "full_validation_used_for_selection": false,
+  "test_status": "previously inspected historical interval; not a fresh final holdout",
+  "pretraining_overlap": "unknown",
+  "recovery": {
+    "status": "numerical_replication_only",
+    "strict_failures": [
+      "epoch 2 validation_rmse curve",
+      "epoch 3 train_rmse curve",
+      "all-row baseline_score predictions",
+      "all-row selected_score predictions"
+    ],
+    "numerical_replication_explicitly_enabled": true,
+    "interpretation": "fresh same-protocol retrain; not restoration of the original adapter",
+    "rtol": 1e-05,
+    "atol": 1e-08,
+    "validation_rows_checked": 128,
+    "sample_records_checked": 384,
+    "max_curve_absolute_error": 2.4722448514410966e-07,
+    "max_score_absolute_errors": {
+      "baseline_score": 1.217051928126267e-07,
+      "selected_score": 8.415534507477673e-06
+    },
+    "mean_score_absolute_errors": {
+      "baseline_score": 1.3862692088001394e-08,
+      "selected_score": 1.1511050433451325e-06
+    },
+    "rmse_between_prediction_sets": {
+      "baseline_score": 3.657002142642208e-08,
+      "selected_score": 1.7756580916510366e-06
+    },
+    "original_selected_validation_rmse": 0.01587005019929787,
+    "retrained_selected_validation_rmse": 0.015870297423783014,
+    "selected_epoch": 2,
+    "adapter_archive_sha256_equal": false,
+    "original_packages": {
+      "financial-ts-qlib": "2.2.0",
+      "pyqlib": "0.9.7",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "torch": "2.15.0+cpu",
+      "timesfm": "3.0.2"
+    },
+    "recovered_packages": {
+      "financial-ts-qlib": "2.2.0",
+      "pyqlib": "0.9.7",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "torch": "2.15.0+cpu",
+      "timesfm": "3.0.2"
+    }
+  },
+  "loop_training": {
+    "baseline_validation_rmse": 0.016005099952096837,
+    "selected_validation_rmse": 0.015870297423783014,
+    "best_epoch": 2,
+    "epochs_run": 3,
+    "optimizer_updates": 192,
+    "training_examples_seen": 768,
+    "train_samples": 256,
+    "validation_samples": 128,
+    "parameter_count": 330732737,
+    "trainable_parameter_count": 21761,
+    "last_epoch_gate_change_l2": 0.518827691395164,
+    "selected_gate_change_l2": 0.44596759376646666,
+    "last_epoch_adapter_change_l2": 3.255393150520291,
+    "selected_adapter_change_l2": 2.1558392208580037,
+    "adapter_replay_max_score_error": 0.0,
+    "test_evaluated": false,
+    "pretraining_overlap": "unknown"
+  },
+  "control_training": {
+    "best_epoch": 2,
+    "baseline_validation_rmse": 0.016005099952096837,
+    "selected_validation_rmse": 0.01589499742774479,
+    "epochs_run": 3,
+    "optimizer_updates": 192,
+    "selected_checkpoint_updates": 128,
+    "training_examples_seen": 768,
+    "parameter_count": 330732737,
+    "trainable_parameter_count": 21761,
+    "selected_gate_change_l2": 0.4758415864674045,
+    "selected_adapter_change_l2": 2.0478357703037453,
+    "initial_baseline_max_score_error": 0.0,
+    "adapter_replay_max_score_error": 0.0,
+    "adapter_replay_contexts": 128,
+    "test_used_for_training_or_selection": false
+  },
+  "control_manifest": {
+    "status": "completed",
+    "variant": "gated_adapter_only",
+    "formula": "h + (1 + gate(h)) * adapter(h)",
+    "settings": {
+      "epochs": 3,
+      "train_samples": 256,
+      "valid_samples": 128,
+      "context_length": 128,
+      "batch_size": 4,
+      "lr": 0.001,
+      "seed": 42,
+      "device": "cpu"
+    },
+    "segments": {
+      "train": [
+        "1990-03-28",
+        "2007-05-04"
+      ],
+      "valid": [
+        "2007-05-09",
+        "2013-01-18"
+      ],
+      "test": [
+        "2013-01-24",
+        "2018-10-08"
+      ]
+    },
+    "last_training_price_read": "2013-01-23",
+    "sample_counts": {
+      "train": 256,
+      "valid": 128
+    },
+    "target_normalization": {
+      "fit_partition": "train",
+      "mean": 0.0007839964237064123,
+      "scale": 0.009315037165177708
+    },
+    "base_frozen": true,
+    "optimizer_names": [
+      "model.transformer_stack.refinements.0.gate.weight",
+      "model.transformer_stack.refinements.0.gate.bias",
+      "model.transformer_stack.refinements.0.adapter_down.weight",
+      "model.transformer_stack.refinements.0.adapter_up.weight"
+    ],
+    "adapter_file": {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm-comparison/gated_adapter_only/adapter.pt",
+      "bytes": 89437,
+      "sha256": "a483cae3ab07b9b9f1dca7bba4d4baf61b780f7df2d2a36e348152798b968e86"
+    },
+    "elapsed_seconds": 137.59848938000005
+  },
+  "selection_frozen_at_utc": "2026-11-26T23:52:08.224141+00:00",
+  "segments": {
+    "train": [
+      "1990-03-28",
+      "2007-05-04"
+    ],
+    "valid": [
+      "2007-05-09",
+      "2013-01-18"
+    ],
+    "test": [
+      "2013-01-24",
+      "2018-10-08"
+    ]
+  },
+  "evaluations": {
+    "valid": {
+      "count": 1436,
+      "target_mean": 0.00012965172446205756,
+      "target_std": 0.015994386790872922,
+      "models": {
+        "zero_return": {
+          "rmse": 0.01599491226564579,
+          "mae": 0.0104905013254426,
+          "directional_accuracy": 0.0006963788300835655
+        },
+        "timesfm3_frozen_128": {
+          "rmse": 0.016205993936852774,
+          "mae": 0.010688732863818436,
+          "directional_accuracy": 0.4958217270194986
+        },
+        "timesfm3_loop_128": {
+          "rmse": 0.016151782117190292,
+          "mae": 0.010631246047586118,
+          "directional_accuracy": 0.5
+        },
+        "timesfm3_adapter_only_128": {
+          "rmse": 0.016156563300739234,
+          "mae": 0.010634837728758872,
+          "directional_accuracy": 0.49512534818941506
+        }
+      }
+    },
+    "test": {
+      "count": 1438,
+      "target_mean": 0.0004590712435885497,
+      "target_std": 0.0077192938660017064,
+      "models": {
+        "zero_return": {
+          "rmse": 0.00773293244483498,
+          "mae": 0.005462509949117775,
+          "directional_accuracy": 0.0006954102920723226
+        },
+        "timesfm3_frozen_128": {
+          "rmse": 0.007901508906858774,
+          "mae": 0.005518843228836455,
+          "directional_accuracy": 0.5111265646731572
+        },
+        "timesfm3_loop_128": {
+          "rmse": 0.00787692707888102,
+          "mae": 0.00551844935239616,
+          "directional_accuracy": 0.5118219749652295
+        },
+        "timesfm3_adapter_only_128": {
+          "rmse": 0.007880707294984812,
+          "mae": 0.005518078788656617,
+          "directional_accuracy": 0.5125173852573018
+        }
+      }
+    }
+  },
+  "finished_at_utc": "2026-11-27T00:01:37.690348+00:00",
+  "elapsed_seconds": 707.3642140879999,
+  "predictions_file": {
+    "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm-comparison/all_period_predictions.csv",
+    "bytes": 638070,
+    "sha256": "de9cdf98a9b6e46d2fe5ce705f63b84bddc3cd8d1680d57819ada093c472142e"
+  }
+}

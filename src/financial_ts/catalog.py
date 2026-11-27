@@ -5,6 +5,8 @@ MINI_ARCHITECTURES = {
     "glm54_mini": ("glm", "GLMMiniEncoder"),
     "qwen4_mini": ("qwen", "QwenMiniEncoder"),
     "timesfm3_mini": ("timesfm", "TimesFMMiniEncoder"),
+    "multiscale_residual_mixer": ("financial", "MultiScaleResidualMixerEncoder"),
+    "regime_linear_moe": ("financial", "RegimeLinearMoEEncoder"),
 }
 NEURAL_MODELS = ("transformer", *MINI_ARCHITECTURES)
 TRAINABLE_MODELS = ("lightgbm", *NEURAL_MODELS)

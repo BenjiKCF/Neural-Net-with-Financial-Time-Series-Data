@@ -29,6 +29,10 @@ jobs:
         run: python -m pytest -q
       - name: Offline end-to-end demo
         run: fts demo --model all --epochs 1 --output runs/ci-demo
+      - name: Replay recorded historical backtest offline
+        run: fts backtest --predictions reports/financial_research/predictions.csv --spy-csv reports/financial_research/spy_prices.csv --output runs/ci-backtest
+      - name: Audit recorded ES and weight-edit experiment
+        run: python scripts/audit_posttraining.py --evidence reports/paper_posttraining
       - name: Upload inspectable demo results
         if: always()
         uses: actions/upload-artifact@v4

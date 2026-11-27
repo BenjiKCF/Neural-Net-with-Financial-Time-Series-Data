@@ -1,0 +1,35 @@
+provider_uri: .data/qlib
+region: us
+instruments: all
+output_dir: runs/regime_linear_moe
+experiment_name: financial_ts
+seed: 42
+warmup_sessions: 60
+sequence_length: 32
+segments: null
+model:
+  name: regime_linear_moe
+  params:
+    d_model: 32
+    nhead: 4
+    num_layers: 2
+    dropout: 0.1
+    n_epochs: 12
+    early_stop: 4
+    batch_size: 128
+    lr: 0.001
+    weight_decay: 0.0001
+    device: auto
+    n_jobs: 0
+    num_threads: 2
+    aux_loss_weight: 0.01
+backtest:
+  enabled: false
+  topk: 5
+  n_drop: 1
+  account: 100000
+  risk_degree: 0.95
+  benchmark: null
+  open_cost: 0.001
+  close_cost: 0.001
+  min_cost: 0.0

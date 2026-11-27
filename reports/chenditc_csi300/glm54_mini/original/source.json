@@ -1,0 +1,14 @@
+{
+  "git_commit": "149605860f0c1644912bc5a17c4ad60ab5f0df58",
+  "git_ref": "refs/heads/codex/chenditc-qlib-benchmark-20261127",
+  "tracked_source_dirty": false,
+  "workflow": {
+    "GITHUB_SHA": "149605860f0c1644912bc5a17c4ad60ab5f0df58",
+    "GITHUB_REF": "refs/heads/codex/chenditc-qlib-benchmark-20261127",
+    "GITHUB_RUN_ID": "45928631920",
+    "GITHUB_RUN_ATTEMPT": "1",
+    "GITHUB_REPOSITORY": "BenjiKCF/Neural-Net-with-Financial-Time-Series-Data",
+    "GITHUB_SERVER_URL": "https://github.com",
+    "GITHUB_WORKFLOW_REF": "BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/.github/workflows/chenditc-benchmark.yml@refs/heads/codex/chenditc-qlib-benchmark-20261127"
+  }
+}

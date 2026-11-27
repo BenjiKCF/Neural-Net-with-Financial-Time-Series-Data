@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "scope": "Same raw forecasts from local and GitHub LightGBM, replayed in separate local native Qlib processes with deterministic trading ranks.",
+  "days": 458,
+  "holdings_compared": 23315,
+  "holding_instruments_identical_on_all_dates": true,
+  "amounts_prices_and_holding_counts_bit_identical": true,
+  "maximum_position_absolute_difference": {
+    "amount": 0.0,
+    "price": 0.0,
+    "weight": 2.42861286636753e-17,
+    "count_day": 0.0
+  },
+  "maximum_report_absolute_difference": {
+    "account": 1.1920928955078125e-07,
+    "return": 1.231653667943533e-15,
+    "total_turnover": 4.76837158203125e-07,
+    "turnover": 4.413136522884997e-15,
+    "total_cost": 9.313225746154785e-10,
+    "cost": 6.3696877633523385e-18,
+    "value": 1.043081283569336e-07,
+    "cash": 1.862645149230957e-08,
+    "bench": 0.0
+  },
+  "comparison_tolerance": {
+    "portfolio_rtol": 1e-12,
+    "portfolio_atol": 1e-12,
+    "holding_weight_atol": 1e-12,
+    "amount_price_count_atol": 0
+  },
+  "net_returns": [
+    0.0669168395026325,
+    0.06691683950263427
+  ],
+  "net_return_absolute_difference": 1.7763568394002505e-15,
+  "forecast_metrics": [
+    {
+      "run": "/workspace/scratch/be1ac217cace/financial-ts/runs/chenditc-csi300-20261126/lightgbm",
+      "forecast_metrics_unchanged": true
+    },
+    {
+      "run": "/workspace/scratch/be1ac217cace/github-artifacts/lightgbm/attempt-1/evidence",
+      "forecast_metrics_unchanged": true
+    }
+  ],
+  "qualification": "Native floating-point aggregation differs below displayed precision; corporate-action/terminated-series valuation remains unresolved.",
+  "inputs": {
+    "lightgbm-local": {
+      "portfolio.csv": "53e6bef6e948acec52cbcdb7318e2e526d80ec9953d720f17d8af98f3f9c8f36",
+      "positions.json.gz": "d4198b0cff72d0c14dc598ae9582f6a7cb7925db15bf04bbcb592af022a428e8",
+      "replay_manifest.json": "e78720938d3aca5cb78ec37909e8db1f9adbe6bb8456da194c78908d0658f01e"
+    },
+    "lightgbm-github": {
+      "portfolio.csv": "3823bf6e58769568e26dc4ded0cf7d138d0f5d0e85d4e324adfaf4cf8914d07f",
+      "positions.json.gz": "b50ecf898df15eb17e4be4d5ef77bd09ad02dca2b33081965eb97fc3f399d563",
+      "replay_manifest.json": "c6b9a1b4a9855ab416b4cb8a9e82b0c9e58c804cc29ce4f4cb969838b98df6b5"
+    }
+  }
+}

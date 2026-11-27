@@ -1,0 +1,171 @@
+{
+  "status": "passed",
+  "audited_models": [
+    "multiscale_residual_mixer"
+  ],
+  "pending_models": [
+    "lightgbm",
+    "transformer",
+    "deepseek_v41_mini",
+    "glm54_mini",
+    "qwen4_mini",
+    "timesfm3_mini",
+    "regime_linear_moe"
+  ],
+  "failures": [],
+  "models_with_unresolved_source_gap_holdings": [
+    "multiscale_residual_mixer"
+  ],
+  "backtest_qualification": "native Qlib simulation with unresolved terminated-series valuation",
+  "segments": {
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-11-23"
+    ]
+  },
+  "scope": "Independent raw binary label/membership checks, CSV metric replay, selected-model iteration, and native NAV accounting. Source corporate-action gaps remain unresolved and are quantified, not repaired or excluded.",
+  "models": {
+    "multiscale_residual_mixer": {
+      "valid": {
+        "sha256": "3cec40d31218a58067b8ccf636643e9dcca48f372ca03537fed430bc809e9123",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 5.684896997593114e-13,
+          "mae": 3.768478584742496e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 2.9555512551238117e-11,
+          "rank_ic": 4.336808689942018e-19,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.02550887843569528,
+          "mae": 0.017378111714985354,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.49551504026033627,
+          "ic": 0.011128953251402108,
+          "rank_ic": -0.003143109018590525,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "800e62b46f3fc2096ad152f2c0ee8807576c1db43ec01bd8bbb9ee998b411e33",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.158008990566401e-12,
+          "mae": 1.1131165433830859e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 5.172427156724391e-11,
+          "rank_ic": 0.0,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.024693236031599144,
+          "mae": 0.016545123852435516,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.48605557301908725,
+          "ic": 0.004183192986609543,
+          "rank_ic": -0.010105270499984225,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "8c7dfd0f66104b7ac29efe2a7efbf5b48af30868f263759659789b796fb28643",
+        "days": 458,
+        "start": "2025-01-03",
+        "end": "2026-11-25",
+        "maximum_NAV_relative_error": 1.6927570643260517e-15,
+        "simulated_net_return": 0.06418393775729925,
+        "source_gap_holdings": {
+          "status": "checked",
+          "artifact_sha256": "b6738c33241f7e5d72df8584dbd9fe87bcec0b50d5e9aa31964382103b6fb5fa",
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH601059",
+              "last_observed_close_date": "2026-09-14",
+              "stale_holding_days": 46,
+              "first_stale_holding_date": "2026-09-15",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.01813998800705648,
+              "maximum_stale_weight": 0.026386553665772028,
+              "final_stale_weight": 0.026386553665772028,
+              "marked_price": 1.3299663066864014,
+              "last_price_constant": true
+            },
+            {
+              "instrument": "SH601989",
+              "last_observed_close_date": "2025-08-12",
+              "stale_holding_days": 311,
+              "first_stale_holding_date": "2025-08-13",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.01869951063470162,
+              "maximum_stale_weight": 0.021769489108896582,
+              "final_stale_weight": 0.021769489108896582,
+              "marked_price": 1.0421686172485352,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.04815604277466861,
+          "interpretation": "These holdings have no later source close and remain at last observed price. Corporate-action settlement is unresolved; the return is a native Qlib simulation, not executable realized P&L."
+        }
+      }
+    }
+  },
+  "worker_model": "multiscale_residual_mixer"
+}

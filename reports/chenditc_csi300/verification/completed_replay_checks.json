@@ -1,0 +1,183 @@
+{
+  "status": "passed",
+  "checks": "Input/output hashes match replay manifests; forecast metrics preserved; native net returns reconcile to account NAV and numerical positions. Exact-tie portfolios may differ from originals. No-tie original holdings are independently compared.",
+  "models": [
+    {
+      "model": "glm54_mini-github",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 2.386726361195239e-15,
+      "simulated_net_return": -0.005674063788354222,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 2,
+        "rows": 4,
+        "largest_group": 2
+      },
+      "final_stale_weight": 0,
+      "stale_instruments": [],
+      "manifest_sha256": "4fb4b0e84a897a116ed62d819765cec7fa6ba7d23e25f1b643c0938fb0a1aa16",
+      "original_portfolio_same_holdings": true,
+      "original_portfolio_same_amounts_prices_counts": true
+    },
+    {
+      "model": "lightgbm-github",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 1.5351679841346484e-15,
+      "simulated_net_return": 0.06691683950263427,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 457,
+        "rows": 98143,
+        "largest_group": 76
+      },
+      "final_stale_weight": 0.019445506904161823,
+      "stale_instruments": [
+        "SH600837"
+      ],
+      "manifest_sha256": "c6b9a1b4a9855ab416b4cb8a9e82b0c9e58c804cc29ce4f4cb969838b98df6b5",
+      "original_portfolio_same_holdings": false,
+      "original_portfolio_same_amounts_prices_counts": false
+    },
+    {
+      "model": "lightgbm-local",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 1.4640619410040095e-15,
+      "simulated_net_return": 0.0669168395026325,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 457,
+        "rows": 98143,
+        "largest_group": 76
+      },
+      "final_stale_weight": 0.019445506904161827,
+      "stale_instruments": [
+        "SH600837"
+      ],
+      "manifest_sha256": "e78720938d3aca5cb78ec37909e8db1f9adbe6bb8456da194c78908d0658f01e"
+    },
+    {
+      "model": "multiscale_residual_mixer-github",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 1.6313189556438606e-15,
+      "simulated_net_return": 0.06418393775729969,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 0,
+        "rows": 0,
+        "largest_group": 0
+      },
+      "final_stale_weight": 0.04815604277466859,
+      "stale_instruments": [
+        "SH601059",
+        "SH601989"
+      ],
+      "manifest_sha256": "e72d0093f5516a576479817293bde352cf5c9b2f5da495a3678f747dddb8b4c8",
+      "original_portfolio_same_holdings": true,
+      "original_portfolio_same_amounts_prices_counts": true
+    },
+    {
+      "model": "regime-local",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 5.056758472758633e-15,
+      "simulated_net_return": 0.060199771274428215,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 1,
+        "rows": 2,
+        "largest_group": 2
+      },
+      "final_stale_weight": 0.06666186208147123,
+      "stale_instruments": [
+        "SH600837",
+        "SH601059",
+        "SH601989"
+      ],
+      "manifest_sha256": "1ca8ae4461a22efaa6e310c47d7baab38e4a50763a053e8c55dab79c84bdd06f"
+    },
+    {
+      "model": "regime_linear_moe-github",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 4.582914439582977e-15,
+      "simulated_net_return": 0.06019977127442777,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 0,
+        "rows": 0,
+        "largest_group": 0
+      },
+      "final_stale_weight": 0.06666186208147123,
+      "stale_instruments": [
+        "SH600837",
+        "SH601059",
+        "SH601989"
+      ],
+      "manifest_sha256": "6fef1a83239f58e8bd3f604175cf7a7ab9499de158d5fc7412fec9f5a38f2e23",
+      "original_portfolio_same_holdings": true,
+      "original_portfolio_same_amounts_prices_counts": true
+    },
+    {
+      "model": "timesfm3_mini-github",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 1.3106428433817694e-15,
+      "simulated_net_return": -0.17511277834424965,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 0,
+        "rows": 0,
+        "largest_group": 0
+      },
+      "final_stale_weight": 0.02600913780318551,
+      "stale_instruments": [
+        "SH600837"
+      ],
+      "manifest_sha256": "8d66b8fe0fd675565cca3b691ba8ce17005e4ae93c6ff8ee64bd1a682da94b16",
+      "original_portfolio_same_holdings": true,
+      "original_portfolio_same_amounts_prices_counts": true
+    },
+    {
+      "model": "transformer-github",
+      "status": "passed",
+      "days": 458,
+      "input_and_output_hashes_unchanged": true,
+      "forecast_metrics_unchanged": true,
+      "NAV_max_relative_error": 1.0724841266757266e-15,
+      "simulated_net_return": -0.009387914495234573,
+      "benchmark_return": 0.02037441675427809,
+      "exact_score_ties": {
+        "dates": 0,
+        "rows": 0,
+        "largest_group": 0
+      },
+      "final_stale_weight": 0.06489845337614548,
+      "stale_instruments": [
+        "SH600837",
+        "SH601059",
+        "SH601989"
+      ],
+      "manifest_sha256": "f14ef8d6c99fc869bf48ccedcaaf71fb90c1b51b1af03b30b012ef43e7316d6d",
+      "original_portfolio_same_holdings": true,
+      "original_portfolio_same_amounts_prices_counts": true
+    }
+  ]
+}

@@ -115,6 +115,15 @@ def _correlations(frame):
     }
 
 
+def _canonical_panel_labels(index, labels):
+    """Compare native float32 labels by keys, independently of CSV row order."""
+    return (
+        pd.Series(np.asarray(labels, dtype=np.float32), index=index, name="label")
+        .reorder_levels(["datetime", "instrument"])
+        .sort_index()
+    )
+
+
 def _check_predictions(path, metrics, source, bounds):
     frame = pd.read_csv(path, parse_dates=["datetime"], float_precision="round_trip")
     if frame.empty or frame.duplicated(["datetime", "instrument"]).any():
@@ -308,16 +317,14 @@ def audit(runs: Path, provider: Path | None = None, *, trusted_local_pickles=Fal
                 checked, index, labels = _check_predictions(
                     run / filename, section, source, segments[period]
                 )
+                canonical = _canonical_panel_labels(index, labels)
                 if period in reference:
-                    reference_index, reference_labels = reference[period]
-                    if not index.equals(reference_index) or not np.array_equal(
-                        labels, reference_labels, equal_nan=True
-                    ):
+                    if not canonical.equals(reference[period]):
                         raise AssertionError(
                             "Models do not share identical prediction indices and labels"
                         )
                 else:
-                    reference[period] = (index, labels)
+                    reference[period] = canonical
                 item[period] = checked
             report_path = run / "portfolio.csv"
             report = pd.read_csv(

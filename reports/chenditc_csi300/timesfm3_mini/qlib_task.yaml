@@ -1,0 +1,83 @@
+qlib_init:
+  provider_uri: /home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26
+  region: cn
+  kernels: 1
+  expression_cache: null
+  dataset_cache: null
+  exp_manager:
+    class: MLflowExpManager
+    module_path: qlib.workflow.expm
+    kwargs:
+      uri: file:///home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_mini/mlruns
+      default_exp_name: financial_ts
+task:
+  model:
+    class: SequenceForecastModel
+    module_path: financial_ts.model
+    kwargs:
+      d_feat: 157
+      seed: 42
+      architecture: timesfm3_mini
+      d_model: 32
+      nhead: 4
+      num_layers: 2
+      dropout: 0.1
+      n_epochs: 6
+      early_stop: 4
+      batch_size: 512
+      lr: 0.001
+      weight_decay: 0.0001
+      device: cpu
+      num_threads: 2
+      aux_loss_weight: 0.01
+  dataset:
+    class: SharedTSDatasetH
+    module_path: financial_ts.shared_panel
+    kwargs:
+      handler: file:///home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl
+      segments:
+        train:
+        - '2020-01-02'
+        - '2023-12-27'
+        valid:
+        - '2024-01-02'
+        - '2024-12-27'
+        test:
+        - '2025-01-02'
+        - '2026-11-23'
+      step_len: 32
+  record:
+  - class: ValidationSignalRecord
+    module_path: financial_ts.workflow
+  - class: SignalRecord
+    module_path: qlib.workflow.record_temp
+  - class: SigAnaRecord
+    module_path: qlib.workflow.record_temp
+    kwargs:
+      ana_long_short: false
+      ann_scaler: 252
+  - class: PortfolioRecord
+    module_path: financial_ts.record
+    kwargs:
+      config:
+        strategy:
+          class: TopkDropoutStrategy
+          module_path: qlib.contrib.strategy
+          kwargs:
+            signal: <PRED>
+            topk: 50
+            n_drop: 5
+            risk_degree: 0.95
+        backtest:
+          start_time: '2025-01-03'
+          end_time: '2026-11-25'
+          account: 100000000.0
+          benchmark: SH000300
+          exchange_kwargs:
+            freq: day
+            limit_threshold: 0.095
+            deal_price: close
+            trade_unit: 100
+            open_cost: 0.0005
+            close_cost: 0.0015
+            min_cost: 5.0

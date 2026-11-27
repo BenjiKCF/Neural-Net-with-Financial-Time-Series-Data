@@ -9,45 +9,129 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from audit_cn_benchmark import Source, _check_predictions, _clean, _sha
+from audit_cn_benchmark import Source, _canonical_panel_labels, _check_predictions, _clean, _sha
 
 from financial_ts.workflow import _provider_fingerprint
+
+
+def _daily_index(values, name):
+    try:
+        dates = pd.DatetimeIndex(pd.to_datetime(values, errors="raise"))
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AssertionError(f"{name} contains malformed dates") from exc
+    if (
+        dates.empty
+        or dates.hasnans
+        or not dates.is_unique
+        or not dates.is_monotonic_increasing
+        or dates.tz is not None
+        or not dates.equals(dates.normalize())
+    ):
+        raise AssertionError(f"{name} requires unique, increasing, finite daily dates")
+    return dates
+
+
+def _finite_values(values, name, *, positive=False):
+    try:
+        array = np.asarray(values, dtype=np.float64)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AssertionError(f"{name} must be numerical") from exc
+    if not np.isfinite(array).all() or (positive and (array <= 0).any()):
+        qualifier = "finite and strictly positive" if positive else "finite"
+        raise AssertionError(f"{name} must be {qualifier}")
+    return array
+
+
+def _check_segment_calendar(calendar, segments):
+    calendar = _daily_index(calendar, "Provider calendar")
+    locations = {}
+    for name in ("train", "valid", "test"):
+        bounds = segments[name]
+        if not isinstance(bounds, (list, tuple)) or len(bounds) != 2:
+            raise AssertionError(f"{name} requires start and end dates")
+        endpoints = [_daily_index([value], f"{name} bound")[0] for value in bounds]
+        if endpoints[0] > endpoints[1]:
+            raise AssertionError(f"{name} dates are reversed")
+        indices = calendar.get_indexer(endpoints)
+        if (indices < 0).any():
+            raise AssertionError(f"{name} bounds must be observed provider sessions")
+        locations[name] = tuple(int(value) for value in indices)
+    for left, right in (("train", "valid"), ("valid", "test")):
+        if locations[left][1] + 2 >= locations[right][0]:
+            raise AssertionError("Label horizon crosses a chronological split")
+    # Qlib also needs t+3 as its executor reserve after t+1 execution and
+    # the t+2 raw-return label endpoint. The reserve is not a forecast row.
+    if locations["test"][1] + 3 >= len(calendar):
+        raise AssertionError("Provider lacks three observed sessions after the final test date")
+    return locations
+
+
+def _check_portfolio_report(report, expected_dates, initial, recorded):
+    dates = _daily_index(report.index, "Portfolio report")
+    if not dates.equals(expected_dates):
+        raise AssertionError("Portfolio does not cover all delayed execution dates")
+    _finite_values(report[["return", "cost", "bench", "account"]], "Portfolio report values")
+    _finite_values(report["account"], "Portfolio report accounts", positive=True)
+    initial = float(_finite_values([initial], "Initial account", positive=True)[0])
+    nav = initial * (1 + report["return"] - report["cost"]).cumprod()
+    _finite_values(nav, "Recomputed portfolio accounts", positive=True)
+    nav_errors = ((nav - report["account"]) / report["account"]).abs()
+    _finite_values(nav_errors, "Portfolio account reconciliation errors")
+    nav_error = float(nav_errors.max())
+    if nav_error > 1e-10:
+        raise AssertionError("Native account and compounded net returns disagree")
+    expected = {
+        "net_cumulative_return": float(nav.iloc[-1] / initial - 1),
+        "gross_cumulative_return": float((1 + report["return"]).prod() - 1),
+        "benchmark_cumulative_return": float((1 + report["bench"]).prod() - 1),
+        "sum_daily_cost_ratios": float(report["cost"].sum()),
+    }
+    _finite_values(list(expected.values()), "Recomputed portfolio metrics")
+    published = _finite_values([recorded[key] for key in expected], "Published portfolio metrics")
+    if any(abs(actual - value) > 1e-11 for actual, value in zip(published, expected.values())):
+        raise AssertionError("Published portfolio summary differs from saved daily evidence")
+    return expected, nav_error
 
 
 def check_numeric_positions(path, report, source):
     with gzip.open(path, "rt") as stream:
         document = json.load(stream)
     snapshots = document["positions"]
-    dates = pd.DatetimeIndex(pd.to_datetime([row["datetime"] for row in snapshots]))
-    if not dates.equals(report.index):
+    dates = _daily_index([row["datetime"] for row in snapshots], "Numerical positions")
+    report_dates = _daily_index(report.index, "Portfolio report")
+    _finite_values(report["account"], "Portfolio report accounts", positive=True)
+    if not dates.equals(report_dates):
         raise AssertionError("Numerical positions and portfolio dates disagree")
     max_account_error, max_valuation_error, max_weight_error = 0.0, 0.0, 0.0
     ended = {}
     for row, date in zip(snapshots, dates):
-        account, cash = float(row["account"]), float(row["cash"])
+        account, cash = _finite_values([row["account"], row["cash"]], "Position account and cash")
+        if account <= 0:
+            raise AssertionError("Position account must be strictly positive")
         holdings = row["holdings"]
         if len({stock["instrument"] for stock in holdings}) != len(holdings):
             raise AssertionError("Duplicate instrument in numerical positions")
         value = cash
         for stock in holdings:
-            symbol, quantity, price = stock["instrument"], stock["amount"], stock["price"]
-            if (
-                not np.isfinite([quantity, price, stock["weight"]]).all()
-                or quantity < 0
-                or price <= 0
-            ):
+            symbol = stock["instrument"]
+            quantity, price, weight = _finite_values(
+                [stock["amount"], stock["price"], stock["weight"]], "Numerical holding"
+            )
+            if quantity < 0 or price <= 0:
                 raise AssertionError("Invalid long-only numerical holding")
             value += quantity * price
-            max_weight_error = max(
-                max_weight_error, abs(stock["weight"] - quantity * price / account)
-            )
+            max_weight_error = max(max_weight_error, abs(weight - quantity * price / account))
             source.close(symbol)
             last = source.last_dates[symbol]
             if last is not None and date > last:
-                ended.setdefault(symbol, []).append((date, stock["weight"], price))
+                ended.setdefault(symbol, []).append((date, float(weight), float(price)))
         max_account_error = max(max_account_error, abs(account / report.loc[date, "account"] - 1))
         max_valuation_error = max(max_valuation_error, abs(value / account - 1))
-    if max(max_account_error, max_valuation_error, max_weight_error) > 1e-10:
+    errors = _finite_values(
+        [max_account_error, max_valuation_error, max_weight_error],
+        "Position reconciliation errors",
+    )
+    if errors.max() > 1e-10:
         raise AssertionError("Numerical positions fail independent account/weight reconciliation")
     gaps = []
     for symbol, rows in sorted(ended.items()):
@@ -85,11 +169,7 @@ def audit_evidence(root: Path, provider: Path, require_complete=True):
     source = Source(provider)
     results, failures, pending, references = {}, [], [], {}
     segments = protocol["segments"]
-    for left, right in (("train", "valid"), ("valid", "test")):
-        if source.calendar.get_loc(pd.Timestamp(segments[left][1])) + 2 >= source.calendar.get_loc(
-            pd.Timestamp(segments[right][0])
-        ):
-            raise AssertionError("Label horizon crosses a chronological split")
+    locations = _check_segment_calendar(source.calendar, segments)
     for name in protocol["models"]:
         directory = root / name
         if not (directory / "metrics.json").is_file():
@@ -112,43 +192,25 @@ def audit_evidence(root: Path, provider: Path, require_complete=True):
                 )
                 # Native Qlib labels are float32. CSV representations may spell
                 # those same values as short round-trip decimals or full doubles.
-                canonical = labels.astype(np.float32)
+                # DatasetH and TSDatasetH may export different row orderings.
+                canonical = _canonical_panel_labels(index, labels)
                 if period in references:
-                    ref_index, ref_labels = references[period]
-                    if not index.equals(ref_index) or not np.array_equal(
-                        canonical, ref_labels, equal_nan=True
-                    ):
+                    if not canonical.equals(references[period]):
                         raise AssertionError(
                             "Model forecast indices or underlying float32 labels differ"
                         )
                 else:
-                    references[period] = (index, canonical)
+                    references[period] = canonical
                 item[period] = checked
             report_path = directory / "portfolio.csv"
             report = pd.read_csv(
                 report_path, index_col=0, parse_dates=True, float_precision="round_trip"
             )
-            first = source.calendar.get_loc(pd.Timestamp(segments["test"][0]))
-            last = source.calendar.get_loc(pd.Timestamp(segments["test"][1]))
-            if not report.index.equals(source.calendar[first + 1 : last + 3]):
-                raise AssertionError("Portfolio does not cover all delayed execution dates")
+            first, last = locations["test"]
             initial = protocol["configs"][name]["backtest"]["account"]
-            nav = initial * (1 + report["return"] - report["cost"]).cumprod()
-            nav_error = float(((nav - report["account"]) / report["account"]).abs().max())
-            if nav_error > 1e-10:
-                raise AssertionError("Native account and compounded net returns disagree")
-            expected = {
-                "net_cumulative_return": float(nav.iloc[-1] / initial - 1),
-                "gross_cumulative_return": float((1 + report["return"]).prod() - 1),
-                "benchmark_cumulative_return": float((1 + report["bench"]).prod() - 1),
-                "sum_daily_cost_ratios": float(report["cost"].sum()),
-            }
-            if any(
-                abs(metrics["portfolio"][key] - value) > 1e-11 for key, value in expected.items()
-            ):
-                raise AssertionError(
-                    "Published portfolio summary differs from saved daily evidence"
-                )
+            expected, nav_error = _check_portfolio_report(
+                report, source.calendar[first + 1 : last + 3], initial, metrics["portfolio"]
+            )
             if metrics["portfolio"]["trade_signal"]["order"] != [
                 "raw score descending",
                 "instrument ascending",

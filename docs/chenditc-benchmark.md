@@ -90,6 +90,104 @@ not a claim that all models received identical information or compute.
 The original ES and directional weight-edit experiments remain archived as
 SPX-only results. They are not silently relabeled as CSI300 measurements.
 
+## Reproducibility and execution
+
+### Causal histories and supervised anchors
+
+The [sequence model](../src/financial_ts/model.py) reads feature history from
+Qlib's `DK_I` inference view, then selects supervised endpoints using the
+label-filtered `DK_L` view. An unavailable forward label removes that training
+endpoint; its observed factors remain available to later causal windows.
+Training and inference therefore use the same feature-history construction.
+
+[`SharedTSDatasetH`](../src/financial_ts/shared_panel.py) shares factor storage
+across segments while preserving native Qlib sample order, leading history,
+membership gaps, NaN padding, dtypes, and targets. The
+[equivalence tests](../tests/test_shared_panel.py) check every window and include
+bit-identical same-seed training results. This changes memory use, not the
+sample budget or numerical settings; the on-disk handler remains intact for
+LightGBM.
+
+### TimesFM gradient repair
+
+Constant early price patches exposed a `sqrt(0)` backward failure in unused
+future-patch normalization. The [repair](../src/financial_ts/timesfm_loop.py)
+skips that branch only when the two-step horizon is fully supplied by the final
+observed context patch, restoring the original flag afterward. Real checkpoint
+checks found **exactly unchanged forecasts**, finite repaired gradients, and
+bit-identical gradients wherever the original gradients were finite.
+
+Both loop and adapter-control verification fits completed their full
+**three epochs / 48 updates**, using 1,024 training and 512 validation samples
+with unchanged learning rate, precision, and gradient guards. Epoch zero stayed
+eligible and was selected in both fits. The
+[numerical repair receipt](../reports/chenditc_csi300/verification/numerical_repair_receipt.json)
+records the original failure, full curves, timings, and source/checkpoint hashes.
+
+### Deterministic trading and complete inference
+
+The [trading signal](../src/financial_ts/cn_portfolio.py) orders each date by
+**raw score descending, then instrument code ascending**. Unique ordinal ranks
+carry that order into native `TopkDropoutStrategy`, including its internal
+re-sorts. Raw forecasts, labels, RMSE, IC, and Rank IC remain unchanged. The
+[LightGBM replay comparison](../reports/chenditc_csi300/verification/lightgbm_replay_comparison.json)
+checks identical holdings, amounts, prices, and holding counts across separate
+replays; portfolio aggregation agrees within the recorded floating-point
+tolerances.
+
+For official models, the [shard worker](../scripts/run_cn_official_shard.py)
+fits the full declared samples before predicting its assigned rows. Four shards
+preserve every original 64-row batch, including the final partial batch.
+[Assembly](../src/financial_ts/cn_inference_shards.py) requires exact agreement
+on selected state, fitting samples, checkpoint/provider bytes, source hashes,
+commit, Python/package versions, and full index identity. It rejects missing,
+overlapping, or incompatible shards and recomputes metrics over the full panel.
+The [context-equivalence check](../reports/chenditc_csi300/verification/shard_context_equivalence.json)
+verified 1,024 real 256-close contexts at both ends of every validation/test
+shard, including causal fills.
+
+Identical model states do not guarantee bit-identical floating-point inference
+on different CPUs. An [independent frozen-256 check](../reports/chenditc_csi300/verification/frozen256_cross_cpu_validation.json)
+compared 18,048 validation forecasts against a serial local run with identical
+batch boundaries. Mean absolute score difference was **3.96e-8**, the 99th
+percentile was **2.01e-7**, and the maximum was **3.65e-6** in return units.
+The published predictions preserve the actual worker outputs; the campaign
+does not claim exact cross-hardware replay.
+
+### Retained evidence and replay
+
+Each collected model retains its original numerical export under
+`reports/chenditc_csi300/<model>/original/`. Portfolio replay updates trading
+records and their summaries; it preserves raw predictions and forecast
+metrics. Failed and cancelled attempts remain separately recorded in retained
+run directories and logs, with
+[protocol amendments](../reports/chenditc_csi300/verification/protocol_amendments.json)
+and verification receipts explaining the changes. They are not counted as
+completed results.
+
+After downloading the pinned provider, replay a retained export into a fresh
+directory and audit the collected evidence:
+
+```bash
+python scripts/replay_cn_portfolio.py \
+  --run-dir reports/chenditc_csi300/lightgbm/original \
+  --provider .data/cn-20261126 \
+  --output runs/csi300-lightgbm-replay
+python scripts/audit_cn_evidence.py \
+  --evidence reports/chenditc_csi300 \
+  --provider .data/cn-20261126 --allow-pending
+```
+
+The [collector](../scripts/collect_cn_evidence.py) binds a replay to its original
+input hashes before creating a fresh collected model directory. The independent
+[evidence auditor](../scripts/audit_cn_evidence.py) reads raw binary labels and
+membership, aligns panels by `(datetime, instrument)` rather than CSV order,
+and reconciles portfolio accounts and positions. It also requires the final
+three observed sessions for execution, labels, and Qlib's executor reserve.
+Omit `--allow-pending` to require completion of the whole declared roster.
+Local run directories can instead be checked with
+`python scripts/audit_cn_benchmark.py --runs runs/csi300-20261126 --provider .data/cn-20261126`.
+
 ## Portfolio simulation
 
 All declared models use Qlib's `TopkDropoutStrategy` with the same parameters.
@@ -115,11 +213,11 @@ The account size is an accounting input, not demonstrated strategy capacity.
 
 ### Terminated series and portfolio valuation
 
-The completed LightGBM backtest exposes a concrete limitation in the source
-and native simulator. `SH600837` has no new source prices after **2025-02-05**, but
+LightGBM's deterministic portfolio replay exposes a concrete limitation in the
+source and native simulator. `SH600837` has no new source prices after **2025-02-05**, but
 the strategy continues to hold it. Qlib carries its last adjusted quote,
 **38.66765**, for **440 portfolio dates**, through 2026-11-25. That stale-valued
-holding is **1.9434% of the final simulated account value**.
+holding is **1.9446% of the final simulated account value**.
 
 The data audit also identifies **98 missing stock-days within recorded
 membership intervals** across three terminated series: `SH600837`, `SH601989`,
@@ -128,9 +226,11 @@ after observing their termination would change the universe retrospectively.
 Correct merger/termination valuation has not yet been established.
 
 For this reason, tables label these figures **Qlib simulated net return**.
-LightGBM's measured **+8.58% simulated net return**, compared with **+2.04% for the
-benchmark**, is an output of these accounting assumptions. It does not establish
-an investable return until the corporate-action treatment is resolved. Native
+LightGBM's [canonical replay](../reports/chenditc_csi300/lightgbm/metrics.json)
+measured **+6.6917% simulated net return**, compared
+with **+2.0374% for the benchmark**, under the deterministic trading tie rule.
+These figures are outputs of the declared accounting assumptions. They do not
+establish an investable return until the corporate-action treatment is resolved. Native
 portfolio charts inherit the same limitation. Forecast RMSE, IC, and Rank IC
 are evaluated on the available finite labels, with unavailable labels counted
 separately; they do not repair the portfolio valuation issue.

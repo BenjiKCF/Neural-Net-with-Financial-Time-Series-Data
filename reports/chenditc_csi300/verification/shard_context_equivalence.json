@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "context_length": 256,
+  "checked_real_contexts": 1024,
+  "four_shards_per_segment": true,
+  "scope": "Exact equality at both ends of every batch-aligned validation/test shard, including causal fills."
+}

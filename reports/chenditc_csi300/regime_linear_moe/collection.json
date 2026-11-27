@@ -1,0 +1,170 @@
+{
+  "status": "completed",
+  "source": "/workspace/scratch/be1ac217cace/github-artifacts/regime_linear_moe/attempt-1/evidence",
+  "replay": "runs/chenditc-csi300-20261126/portfolio-replays/regime_linear_moe-github",
+  "original_numerical_evidence_retained": true,
+  "forecast_metrics_unchanged": true,
+  "export_policy": "Allowlisted numerical and metadata files only; no weights, adapters, pickles or raw provider",
+  "files": [
+    {
+      "path": "daily_ic.csv",
+      "bytes": 23710,
+      "sha256": "7d4b4e7a318620e4103a0cfdd77e152a8c4d8c12414c5d601d117c0c04161608"
+    },
+    {
+      "path": "data_source.json",
+      "bytes": 7906,
+      "sha256": "85cf050bc8a4b7612b7044028aa47f26a8bf4a1a99b86e615ca6f404f6a865bf"
+    },
+    {
+      "path": "learning_curves.json",
+      "bytes": 359,
+      "sha256": "24bfeb53bc30571e1ef4431fe767bf003e2f2cb0e5bc5823a24354332c61bb39"
+    },
+    {
+      "path": "metrics.json",
+      "bytes": 3285,
+      "sha256": "b53313298ea01db47a4cd09976f8a68d33ed917e798c85cb8a2fc8f66eadcca5"
+    },
+    {
+      "path": "native_risk.csv",
+      "bytes": 584,
+      "sha256": "8d88e668a46613daf4f449c4b5cdd1d7fab17c7ade83fb26b88ff70e5093c9ba"
+    },
+    {
+      "path": "original/audit.json",
+      "bytes": 6576,
+      "sha256": "e8df8d3ee2159790df1e76289146100f64e593fb6949fe263db14a63a7ce8f44"
+    },
+    {
+      "path": "original/checksums.json",
+      "bytes": 3607,
+      "sha256": "617431c2e3f76b0052eb0c6b692a07c975d5fb757e1f476cdc439630c1771c2a"
+    },
+    {
+      "path": "original/daily_ic.csv",
+      "bytes": 23710,
+      "sha256": "7d4b4e7a318620e4103a0cfdd77e152a8c4d8c12414c5d601d117c0c04161608"
+    },
+    {
+      "path": "original/data_source.json",
+      "bytes": 7906,
+      "sha256": "85cf050bc8a4b7612b7044028aa47f26a8bf4a1a99b86e615ca6f404f6a865bf"
+    },
+    {
+      "path": "original/learning_curves.json",
+      "bytes": 359,
+      "sha256": "24bfeb53bc30571e1ef4431fe767bf003e2f2cb0e5bc5823a24354332c61bb39"
+    },
+    {
+      "path": "original/metrics.json",
+      "bytes": 2867,
+      "sha256": "f583c02da6ba1b1bbfd9e492a3f79e951879aa3dad722d2cfb7a65dae0181655"
+    },
+    {
+      "path": "original/portfolio.csv",
+      "bytes": 86514,
+      "sha256": "9f558cfd25d95a0eccfe02b327b2b34aabe2cccb430f19e97a0bf076b6dc80cc"
+    },
+    {
+      "path": "original/positions.json.gz",
+      "bytes": 572421,
+      "sha256": "850c6c7918c28b4eb3ca6809738b0caa34ef434ed9276130b323147ec40a6495"
+    },
+    {
+      "path": "original/predictions.csv.gz",
+      "bytes": 2484265,
+      "sha256": "baf5084d55b9b40ee792d8c0f91f5069eaf2e4844eca36eb782646a557a14387"
+    },
+    {
+      "path": "original/protocol.json",
+      "bytes": 24083,
+      "sha256": "76e1f6fe92795ac533c2ee17b951238365c49a41fa2c4629685c86527ed770fc"
+    },
+    {
+      "path": "original/qlib_task.yaml",
+      "bytes": 2399,
+      "sha256": "9b1ed1b26714486fdf352ec3e99fcf3fc36ed31c30e42b411873556d081ec47f"
+    },
+    {
+      "path": "original/resolved_config.json",
+      "bytes": 1532,
+      "sha256": "dc77fab9b68e31bc17cee029c79c41a0838cddc8566cc920c89fc17578917f2c"
+    },
+    {
+      "path": "original/run.json",
+      "bytes": 19318,
+      "sha256": "0b01f8a2dbee4ec5771b8b82b64ad35a6d81cd42cefe76d5fc3aae5775a2a66e"
+    },
+    {
+      "path": "original/source.json",
+      "bytes": 682,
+      "sha256": "94688352608c54ec1591bda669843d82735096ac5e5301545057e066332aa699"
+    },
+    {
+      "path": "original/validation_daily_ic.csv",
+      "bytes": 12496,
+      "sha256": "5a705ec9c016b6dccdc323db87af55e491add12f741f696235728240303bc756"
+    },
+    {
+      "path": "original/validation_predictions.csv.gz",
+      "bytes": 1306613,
+      "sha256": "377c6f71d8f6542b85852b5ef82053b80e642f4d4f5f7312a12c31bef2e167e0"
+    },
+    {
+      "path": "portfolio.csv",
+      "bytes": 86534,
+      "sha256": "c76d2c9336d1de39f87d16a92526ff25827359a6633da9bf959cea645d7f8d08"
+    },
+    {
+      "path": "positions.json.gz",
+      "bytes": 572477,
+      "sha256": "7bfbdecc149226f6d90913b868e46b49a1600eeb9d73224820b6ac046c9b5c61"
+    },
+    {
+      "path": "predictions.csv.gz",
+      "bytes": 2484265,
+      "sha256": "baf5084d55b9b40ee792d8c0f91f5069eaf2e4844eca36eb782646a557a14387"
+    },
+    {
+      "path": "qlib_task.yaml",
+      "bytes": 2399,
+      "sha256": "9b1ed1b26714486fdf352ec3e99fcf3fc36ed31c30e42b411873556d081ec47f"
+    },
+    {
+      "path": "replay_manifest.json",
+      "bytes": 24741,
+      "sha256": "6fef1a83239f58e8bd3f604175cf7a7ab9499de158d5fc7412fec9f5a38f2e23"
+    },
+    {
+      "path": "resolved_config.json",
+      "bytes": 1532,
+      "sha256": "dc77fab9b68e31bc17cee029c79c41a0838cddc8566cc920c89fc17578917f2c"
+    },
+    {
+      "path": "run.json",
+      "bytes": 19632,
+      "sha256": "9f48cc2efbcdedfd462592767261530cc25b7b47ffd768ffdd423cda1d403963"
+    },
+    {
+      "path": "source.json",
+      "bytes": 682,
+      "sha256": "94688352608c54ec1591bda669843d82735096ac5e5301545057e066332aa699"
+    },
+    {
+      "path": "source_gap_holdings.json",
+      "bytes": 1687,
+      "sha256": "22954cda34b853300a3b53cccc9270a91cb86169a8c1eb05b772b276be8d8234"
+    },
+    {
+      "path": "validation_daily_ic.csv",
+      "bytes": 12496,
+      "sha256": "5a705ec9c016b6dccdc323db87af55e491add12f741f696235728240303bc756"
+    },
+    {
+      "path": "validation_predictions.csv.gz",
+      "bytes": 1306613,
+      "sha256": "377c6f71d8f6542b85852b5ef82053b80e642f4d4f5f7312a12c31bef2e167e0"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "status": "completed",
+  "source": "/workspace/scratch/be1ac217cace/github-artifacts/multiscale_residual_mixer/attempt-1/evidence",
+  "replay": "runs/chenditc-csi300-20261126/portfolio-replays/multiscale_residual_mixer-github",
+  "original_numerical_evidence_retained": true,
+  "forecast_metrics_unchanged": true,
+  "export_policy": "Allowlisted numerical and metadata files only; no weights, adapters, pickles or raw provider",
+  "files": [
+    {
+      "path": "daily_ic.csv",
+      "bytes": 23731,
+      "sha256": "90c15e95a00f281329791579cd5538c7f20305b875ae6ababbd46040c5b559e7"
+    },
+    {
+      "path": "data_source.json",
+      "bytes": 7906,
+      "sha256": "50b165e1d8be806d41e4245fc0c09ca1d8c60a83a4e7c5db3faab0b7a1bb5a3c"
+    },
+    {
+      "path": "learning_curves.json",
+      "bytes": 357,
+      "sha256": "7930fa3bc828689adfbd4420410e42b62fd9d7af3b8fcb3794eb5b7644d9b712"
+    },
+    {
+      "path": "metrics.json",
+      "bytes": 3297,
+      "sha256": "835195f10e48a4afd2981e0a83a15ca90f06ac51cc245c236bdaa8c69b5a2209"
+    },
+    {
+      "path": "native_risk.csv",
+      "bytes": 584,
+      "sha256": "22f3e23c429a8f3295e37a5ee9475a0f90223825ee8ae7a47b7510eb63d6bffe"
+    },
+    {
+      "path": "original/audit.json",
+      "bytes": 6063,
+      "sha256": "69be455f6d83830047a5de607c0c90d0b5e630cb0b287f800e56233900082152"
+    },
+    {
+      "path": "original/checksums.json",
+      "bytes": 3615,
+      "sha256": "70eafef0cbf2e6252fadad011d0657e6b552e54e321e2664392dce3d1605acbc"
+    },
+    {
+      "path": "original/daily_ic.csv",
+      "bytes": 23731,
+      "sha256": "90c15e95a00f281329791579cd5538c7f20305b875ae6ababbd46040c5b559e7"
+    },
+    {
+      "path": "original/data_source.json",
+      "bytes": 7906,
+      "sha256": "50b165e1d8be806d41e4245fc0c09ca1d8c60a83a4e7c5db3faab0b7a1bb5a3c"
+    },
+    {
+      "path": "original/learning_curves.json",
+      "bytes": 357,
+      "sha256": "7930fa3bc828689adfbd4420410e42b62fd9d7af3b8fcb3794eb5b7644d9b712"
+    },
+    {
+      "path": "original/metrics.json",
+      "bytes": 2877,
+      "sha256": "a6db97a28c704348151cb6ebfde8477f81fe88c76aa73da6451b891d8d93fa40"
+    },
+    {
+      "path": "original/portfolio.csv",
+      "bytes": 86350,
+      "sha256": "8c7dfd0f66104b7ac29efe2a7efbf5b48af30868f263759659789b796fb28643"
+    },
+    {
+      "path": "original/positions.json.gz",
+      "bytes": 569185,
+      "sha256": "dfcf4c138d2942b0289d6cd6bdce931ea96c4a09d186f377184d745a18ce5a76"
+    },
+    {
+      "path": "original/predictions.csv.gz",
+      "bytes": 2482704,
+      "sha256": "857ce1a1db153bcc18d1e4191653a18e503aa84bfa9a70e89b954d50eaa17e30"
+    },
+    {
+      "path": "original/protocol.json",
+      "bytes": 24083,
+      "sha256": "78408360e2e1e9810209464317898e15627b82727e54cdef5f2aa320f981c213"
+    },
+    {
+      "path": "original/qlib_task.yaml",
+      "bytes": 2415,
+      "sha256": "1e6f06d6007c6bcda43e5ee4a66ce553a3ba20fed70446807d58dd9206f4860a"
+    },
+    {
+      "path": "original/resolved_config.json",
+      "bytes": 1548,
+      "sha256": "40881f624dbd33dacbaad7c6b2d06e5b1378ed01a03c8b3e7ca235a497c9bc44"
+    },
+    {
+      "path": "original/run.json",
+      "bytes": 19314,
+      "sha256": "bd576f644dce7596a843d7f275e501967b57bf24693128e4f2df1d51232945f7"
+    },
+    {
+      "path": "original/source.json",
+      "bytes": 682,
+      "sha256": "94688352608c54ec1591bda669843d82735096ac5e5301545057e066332aa699"
+    },
+    {
+      "path": "original/validation_daily_ic.csv",
+      "bytes": 12495,
+      "sha256": "d9a99608e6284f788777fda513544774aae2d5aa427244f955e85206274ab276"
+    },
+    {
+      "path": "original/validation_predictions.csv.gz",
+      "bytes": 1306781,
+      "sha256": "091746bcd073374d49ebe30952814df2a872d220c7d4404d373d60e02dc5b5d5"
+    },
+    {
+      "path": "portfolio.csv",
+      "bytes": 86348,
+      "sha256": "dcd4caf495a9015f2730f5a116fbb8aa33675a275848d53ce2230b48ce84ec0b"
+    },
+    {
+      "path": "positions.json.gz",
+      "bytes": 569260,
+      "sha256": "181e1022707248481644c41ab0195b3df2f2961ac5702c29280756b4f7d5a198"
+    },
+    {
+      "path": "predictions.csv.gz",
+      "bytes": 2482704,
+      "sha256": "857ce1a1db153bcc18d1e4191653a18e503aa84bfa9a70e89b954d50eaa17e30"
+    },
+    {
+      "path": "qlib_task.yaml",
+      "bytes": 2415,
+      "sha256": "1e6f06d6007c6bcda43e5ee4a66ce553a3ba20fed70446807d58dd9206f4860a"
+    },
+    {
+      "path": "replay_manifest.json",
+      "bytes": 24745,
+      "sha256": "e72d0093f5516a576479817293bde352cf5c9b2f5da495a3678f747dddb8b4c8"
+    },
+    {
+      "path": "resolved_config.json",
+      "bytes": 1548,
+      "sha256": "40881f624dbd33dacbaad7c6b2d06e5b1378ed01a03c8b3e7ca235a497c9bc44"
+    },
+    {
+      "path": "run.json",
+      "bytes": 19628,
+      "sha256": "8e3810a89dfc90d3af0300354dd9654b717505c0ad4c68e1f7c9dd191de1c8cf"
+    },
+    {
+      "path": "source.json",
+      "bytes": 682,
+      "sha256": "94688352608c54ec1591bda669843d82735096ac5e5301545057e066332aa699"
+    },
+    {
+      "path": "source_gap_holdings.json",
+      "bytes": 1242,
+      "sha256": "316b3da54817038ef3fde48a392105be057dc32f2c1d27934f79ec3a1f6d2acb"
+    },
+    {
+      "path": "validation_daily_ic.csv",
+      "bytes": 12495,
+      "sha256": "d9a99608e6284f788777fda513544774aae2d5aa427244f955e85206274ab276"
+    },
+    {
+      "path": "validation_predictions.csv.gz",
+      "bytes": 1306781,
+      "sha256": "091746bcd073374d49ebe30952814df2a872d220c7d4404d373d60e02dc5b5d5"
+    }
+  ]
+}

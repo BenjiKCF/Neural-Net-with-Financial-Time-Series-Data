@@ -1,0 +1,16 @@
+{
+  "model": "timesfm3_frozen_256",
+  "segment": "valid",
+  "shard": 3,
+  "rows": 18048,
+  "start": 53952,
+  "stop": 72000,
+  "local_cache_fingerprint": "b9c1d37b857a94fef97bd89f44b98afe7038ee825b5b91743afa0f54a5178f30",
+  "cache_chunks_verified": true,
+  "score_max_abs_diff": 3.651273568383573e-06,
+  "score_mean_abs_diff": 3.961672714042736e-08,
+  "score_exact_match_rows": 9283,
+  "score_p99_abs_diff": 2.0060905110641505e-07,
+  "same_original_batch_boundaries": true,
+  "note": "Independent local monolithic inference cache compared with the matching batch-aligned GitHub shard; source hashes recorded in the input identities."
+}

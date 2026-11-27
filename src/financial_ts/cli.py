@@ -61,6 +61,20 @@ def _parser() -> argparse.ArgumentParser:
     benchmark.add_argument(
         "--timesfm-checkpoint", type=Path, help="Local official TimesFM3 checkpoint"
     )
+    loop = commands.add_parser(
+        "finetune-timesfm", help="Fine-tune local gates/adapters on a looped TimesFM3 checkpoint"
+    )
+    loop.add_argument("--provider", type=Path, required=True)
+    loop.add_argument("--checkpoint", type=Path, required=True)
+    loop.add_argument("--output", type=Path, default=Path("runs/timesfm3-loop"))
+    loop.add_argument("--epochs", type=int, default=3)
+    loop.add_argument("--train-samples", type=int, default=256)
+    loop.add_argument("--valid-samples", type=int, default=128)
+    loop.add_argument("--context-length", type=int, default=128)
+    loop.add_argument("--batch-size", type=int, default=4)
+    loop.add_argument("--lr", type=float, default=0.001)
+    loop.add_argument("--seed", type=int, default=42)
+    loop.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     return parser
 
 
@@ -90,6 +104,23 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "models":
             print("\n".join(MODEL_NAMES))
+        elif args.command == "finetune-timesfm":
+            from financial_ts.loop_experiment import run_loop_experiment
+
+            result = run_loop_experiment(
+                args.provider,
+                args.checkpoint,
+                args.output,
+                epochs=args.epochs,
+                train_samples=args.train_samples,
+                valid_samples=args.valid_samples,
+                context_length=args.context_length,
+                batch_size=args.batch_size,
+                lr=args.lr,
+                seed=args.seed,
+                device=args.device,
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
         elif args.command == "benchmark":
             from financial_ts.benchmark import run_benchmark
 

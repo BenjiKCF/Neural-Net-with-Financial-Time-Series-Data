@@ -11,14 +11,28 @@ Source descriptions were checked on 27 November 2026:
 
 All code in these two modules was independently written for numeric inputs. No upstream implementation or model weights are vendored.
 
-## GLM-5.4 adaptation
+## GLM-5.4 adaptation: a loop Transformer
+
+**`glm54_mini` is a loop Transformer.** Its sparse-attention and MoE Transformer blocks are stored once in `GLMMiniEncoder.blocks` and reused across refinement passes within each forward call. With the default two shared blocks and two passes, execution visits block 0, block 1, then the same block 0 and block 1 again. Attention, normalization, and expert weights are shared across passes; each block has separate learned token gates for each pass.
+
+```mermaid
+flowchart TD
+    I["Historical windows + positions"] --> B["Shared attention + MoE blocks"]
+    B --> G["Per-block gates for current pass"]
+    G -->|"Next pass: reuse block weights"| B
+    B -->|"First pass: retain memory"| C["Global KV + sparse indices"]
+    C -->|"Later passes: reuse + fresh local KV"| B
+    G -->|"After final pass"| O["Final norm + return head"]
+```
+
+The diagram summarizes the loop; each gate is applied inside its corresponding block. Each block also keeps its own memory, and all memories are reset at the start of the next forward call.
 
 The official GLM-5.4 description identifies a loop over shared layers, independent per-pass token gates, reuse of first-pass sparse global KV plus new local KV, and reuse of sparse indices. It describes two passes over 28 base-model layers. The exact flagship implementation and training recipe are not reproduced here.
 
 | Mechanism | Local implementation |
 | --- | --- |
 | Repeated shared computation | `GLMMiniEncoder.blocks` is a single set of attention/expert blocks called repeatedly. Two passes are the default. |
-| Progressive gated updates | Each pass has a separate scalar gate per token. The first pass is initialized conservatively; the gate learns how much of the candidate update enters the residual stream. |
+| Progressive gated updates | Each block/pass has a separate scalar sigmoid gate per token, computed from the current state and candidate attention/MoE update. The residual update is `x + gate * dropout(candidate)`. Gate bias starts at -1.5 for pass one and 0 for later passes; gate values are learned and need not increase monotonically. |
 | Global KV reuse | Each block retains its first-pass keys/values and selected positions for the duration of a forward pass. Later passes reuse them. |
 | Independent local KV | Later passes append newly projected KV from a trailing window. The same position can occur in both streams with different representations. |
 | Index reuse | The lightweight indexer runs once per shared block, regardless of pass count. The later passes do not rerun selection. |
@@ -26,7 +40,20 @@ The official GLM-5.4 description identifies a loop over shared layers, independe
 
 The indexer uses causal token scores, and only selected KV are used by the main attention operation. Selected index scores also affect the attention logits so the indexer receives learning signal from forecasting. This is an explicit local adaptation rather than a claim about GLM's precise indexer training objective. The lightweight index computation itself is dense and quadratic in this reference implementation; there are no flagship-scale latency or memory-efficiency claims.
 
-Default dimensions are 157 inputs, width 64, four heads, two distinct shared blocks, two passes, eight global selections, and a four-session local window: **169,221 trainable parameters**. `num_layers` counts distinct shared blocks. Increasing `loop_steps` adds pass-specific gates and computation without copying the body.
+Cached global keys, values, and selected index scores retain their computation graphs, so later-pass losses train the first-pass memory as well as the shared projections and pass-specific gates. Later passes project fresh local KV from their current hidden states using the same shared projection weights. Discrete top-k positions are reused, while their selected scores remain differentiable.
+
+| Setting | Constructor defaults | Shipped YAML / benchmark |
+| --- | --- | --- |
+| Numeric input features | 157 | 157 |
+| Width / attention heads | 64 / 4 | 32 / 4 |
+| Distinct shared blocks (`num_layers`) | 2 | 2 |
+| Refinement passes (`loop_steps`) | 2 | 2 |
+| Block applications per forward | 4 | 4 |
+| Global selections / trailing local window | 8 / 4 | 8 / 4 |
+| Routed experts / active experts per token | 4 / 2, plus one shared expert | 4 / 2, plus one shared expert |
+| Trainable parameters | **169,221** | **45,189** |
+
+`num_layers` counts distinct shared blocks. Increasing `loop_steps` adds pass-specific gates and computation without copying the body. The [shipped configuration](../../configs/glm54_mini.yaml) uses 32-session windows, dropout 0.1, and a maximum of 12 training epochs. Pass count and other architecture-specific options can be set under `model.params.architecture_kwargs`, for example `loop_steps: 3`.
 
 ## Qwen4 adaptation
 

@@ -1,0 +1,102 @@
+{
+  "mode": "adapter",
+  "context_length": 128,
+  "seed": 42,
+  "selection": "minimum sampled validation RMSE, including unchanged epoch zero",
+  "sampling": "balanced member quotas; evenly spaced eligible dates within member",
+  "inference_sample_cap": null,
+  "context_policy": "causal forward-fill inside context; trim leading missing prefix",
+  "adapter_padding": "left-pad shortened contexts using their earliest observed close",
+  "test_labels_read_during_fit": false,
+  "checkpoint_files": [
+    {
+      "name": "config.json",
+      "size_bytes": 1273,
+      "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+    },
+    {
+      "name": "model.safetensors",
+      "size_bytes": 1322898824,
+      "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+    }
+  ],
+  "source_files": [
+    {
+      "name": "qlib_timesfm.py",
+      "size_bytes": 29197,
+      "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+    },
+    {
+      "name": "timesfm_pretrained.py",
+      "size_bytes": 8689,
+      "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+    },
+    {
+      "name": "timesfm_loop.py",
+      "size_bytes": 16547,
+      "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+    },
+    {
+      "name": "timesfm_comparison.py",
+      "size_bytes": 30482,
+      "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+    }
+  ],
+  "train_samples": 1024,
+  "valid_samples": 512,
+  "requested_train_samples": 1024,
+  "requested_valid_samples": 512,
+  "context_fills": {
+    "train": {
+      "forward_filled_values": 171,
+      "leading_padded_values": 174
+    },
+    "valid": {
+      "forward_filled_values": 64,
+      "leading_padded_values": 0
+    }
+  },
+  "target_mean": 0.00216557749081403,
+  "target_scale": 0.02398244788128493,
+  "base_frozen": true,
+  "optimizer_names": [
+    "model.transformer_stack.refinements.0.gate.weight",
+    "model.transformer_stack.refinements.0.gate.bias",
+    "model.transformer_stack.refinements.0.adapter_down.weight",
+    "model.transformer_stack.refinements.0.adapter_up.weight"
+  ],
+  "best_epoch": 0,
+  "selected_sampled_validation_rmse": 0.02137831283034753,
+  "epochs_run": 3,
+  "optimizer_updates": 48,
+  "training_examples_seen": 3072,
+  "parameter_count": 330732737,
+  "trainable_parameter_count": 21761,
+  "training_curves": [
+    {
+      "epoch": 0,
+      "train_rmse": 0.02472589849822864,
+      "validation_rmse": 0.02137831283034753,
+      "updates": 0
+    },
+    {
+      "epoch": 1,
+      "train_rmse": 0.02467837811502594,
+      "validation_rmse": 0.021891497615559346,
+      "updates": 16
+    },
+    {
+      "epoch": 2,
+      "train_rmse": 0.024395331831308112,
+      "validation_rmse": 0.023001563623951053,
+      "updates": 32
+    },
+    {
+      "epoch": 3,
+      "train_rmse": 0.02402255454545821,
+      "validation_rmse": 0.0225904302125215,
+      "updates": 48
+    }
+  ],
+  "target_statistics_fit_partition": "train"
+}

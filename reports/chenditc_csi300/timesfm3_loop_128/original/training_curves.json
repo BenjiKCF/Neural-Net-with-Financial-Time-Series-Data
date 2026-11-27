@@ -1,0 +1,26 @@
+[
+  {
+    "epoch": 0,
+    "train_rmse": 0.024725899347322007,
+    "validation_rmse": 0.02137831113380448,
+    "updates": 0
+  },
+  {
+    "epoch": 1,
+    "train_rmse": 0.024682239564877338,
+    "validation_rmse": 0.021857120867921662,
+    "updates": 16
+  },
+  {
+    "epoch": 2,
+    "train_rmse": 0.024400885385114222,
+    "validation_rmse": 0.022969464425273825,
+    "updates": 32
+  },
+  {
+    "epoch": 3,
+    "train_rmse": 0.024041269921410726,
+    "validation_rmse": 0.022525265162725395,
+    "updates": 48
+  }
+]

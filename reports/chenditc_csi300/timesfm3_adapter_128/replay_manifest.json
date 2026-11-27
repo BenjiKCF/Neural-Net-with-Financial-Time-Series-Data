@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "operation": "Native Qlib portfolio-only replay; no fitting or forecast modification",
+  "trade_signal": {
+    "order": [
+      "raw score descending",
+      "instrument ascending"
+    ],
+    "scope": "Each prediction date; trading input only",
+    "encoding": "Unique negative ordinal ranks: best=-1, second=-2, and so on",
+    "strategy": "Native qlib.contrib.strategy.TopkDropoutStrategy",
+    "forecast_metrics": "Original raw scores; no perturbation or ranking for RMSE/IC"
+  },
+  "source_run": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/finalize-output/assembled/timesfm3_adapter_128",
+  "original_run": {
+    "status": "forecasts_completed",
+    "execution": "Complete batch-aligned inference assembled from identical model states",
+    "provider": {
+      "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+      "file_count": 61788,
+      "bytes": 730118170
+    },
+    "segments": {
+      "train": [
+        "2020-01-02",
+        "2023-12-27"
+      ],
+      "valid": [
+        "2024-01-02",
+        "2024-12-27"
+      ],
+      "test": [
+        "2025-01-02",
+        "2026-11-23"
+      ]
+    },
+    "model": "timesfm3_adapter_128",
+    "portfolio_status": "pending deterministic native Qlib replay"
+  },
+  "input_files": {
+    "predictions.csv.gz": {
+      "sha256": "336897beac31c8660ee8b10cc19be6e59f35f38b203826bd31af6b8650cb7547",
+      "bytes": 3020119
+    },
+    "resolved_config.json": {
+      "sha256": "e8f3f24619bc67218951398279b2b0274fb7b2716e2b8794121e89066540fd8f",
+      "bytes": 1825
+    },
+    "run.json": {
+      "sha256": "114b96ec0507f297125c1a49736e10cf6b859946699e7c91e77ba071e8fa6308",
+      "bytes": 581
+    },
+    "metrics.json": {
+      "sha256": "24b62f1ad0feca1d4f40da2d6d999f5767e7b7c5ac1c3490a2e5cae163a6cb04",
+      "bytes": 1374
+    }
+  },
+  "provider": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  },
+  "portfolio_config": {
+    "strategy": {
+      "class": "TopkDropoutStrategy",
+      "module_path": "qlib.contrib.strategy",
+      "kwargs": {
+        "signal": {
+          "class": "DeterministicRankSignal",
+          "module_path": "financial_ts.cn_portfolio",
+          "kwargs": {
+            "signal": "<PRED>"
+          }
+        },
+        "topk": 50,
+        "n_drop": 5,
+        "risk_degree": 0.95
+      }
+    },
+    "backtest": {
+      "start_time": "2025-01-03",
+      "end_time": "2026-11-25",
+      "account": 100000000.0,
+      "benchmark": "SH000300",
+      "exchange_kwargs": {
+        "freq": "day",
+        "limit_threshold": 0.095,
+        "deal_price": "close",
+        "trade_unit": 100,
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5.0
+      }
+    }
+  },
+  "exact_score_ties": {
+    "dates": 0,
+    "rows": 0,
+    "largest_group": 0
+  },
+  "forecast_values": "CSV floats parsed with round_trip; original prediction and forecast-metric files retained",
+  "native_risk_convention": "Qlib additive daily-return risk_analysis; its installed daily frequency uses 238 sessions. Portfolio cumulative returns are compounded.",
+  "replay_source": {
+    "git_commit": "18fc54f78ea5839b926ac2a61cacc853d841131a",
+    "git_dirty": false,
+    "python": "3.12.16",
+    "packages": {
+      "pyqlib": "0.9.7",
+      "pandas": "2.3.3",
+      "numpy": "1.26.4"
+    },
+    "files": {
+      "cn_portfolio.py": "f6d9ed97ae3ff519bb0d9ff489e7e78c9cf933c51bd02223e9383142a4bab89a",
+      "workflow.py": "b17b6c76e620eb7d072c421c5ae08f7613f823316d2ddbaf9ac17d3343a2791a",
+      "signal_strategy.py": "b1b4145e94065879768cfc9750c08a7c3af8880d3c338e0de675f5fb6b78d932"
+    }
+  },
+  "outputs": {
+    "metrics.json": {
+      "sha256": "17945a44b5feda9a92b704c522ac80d4725cdcbe676125dcfbac291fc3d5286a",
+      "bytes": 3265
+    },
+    "native_risk.csv": {
+      "sha256": "42ab6f2136f4bcf68646696ff28f71a47c94e80325c646fd96ead5a43f7350dd",
+      "bytes": 589
+    },
+    "portfolio.csv": {
+      "sha256": "23c6e8db4f7902354c4fabab38b9c123ea906f20dcdd6560679cf94cfa748253",
+      "bytes": 86340
+    },
+    "positions.json.gz": {
+      "sha256": "12831491c085f2a94a09b5e612a73bc784a78fa1aa794f2d6f7c56606b6530bb",
+      "bytes": 563955
+    },
+    "source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    }
+  }
+}

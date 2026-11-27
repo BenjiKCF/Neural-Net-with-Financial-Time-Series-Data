@@ -1,0 +1,49 @@
+{
+  "mode": "frozen",
+  "context_length": 256,
+  "seed": 42,
+  "selection": "fixed pretrained checkpoint; no fitting or labels",
+  "sampling": "balanced member quotas; evenly spaced eligible dates within member",
+  "inference_sample_cap": null,
+  "context_policy": "causal forward-fill inside context; trim leading missing prefix",
+  "adapter_padding": "left-pad shortened contexts using their earliest observed close",
+  "test_labels_read_during_fit": false,
+  "checkpoint_files": [
+    {
+      "name": "config.json",
+      "size_bytes": 1273,
+      "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+    },
+    {
+      "name": "model.safetensors",
+      "size_bytes": 1322898824,
+      "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+    }
+  ],
+  "source_files": [
+    {
+      "name": "qlib_timesfm.py",
+      "size_bytes": 29197,
+      "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+    },
+    {
+      "name": "timesfm_pretrained.py",
+      "size_bytes": 8689,
+      "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+    },
+    {
+      "name": "timesfm_loop.py",
+      "size_bytes": 16547,
+      "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+    },
+    {
+      "name": "timesfm_comparison.py",
+      "size_bytes": 30482,
+      "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+    }
+  ],
+  "parameter_count": 330710976,
+  "trainable_parameter_count": 0,
+  "training_curves": [],
+  "target_statistics_fit_partition": null
+}

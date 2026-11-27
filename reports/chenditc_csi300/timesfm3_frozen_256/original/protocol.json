@@ -1,0 +1,911 @@
+{
+  "schema_version": 1,
+  "source": {
+    "schema_version": 1,
+    "source": "chenditc/investment_data",
+    "region": "cn",
+    "frequency": "day",
+    "synthetic": false,
+    "calendar": "SSE observed trading sessions; future calendar is not market data",
+    "retrieved_at_utc": "2026-11-27T02:59:11.804788+00:00",
+    "release_tag": "2026-11-26",
+    "release_url": "https://github.com/chenditc/investment_data/releases/tag/2026-11-26",
+    "release_id": 459236414,
+    "release_published_at": "2026-11-26T10:08:41Z",
+    "target_trade_date": "2026-11-26",
+    "assets": {
+      "qlib_bin.manifest.json": {
+        "url": "https://api.github.com/repos/chenditc/investment_data/releases/assets/795301257",
+        "id": 795301257,
+        "node_id": "RA_kwDOHrrSr84vZ1WJ",
+        "name": "qlib_bin.manifest.json",
+        "label": "",
+        "uploader": {
+          "login": "chenditc",
+          "id": 3244845,
+          "node_id": "MDQ6VXNlcjMyNDQ4NDU=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/3244845?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chenditc",
+          "html_url": "https://github.com/chenditc",
+          "followers_url": "https://api.github.com/users/chenditc/followers",
+          "following_url": "https://api.github.com/users/chenditc/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chenditc/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chenditc/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chenditc/subscriptions",
+          "organizations_url": "https://api.github.com/users/chenditc/orgs",
+          "repos_url": "https://api.github.com/users/chenditc/repos",
+          "events_url": "https://api.github.com/users/chenditc/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chenditc/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "content_type": "application/json",
+        "state": "uploaded",
+        "size": 511,
+        "digest": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+        "download_count": 671,
+        "created_at": "2026-11-26T10:09:25Z",
+        "updated_at": "2026-11-26T10:09:25Z",
+        "browser_download_url": "https://github.com/chenditc/investment_data/releases/download/2026-11-26/qlib_bin.manifest.json"
+      },
+      "qlib_bin.tar.gz": {
+        "url": "https://api.github.com/repos/chenditc/investment_data/releases/assets/795298729",
+        "id": 795298729,
+        "node_id": "RA_kwDOHrrSr84vZ0up",
+        "name": "qlib_bin.tar.gz",
+        "label": "",
+        "uploader": {
+          "login": "chenditc",
+          "id": 3244845,
+          "node_id": "MDQ6VXNlcjMyNDQ4NDU=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/3244845?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chenditc",
+          "html_url": "https://github.com/chenditc",
+          "followers_url": "https://api.github.com/users/chenditc/followers",
+          "following_url": "https://api.github.com/users/chenditc/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chenditc/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chenditc/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chenditc/subscriptions",
+          "organizations_url": "https://api.github.com/users/chenditc/orgs",
+          "repos_url": "https://api.github.com/users/chenditc/repos",
+          "events_url": "https://api.github.com/users/chenditc/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chenditc/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "content_type": "application/gzip",
+        "state": "uploaded",
+        "size": 573153280,
+        "digest": "sha256:5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559",
+        "download_count": 1079,
+        "created_at": "2026-11-26T10:08:43Z",
+        "updated_at": "2026-11-26T10:09:05Z",
+        "browser_download_url": "https://github.com/chenditc/investment_data/releases/download/2026-11-26/qlib_bin.tar.gz"
+      }
+    },
+    "validation": {
+      "manifest": {
+        "release_tag": "2026-11-26",
+        "target_trade_date": "2026-11-26",
+        "future_start_date": "2026-11-27",
+        "future_end_date": "2026-12-31",
+        "dolt_commit": "3u6lh4is4alt7ec4p8vfq74j083d7s16",
+        "investment_data_commit": "1114a57210c59cf0a13d69ec07465e1e73137cbc",
+        "qlib_commit": "b87a2c294d364a33fb739359886acffe8ec907d1",
+        "image_digest": "sha256:68d5fc24ab095cd8e28fe656521b2573f74868e4ccb9160d876ecf51bfe3819e",
+        "archive_size_bytes": 573153280,
+        "archive_sha256": "sha256:5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559"
+      },
+      "manifest_sha256": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+      "archive_member_count": 67970,
+      "start_date": "2000-01-04",
+      "end_date": "2026-11-26",
+      "sessions": 6518,
+      "future_calendar_sessions": 25,
+      "universes": {
+        "all": {
+          "unique_instruments": 6178,
+          "membership_intervals": 6178,
+          "active_on_target_date": 5583,
+          "start_date": "2000-01-04",
+          "end_date": "2026-11-26"
+        },
+        "csi300": {
+          "unique_instruments": 949,
+          "membership_intervals": 1227,
+          "active_on_target_date": 300,
+          "start_date": "2005-04-08",
+          "end_date": "2026-11-26"
+        },
+        "csi500": {
+          "unique_instruments": 1805,
+          "membership_intervals": 2471,
+          "active_on_target_date": 500,
+          "start_date": "2007-01-31",
+          "end_date": "2026-11-26"
+        },
+        "csi800": {
+          "unique_instruments": 2018,
+          "membership_intervals": 64344,
+          "active_on_target_date": 800,
+          "start_date": "2007-01-22",
+          "end_date": "2026-11-26"
+        },
+        "csi1000": {
+          "unique_instruments": 2804,
+          "membership_intervals": 3352,
+          "active_on_target_date": 1000,
+          "start_date": "2014-10-31",
+          "end_date": "2026-11-26"
+        },
+        "csiall": {
+          "unique_instruments": 5850,
+          "membership_intervals": 6417,
+          "active_on_target_date": 5117,
+          "start_date": "2011-08-31",
+          "end_date": "2026-11-26"
+        }
+      }
+    },
+    "start_date": "2000-01-04",
+    "end_date": "2026-11-26",
+    "sessions": 6518,
+    "observations": 17600664,
+    "feature_instruments": 6178,
+    "finite_closes_on_target_date": 5583,
+    "future_calendar_sessions": 25,
+    "future_dates_excluded_from_observations": true,
+    "universes": {
+      "all": {
+        "unique_instruments": 6178,
+        "membership_intervals": 6178,
+        "active_on_target_date": 5583,
+        "start_date": "2000-01-04",
+        "end_date": "2026-11-26"
+      },
+      "csi300": {
+        "unique_instruments": 949,
+        "membership_intervals": 1227,
+        "active_on_target_date": 300,
+        "start_date": "2005-04-08",
+        "end_date": "2026-11-26"
+      },
+      "csi500": {
+        "unique_instruments": 1805,
+        "membership_intervals": 2471,
+        "active_on_target_date": 500,
+        "start_date": "2007-01-31",
+        "end_date": "2026-11-26"
+      },
+      "csi800": {
+        "unique_instruments": 2018,
+        "membership_intervals": 64344,
+        "active_on_target_date": 800,
+        "start_date": "2007-01-22",
+        "end_date": "2026-11-26"
+      },
+      "csi1000": {
+        "unique_instruments": 2804,
+        "membership_intervals": 3352,
+        "active_on_target_date": 1000,
+        "start_date": "2014-10-31",
+        "end_date": "2026-11-26"
+      },
+      "csiall": {
+        "unique_instruments": 5850,
+        "membership_intervals": 6417,
+        "active_on_target_date": 5117,
+        "start_date": "2011-08-31",
+        "end_date": "2026-11-26"
+      }
+    },
+    "missing_bars": "NaN; no forward fill",
+    "membership": "Historical intervals from provider index snapshots; not a PIT guarantee"
+  },
+  "data_manifest_sha256": "c5141de30bae6eb4e9b7dd8d55758b9ec5c6efc3421a391405bb943a2f38d2b3",
+  "provider_fingerprint": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  },
+  "models": [
+    "lightgbm",
+    "transformer",
+    "deepseek_v41_mini",
+    "glm54_mini",
+    "qwen4_mini",
+    "timesfm3_mini",
+    "multiscale_residual_mixer",
+    "regime_linear_moe",
+    "timesfm3_frozen_128",
+    "timesfm3_frozen_256",
+    "timesfm3_loop_128",
+    "timesfm3_adapter_128"
+  ],
+  "seed": 42,
+  "epochs": 6,
+  "segments": {
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-11-23"
+    ]
+  },
+  "label": "Ref($close, -2) / Ref($close, -1) - 1",
+  "configs": {
+    "lightgbm": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/lightgbm",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "lightgbm",
+        "params": {
+          "num_boost_round": 300,
+          "early_stopping_rounds": 30,
+          "num_threads": 2
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl"
+    },
+    "transformer": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/transformer",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "transformer",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "deepseek_v41_mini": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/deepseek_v41_mini",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "deepseek_v41_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "glm54_mini": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/glm54_mini",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "glm54_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "qwen4_mini": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/qwen4_mini",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "qwen4_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "timesfm3_mini": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_mini",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "timesfm3_mini",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "multiscale_residual_mixer": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/multiscale_residual_mixer",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "multiscale_residual_mixer",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "regime_linear_moe": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/regime_linear_moe",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "regime_linear_moe",
+        "params": {
+          "d_model": 32,
+          "nhead": 4,
+          "num_layers": 2,
+          "dropout": 0.1,
+          "n_epochs": 6,
+          "early_stop": 4,
+          "batch_size": 512,
+          "lr": 0.001,
+          "weight_decay": 0.0001,
+          "device": "cpu",
+          "num_threads": 2,
+          "aux_loss_weight": 0.01
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+      "shared_windows": true
+    },
+    "timesfm3_frozen_128": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_frozen_128",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "timesfm3_panel",
+        "params": {
+          "mode": "frozen",
+          "checkpoint_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint",
+          "context_length": 128,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001,
+          "prediction_cache_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_frozen_128/inference_cache"
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_prices.pkl"
+    },
+    "timesfm3_frozen_256": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_frozen_256",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "timesfm3_panel",
+        "params": {
+          "mode": "frozen",
+          "checkpoint_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint",
+          "context_length": 256,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001,
+          "prediction_cache_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_frozen_256/inference_cache"
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_prices.pkl"
+    },
+    "timesfm3_loop_128": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_loop_128",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "timesfm3_panel",
+        "params": {
+          "mode": "loop",
+          "checkpoint_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint",
+          "context_length": 128,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001,
+          "prediction_cache_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_loop_128/inference_cache"
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_prices.pkl"
+    },
+    "timesfm3_adapter_128": {
+      "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+      "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_adapter_128",
+      "experiment_name": "chenditc_csi300",
+      "region": "cn",
+      "instruments": "csi300",
+      "seed": 42,
+      "warmup_sessions": 60,
+      "sequence_length": 32,
+      "segments": {
+        "train": [
+          "2020-01-02",
+          "2023-12-27"
+        ],
+        "valid": [
+          "2024-01-02",
+          "2024-12-27"
+        ],
+        "test": [
+          "2025-01-02",
+          "2026-11-23"
+        ]
+      },
+      "model": {
+        "name": "timesfm3_panel",
+        "params": {
+          "mode": "adapter",
+          "checkpoint_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/timesfm3-checkpoint",
+          "context_length": 128,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001,
+          "prediction_cache_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/timesfm3_adapter_128/inference_cache"
+        }
+      },
+      "backtest": {
+        "enabled": true,
+        "topk": 50,
+        "n_drop": 5,
+        "account": 100000000,
+        "risk_degree": 0.95,
+        "benchmark": "SH000300",
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5
+      },
+      "data_start_time": "2019-01-01",
+      "data_end_time": "2026-11-26",
+      "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_prices.pkl"
+    }
+  },
+  "selection": "Each fitted model selects checkpoints on validation only. The report's primary model is selected by highest full-validation daily Rank IC among the eight scratch models; ties use model name.",
+  "comparability": "Eight scratch models fit all available training rows. Seven neural models share 32-session Alpha157 inputs, width 32, 6-epoch maximum and AdamW settings; boosting has its own fixed budget. Official TimesFM uses raw adjusted-close contexts; loop/control fit 1,024 train and 512 validation samples and then score the complete panel.",
+  "execution": "Qlib TopkDropoutStrategy(50,5), delayed close, SH000300, 100-share lots, 9.5% limit threshold, 5/15 bps entry/exit costs, CNY5 minimum, 95% invested target; final holdings marked to market.",
+  "limitations": "Single declared seed; exploratory historical replay. Upstream revised data and historical membership are not certified publication-time snapshots. Official pretraining overlap is unknown. No market impact, borrow, or deployment claim.",
+  "registered_at_utc": "2026-11-27T02:59:26.360018+00:00"
+}

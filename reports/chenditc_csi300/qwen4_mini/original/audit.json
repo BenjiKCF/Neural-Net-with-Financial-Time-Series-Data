@@ -1,0 +1,159 @@
+{
+  "status": "passed",
+  "audited_models": [
+    "qwen4_mini"
+  ],
+  "pending_models": [
+    "lightgbm",
+    "transformer",
+    "deepseek_v41_mini",
+    "glm54_mini",
+    "timesfm3_mini",
+    "multiscale_residual_mixer",
+    "regime_linear_moe"
+  ],
+  "failures": [],
+  "models_with_unresolved_source_gap_holdings": [
+    "qwen4_mini"
+  ],
+  "backtest_qualification": "native Qlib simulation with unresolved terminated-series valuation",
+  "segments": {
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-11-23"
+    ]
+  },
+  "scope": "Independent raw binary label/membership checks, CSV metric replay, selected-model iteration, and native NAV accounting. Source corporate-action gaps remain unresolved and are quantified, not repaired or excluded.",
+  "models": {
+    "qwen4_mini": {
+      "valid": {
+        "sha256": "90d619cd79b52b45abfdc94db1e30957a85e68d38b1572e3de132b792f9f9a07",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 6.301625887772389e-13,
+          "mae": 2.457478665007784e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.7535990021189107e-11,
+          "rank_ic": 0.0,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.02556865021147412,
+          "mae": 0.01731504113990276,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.49716995563714245,
+          "ic": 0.01842951260583104,
+          "rank_ic": 0.016499795710292885,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "cddc901d8f48ea5b2bd76a4b1755900e82c36ee064bef1416f80b78e731ecf38",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.173354354434892e-12,
+          "mae": 1.1133559352227707e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 5.518462423137471e-12,
+          "rank_ic": 0.0,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.02468658361044575,
+          "mae": 0.016423400521967006,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.48658191574130255,
+          "ic": -0.00868309627605726,
+          "rank_ic": -0.00438691101440527,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "8086420228b37bb2c28d57f4d63777acb3e84c3139edee6a158c867011f8b72e",
+        "days": 458,
+        "start": "2025-01-03",
+        "end": "2026-11-25",
+        "maximum_NAV_relative_error": 1.2475354683887155e-15,
+        "simulated_net_return": -0.05201826892605599,
+        "source_gap_holdings": {
+          "status": "checked",
+          "artifact_sha256": "4b1d7cc9b60001e648cf71c9237f53b737c6a2259182f5b38a5ed4b483d2a28a",
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH601059",
+              "last_observed_close_date": "2026-09-14",
+              "stale_holding_days": 46,
+              "first_stale_holding_date": "2026-09-15",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.018163483259462907,
+              "maximum_stale_weight": 0.023143482562593572,
+              "final_stale_weight": 0.023143482562593572,
+              "marked_price": 1.3299663066864014,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.023143482562593572,
+          "interpretation": "These holdings have no later source close and remain at last observed price. Corporate-action settlement is unresolved; the return is a native Qlib simulation, not executable realized P&L."
+        }
+      }
+    }
+  },
+  "worker_model": "qwen4_mini"
+}

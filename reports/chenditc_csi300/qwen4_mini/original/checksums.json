@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "model": "qwen4_mini",
+  "status": "completed",
+  "source": {
+    "git_commit": "149605860f0c1644912bc5a17c4ad60ab5f0df58",
+    "git_ref": "refs/heads/codex/chenditc-qlib-benchmark-20261127",
+    "tracked_source_dirty": false,
+    "workflow": {
+      "GITHUB_SHA": "149605860f0c1644912bc5a17c4ad60ab5f0df58",
+      "GITHUB_REF": "refs/heads/codex/chenditc-qlib-benchmark-20261127",
+      "GITHUB_RUN_ID": "45928631920",
+      "GITHUB_RUN_ATTEMPT": "1",
+      "GITHUB_REPOSITORY": "BenjiKCF/Neural-Net-with-Financial-Time-Series-Data",
+      "GITHUB_SERVER_URL": "https://github.com",
+      "GITHUB_WORKFLOW_REF": "BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/.github/workflows/chenditc-benchmark.yml@refs/heads/codex/chenditc-qlib-benchmark-20261127"
+    }
+  },
+  "release": "2026-11-26",
+  "archive_sha256": "5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559",
+  "provider_fingerprint": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  },
+  "positions": {
+    "days": 458,
+    "holding_records": 22959
+  },
+  "export_policy": "Explicit numerical/metadata allowlist. No raw provider, model/handler pickle, checkpoint, trained adapter tensor, or inference cache is exported.",
+  "files": [
+    {
+      "path": "audit.json",
+      "bytes": 5454,
+      "sha256": "41b90655a81dda68c6ff2437e29177c05c23ec7ecfb05bb94bcdc3e90b9b784c"
+    },
+    {
+      "path": "daily_ic.csv",
+      "bytes": 23775,
+      "sha256": "43364ce5532c4f6dfe3cdda4c53750737bbc80fda7113b2fcba3ebfe97394462"
+    },
+    {
+      "path": "data_source.json",
+      "bytes": 7906,
+      "sha256": "e1b633908684fbb84854cf82961640a5968857ebe51369c3c48cfef9be5f78d8"
+    },
+    {
+      "path": "learning_curves.json",
+      "bytes": 359,
+      "sha256": "d881079612cedfa86d95cce7d7fd8357cf1991b4deb4c445028cf01c556e29e2"
+    },
+    {
+      "path": "metrics.json",
+      "bytes": 2873,
+      "sha256": "68d2806f249fbd9231c98a09d330df9005f09b538b109f6195bd26ddfbed12fd"
+    },
+    {
+      "path": "portfolio.csv",
+      "bytes": 86338,
+      "sha256": "8086420228b37bb2c28d57f4d63777acb3e84c3139edee6a158c867011f8b72e"
+    },
+    {
+      "path": "positions.json.gz",
+      "bytes": 562849,
+      "sha256": "d99313619f5f4c292891c4569786a6609dae66a62c07355a42e06126fdef41b6"
+    },
+    {
+      "path": "predictions.csv.gz",
+      "bytes": 2496480,
+      "sha256": "da1219d802953fe9241015b8d2330a6c74b8a9ed202e66309414393ef63b2f6f"
+    },
+    {
+      "path": "protocol.json",
+      "bytes": 24083,
+      "sha256": "0c29acf0ce0152f7b942047a94504301dc805672001e7bf956572071f71acb62"
+    },
+    {
+      "path": "qlib_task.yaml",
+      "bytes": 2385,
+      "sha256": "8ea43940be6a7714cd263cd442664af530dab06187237754a9ac5a79b0a2c5a4"
+    },
+    {
+      "path": "resolved_config.json",
+      "bytes": 1518,
+      "sha256": "c0eebd410a2a6d3b32320dd27bc1d6db029f65d454ead2a4eb8a3381aad17f59"
+    },
+    {
+      "path": "run.json",
+      "bytes": 19318,
+      "sha256": "fa7be2f06689aaadafaf618acab19dee67b35f56e823af469d1db3cea9001cb6"
+    },
+    {
+      "path": "source.json",
+      "bytes": 682,
+      "sha256": "94688352608c54ec1591bda669843d82735096ac5e5301545057e066332aa699"
+    },
+    {
+      "path": "validation_daily_ic.csv",
+      "bytes": 12465,
+      "sha256": "81ec1f63318bef7542c70e2c62d9c366429030614aaadf0d00c4afdfdd1a3572"
+    },
+    {
+      "path": "validation_predictions.csv.gz",
+      "bytes": 1314324,
+      "sha256": "c7955a2e124f77207cb06ce7895a50800236cfaf44e3e99bed37db64f8f0d943"
+    }
+  ]
+}

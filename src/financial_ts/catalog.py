@@ -12,6 +12,11 @@ NEURAL_MODELS = ("transformer", *MINI_ARCHITECTURES)
 TRAINABLE_MODELS = ("lightgbm", *NEURAL_MODELS)
 MODEL_NAMES = (*TRAINABLE_MODELS, "timesfm3_pretrained")
 
+# Keep the archived eight-model campaign's default list stable. New daily-panel
+# experiments are explicit opt-ins, and use a different model/batching adapter.
+CROSS_SECTIONAL_MODELS = ("daily_transformer", "master_style", "quantformer_moe")
+EXPERIMENTAL_MODEL_NAMES = (*MODEL_NAMES, *CROSS_SECTIONAL_MODELS)
+
 
 def build_mini_encoder(name, **kwargs):
     from importlib import import_module

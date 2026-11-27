@@ -1,0 +1,127 @@
+{
+  "name": "csi300_rolling_screening",
+  "purpose": "Small explicitly exploratory implementation screen; no production or model superiority claim.",
+  "region": "cn",
+  "instruments": "csi300",
+  "rolling": {
+    "start": "2024-01-02",
+    "train_sessions": 120,
+    "valid_sessions": 30,
+    "test_sessions": 20,
+    "step_sessions": 20,
+    "max_folds": 2
+  },
+  "models": [
+    "zero",
+    "ridge",
+    "lightgbm",
+    "transformer",
+    "daily_transformer",
+    "master_style",
+    "quantformer_moe",
+    {
+      "id": "daily_huber",
+      "model": "daily_transformer",
+      "params": {
+        "objective": "huber"
+      }
+    },
+    {
+      "id": "daily_ic",
+      "model": "daily_transformer",
+      "params": {
+        "objective": "ic"
+      }
+    },
+    {
+      "id": "daily_ranking",
+      "model": "daily_transformer",
+      "params": {
+        "objective": "ranking"
+      }
+    }
+  ],
+  "model_params": {
+    "lightgbm": {
+      "num_boost_round": 30,
+      "early_stopping_rounds": 5,
+      "num_leaves": 15,
+      "verbosity": -1
+    },
+    "transformer": {
+      "d_model": 16,
+      "nhead": 2,
+      "num_layers": 1,
+      "batch_size": 512
+    },
+    "daily_transformer": {
+      "d_model": 16,
+      "nhead": 2,
+      "num_layers": 1,
+      "objective": "mse"
+    },
+    "master_style": {
+      "d_model": 16,
+      "nhead": 2,
+      "num_layers": 1,
+      "objective": "mse"
+    },
+    "quantformer_moe": {
+      "d_model": 16,
+      "nhead": 2,
+      "num_layers": 1,
+      "objective": "mse"
+    }
+  },
+  "seeds": [
+    7,
+    42
+  ],
+  "epochs": 2,
+  "device": "cpu",
+  "num_threads": 2,
+  "warmup_sessions": 60,
+  "sequence_length": 32,
+  "selection_metric": "rank_ic",
+  "reference": "transformer",
+  "bootstrap": {
+    "block_lengths": [
+      5,
+      10,
+      20
+    ],
+    "draws": 1000,
+    "seed": 913
+  },
+  "backtest": {
+    "enabled": true,
+    "topk": 20,
+    "n_drop": 4,
+    "account": 10000000
+  },
+  "cost_scenarios": [
+    {
+      "id": "base",
+      "fee_multiplier": 1,
+      "account_multiplier": 1
+    },
+    {
+      "id": "fees_2x",
+      "fee_multiplier": 2,
+      "account_multiplier": 1
+    },
+    {
+      "id": "account_0.1x",
+      "fee_multiplier": 1,
+      "account_multiplier": 0.1
+    },
+    {
+      "id": "slippage_5bps",
+      "fee_multiplier": 1,
+      "account_multiplier": 1,
+      "slippage_bps": 5
+    }
+  ],
+  "export_inference_bundle": true,
+  "holdout_status": "Exploratory 2024 implementation screening; the snapshot and historical periods have been inspected. No fresh confirmation evidence."
+}

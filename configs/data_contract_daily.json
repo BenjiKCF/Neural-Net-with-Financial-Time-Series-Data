@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "feature_order": ["open", "high", "low", "close", "volume", "factor"],
+  "timezone": "Asia/Shanghai",
+  "calendar_id": "XSHG-observed",
+  "availability_mode": "conservative_lag",
+  "conservative_lag_sessions": 1,
+  "conservative_release_time": "08:00:00",
+  "adjustment_convention": "raw",
+  "revision_policy": "quarantine",
+  "maximum_staleness_sessions": 1,
+  "maximum_missing_fraction": 0.0,
+  "historical_eligibility": "Require the caller's historical CSI300 membership at the cutoff; this release snapshot does not establish original publication vintages."
+}

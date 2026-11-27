@@ -10,7 +10,7 @@
 
 **Train financial forecasters, backtest stock portfolios, and inspect Qlib's native diagnostics.** The primary research workflow now uses the latest verified [chenditc Qlib dataset](https://github.com/chenditc/investment_data/releases): daily China-market data with a historical CSI300 universe. Compare eight trainable architectures and four optional official TimesFM variants on a common recent period.
 
-[**Start here**](docs/getting-started.md) · [**Data & results**](#results) · [**Qlib charts**](#native-qlib-diagnostics) · [**Models**](#model-catalog) · [**CSI300 protocol**](docs/chenditc-benchmark.md) · [**Production roadmap**](docs/production-roadmap.md) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3)
+[**Start here**](docs/getting-started.md) · [**Data & results**](#results) · [**Qlib charts**](#native-qlib-diagnostics) · [**Models**](#model-catalog) · [**CSI300 protocol**](docs/chenditc-benchmark.md) · [**Roadmap implementation**](docs/production-implementation.md) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3)
 
 | Start small | Compare fairly | Inspect the evidence |
 | --- | --- | --- |
@@ -411,23 +411,38 @@ See [the loop architecture and API](docs/architectures/timesfm-loop.md), [checkp
 
 ## Toward production
 
-The completed 12-setup CSI300 campaign provides an audited research foundation.
-The [production roadmap](docs/production-roadmap.md) turns the next recommendations
-into focused implementation PRs with acceptance criteria. The known corporate-action
-valuation issue, one-seed evaluation, and inspected historical test period still
-limit what the results establish.
+**The production roadmap now has an executable software foundation.** Version
+2.3 adds registered rolling evaluation, daily cross-stock models and ranking
+objectives, adaptation comparators, data/lifecycle contracts, numerical model
+bundles and a shadow-operation runner. The
+[implementation map](docs/production-implementation.md) links the source,
+tests and reproduction commands for each component.
 
-| Priority | Planned work | Evidence needed |
+| Area | Available now | Required before production acceptance |
 | --- | --- | --- |
-| Data and accounting | Point-in-time availability, instrument lifecycles, realistic tradability and costs. | Sourced event fixtures, reconciled positions/cash, and separately versioned replays. |
-| Stronger evaluation | Rolling folds, multiple seeds, simple/Qlib baselines, IC and ranking objectives. | Complete trial history, causal selection, paired uncertainty estimates, and a fresh confirmation period. |
-| DL research | MASTER-style cross-stock attention; regime MoE; LightGBM–DL ensembles; multi-horizon, uncertainty, pretraining and adaptation experiments. | Controlled ablations and measurable value over the existing baselines. |
-| Reliable operation | Immutable inference bundles, registry, daily scheduling, monitoring, rollback and shadow runs. | Replay parity, freshness checks, failure recovery, and reviewed deployment evidence. |
+| Data and accounting | Availability contracts, refresh quarantine, raw-share event ledger and dated paper execution. | Publication evidence, actual allocations, complete action coverage and a separately qualified replay. |
+| Evaluation | Registered folds/seeds, mature-label selection, paired date-block comparisons and retained trial history. | Adequate rolling experiments and a genuinely uninspected confirmation period. |
+| DL research | Same-date MSE/Huber/IC/ranking; MASTER-style attention; QuantFormer-MoE; tree/neural blends; multi-horizon, uncertainty and adaptation controls. | Controlled evidence that a candidate improves on simpler baselines under the declared costs and budgets. |
+| Operation | Immutable bundles, registry, atomic daily output, delayed monitoring, rollback and scheduler examples. | Measured service objectives, prospective shadow observation and execution reconciliation. |
 
-**These are planned capabilities.** The proposed QuantFormer-MoE architecture is a
-research candidate; the roadmap defines how to evaluate it and when to retain a
-simpler model. Start with the [first implementation PRs](docs/production-roadmap.md#first-implementation-prs)
-and use the [promotion gates](docs/production-roadmap.md#promotion-gates) to assess progress.
+This is a **source-only implementation release**. New weights, provider-derived
+fixtures and experiment outputs are generated locally; no new model-superiority
+claim or evidence archive accompanies this change. The existing 12-model CSI300
+results and native Qlib gallery above are preserved.
+
+Start with a registered local screen after preparing the provider in Quick start:
+
+```bash
+fts rolling-evaluate --provider .data/cn \
+  --config configs/rolling_screening.json --output runs/rolling-screen
+```
+
+The [operation guide](docs/production-operation.md) explains pinning the provider,
+registration, retries, bundles and daily output. Read the
+[architecture guide](docs/architectures/cross-sectional.md) and
+[DoubleAdapt method guide](docs/doubleadapt.md) for the model controls.
+The [roadmap](docs/production-roadmap.md) retains the full
+[promotion gates](docs/production-roadmap.md#promotion-gates).
 
 ## Explore further
 
@@ -436,7 +451,8 @@ and use the [promotion gates](docs/production-roadmap.md#promotion-gates) to ass
 | Install it and understand my first output | [Getting started](docs/getting-started.md) |
 | Download chenditc data, reproduce CSI300, or interpret native Qlib plots | [CSI300 benchmark guide](docs/chenditc-benchmark.md) |
 | Change features, models, splits, or portfolio costs | [Workflow and configuration](docs/workflow-guide.md) |
-| Plan stronger DL experiments and production operation | [Production roadmap and acceptance gates](docs/production-roadmap.md) |
+| Run the roadmap implementation | [Software map and reproduction](docs/production-implementation.md) · [Operation guide](docs/production-operation.md) |
+| Understand remaining production acceptance | [Production roadmap and gates](docs/production-roadmap.md) · [Data and lifecycle contracts](docs/data-lifecycle.md) |
 | Inspect the archived six-model SPX benchmark | [Original validation report](docs/architecture-validation.md) |
 | Inspect the archived TimesFM comparison and SPY backtest | [Common-period research and backtest](docs/financial-research.md) |
 | Understand the architecture adaptations | [DeepSeek](docs/architectures/deepseek.md) · [GLM/Qwen](docs/architectures/glm_qwen.md) · [TimesFM](docs/architectures/timesfm.md) |

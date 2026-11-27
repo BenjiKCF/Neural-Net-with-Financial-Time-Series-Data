@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "qualification": "Declared sensitivity assumptions, not a brokerage tariff or estimated market-impact calibration. Supply separately sourced dated rules for each instrument.",
+  "portfolio_sizes_cny": [1000000, 10000000, 100000000],
+  "scenarios": [
+    {"name": "base", "fee_source": "Assumption: registered research commission 5 bp per side and 10 bp sell tax; not a current statutory tariff", "commission_rate": 0.0005, "minimum_commission": 5, "sell_tax_rate": 0.001, "participation_limit": 0.01, "slippage_bps": 5, "impact_bps_at_full_participation": 20, "fee_multiplier": 1, "slippage_multiplier": 1},
+    {"name": "fees_2x", "fee_source": "Assumption: independent twice-base fee stress", "commission_rate": 0.0005, "minimum_commission": 5, "sell_tax_rate": 0.001, "participation_limit": 0.01, "slippage_bps": 5, "impact_bps_at_full_participation": 20, "fee_multiplier": 2, "slippage_multiplier": 1},
+    {"name": "slippage_2x", "fee_source": "Assumption: base fees, independently doubled slippage", "commission_rate": 0.0005, "minimum_commission": 5, "sell_tax_rate": 0.001, "participation_limit": 0.01, "slippage_bps": 5, "impact_bps_at_full_participation": 20, "fee_multiplier": 1, "slippage_multiplier": 2}
+  ]
+}

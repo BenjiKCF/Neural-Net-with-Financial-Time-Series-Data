@@ -1,0 +1,38 @@
+backtest:
+  account: 100000
+  benchmark: null
+  close_cost: 0.001
+  enabled: false
+  min_cost: 0.0
+  n_drop: 1
+  open_cost: 0.001
+  risk_degree: 0.95
+  topk: 5
+experiment_name: daily_cross_section_research
+instruments: csi300
+model:
+  name: daily_transformer
+  params:
+    batch_size: 128
+    d_model: 32
+    device: auto
+    dropout: 0.0
+    early_stop: 5
+    lr: 0.001
+    n_epochs: 6
+    n_jobs: 0
+    nhead: 4
+    num_layers: 1
+    num_threads: 2
+    weight_decay: 0.0001
+    objective: huber
+    selection_metric: objective
+    architecture_kwargs: {}
+output_dir: runs/daily_transformer
+provider_uri: .data/chenditc/2026-11-26
+region: cn
+seed: 42
+segments: null
+sequence_length: 20
+warmup_sessions: 60
+shared_windows: true

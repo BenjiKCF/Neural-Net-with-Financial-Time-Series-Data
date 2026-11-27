@@ -18,11 +18,19 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from financial_ts.catalog import MODEL_NAMES, NEURAL_MODELS
+from financial_ts.catalog import CROSS_SECTIONAL_MODELS, MODEL_NAMES, NEURAL_MODELS
 
 LABEL = "Ref($close, -2) / Ref($close, -1) - 1"
 LABEL_HORIZON = 2
 FEATURE_COUNT = 157
+
+
+def _market_timezone(region: str) -> str:
+    """Exchange-local dates for the regions supported by Qlib's daily recipe."""
+    zones = {"cn": "Asia/Shanghai", "us": "America/New_York", "tw": "Asia/Taipei"}
+    if region not in zones:
+        raise ValueError(f"No declared market timezone for region {region!r}.")
+    return zones[region]
 
 
 def resolve_segments(
@@ -207,7 +215,15 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
         }
         defaults.update(params)
         model = {"class": "LGBModel", "module_path": "qlib.contrib.model.gbdt", "kwargs": defaults}
-    elif name in NEURAL_MODELS:
+    elif name in {"zero", "ridge"}:
+        if "kind" in params:
+            raise ValueError("Choose the baseline with model.name, not model.params.kind.")
+        model = {
+            "class": "TabularBaseline",
+            "module_path": "financial_ts.baselines",
+            "kwargs": {"kind": name, **params},
+        }
+    elif name in (*NEURAL_MODELS, *CROSS_SECTIONAL_MODELS):
         if "d_feat" in params and params["d_feat"] != FEATURE_COUNT:
             raise ValueError(f"This OHLCV handler requires d_feat={FEATURE_COUNT}.")
         if "architecture" in params:
@@ -217,8 +233,12 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
         defaults = {"d_feat": FEATURE_COUNT, "seed": seed, "architecture": name}
         defaults.update(params)
         model = {
-            "class": "SequenceForecastModel",
-            "module_path": "financial_ts.model",
+            "class": "CrossSectionalForecastModel"
+            if name in CROSS_SECTIONAL_MODELS
+            else "SequenceForecastModel",
+            "module_path": "financial_ts.cross_sectional"
+            if name in CROSS_SECTIONAL_MODELS
+            else "financial_ts.model",
             "kwargs": defaults,
         }
     elif name == "timesfm3_panel":
@@ -277,9 +297,11 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
         }
     dataset_kwargs = {"handler": handler, "segments": segments}
     shared_windows = config.get("shared_windows", False)
-    if type(shared_windows) is not bool or (shared_windows and name not in NEURAL_MODELS):
+    if type(shared_windows) is not bool or (
+        shared_windows and name not in (*NEURAL_MODELS, *CROSS_SECTIONAL_MODELS)
+    ):
         raise ValueError("shared_windows must be boolean and is supported only by neural models.")
-    if name in NEURAL_MODELS:
+    if name in (*NEURAL_MODELS, *CROSS_SECTIONAL_MODELS):
         step_len = config.get("sequence_length", 20)
         if not isinstance(step_len, int) or step_len < 1:
             raise ValueError("sequence_length must be a positive integer.")
@@ -290,7 +312,7 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
             "class": "SharedTSDatasetH"
             if shared_windows
             else "TSDatasetH"
-            if name in NEURAL_MODELS
+            if name in (*NEURAL_MODELS, *CROSS_SECTIONAL_MODELS)
             else "DatasetH",
             "module_path": "financial_ts.shared_panel" if shared_windows else "qlib.data.dataset",
             "kwargs": dataset_kwargs,
@@ -682,6 +704,52 @@ def run_workflow(config: dict) -> dict:
         )
     except (OSError, subprocess.SubprocessError):
         metadata["git_commit"] = None
+    if config.get("export_inference_bundle", False):
+        if type(config["export_inference_bundle"]) is not bool:
+            raise ValueError("export_inference_bundle must be boolean.")
+        if name := config.get("model", {}).get("name"):
+            if name in {"timesfm3_pretrained", "timesfm3_panel"}:
+                raise ValueError(
+                    "Official research-only TimesFM checkpoints cannot be exported for deployment."
+                )
+        valid_end = calendar.get_loc(pd.Timestamp(segments["valid"][1]))
+        source_files = {
+            str(path.relative_to(Path(__file__).parent)): _file_sha256(path)
+            for path in sorted(Path(__file__).parent.rglob("*.py"))
+        }
+        bundle_metadata = {
+            "source_revision": metadata.get("git_commit") or "installed-source",
+            "source_files": source_files,
+            "data_fingerprint": metadata["provider"],
+            "target": LABEL,
+            "universe": config.get("instruments", "all"),
+            "region": region,
+            "market_timezone": _market_timezone(region),
+            "training_end": segments["train"][1],
+            "fit_end": (
+                calendar[valid_end + LABEL_HORIZON] + pd.Timedelta(hours=23, minutes=59, seconds=59)
+            )
+            .tz_localize(_market_timezone(region))
+            .isoformat(),
+            "selection": "validation only; fit_end includes the validation-label information endpoint",
+            "seed": config.get("seed", 42),
+            "usage_rights": {"model": "unreviewed", "data": "unreviewed"},
+            "promotion": "candidate only; usage rights and prospective evidence need review",
+        }
+        task["record"].append(
+            {
+                "class": "InferenceBundleRecord",
+                "module_path": "financial_ts.bundles",
+                "kwargs": {
+                    "output_dir": str(output / "inference_bundle"),
+                    "metadata": bundle_metadata,
+                },
+            }
+        )
+        (output / "qlib_task.yaml").write_text(
+            yaml.safe_dump(_json_ready({"qlib_init": run_init, "task": task}), sort_keys=False),
+            encoding="utf-8",
+        )
     _save_json(output / "run.json", metadata)
     try:
         if config.get("handler_cache_path"):
@@ -758,6 +826,15 @@ def run_workflow(config: dict) -> dict:
             )
         if history:
             _save_json(output / "learning_curves.json", history)
+        for attribute, filename in (
+            ("objective_history_", "objective_history.json"),
+            ("training_receipt_", "training_receipt.json"),
+            ("pretraining_receipt_", "pretraining_receipt.json"),
+            ("routing_history_", "routing_history.json"),
+        ):
+            value = getattr(fitted_model, attribute, None)
+            if value is not None:
+                _save_json(output / filename, value)
         del fitted_model
         if backtest_enabled:
             from financial_ts.cn_portfolio import portfolio_metrics

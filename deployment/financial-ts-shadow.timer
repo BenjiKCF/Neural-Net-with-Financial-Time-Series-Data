@@ -1,0 +1,10 @@
+[Unit]
+Description=Run financial shadow predictions after the declared data cutoff
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 19:00:00 Asia/Hong_Kong
+Persistent=true
+Unit=financial-ts-shadow.service
+
+[Install]
+WantedBy=timers.target

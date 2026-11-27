@@ -1,0 +1,14 @@
+[Unit]
+Description=Financial TS daily shadow prediction
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/financial-ts
+ExecStart=/opt/financial-ts/.venv/bin/fts scheduled-shadow --config configs/production/shadow_schedule.json
+TimeoutStartSec=15min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/opt/financial-ts/runs
+# Configure the service user and data-arrival job for your declared machine.

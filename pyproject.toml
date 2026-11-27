@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "financial-ts-qlib"
-version = "2.2.0"
+version = "2.3.0"
 description = "Reproducible financial time-series research with Qlib and PyTorch"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
@@ -16,6 +16,7 @@ dependencies = [
     "mlflow>=2.20,<3",
     "filelock>=3.16,<3.30",
     "PyYAML>=6,<7",
+    "psutil>=5.9,<8",
 ]
 
 [project.optional-dependencies]

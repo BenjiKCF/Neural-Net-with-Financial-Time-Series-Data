@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "superseded",
+  "replacement": "../account_settlement",
+  "reason": "Reject account completeness attestations recorded before their covered through timestamp. Initial report had no account export and remained blocked; no scientific result or account settlement status changed.",
+  "original_completion_sha256": "b91bc07cfe914d268df415e9eeadf950fdfb99af4ffa4ef9f5f439a74899af07",
+  "original_source_sha256": "4569814a925290330ed51f9642bbf7f9f1f6be6c98a9b4af129ab1d1681d0963",
+  "original_source_snapshot": "source/settlement.py"
+}

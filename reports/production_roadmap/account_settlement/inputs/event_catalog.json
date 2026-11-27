@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "qualification": "Issuer-sourced conversion entitlements; registration, successor tradability, actual account allocations and tax/other corporate actions require separate evidence before a full corrected portfolio replay.",
+  "publication_time_policy": "Only announcement dates were verified; known_at is conservatively the start of the following local calendar day, not an assertion of exact publication time.",
+  "fraction_policy": "Do not round an individual account by guess: the notices allocate whole shares across holders by remainder ranking, with random allocation for equal remainders.",
+  "events": [
+    {
+      "event_id": "haitong-merger-20250304",
+      "kind": "merger",
+      "instrument": "SH600837",
+      "successor": "SH601211",
+      "ratio": 0.62,
+      "effective_at": "2025-03-04T00:00:00+08:00",
+      "known_at": "2025-03-02T00:00:00+08:00",
+      "source": "https://static.cninfo.com.cn/finalpage/2025-03-01/1222675645.PDF",
+      "tradable_at": null
+    },
+    {
+      "event_id": "china-heavy-industry-merger-20250905",
+      "kind": "merger",
+      "instrument": "SH601989",
+      "successor": "SH600150",
+      "ratio": 0.1339,
+      "effective_at": "2025-09-05T00:00:00+08:00",
+      "known_at": "2025-08-31T00:00:00+08:00",
+      "source": "https://static.cninfo.com.cn/finalpage/2025-08-30/1224625027.PDF",
+      "tradable_at": null
+    },
+    {
+      "event_id": "cinda-merger-20261019",
+      "kind": "merger",
+      "instrument": "SH601059",
+      "successor": "SH601995",
+      "ratio": 0.521,
+      "effective_at": "2026-10-19T00:00:00+08:00",
+      "known_at": "2026-10-17T00:00:00+08:00",
+      "source": "https://epaper.cs.com.cn/zgzqb/html/2026-10/16/nw.D110000zgzqb_20261016_5-B017.htm",
+      "tradable_at": null
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "protocol.json": {
+    "bytes": 1029681,
+    "sha256": "b11381812cf66c8aaadfd62e7efa725456d174fe357e349c3e951f8ee25239dd"
+  },
+  "frozen_runtime_manifest.json": {
+    "bytes": 6903,
+    "sha256": "0d507a61d430b69804b18b0887ba29e0517f62eb1a82554231a0c6539d92ab26"
+  },
+  "recipe.json": {
+    "bytes": 1903,
+    "sha256": "dd8260b4f478c25dca90f1d391ecb388b4b958bfb4854c479916e875c0d5c356"
+  },
+  "progress.json": {
+    "bytes": 10892,
+    "sha256": "003ee8fae14032a4d15f3b1de6fb83fc58e1a4c70d2a17e124e74b677fc59c2d"
+  }
+}

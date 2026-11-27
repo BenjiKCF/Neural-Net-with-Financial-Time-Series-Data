@@ -297,6 +297,20 @@ def run_paper_session(spec_path: str | Path, output: str | Path) -> dict:
             if set(operation) != {"type", "asof"}:
                 raise ValueError("Malformed cash-settlement operation")
             at = _time(operation["asof"])
+        elif kind == "resolve_allocation":
+            required_allocation = {"type", "event_id", "allocated_quantity", "source", "asof"}
+            if (
+                not required_allocation.issubset(operation)
+                or set(operation) - required_allocation - {"tradable_at"}
+                or not isinstance(operation["event_id"], str)
+                or not operation["event_id"]
+            ):
+                raise ValueError("Malformed account-allocation operation")
+            _number(operation["allocated_quantity"], "allocated_quantity")
+            _source(operation["source"])
+            at = _time(operation["asof"])
+            if operation.get("tradable_at") is not None:
+                _time(operation["tradable_at"])
         elif kind == "valuation":
             if set(operation) - {"type", "asof", "marks", "maximum_staleness_sessions"} or "marks" not in operation:
                 raise ValueError("Malformed valuation operation")
@@ -360,6 +374,10 @@ def run_paper_session(spec_path: str | Path, output: str | Path) -> dict:
                     receipt = executor.execute(PaperOrder(**operation["order"]), **operation["execution"])
                 elif kind == "settle_cash":
                     receipt = ledger.settle_cash(asof=operation["asof"])
+                elif kind == "resolve_allocation":
+                    receipt = ledger.resolve_allocation(
+                        **{key: value for key, value in operation.items() if key != "type"}
+                    )
                 else:
                     receipt = ledger.mark({symbol: PriceMark(**mark) for symbol, mark in operation["marks"].items()},
                                           asof=operation["asof"], observed_calendar=calendar,

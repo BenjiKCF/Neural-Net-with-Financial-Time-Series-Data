@@ -1,0 +1,32 @@
+{
+  "store": "runs/prospective-dec2026-pilot-19h",
+  "protocol_id": "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6",
+  "registered_at": "2026-11-27T09:44:23.082777+00:00",
+  "registration_kind": "actual future operations pilot; no forecast observations collected",
+  "bundle_ids": {
+    "candidate": "2409b2100859d691b76a86a3d37a5ae581755818e18907a7d938a53320086815",
+    "reference": "e111acd0d57128c263e8602b1c83469f2c225b0762ebd08933884e709e3553a7"
+  },
+  "supersedes_protocol_id": "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+  "superseded_store": "runs/prospective-dec2026-pilot-18h-superseded",
+  "frozen_bundles": {
+    "candidate": {
+      "source": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-001/transformer/seed-42/attempt-0001/workflow/inference_bundle",
+      "copy": "runs/prospective-dec2026-pilot-19h/registry/bundles/2409b2100859d691b76a86a3d37a5ae581755818e18907a7d938a53320086815"
+    },
+    "reference": {
+      "source": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-001/ridge/seed-42/attempt-0001/workflow/inference_bundle",
+      "copy": "runs/prospective-dec2026-pilot-19h/registry/bundles/e111acd0d57128c263e8602b1c83469f2c225b0762ebd08933884e709e3553a7"
+    }
+  },
+  "arrival_feed_configured": false,
+  "service_installed": false,
+  "observations_collected": 0,
+  "confirmation_eligible": false,
+  "production_ready": false,
+  "files": {
+    "protocol.json": "262cbf6ead083be9b4d9cd309fdbcc562fa10a9c0fbb2716e4e696f11666c172",
+    "status.json": "2737ef613bc06b5df090eba1751ffafda6ca65f962af4a3fbd838c6a017bbc56",
+    "source_timing.json": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310"
+  }
+}

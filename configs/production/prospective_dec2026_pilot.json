@@ -1,0 +1,107 @@
+{
+  "name": "csi300_dec2026_operations_pilot",
+  "evaluation_role": "operations_pilot",
+  "timezone": "Asia/Shanghai",
+  "calendar": {
+    "source": "https://www.sse.com.cn/disclosure/announcement/general/c/c_20251222_10802507.shtml",
+    "additional_source": "https://investor.szse.cn/disclosure/notice/general/t20251222_618087.html",
+    "checked_at_date": "2026-11-27",
+    "derivation": "Monday-Friday sessions in 2026-11-30 through 2026-12-29; the published 2026 SSE/SZSE annual schedules list no holiday closures in this interval. No 2027 dates inferred. Last two dates are label maturity endpoints.",
+    "sessions": [
+      "2026-11-30",
+      "2026-12-01",
+      "2026-12-02",
+      "2026-12-03",
+      "2026-12-04",
+      "2026-12-07",
+      "2026-12-08",
+      "2026-12-09",
+      "2026-12-10",
+      "2026-12-11",
+      "2026-12-14",
+      "2026-12-15",
+      "2026-12-16",
+      "2026-12-17",
+      "2026-12-18",
+      "2026-12-21",
+      "2026-12-22",
+      "2026-12-23",
+      "2026-12-24",
+      "2026-12-25",
+      "2026-12-28",
+      "2026-12-29"
+    ]
+  },
+  "first_session": "2026-11-30",
+  "last_session": "2026-12-25",
+  "decision_time": "19:00:00",
+  "label_available_time": "16:30:00",
+  "incident_owner": "Ben",
+  "selection_reason": "Fixed software comparator pair: the retained fold-001 seed-42 temporal Transformer is the challenger and ridge is the reference. Selected for operational model diversity, not as a new test-score winner. This short pilot cannot satisfy candidate-quality confirmation.",
+  "source_revision": "23b6023f8cd5a07bf79ddff52d8f01180e63a9c9 base plus exact runtime source-file hashes retained by registration",
+  "data_contract": {
+    "source": "chenditc Qlib snapshots, admitted individually before each decision cutoff",
+    "adjustment_convention": "Qlib adjusted Alpha158 inputs; immutable snapshot identities; raw target semantics",
+    "availability_policy": "Real arrival receipt records publication and observation timestamps before cutoff; historical publication vintages are not asserted"
+  },
+  "policy": {
+    "max_runtime_seconds": 600,
+    "max_memory_mb": 4096,
+    "minimum_coverage": 1.0,
+    "max_missing_feature_fraction": 0.25,
+    "max_abs_score": 1.0,
+    "max_data_age_hours": 24,
+    "min_cross_section": 100
+  },
+  "acceptance": {
+    "minimum_sessions": 20,
+    "maximum_publish_lag_minutes": 30,
+    "minimum_success_fraction": 1.0,
+    "maximum_failed_attempts": 0,
+    "minimum_label_coverage": 1.0,
+    "minimum_rank_ic": 0.0,
+    "minimum_paired_rank_ic_gain": 0.0,
+    "block_lengths": [
+      5
+    ],
+    "bootstrap_draws": 2000,
+    "bootstrap_seed": 913,
+    "minimum_effective_blocks": 3
+  },
+  "supersession": {
+    "supersedes_protocol_id": "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6",
+    "superseded_protocol_ids": [
+      "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+      "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6"
+    ],
+    "retained_store": "runs/prospective-dec2026-pilot-19h-pre-review-superseded",
+    "changes": {
+      "runtime_source": {
+        "rolling_sha256": "e2508ed6d83825e094ac1b980508156cd2c35cb6c1e26608e9ae2a825e05604d",
+        "prospective_sha256": "ec7c86f362e1034e4afdd63e9a2dffbed2e3430997c1bbcdf689b8781fe6e718"
+      }
+    },
+    "reason": "Freeze independently reviewed source before any observations: recover interrupted trial attempts with a complete chain, and reject durable forecast publication that crosses its deadline. The already corrected 19:00 HKT cutoff, 19:30 deadline, models, sessions and acceptance thresholds are unchanged.",
+    "source_timing_receipt": "reports/remaining_acceptance/prospective_pilot/source_timing.json",
+    "source_timing_receipt_sha256": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310",
+    "previous_forecast_observations": 0,
+    "previous_label_observations": 0,
+    "models_calendar_budgets_and_acceptance_thresholds_changed": false,
+    "previous_schedule_supersession": {
+      "supersedes_protocol_id": "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+      "retained_store": "runs/prospective-dec2026-pilot-18h-superseded",
+      "changes": {
+        "decision_time": {
+          "before": "18:00:00",
+          "after": "19:00:00"
+        }
+      },
+      "reason": "Pinned feed release/manifest arrived at 18:08:41/18:09:25 HKT, after the original 18:00 cutoff; move cutoff to19:00 and unchanged30-minute publication window to19:30 before any observations.",
+      "source_timing_receipt": "reports/remaining_acceptance/prospective_pilot/source_timing.json",
+      "source_timing_receipt_sha256": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310",
+      "previous_forecast_observations": 0,
+      "previous_label_observations": 0,
+      "models_calendar_budgets_and_acceptance_thresholds_changed": false
+    }
+  }
+}

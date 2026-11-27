@@ -86,8 +86,9 @@ having very limited resampling information. Even the shorter-block intervals
 come from short, dependent historical periods with multiple candidate
 comparisons. They are exploratory evidence, not a prospective confirmation.
 
-The [larger five-seed recipe](../configs/rolling_full.json) remains an executable
-future experiment. It is not included in this completion count. The original
+The [larger five-seed recipe](../configs/rolling_full.json) now has a separate
+[execution campaign](five-seed-campaign.md). It is not included in this screen's
+completion count, and its full acceptance remains pending. The original
 12-setup benchmark remains byte-for-byte unchanged.
 
 ## Reproduction and integrity

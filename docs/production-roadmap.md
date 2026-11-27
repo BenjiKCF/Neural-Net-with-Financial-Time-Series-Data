@@ -28,6 +28,11 @@ released package versions.
 
 ## Software delivery status
 
+The [remaining acceptance work](remaining-acceptance.md) now includes execution
+of the full five-seed recipe, verified account-evidence intake and preregistered
+prospective capture. Required observations and full campaign results remain
+separate from completed implementation.
+
 | Component | Available source | Remaining acceptance boundary |
 | --- | --- | --- |
 | Availability and refreshes | Timestamp/lag contracts, immutable snapshot comparison and quarantine. | Original publication vintages or justified source-arrival evidence. |

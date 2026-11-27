@@ -1,0 +1,53 @@
+{
+  "superseded_protocol_ids": [
+    "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+    "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6"
+  ],
+  "replacement_protocol_id": "e0130e4dbcb1e6a8240e1ce91e428623775c052e95f39c57b5cf83a5ccaf1edb",
+  "replacement_registered_at": "2026-11-27T09:52:30.881587+00:00",
+  "retained_old_stores": [
+    "runs/prospective-dec2026-pilot-18h-superseded",
+    "runs/prospective-dec2026-pilot-19h-pre-review-superseded"
+  ],
+  "active_store": "runs/prospective-dec2026-pilot-19h",
+  "before_any_observations": true,
+  "changes": {
+    "first_correction": {
+      "cutoff_hkt": {
+        "old": "18:00",
+        "new": "19:00"
+      },
+      "deadline_hkt": {
+        "old": "18:30",
+        "new": "19:30"
+      }
+    },
+    "source_review": {
+      "runtime_source": {
+        "prospective_sha256": "ec7c86f362e1034e4afdd63e9a2dffbed2e3430997c1bbcdf689b8781fe6e718",
+        "rolling_sha256": "e2508ed6d83825e094ac1b980508156cd2c35cb6c1e26608e9ae2a825e05604d"
+      }
+    }
+  },
+  "unchanged": [
+    "model bundles",
+    "exchange calendar",
+    "observation dates",
+    "label endpoints",
+    "acceptance thresholds",
+    "training budgets",
+    "operations_pilot role"
+  ],
+  "reason": "Freeze independently reviewed source before any observations: recover interrupted trial attempts with a complete chain, and reject durable forecast publication that crosses its deadline. The already corrected 19:00 HKT cutoff, 19:30 deadline, models, sessions and acceptance thresholds are unchanged.",
+  "source_timing_sha256": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310",
+  "superseded_report_files": {
+    "superseded_18h/protocol.json": "7c2b8bdb91f505f39490c3246409e5edbcd59d82e114bf7b5ea43318ecf3f5ca",
+    "superseded_18h/registration_receipt.json": "2acbb26c3174e56b614c92dd13e31164463b4f888b3c2bed0e03d7f8debf5c1a",
+    "superseded_18h/status.json": "ed84efd176c8703a0763f4c3eb3bec4fb5a38a5e3ce3941b992f0972cfe06cd4",
+    "superseded_19h_pre_review/protocol.json": "262cbf6ead083be9b4d9cd309fdbcc562fa10a9c0fbb2716e4e696f11666c172",
+    "superseded_19h_pre_review/registration_receipt.json": "795b33a6e1553319d688b10a5e197a4df71def09ef86b6dd203db98a2c3c21f0",
+    "superseded_19h_pre_review/source_timing.json": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310",
+    "superseded_19h_pre_review/status.json": "2737ef613bc06b5df090eba1751ffafda6ca65f962af4a3fbd838c6a017bbc56",
+    "superseded_19h_pre_review/supersession_receipt.json": "0a3faea907ee6320c068dc170f0991ed06b95ad6f2b2efeb7a83f62cdb0e5f6c"
+  }
+}

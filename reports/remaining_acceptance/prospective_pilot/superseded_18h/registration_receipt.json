@@ -1,0 +1,29 @@
+{
+  "store": "runs/prospective-dec2026-pilot",
+  "protocol_id": "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+  "registered_at": "2026-11-27T09:42:04.252512+00:00",
+  "registration_kind": "actual future operations pilot; no forecast observations collected",
+  "bundle_ids": {
+    "candidate": "2409b2100859d691b76a86a3d37a5ae581755818e18907a7d938a53320086815",
+    "reference": "e111acd0d57128c263e8602b1c83469f2c225b0762ebd08933884e709e3553a7"
+  },
+  "frozen_bundles": {
+    "candidate": {
+      "source": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-001/transformer/seed-42/attempt-0001/workflow/inference_bundle",
+      "copy": "runs/prospective-dec2026-pilot/registry/bundles/2409b2100859d691b76a86a3d37a5ae581755818e18907a7d938a53320086815"
+    },
+    "reference": {
+      "source": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-001/ridge/seed-42/attempt-0001/workflow/inference_bundle",
+      "copy": "runs/prospective-dec2026-pilot/registry/bundles/e111acd0d57128c263e8602b1c83469f2c225b0762ebd08933884e709e3553a7"
+    }
+  },
+  "arrival_feed_configured": false,
+  "service_installed": false,
+  "observations_collected": 0,
+  "confirmation_eligible": false,
+  "production_ready": false,
+  "files": {
+    "protocol.json": "7c2b8bdb91f505f39490c3246409e5edbcd59d82e114bf7b5ea43318ecf3f5ca",
+    "status.json": "ed84efd176c8703a0763f4c3eb3bec4fb5a38a5e3ce3941b992f0972cfe06cd4"
+  }
+}

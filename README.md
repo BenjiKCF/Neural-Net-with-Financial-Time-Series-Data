@@ -16,6 +16,13 @@
 | --- | --- | --- |
 | An offline demo, then a verified market-data download. | Shared universe, target, chronological splits, and validation-only checkpoint selection. | Native Qlib charts, predictions, learning curves, portfolio returns, and data hashes. |
 
+**Remaining roadmap work:** the unchanged five-seed campaign is now executable
+through resumable isolated workers and a durable 80-shard workflow. New
+account-settlement verification and prospective forecast capture retain explicit
+evidence gates. A future 20-session operations pilot is preregistered; it is
+separate from model-quality confirmation. See the
+[current work and acceptance boundaries](docs/remaining-acceptance.md).
+
 ## Quick start
 
 **New to Python?** Follow the [beginner guide](docs/getting-started.md), including Python installation, ZIP download, and common error fixes. The short path below assumes **Python 3.12** is installed. Python 3.13 and newer are not currently supported.

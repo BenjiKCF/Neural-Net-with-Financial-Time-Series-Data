@@ -1,0 +1,10 @@
+{
+  "implementation_sha256": "f88eec940a076fac70148348992d01354554aa43d16c81d93240bcf83fa4ff05",
+  "inputs": {
+    "inputs/archived_assessment.json": "377fee7120d15d46fa9e535101e5ddae4ed96a9968ad4e5d3808815495355ff5",
+    "inputs/event_catalog.json": "5bbc7e840993bd0dfc078fbbf0b6b7f2e39c3618b3912cfd7d9ae69883f6712a",
+    "inputs/spec.json": "d14e3dce9656dcb08667287bb6709d7516b17fb8914b47bc29bc15fbb2ca2ddd"
+  },
+  "schema_version": 1,
+  "source_spec_sha256": "d14e3dce9656dcb08667287bb6709d7516b17fb8914b47bc29bc15fbb2ca2ddd"
+}

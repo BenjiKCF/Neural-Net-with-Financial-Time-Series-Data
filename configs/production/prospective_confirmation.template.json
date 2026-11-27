@@ -1,0 +1,43 @@
+{
+  "name": "csi300_prospective_confirmation",
+  "evaluation_role": "confirmation",
+  "timezone": "Asia/Shanghai",
+  "calendar": {
+    "source": "REPLACE_WITH_PUBLISHED_EXCHANGE_CALENDAR_SOURCE",
+    "sessions": []
+  },
+  "first_session": "REPLACE_WITH_FUTURE_FIRST_SESSION",
+  "last_session": "REPLACE_WITH_LAST_SESSION",
+  "decision_time": "18:00:00",
+  "label_available_time": "16:30:00",
+  "incident_owner": "REPLACE_WITH_OPERATOR",
+  "selection_reason": "REPLACE_WITH_PREREGISTERED_CANDIDATE_AND_CONTROL_RATIONALE",
+  "source_revision": "REPLACE_WITH_REVIEWED_SOURCE_REVISION",
+  "data_contract": {
+    "source": "chenditc Qlib snapshots, admitted individually before each decision cutoff",
+    "adjustment_convention": "Qlib adjusted Alpha158 inputs; immutable snapshot identities; raw target semantics",
+    "availability_policy": "Real arrival receipt records publication and observation timestamps before cutoff; historical publication vintages are not asserted"
+  },
+  "policy": {
+    "max_runtime_seconds": 600,
+    "max_memory_mb": 4096,
+    "minimum_coverage": 1.0,
+    "max_missing_feature_fraction": 0.25,
+    "max_abs_score": 1.0,
+    "max_data_age_hours": 24,
+    "min_cross_section": 100
+  },
+  "acceptance": {
+    "minimum_sessions": 60,
+    "maximum_publish_lag_minutes": 30,
+    "minimum_success_fraction": 1.0,
+    "maximum_failed_attempts": 0,
+    "minimum_label_coverage": 1.0,
+    "minimum_rank_ic": 0.0,
+    "minimum_paired_rank_ic_gain": 0.0,
+    "block_lengths": [5, 20],
+    "bootstrap_draws": 2000,
+    "bootstrap_seed": 913,
+    "minimum_effective_blocks": 3
+  }
+}

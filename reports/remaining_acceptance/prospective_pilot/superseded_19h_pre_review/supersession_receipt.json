@@ -1,0 +1,34 @@
+{
+  "superseded_protocol_id": "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+  "replacement_protocol_id": "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6",
+  "replacement_registered_at": "2026-11-27T09:44:23.082777+00:00",
+  "retained_old_store": "runs/prospective-dec2026-pilot-18h-superseded",
+  "active_store": "runs/prospective-dec2026-pilot-19h",
+  "before_any_observations": true,
+  "changes": {
+    "cutoff_hkt": {
+      "old": "18:00",
+      "new": "19:00"
+    },
+    "deadline_hkt": {
+      "old": "18:30",
+      "new": "19:30"
+    }
+  },
+  "unchanged": [
+    "model bundles",
+    "exchange calendar",
+    "observation dates",
+    "label endpoints",
+    "acceptance thresholds",
+    "training budgets",
+    "operations_pilot role"
+  ],
+  "reason": "Remove a known incompatibility with source release/manifest availability, before the prospective window starts.",
+  "source_timing_sha256": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310",
+  "superseded_report_files": {
+    "superseded_18h/protocol.json": "7c2b8bdb91f505f39490c3246409e5edbcd59d82e114bf7b5ea43318ecf3f5ca",
+    "superseded_18h/registration_receipt.json": "2acbb26c3174e56b614c92dd13e31164463b4f888b3c2bed0e03d7f8debf5c1a",
+    "superseded_18h/status.json": "ed84efd176c8703a0763f4c3eb3bec4fb5a38a5e3ce3941b992f0972cfe06cd4"
+  }
+}

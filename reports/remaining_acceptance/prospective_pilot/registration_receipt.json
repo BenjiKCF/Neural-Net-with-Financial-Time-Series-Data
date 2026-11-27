@@ -1,0 +1,44 @@
+{
+  "store": "runs/prospective-dec2026-pilot-19h",
+  "protocol_id": "e0130e4dbcb1e6a8240e1ce91e428623775c052e95f39c57b5cf83a5ccaf1edb",
+  "registered_at": "2026-11-27T09:52:30.881587+00:00",
+  "registration_kind": "actual future operations pilot; independently reviewed source frozen before observations",
+  "bundle_ids": {
+    "candidate": "2409b2100859d691b76a86a3d37a5ae581755818e18907a7d938a53320086815",
+    "reference": "e111acd0d57128c263e8602b1c83469f2c225b0762ebd08933884e709e3553a7"
+  },
+  "supersedes_protocol_id": "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6",
+  "superseded_protocol_ids": [
+    "29284b7ae3890771beb5b594d648c4ba08bd3ccce45ceea0a2fa849c21c485de",
+    "24e633b7de23ddc1913db7f20692cfa570c2f3e72c87249fcf687068491099b6"
+  ],
+  "superseded_stores": [
+    "runs/prospective-dec2026-pilot-18h-superseded",
+    "runs/prospective-dec2026-pilot-19h-pre-review-superseded"
+  ],
+  "frozen_bundles": {
+    "candidate": {
+      "source": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-001/transformer/seed-42/attempt-0001/workflow/inference_bundle",
+      "copy": "runs/prospective-dec2026-pilot-19h/registry/bundles/2409b2100859d691b76a86a3d37a5ae581755818e18907a7d938a53320086815"
+    },
+    "reference": {
+      "source": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-001/ridge/seed-42/attempt-0001/workflow/inference_bundle",
+      "copy": "runs/prospective-dec2026-pilot-19h/registry/bundles/e111acd0d57128c263e8602b1c83469f2c225b0762ebd08933884e709e3553a7"
+    }
+  },
+  "arrival_feed_configured": false,
+  "service_installed": false,
+  "observations_collected": 0,
+  "confirmation_eligible": false,
+  "production_ready": false,
+  "validation": {
+    "prospective_tests_passed": 31,
+    "ruff": "passed",
+    "slow_final_rename_and_receipt_deadlines": "rejected_and_quarantined"
+  },
+  "files": {
+    "protocol.json": "fcc92de8552f350b0f3d6c876065490b44c11fb23d7d9ec99b0acece52fe5e7c",
+    "status.json": "8f9e7138bed37ae4e85c0aedc41881aca1b3a80e7b7847d63aa91a8e6f2a8cc4",
+    "source_timing.json": "8df0b1c94d1717a78693adedad5946d23281c79a279598efb8f934cbf6bb7310"
+  }
+}

@@ -339,7 +339,18 @@ def _portfolio_config(config: dict, segments: dict, calendar: pd.DatetimeIndex, 
         "strategy": {
             "class": "TopkDropoutStrategy",
             "module_path": "qlib.contrib.strategy",
-            "kwargs": {"signal": "<PRED>", "topk": topk, "n_drop": n_drop, "risk_degree": risk},
+            "kwargs": {
+                "signal": {
+                    "class": "DeterministicRankSignal",
+                    "module_path": "financial_ts.cn_portfolio",
+                    "kwargs": {"signal": "<PRED>"},
+                }
+                if cn
+                else "<PRED>",
+                "topk": topk,
+                "n_drop": n_drop,
+                "risk_degree": risk,
+            },
         },
         "backtest": {
             # A score at close t enters at close t+1; t+2 values its label return.
@@ -749,28 +760,11 @@ def run_workflow(config: dict) -> dict:
             _save_json(output / "learning_curves.json", history)
         del fitted_model
         if backtest_enabled:
+            from financial_ts.cn_portfolio import portfolio_metrics
+
             report = recorder.load_object("portfolio_analysis/report_normal_1day.pkl")
             report.to_csv(output / "portfolio.csv")
-            if not {"return", "cost", "bench"}.issubset(report.columns):
-                raise ValueError("Backtest report is missing return, cost, or benchmark columns.")
-            if not np.isfinite(report[["return", "cost", "bench"]].to_numpy()).all():
-                raise ValueError("Backtest report contains nonfinite returns or costs.")
-            metrics["portfolio"] = {
-                "gross_cumulative_return": (1 + report["return"]).prod() - 1,
-                "net_cumulative_return": (1 + report["return"] - report["cost"]).prod() - 1,
-                "benchmark_cumulative_return": (1 + report["bench"]).prod() - 1,
-                "sum_daily_cost_ratios": report["cost"].sum(),
-                "benchmark": portfolio["backtest"]["benchmark"] or "cash",
-                "assumptions": (
-                    "next-close execution; Qlib CN 100-share lots and 9.5% price-limit proxy "
-                    "unless explicitly overridden; suspensions blocked; explicit fees; "
-                    "no liquidity/slippage model; final positions marked to market"
-                    if region == "cn"
-                    else "next-close execution; explicit fees; fractional shares unless explicitly "
-                    "overridden; no liquidity/slippage model; final positions marked to market"
-                ),
-                "exchange_kwargs": portfolio["backtest"]["exchange_kwargs"],
-            }
+            metrics["portfolio"] = portfolio_metrics(report, portfolio, region)
         _save_json(output / "metrics.json", metrics)
         metadata.update(
             status="completed",

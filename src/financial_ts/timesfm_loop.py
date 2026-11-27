@@ -272,7 +272,26 @@ class LoopTimesFM3(nn.Module):
         target = contexts.to(device=reference.device, dtype=reference.dtype).unsqueeze(1)
         # Explicitly remove the inference-only no_grad decorator of the pinned
         # API; retain the original decode body, including all preprocessing.
-        logits = self._decode_with_grad(self.model, target=target, horizon=2)
+        horizon = 2
+        iterative_cpm = getattr(self.model, "use_iterative_cpm_revin", False)
+        unused_cpm = (
+            iterative_cpm
+            and horizon <= getattr(self.model, "input_patch_len", 0)
+            and horizon <= getattr(self.model, "output_patch_len", 0)
+        )
+        # In the pinned decode, this horizon selects only the final observed
+        # context patch, with or without output stitching. Iterative CPM RevIN
+        # modifies only later, masked forecast patches. Its outputs therefore
+        # cannot contribute to these two predictions, but its unused sqrt(0)
+        # gradients can still propagate NaNs through torch.where. Skip only
+        # that dead branch; keep every used operation and its dtype unchanged.
+        if unused_cpm:
+            self.model.use_iterative_cpm_revin = False
+        try:
+            logits = self._decode_with_grad(self.model, target=target, horizon=horizon)
+        finally:
+            if unused_cpm:
+                self.model.use_iterative_cpm_revin = iterative_cpm
         if logits.ndim != 4 or logits.shape[:3] != (len(contexts), 1, 2):
             raise ValueError("Official decode must return [batch,1,2,quantiles].")
         if not 0 <= self.median_quantile_index < logits.shape[-1]:

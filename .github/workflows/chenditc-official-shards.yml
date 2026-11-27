@@ -1,0 +1,60 @@
+name: Official TimesFM complete panel shards
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/chenditc-qlib-benchmark-20261127
+    paths:
+      - .github/workflows/chenditc-official-shards.yml
+      - scripts/run_cn_official_shard.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chenditc-official-shards-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  inference:
+    name: ${{ matrix.model }} / shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        model: [timesfm3_frozen_256, timesfm3_loop_128, timesfm3_adapter_128]
+        shard: [0, 1, 2, 3]
+    env:
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install the pinned runtime
+        run: |
+          python -m pip install 'torch==2.15.0' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[neural,dev,timesfm]'
+      - name: Download and verify the pinned data
+        run: fts download-chenditc --release 2026-11-26 --provider .data/chenditc/2026-11-26
+      - name: Fit identically and infer complete assigned batches
+        run: python scripts/run_cn_official_shard.py --model '${{ matrix.model }}' --shard '${{ matrix.shard }}' --count 4 --download-checkpoint
+      - name: Upload numerical shard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-shard-${{ matrix.model }}-${{ matrix.shard }}-${{ github.run_attempt }}
+          path: worker-artifacts/${{ matrix.model }}/shard-${{ matrix.shard }}/
+          if-no-files-found: warn
+          retention-days: 14

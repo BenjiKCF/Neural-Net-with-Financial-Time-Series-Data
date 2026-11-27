@@ -153,3 +153,44 @@ The complete baseline screen and its original numerical evidence are preserved.
 Full-budget results must be published under their own campaign identity. Even
 favorable retrospective results cannot rename an already inspected interval as
 an uninspected holdout.
+
+### Recover the 27 November workflow startup failure
+
+The first remote run,
+[45978766798](https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/actions/runs/45978766798),
+registered successfully but its workers failed before training. The cache had
+already restored the pinned provider; the next step tried to download into that
+nonempty directory, which the downloader correctly rejects. The failure is in
+the execution wrapper and provides no completed model trials. Those workflow
+logs and the original registration remain evidence of the attempt.
+
+The wrapper now distinguishes an absent provider from a populated cache. It
+downloads only into an empty destination and leaves cached metadata and market
+bytes intact. A populated cache with missing, foreign or synthetic metadata
+fails for inspection. Both cache hits and fresh downloads still pass the
+complete registered fingerprint and semantic metadata checks before a worker
+can run; cache availability alone is not acceptance.
+
+A failed-job rerun of the old revision would execute the same broken workflow.
+To continue its original experiment with the repaired wrapper, dispatch the new
+workflow with `resume_run_id: "45978766798"`, or push the repair on the existing
+dedicated branch with this exact marker in the head commit message:
+
+```text
+[resume-five-seed:45978766798]
+```
+
+Recovery is refused while the source run is active. Once it is terminal, the new
+workflow downloads the source run's original registration artifact, preserves
+its protocol, frozen Python source and dependencies, and restores any retained
+shard attempts before executing pending trials. It does not call registration
+again. Source-run jobs, failed steps, artifact identity and the hashes of the
+unchanged registration files are recorded under `full-five-seed-recovery/` in
+the new registration and audit artifacts. A later failed-job retry first reuses
+the new run's retained registration and attempts, while preserving the original
+source reference. Do not use `[run-five-seed]` to repair an existing campaign;
+that marker is for a separately registered new campaign.
+
+This handoff changes the workflow revision, not the scientific recipe or frozen
+training implementation. The historical local launch and its 15-trial snapshot
+remain a separate campaign; their counts are never added to the remote run.

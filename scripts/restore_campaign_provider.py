@@ -1,4 +1,4 @@
-"""Restore a registered provider manifest after verifying a fresh cache-miss download.
+"""Prepare cached data and restore a manifest only after registered-byte verification.
 
 The new host's observed retrieval metadata is retained separately; the immutable
 campaign identity is never represented as the time of a new retrieval.
@@ -16,7 +16,42 @@ from pathlib import Path
 from filelock import FileLock
 
 from financial_ts import rolling
+from financial_ts.chenditc import REPOSITORY, download_chenditc
 from financial_ts.workflow import _provider_fingerprint
+
+
+def ensure_provider_available(provider, release, *, downloader=None):
+    """Download only into an empty location; keep existing cached bytes intact.
+
+    Availability is deliberately separate from ``restore_provider``'s complete
+    registered fingerprint check. A cache hit is not scientific acceptance.
+    """
+    provider = Path(provider).expanduser().absolute()
+    if provider.is_symlink() or (provider.exists() and not provider.is_dir()):
+        raise ValueError("Provider cache must be a real directory.")
+    populated = provider.exists() and any(provider.iterdir())
+    if not populated:
+        (downloader or download_chenditc)(provider, release=release)
+    metadata_path = provider / "metadata.json"
+    if metadata_path.is_symlink() or not metadata_path.is_file():
+        raise ValueError(
+            "Existing provider cache has no regular metadata.json; preserve it for inspection."
+        )
+    metadata = json.loads(metadata_path.read_text())
+    if (
+        metadata.get("source") != REPOSITORY
+        or metadata.get("release_tag") != release
+        or metadata.get("region") != "cn"
+        or metadata.get("frequency") != "day"
+        or metadata.get("synthetic") is not False
+    ):
+        raise ValueError("Provider cache source/release differs from the pinned request.")
+    return {
+        "provider_available": True,
+        "downloaded": not populated,
+        "release": release,
+        "qualification": "Availability only; registered provider bytes must still be verified.",
+    }
 
 
 def semantic_metadata(value):
@@ -92,19 +127,30 @@ def restore_provider(output, provider, registered_metadata, receipts_dir):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--output", type=Path)
     parser.add_argument("--provider", type=Path, required=True)
-    parser.add_argument("--registered-metadata", type=Path, required=True)
-    parser.add_argument("--receipts-dir", type=Path, required=True)
+    parser.add_argument("--registered-metadata", type=Path)
+    parser.add_argument("--receipts-dir", type=Path)
+    parser.add_argument("--download-if-missing", action="store_true")
+    parser.add_argument("--release")
     args = parser.parse_args()
-    print(
-        json.dumps(
+    if args.download_if_missing and not args.release:
+        parser.error("--download-if-missing requires an explicit --release")
+    restore_arguments = (args.output, args.registered_metadata, args.receipts_dir)
+    if any(restore_arguments) and not all(restore_arguments):
+        parser.error("--output, --registered-metadata and --receipts-dir must be supplied together")
+    if not args.download_if_missing and not all(restore_arguments):
+        parser.error("Choose --download-if-missing or supply all restoration arguments")
+    result = {}
+    if args.download_if_missing:
+        result.update(ensure_provider_available(args.provider, args.release))
+    if all(restore_arguments):
+        result.update(
             restore_provider(
                 args.output, args.provider, args.registered_metadata, args.receipts_dir
-            ),
-            indent=2,
+            )
         )
-    )
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":

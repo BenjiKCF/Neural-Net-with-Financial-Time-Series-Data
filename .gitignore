@@ -13,3 +13,5 @@ dist/
 build/
 .env
 .env.*
+# Reassembled locally from the published, checksum-verified archive parts.
+/reports/production_roadmap/rolling_screening/rolling_evidence.tar.xz

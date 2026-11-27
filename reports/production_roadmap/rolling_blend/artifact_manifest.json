@@ -1,0 +1,690 @@
+{
+  "fold-000/controls/fixed_50_50/cost_scenarios.json": {
+    "bytes": 5874,
+    "sha256": "e539a5d60f7df396dc4fc3218c7e99f4942c27c536c86715c7c3bd18d07dc39c"
+  },
+  "fold-000/controls/fixed_50_50/predictions.csv": {
+    "bytes": 331592,
+    "sha256": "2c403a665f7ff0ea60572ab42fcf8a504cfaaf6301a2267b8e23ca6696ee2243"
+  },
+  "fold-000/controls/fixed_50_50/receipt.json": {
+    "bytes": 4280,
+    "sha256": "98050613811eedef2c1077f121e702f6a88cf5c30403158b9298a9e67ca48fcb"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3991,
+    "sha256": "e72cbfd298683a78b0f93b4d56087df09d3d9b1fb7417cd540fd5ab2511becaf"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 11717,
+    "sha256": "7e8faf308a6815b8452f7e458d2aa67b922f4ef9643522d06033d0b535271e29"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/account_0.1x/summary.json": {
+    "bytes": 1235,
+    "sha256": "2607c52ec5ddd39c9c5b53fbfb68256b3f31e4d37b5c4deada35138bb53fb134"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/base/portfolio.csv": {
+    "bytes": 3975,
+    "sha256": "3f4243cfbbe3d2513d7866276e24011432ecbab71285c340305c81f0ca2bc993"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/base/positions.json.gz": {
+    "bytes": 11659,
+    "sha256": "790fb64a7380e50f8151246d82eee7722d37b1a1eaa90ab4d485c9f420b9fc91"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/base/summary.json": {
+    "bytes": 1223,
+    "sha256": "d5591ae5861162f836a4572d1e8a8a880441fb824208d16942970b0d1fc9fca4"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3964,
+    "sha256": "12784cf6e4a3ec288a24fe5200c9813561d228080cd20b4fb7a0c8f820e7130f"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 11639,
+    "sha256": "66ba51f5c9015b9c45827e3f827e1aa04ea8576fac6b6e47018140b9d3d72765"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/fees_2x/summary.json": {
+    "bytes": 1225,
+    "sha256": "ae73fd48285f958abeac8b8aad6d886cc84f61ccdbb5e7ac60c40f6b60402bba"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3969,
+    "sha256": "35dbb1da99f9b8cdc722ad64f0794b0f0f6164a9374c35fe661d940ef2bd53d0"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 11660,
+    "sha256": "4668da55da4630adc6ea4b468cd0340df60e5cdf67cec619cf8536ab2bfbd3ca"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/fixed_50_50/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1224,
+    "sha256": "116b742953765585f1d44ea603df71ff872d6155bbe35ea38d593cca2764b00b"
+  },
+  "fold-000/controls/lightgbm/cost_scenarios.json": {
+    "bytes": 5877,
+    "sha256": "8c3e2affd231f454f78e5ac52eb3c723c90bd63c32e8b80deb8af61f77b79b54"
+  },
+  "fold-000/controls/lightgbm/predictions.csv": {
+    "bytes": 327722,
+    "sha256": "a275953aeb3af2c3e696a7f6a2906600c8747e02118611c9f856494a6babb381"
+  },
+  "fold-000/controls/lightgbm/receipt.json": {
+    "bytes": 4287,
+    "sha256": "8eec75a01411c13f15e41252256fdbd39e925060d00231f276917811db3eb2b7"
+  },
+  "fold-000/controls/lightgbm/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3985,
+    "sha256": "e15689d2e97963da363956af212cbda9cded31656f33f37969ef7ac842ef40a1"
+  },
+  "fold-000/controls/lightgbm/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 11957,
+    "sha256": "3691d97e45f1e584d355d851d129c4cda5f58b4178b95f7d297af367a5cbcd20"
+  },
+  "fold-000/controls/lightgbm/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/lightgbm/scenarios/account_0.1x/summary.json": {
+    "bytes": 1233,
+    "sha256": "4485ff28dc485b1e387650efd504a15dd638b6c36c19100c3932d9c286c02169"
+  },
+  "fold-000/controls/lightgbm/scenarios/base/portfolio.csv": {
+    "bytes": 3978,
+    "sha256": "19f2699553dac9489e93986b335019f6f53d10ff401a6908a2ebaa1cdb79965e"
+  },
+  "fold-000/controls/lightgbm/scenarios/base/positions.json.gz": {
+    "bytes": 11917,
+    "sha256": "ec592a41ec4a2dc574fb32ab7a38a735ea79d7d058812e8ccb36ec40adae38af"
+  },
+  "fold-000/controls/lightgbm/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/lightgbm/scenarios/base/summary.json": {
+    "bytes": 1224,
+    "sha256": "60eef51b334b0e873ec2c1d56498d5c4095f26d1b48fa8be1e5b4257a2331bd3"
+  },
+  "fold-000/controls/lightgbm/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3966,
+    "sha256": "4907fd7bbb001d57228fb49cc8b983e766469695cb63c4a09cb2d29939b4af01"
+  },
+  "fold-000/controls/lightgbm/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 11908,
+    "sha256": "a00fe23cf9718ccb4e895507e85e0a5bbd90b4fea9cb09a4a3598bdbd9d98dbd"
+  },
+  "fold-000/controls/lightgbm/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/lightgbm/scenarios/fees_2x/summary.json": {
+    "bytes": 1226,
+    "sha256": "2c6e2e3270a62cd9eaa690e249666043a438d19e37ae12ca1ebcc610c8f5de12"
+  },
+  "fold-000/controls/lightgbm/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3951,
+    "sha256": "039441504e0a9a3fb6c97f156e88d60471aed85ae31981cc5f8274ac11a65c85"
+  },
+  "fold-000/controls/lightgbm/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 11914,
+    "sha256": "2fe149023046b4341fdb97a6b1269a2e8cb61216104e6f766958020d5d29d980"
+  },
+  "fold-000/controls/lightgbm/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/lightgbm/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1227,
+    "sha256": "b3d0a325df78950b8797f17a7c259c9f6f0148f52ea929c9ab9b78c470c12019"
+  },
+  "fold-000/controls/master_style/cost_scenarios.json": {
+    "bytes": 5877,
+    "sha256": "9456efd99dec2282d286c3cccc4928f48ea2a4a77ef45897f1bd0754e4936517"
+  },
+  "fold-000/controls/master_style/predictions.csv": {
+    "bytes": 330361,
+    "sha256": "76ee4c24c37595bb7aadbabd54b57f1d5748a933212ae39f33ec6b873dcddde9"
+  },
+  "fold-000/controls/master_style/receipt.json": {
+    "bytes": 4285,
+    "sha256": "dca5154713af7bc3af0b7fdc6ead1692d072c068f7c99d7105a17d1aca689dab"
+  },
+  "fold-000/controls/master_style/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3981,
+    "sha256": "047a1503944ab4e9fd842d66dee7466824080c4594c568220f7e4a1380ce7b4f"
+  },
+  "fold-000/controls/master_style/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 11561,
+    "sha256": "f099595f35c9016bba207bd216759b3aa8718c84e2a224d48502d2da472ad96f"
+  },
+  "fold-000/controls/master_style/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/master_style/scenarios/account_0.1x/summary.json": {
+    "bytes": 1233,
+    "sha256": "08417c255d58d1a48781cd4662c19cfe5ca70be2da3ade1e84b67f67211389ec"
+  },
+  "fold-000/controls/master_style/scenarios/base/portfolio.csv": {
+    "bytes": 3973,
+    "sha256": "7b17fe96e0a76a074c6a1757ea04eb8752e254b3ce7970d23390d92d603fb6e4"
+  },
+  "fold-000/controls/master_style/scenarios/base/positions.json.gz": {
+    "bytes": 11506,
+    "sha256": "a654803310f5cb60de3dd2adf96bf4234f2db11953f791f04a96fc97996cad4b"
+  },
+  "fold-000/controls/master_style/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/master_style/scenarios/base/summary.json": {
+    "bytes": 1223,
+    "sha256": "cd135b5f8a62a934323a56cc5d89524567955c86d38acfa6438fc297365c0f71"
+  },
+  "fold-000/controls/master_style/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3968,
+    "sha256": "3e4f3638362a5d96b79cd1e6c6e8f7494381e3a5ecd784e140e2ac6431c93271"
+  },
+  "fold-000/controls/master_style/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 11538,
+    "sha256": "0d5f88cc069e3042d72f9e222c9070196f8ba562fdbc4fe9d5d2c5a5b7c92f32"
+  },
+  "fold-000/controls/master_style/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/master_style/scenarios/fees_2x/summary.json": {
+    "bytes": 1227,
+    "sha256": "e9cba1981c54d8329d4605aad7edaa0d9aefa2035b1e2ed405fec892073ea957"
+  },
+  "fold-000/controls/master_style/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3955,
+    "sha256": "314b110c6436432af8886d50ddfe9bda614cb4894686b76465c45922d2aedcf1"
+  },
+  "fold-000/controls/master_style/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 11534,
+    "sha256": "4072a942c49bc6a7889d4824dc2340058ffbfddf133d37ff56194a1775c9c270"
+  },
+  "fold-000/controls/master_style/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/controls/master_style/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1227,
+    "sha256": "886efcfd896ad6d0cce9191e23594b6bb18e76881b8669742d95f7b9fda8f5f6"
+  },
+  "fold-000/cost_scenarios.json": {
+    "bytes": 5877,
+    "sha256": "9456efd99dec2282d286c3cccc4928f48ea2a4a77ef45897f1bd0754e4936517"
+  },
+  "fold-000/daily_ic.csv": {
+    "bytes": 1046,
+    "sha256": "99ab1bad1dae2c5c4f80f9b4529371c8f3dc4829821cedbddb2d49aa0fe2583e"
+  },
+  "fold-000/metrics.json": {
+    "bytes": 839,
+    "sha256": "ff26f591bc61cb57c36dc5e31676d3330c282fd5099c49243489762cff8cb19f"
+  },
+  "fold-000/predictions.csv": {
+    "bytes": 330361,
+    "sha256": "76ee4c24c37595bb7aadbabd54b57f1d5748a933212ae39f33ec6b873dcddde9"
+  },
+  "fold-000/receipt.json": {
+    "bytes": 21161,
+    "sha256": "91cc20fbd2e858345bfd2c70dd196d418c153931f25863d40350da3b8f706f2a"
+  },
+  "fold-000/resolved_config.json": {
+    "bytes": 932,
+    "sha256": "7de14f90217c5f637e126f7b4ca933dddd45416952859a3964692452f33ba469"
+  },
+  "fold-000/run.json": {
+    "bytes": 1406,
+    "sha256": "f76e3833d187caf62f85915c4556f38e82e8ac7a66016a1d98204860cce4ef7c"
+  },
+  "fold-000/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3981,
+    "sha256": "047a1503944ab4e9fd842d66dee7466824080c4594c568220f7e4a1380ce7b4f"
+  },
+  "fold-000/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 11561,
+    "sha256": "f099595f35c9016bba207bd216759b3aa8718c84e2a224d48502d2da472ad96f"
+  },
+  "fold-000/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/scenarios/account_0.1x/summary.json": {
+    "bytes": 1233,
+    "sha256": "08417c255d58d1a48781cd4662c19cfe5ca70be2da3ade1e84b67f67211389ec"
+  },
+  "fold-000/scenarios/base/portfolio.csv": {
+    "bytes": 3973,
+    "sha256": "7b17fe96e0a76a074c6a1757ea04eb8752e254b3ce7970d23390d92d603fb6e4"
+  },
+  "fold-000/scenarios/base/positions.json.gz": {
+    "bytes": 11506,
+    "sha256": "a654803310f5cb60de3dd2adf96bf4234f2db11953f791f04a96fc97996cad4b"
+  },
+  "fold-000/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/scenarios/base/summary.json": {
+    "bytes": 1223,
+    "sha256": "cd135b5f8a62a934323a56cc5d89524567955c86d38acfa6438fc297365c0f71"
+  },
+  "fold-000/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3968,
+    "sha256": "3e4f3638362a5d96b79cd1e6c6e8f7494381e3a5ecd784e140e2ac6431c93271"
+  },
+  "fold-000/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 11538,
+    "sha256": "0d5f88cc069e3042d72f9e222c9070196f8ba562fdbc4fe9d5d2c5a5b7c92f32"
+  },
+  "fold-000/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/scenarios/fees_2x/summary.json": {
+    "bytes": 1227,
+    "sha256": "e9cba1981c54d8329d4605aad7edaa0d9aefa2035b1e2ed405fec892073ea957"
+  },
+  "fold-000/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3955,
+    "sha256": "314b110c6436432af8886d50ddfe9bda614cb4894686b76465c45922d2aedcf1"
+  },
+  "fold-000/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 11534,
+    "sha256": "4072a942c49bc6a7889d4824dc2340058ffbfddf133d37ff56194a1775c9c270"
+  },
+  "fold-000/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-000/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1227,
+    "sha256": "886efcfd896ad6d0cce9191e23594b6bb18e76881b8669742d95f7b9fda8f5f6"
+  },
+  "fold-000/selection.json": {
+    "bytes": 2382,
+    "sha256": "10f9ce83dbe0b3ebb447bd4472515ed69db460f9652463f8544f66b210ef8fd6"
+  },
+  "fold-000/validation_daily_ic.csv": {
+    "bytes": 1561,
+    "sha256": "bc2dd1b92da6b3a72f160fed3850d168a7563993350b4565769645f7a64ffff6"
+  },
+  "fold-000/validation_predictions.csv": {
+    "bytes": 496449,
+    "sha256": "e24e16c6045fe16d5c2a408aee25971b7e2abbe4392239e11690e51d316feb7c"
+  },
+  "fold-001/controls/fixed_50_50/cost_scenarios.json": {
+    "bytes": 5871,
+    "sha256": "e56060b77d42268364dc3f7234ac6f1c5127f3d7da074f8e98a7d8dd556d6301"
+  },
+  "fold-001/controls/fixed_50_50/predictions.csv": {
+    "bytes": 329543,
+    "sha256": "05cdacf15d1996bc94838e446f100fdfc2454526f631c703df05f24e1322e522"
+  },
+  "fold-001/controls/fixed_50_50/receipt.json": {
+    "bytes": 4273,
+    "sha256": "15fcea73beb1399547c1c58164b2b7d10defb7b2aafa8acbcd712983f2d9c818"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3977,
+    "sha256": "ec6033c2ab5e8da402e8265232127eab21a50a561b7f56fc33e2b37bfc02c68d"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 12321,
+    "sha256": "917b439cf5e7cffd245882b5be0a11af483b1a057146bd3be06dfbf069fbcc85"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/account_0.1x/summary.json": {
+    "bytes": 1234,
+    "sha256": "d19cb8aafa0347d0d90beb84b691b695eb92401262e180738be030da5af4d43a"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/base/portfolio.csv": {
+    "bytes": 3982,
+    "sha256": "56cc5401498124b1d99ecf991f1a6e981539ecf9ba66bf626caf3cfa67f0a642"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/base/positions.json.gz": {
+    "bytes": 12294,
+    "sha256": "163b9340c6f676bd2216969e4c2a5a1731cdb8bbf109becfb3a38e9d7b280a7c"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/base/summary.json": {
+    "bytes": 1223,
+    "sha256": "4aa2562ff22f851d32ed2a292b9f27584d690b85618fe8bcce676c03bb64fba3"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3970,
+    "sha256": "835ef442cd4062f692ab65779be049c9d0183c5ccd1047f2a7a3d0c26a67a8cf"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 12295,
+    "sha256": "b9c10539d4182ca96f6b34a8c4d1026b046f5de425d78951f8f29910c9818ba4"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/fees_2x/summary.json": {
+    "bytes": 1221,
+    "sha256": "b78db064bae6ad2ba97597bcb18275648319c74d131ad673aa755e528b581c4d"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3975,
+    "sha256": "f75ef275364241feffadc743430980a7c699654451f599d6b812289feeeed867"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 12302,
+    "sha256": "6c68540c35dc39b97cf2a8ff28e17587820e29e2928b99afd86958c0a94924b5"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/fixed_50_50/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1226,
+    "sha256": "46bb7d935474193faff03b31f4c3c803697db89438a1d92f2172db1b9a7f3ee2"
+  },
+  "fold-001/controls/lightgbm/cost_scenarios.json": {
+    "bytes": 5869,
+    "sha256": "18fa57e84ea712c588f39975b472c1f66f7ac4fb9066a5edef099eafb6d686e2"
+  },
+  "fold-001/controls/lightgbm/predictions.csv": {
+    "bytes": 324413,
+    "sha256": "02d77cd91fcee609cdc7923e80f193f3fbd51c81fec877d74a6915ff3cae9e84"
+  },
+  "fold-001/controls/lightgbm/receipt.json": {
+    "bytes": 4273,
+    "sha256": "589af66c06995ae7b368afd88d84616bd11b0752f91ea44c8e8ddfcb502e67e6"
+  },
+  "fold-001/controls/lightgbm/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3982,
+    "sha256": "55b4b56d23095c5b469541fea7b1da430ddb1e27bd200423a356072de1709e77"
+  },
+  "fold-001/controls/lightgbm/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 12435,
+    "sha256": "883097dcd6227f13f2f8e82aa327f977f72bb53c6485a2f7278b4634b5a03ddc"
+  },
+  "fold-001/controls/lightgbm/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/lightgbm/scenarios/account_0.1x/summary.json": {
+    "bytes": 1230,
+    "sha256": "4f14537d6c7480692d47582283c46d6015f02de288155a586188fdcc7066c50a"
+  },
+  "fold-001/controls/lightgbm/scenarios/base/portfolio.csv": {
+    "bytes": 3970,
+    "sha256": "f7121501b21ec2ee0a7b7f48b71fc5d80c89859ee6d2c0e770a7e1db41414ea5"
+  },
+  "fold-001/controls/lightgbm/scenarios/base/positions.json.gz": {
+    "bytes": 12381,
+    "sha256": "bccdd978576d8fb834836e14cfaf474f88435d1cdea31a1a866ecda13154d5a4"
+  },
+  "fold-001/controls/lightgbm/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/lightgbm/scenarios/base/summary.json": {
+    "bytes": 1222,
+    "sha256": "940677b031443dd5118652a3aad61657362c6a73111cb8c11f5279d542e4ffe0"
+  },
+  "fold-001/controls/lightgbm/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3960,
+    "sha256": "d15a0f9305810c47db8143f2b214ccb53f715c36b120333e97d79cc0ed97b890"
+  },
+  "fold-001/controls/lightgbm/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 12391,
+    "sha256": "f07ef2aad65f932cfb70cc1feafdb2783ed6773c518c6184d4c31a3d44a47ae2"
+  },
+  "fold-001/controls/lightgbm/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/lightgbm/scenarios/fees_2x/summary.json": {
+    "bytes": 1224,
+    "sha256": "a20ac29235ea1eb31cbb2c0c2b2ca69cb79b1da72e5ae7a6f593cbe5ca1ed2dc"
+  },
+  "fold-001/controls/lightgbm/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3973,
+    "sha256": "791108fa53068616cbb2abc61ed6e7b0b962b25b4df724bc2668c40b75c978fb"
+  },
+  "fold-001/controls/lightgbm/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 12431,
+    "sha256": "eb347190fe9076cf27c7568c53d45be558f3dfe63934718411d4b064d28e7a82"
+  },
+  "fold-001/controls/lightgbm/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/lightgbm/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1226,
+    "sha256": "3afb488f64983902577324d8726168c90af62f5367274f4977f994d1fc54a6fd"
+  },
+  "fold-001/controls/master_style/cost_scenarios.json": {
+    "bytes": 5871,
+    "sha256": "63961b69dc9767ef261ecd5abe4c136fe16042099a84f86e9a78aa784a31cff5"
+  },
+  "fold-001/controls/master_style/predictions.csv": {
+    "bytes": 328234,
+    "sha256": "b42878727f9a1528dc5d3a59ec3074b9edf9a49b51c133e6ded0056d958f09b5"
+  },
+  "fold-001/controls/master_style/receipt.json": {
+    "bytes": 4274,
+    "sha256": "278b81fa08c3a0202a78a4813ce3db9aa8073e3ed8a965399ab2e674b0cd9ddd"
+  },
+  "fold-001/controls/master_style/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3988,
+    "sha256": "b2b184938bc19b6c52015fb104c1144fc24d43cfa155b053a016fa6a19322772"
+  },
+  "fold-001/controls/master_style/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 11891,
+    "sha256": "4f36dba949d3791a036d88e8b3279df0875c3caba0f81a50912d7fe0c8e2958e"
+  },
+  "fold-001/controls/master_style/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/master_style/scenarios/account_0.1x/summary.json": {
+    "bytes": 1231,
+    "sha256": "45a0134875ca29162cecd544ab17fa1c985156bdbf87b59dacaa98eedf414e77"
+  },
+  "fold-001/controls/master_style/scenarios/base/portfolio.csv": {
+    "bytes": 3982,
+    "sha256": "9d8190c704d1a3cd6069ad66253227abf3159ffd55915753cf48e7d8130d34bf"
+  },
+  "fold-001/controls/master_style/scenarios/base/positions.json.gz": {
+    "bytes": 11824,
+    "sha256": "f2ace62b9210096a2e36a87ed43af1b563e01314967d5d84bb9f7a06f2c8f13c"
+  },
+  "fold-001/controls/master_style/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/master_style/scenarios/base/summary.json": {
+    "bytes": 1224,
+    "sha256": "4d494be5bc94643b0ec90358da656edb6fa4738af5d756e261ca714e5d2827d3"
+  },
+  "fold-001/controls/master_style/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3986,
+    "sha256": "6d841ef91ce266441a57227b82c76caa38d0e0240f9265c8bb024770aeec71b5"
+  },
+  "fold-001/controls/master_style/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 11790,
+    "sha256": "67374f253004f392ad1f20bbaae9fd86ac7d042bcae361f0040b9d7af17f76a5"
+  },
+  "fold-001/controls/master_style/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/master_style/scenarios/fees_2x/summary.json": {
+    "bytes": 1223,
+    "sha256": "dc4d11e79540d2802b0d0776d602f22eae5a0ccabec7a75de29e0925df8539cf"
+  },
+  "fold-001/controls/master_style/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3979,
+    "sha256": "97c54a2533442dd412863785ecbc85e71b3cba3f1c8b170a5b1992b8153532f4"
+  },
+  "fold-001/controls/master_style/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 11868,
+    "sha256": "a0a93e0d0a4d6c0de76f73d18fa1323e17acde5f875c31da7ea80129a7bdbc04"
+  },
+  "fold-001/controls/master_style/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/controls/master_style/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1226,
+    "sha256": "61f2978a8af3e8dc84e264625068e831715e78dc4c55bfa3cc678083ae5be240"
+  },
+  "fold-001/cost_scenarios.json": {
+    "bytes": 5871,
+    "sha256": "e56060b77d42268364dc3f7234ac6f1c5127f3d7da074f8e98a7d8dd556d6301"
+  },
+  "fold-001/daily_ic.csv": {
+    "bytes": 1061,
+    "sha256": "27875aed941d99ab0ea99df95ff3f99b9453cc8200adb725e5b63d39c1674c28"
+  },
+  "fold-001/metrics.json": {
+    "bytes": 834,
+    "sha256": "2185536a3ed35cf1444c18a15bf87397857176677ef6feebcedff6304e23a4ec"
+  },
+  "fold-001/predictions.csv": {
+    "bytes": 329543,
+    "sha256": "05cdacf15d1996bc94838e446f100fdfc2454526f631c703df05f24e1322e522"
+  },
+  "fold-001/receipt.json": {
+    "bytes": 21113,
+    "sha256": "b96d3a180239aa30f78d801b59c2640ce4e6fbfa816cf2263e0192f2fec4386c"
+  },
+  "fold-001/resolved_config.json": {
+    "bytes": 932,
+    "sha256": "98b2dc32b54d4932b7ccdcfe36435c855cf5c7c849bf4efbcffd9d13c78709ba"
+  },
+  "fold-001/run.json": {
+    "bytes": 1406,
+    "sha256": "2b828e8b4d78e8b33ab86ecd42fd2b6176b1d0a7608ab68c1d99528970c35595"
+  },
+  "fold-001/scenarios/account_0.1x/portfolio.csv": {
+    "bytes": 3977,
+    "sha256": "ec6033c2ab5e8da402e8265232127eab21a50a561b7f56fc33e2b37bfc02c68d"
+  },
+  "fold-001/scenarios/account_0.1x/positions.json.gz": {
+    "bytes": 12321,
+    "sha256": "917b439cf5e7cffd245882b5be0a11af483b1a057146bd3be06dfbf069fbcc85"
+  },
+  "fold-001/scenarios/account_0.1x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/scenarios/account_0.1x/summary.json": {
+    "bytes": 1234,
+    "sha256": "d19cb8aafa0347d0d90beb84b691b695eb92401262e180738be030da5af4d43a"
+  },
+  "fold-001/scenarios/base/portfolio.csv": {
+    "bytes": 3982,
+    "sha256": "56cc5401498124b1d99ecf991f1a6e981539ecf9ba66bf626caf3cfa67f0a642"
+  },
+  "fold-001/scenarios/base/positions.json.gz": {
+    "bytes": 12294,
+    "sha256": "163b9340c6f676bd2216969e4c2a5a1731cdb8bbf109becfb3a38e9d7b280a7c"
+  },
+  "fold-001/scenarios/base/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/scenarios/base/summary.json": {
+    "bytes": 1223,
+    "sha256": "4aa2562ff22f851d32ed2a292b9f27584d690b85618fe8bcce676c03bb64fba3"
+  },
+  "fold-001/scenarios/fees_2x/portfolio.csv": {
+    "bytes": 3970,
+    "sha256": "835ef442cd4062f692ab65779be049c9d0183c5ccd1047f2a7a3d0c26a67a8cf"
+  },
+  "fold-001/scenarios/fees_2x/positions.json.gz": {
+    "bytes": 12295,
+    "sha256": "b9c10539d4182ca96f6b34a8c4d1026b046f5de425d78951f8f29910c9818ba4"
+  },
+  "fold-001/scenarios/fees_2x/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/scenarios/fees_2x/summary.json": {
+    "bytes": 1221,
+    "sha256": "b78db064bae6ad2ba97597bcb18275648319c74d131ad673aa755e528b581c4d"
+  },
+  "fold-001/scenarios/slippage_5bps/portfolio.csv": {
+    "bytes": 3975,
+    "sha256": "f75ef275364241feffadc743430980a7c699654451f599d6b812289feeeed867"
+  },
+  "fold-001/scenarios/slippage_5bps/positions.json.gz": {
+    "bytes": 12302,
+    "sha256": "6c68540c35dc39b97cf2a8ff28e17587820e29e2928b99afd86958c0a94924b5"
+  },
+  "fold-001/scenarios/slippage_5bps/source_gap_holdings.json": {
+    "bytes": 325,
+    "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+  },
+  "fold-001/scenarios/slippage_5bps/summary.json": {
+    "bytes": 1226,
+    "sha256": "46bb7d935474193faff03b31f4c3c803697db89438a1d92f2172db1b9a7f3ee2"
+  },
+  "fold-001/selection.json": {
+    "bytes": 2377,
+    "sha256": "21603882f945ec9c36d8bd0281a805472ccd4a89b5e00c279e0a594039c20e3c"
+  },
+  "fold-001/validation_daily_ic.csv": {
+    "bytes": 1559,
+    "sha256": "9cff317f6990ae7ed1fc6be606bdb7662d6206d8499eb0829b813a573b3dbb40"
+  },
+  "fold-001/validation_predictions.csv": {
+    "bytes": 498161,
+    "sha256": "ec28722d96bd375786fdfbed5deee721dfc9b6058fb4adab98542487e52575bb"
+  },
+  "forecast_metrics.csv": {
+    "bytes": 1070,
+    "sha256": "20cfa1f8851357032e6d5d54ad7f5a403b691c3ff8e1ca8b0a33735ea812a116"
+  },
+  "portfolio_metrics.csv": {
+    "bytes": 5075,
+    "sha256": "c47d174ed02f4ad2ca813ffddcc2d1f3abaf0e999bb1307ec5213a0130da8a82"
+  },
+  "protocol.json": {
+    "bytes": 4928,
+    "sha256": "a1fb57d90d01184cb8a892104a301d139536500e544c8f7ffe073ec32bb413d2"
+  },
+  "summary.json": {
+    "bytes": 47277,
+    "sha256": "c997a14a9bc6f4f9a5556992d5beefd497356756fa665236a993521531ee5142"
+  },
+  "validation_grid.csv": {
+    "bytes": 1193,
+    "sha256": "67997785b44736a2e8feb4174ed089c070f0c7b47c648dcca540150699956750"
+  },
+  "verification.json": {
+    "bytes": 1197,
+    "sha256": "008e93990a5c1c7e2dc5957897f69e3baffb7da7a76f37784f01b6bfe5e8c2d8"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "expansion": [
+    0.03840133175253868,
+    0.08937541022896767,
+    0.0652262233197689
+  ],
+  "coverage_target": 0.8,
+  "calibration_dates_per_horizon": [
+    10,
+    10,
+    10
+  ],
+  "cutoff": "2023-07-07",
+  "inference_start": "2023-07-10",
+  "method": "date-wise maximum residual; finite-sample empirical quantile",
+  "guarantee": "No exchangeability or future financial coverage guarantee"
+}

@@ -1,0 +1,126 @@
+{
+  "implementation_sha256": {
+    "data_contracts.py": "bc2b40966d7de75c9fbb59d2dc2f6b5c51cc0ec46ead511beffc6a8da09e577c",
+    "execution.py": "44f90cf3eda3ca4f721071b7d904231f653baec1d3ffe357d3001b4f80fe5492",
+    "lifecycle.py": "e3184e9753d6abe727499e93d8c413e98a7d29be8c42ce32a80190279927905c"
+  },
+  "runtime": {
+    "pandas": "2.3.3",
+    "python": "3.12.14"
+  },
+  "spec": {
+    "campaign_id": "synthetic-paper-restart-demonstration",
+    "initial": {
+      "cash": 10000,
+      "currency": "CNY",
+      "positions": {}
+    },
+    "observed_calendar": [
+      "2025-01-02",
+      "2025-01-03",
+      "2025-01-06"
+    ],
+    "operations": [
+      {
+        "execution": {
+          "at": "2025-01-03T15:00:00+08:00",
+          "quote_source": "https://example.org/synthetic-raw-bars",
+          "raw_price": 10,
+          "raw_volume": 5000,
+          "reference_price": 10
+        },
+        "order": {
+          "instrument": "DEMO",
+          "order_id": "buy-1",
+          "quantity": 1000,
+          "side": "buy",
+          "submitted_at": "2025-01-02T18:00:00+08:00"
+        },
+        "type": "order"
+      },
+      {
+        "asof": "2025-01-03T16:00:00+08:00",
+        "marks": {
+          "DEMO": {
+            "observed_at": "2025-01-03T15:00:00+08:00",
+            "price": 10,
+            "source": "https://example.org/synthetic-raw-bars"
+          }
+        },
+        "type": "valuation"
+      },
+      {
+        "asof": "2025-01-06T09:00:00+08:00",
+        "event": {
+          "cash_per_share": 0.2,
+          "effective_at": "2025-01-06T09:00:00+08:00",
+          "event_id": "dividend-1",
+          "instrument": "DEMO",
+          "kind": "cash_dividend",
+          "known_at": "2025-01-02T18:00:00+08:00",
+          "payment_at": "2025-01-06T17:00:00+08:00",
+          "source": "https://example.org/synthetic-dividend-fixture"
+        },
+        "type": "corporate_action"
+      },
+      {
+        "execution": {
+          "at": "2025-01-06T15:00:00+08:00",
+          "quote_source": "https://example.org/synthetic-raw-bars",
+          "raw_price": 9.8,
+          "raw_volume": 10000,
+          "reference_price": 9.8
+        },
+        "order": {
+          "instrument": "DEMO",
+          "order_id": "sell-1",
+          "quantity": 500,
+          "side": "sell",
+          "submitted_at": "2025-01-03T18:00:00+08:00"
+        },
+        "type": "order"
+      },
+      {
+        "asof": "2025-01-06T17:00:00+08:00",
+        "type": "settle_cash"
+      },
+      {
+        "asof": "2025-01-06T18:00:00+08:00",
+        "marks": {},
+        "type": "valuation"
+      }
+    ],
+    "rules": [
+      {
+        "allow_odd_lot_liquidation": true,
+        "buy_minimum": 100,
+        "instrument": "DEMO",
+        "known_at": "2024-12-31T18:00:00+08:00",
+        "limit_down": 0.1,
+        "limit_up": 0.1,
+        "maximum_order": 1000000,
+        "price_tick": 0.01,
+        "quantity_step": 100,
+        "sell_delay_sessions": 1,
+        "source": "https://example.org/synthetic-trading-rule-fixture",
+        "valid_from": "2025-01-01",
+        "valid_until": "2025-12-31"
+      }
+    ],
+    "scenario": {
+      "commission_rate": 0.0005,
+      "fee_multiplier": 1,
+      "fee_source": "Explicit synthetic fee assumption, not an actual broker tariff",
+      "impact_bps_at_full_participation": 0,
+      "minimum_commission": 5,
+      "name": "synthetic-software-fixture",
+      "participation_limit": 0.1,
+      "sell_tax_rate": 0.001,
+      "slippage_bps": 5,
+      "slippage_multiplier": 1
+    },
+    "version": 1
+  },
+  "spec_sha256": "41a74ccda079cd531f7d20e599d544476e26d3aec9f823bf56a0660d50befa54",
+  "version": 1
+}

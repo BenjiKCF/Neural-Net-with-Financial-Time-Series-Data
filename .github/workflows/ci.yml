@@ -29,10 +29,27 @@ jobs:
         run: python -m pytest -q
       - name: Offline end-to-end demo
         run: fts demo --model all --epochs 1 --output runs/ci-demo
+      - name: Durable paper execution and duplicate-run recovery
+        run: |
+          fts paper-replay --spec configs/paper_session_demo.json --output runs/ci-paper
+          fts paper-replay --spec configs/paper_session_demo.json --output runs/ci-paper
+      - name: Build and import the distributable wheel
+        run: |
+          python -m pip wheel --no-deps --no-build-isolation . --wheel-dir dist
+          python -m venv --system-site-packages /tmp/fts-wheel-check
+          /tmp/fts-wheel-check/bin/python -m pip install --ignore-installed --no-deps dist/*.whl
+          cd /tmp
+          /tmp/fts-wheel-check/bin/python -c "import financial_ts; assert 'fts-wheel-check' in financial_ts.__file__; print(financial_ts.__version__)"
+          /tmp/fts-wheel-check/bin/fts --help
       - name: Replay recorded historical backtest offline
         run: fts backtest --predictions reports/financial_research/predictions.csv --spy-csv reports/financial_research/spy_prices.csv --output runs/ci-backtest
       - name: Audit recorded ES and weight-edit experiment
         run: python scripts/audit_posttraining.py --evidence reports/paper_posttraining
+      - name: Verify complete rolling research evidence
+        run: |
+          mkdir -p runs/ci-evidence
+          python -I scripts/reassemble_rolling_evidence.py --manifest reports/production_roadmap/rolling_screening/archive_parts.json > runs/ci-evidence/reassembly.json
+          python -I scripts/export_rolling_evidence.py --audit reports/production_roadmap/rolling_screening/archive_manifest.json > runs/ci-evidence/audit.json
       - name: Upload inspectable demo results
         if: always()
         uses: actions/upload-artifact@v4
@@ -45,4 +62,6 @@ jobs:
             runs/ci-demo/*/predictions.csv
             runs/ci-demo/*/portfolio.csv
             runs/ci-demo/*/learning_curves.json
+            runs/ci-paper/*.json
+            runs/ci-evidence/*.json
           if-no-files-found: ignore

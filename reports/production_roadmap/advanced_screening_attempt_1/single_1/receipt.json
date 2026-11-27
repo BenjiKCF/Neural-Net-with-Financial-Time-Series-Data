@@ -1,0 +1,22 @@
+{
+  "horizons": [
+    1
+  ],
+  "quantiles": [],
+  "seed": 42,
+  "as_of": "2023-05-23",
+  "maximum_label_endpoint_sessions": 2,
+  "normalizer_fit": "train labels only",
+  "portfolio_replay": "not run",
+  "fit": {
+    "selected_epoch": 2,
+    "validation_loss": 0.3813843816518784,
+    "validation_history": [
+      0.3852430909872055,
+      0.3813843816518784
+    ],
+    "retained_epoch_zero": false,
+    "initial_validation_loss": null
+  },
+  "updates": []
+}

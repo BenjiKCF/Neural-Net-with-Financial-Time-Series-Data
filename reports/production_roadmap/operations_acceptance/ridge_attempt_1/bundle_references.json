@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-000/ridge/seed-7/attempt-0001/workflow/inference_bundle",
+    "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+    "files": {
+      "environment.json": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "manifest.json": "8d8b041593f1521aa47ffef8526e9653a9b11be46bc460ec3223d7a52386ae23",
+      "metadata.json": "b9cce47d75598ddcf47ec12687688ea2d77f4991a247172c2538eb6b194e77e8",
+      "model.json": "f6f506e2a38199c76970db9cc56d01fd0d4bfe3a5fdedf714427cecd0ca418be",
+      "parity.json": "00fbe30a41aef95237059acbd3c7465539bfb415b43bbb2d9630187510713a42",
+      "preprocessing.json": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "reload_fixture.npz": "8e84c2f65177aa82edff3be0c77332ce624e8c0721ce382ad47d5b1fa72ac702",
+      "schema.json": "90516890face4bc850c3e794c7db0005be68a05a79437bdccc4a9a825d9136cc"
+    }
+  },
+  {
+    "path": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-000/ridge/seed-42/attempt-0001/workflow/inference_bundle",
+    "bundle_id": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06",
+    "files": {
+      "environment.json": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "manifest.json": "2de0b3454aec5fb4e64372c5bbb1f756357f5e439bd3924c60b773ce9105056c",
+      "metadata.json": "371d1b3ccc08b811985505dd1623e1d90a672f5c896561523b5e56b4fb5b7599",
+      "model.json": "f6f506e2a38199c76970db9cc56d01fd0d4bfe3a5fdedf714427cecd0ca418be",
+      "parity.json": "00fbe30a41aef95237059acbd3c7465539bfb415b43bbb2d9630187510713a42",
+      "preprocessing.json": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "reload_fixture.npz": "8e84c2f65177aa82edff3be0c77332ce624e8c0721ce382ad47d5b1fa72ac702",
+      "schema.json": "90516890face4bc850c3e794c7db0005be68a05a79437bdccc4a9a825d9136cc"
+    }
+  }
+]

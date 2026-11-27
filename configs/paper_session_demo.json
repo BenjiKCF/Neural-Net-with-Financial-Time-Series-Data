@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "campaign_id": "synthetic-paper-restart-demonstration",
+  "initial": {"cash": 10000, "positions": {}, "currency": "CNY"},
+  "observed_calendar": ["2025-01-02", "2025-01-03", "2025-01-06"],
+  "rules": [
+    {"instrument": "DEMO", "valid_from": "2025-01-01", "valid_until": "2025-12-31", "known_at": "2024-12-31T18:00:00+08:00", "source": "https://example.org/synthetic-trading-rule-fixture", "buy_minimum": 100, "quantity_step": 100, "maximum_order": 1000000, "price_tick": 0.01, "limit_up": 0.1, "limit_down": 0.1, "allow_odd_lot_liquidation": true, "sell_delay_sessions": 1}
+  ],
+  "scenario": {"name": "synthetic-software-fixture", "fee_source": "Explicit synthetic fee assumption, not an actual broker tariff", "commission_rate": 0.0005, "minimum_commission": 5, "sell_tax_rate": 0.001, "participation_limit": 0.1, "slippage_bps": 5, "impact_bps_at_full_participation": 0, "fee_multiplier": 1, "slippage_multiplier": 1},
+  "operations": [
+    {"type": "order", "order": {"order_id": "buy-1", "instrument": "DEMO", "side": "buy", "quantity": 1000, "submitted_at": "2025-01-02T18:00:00+08:00"}, "execution": {"at": "2025-01-03T15:00:00+08:00", "raw_price": 10, "raw_volume": 5000, "reference_price": 10, "quote_source": "https://example.org/synthetic-raw-bars"}},
+    {"type": "valuation", "asof": "2025-01-03T16:00:00+08:00", "marks": {"DEMO": {"price": 10, "observed_at": "2025-01-03T15:00:00+08:00", "source": "https://example.org/synthetic-raw-bars"}}},
+    {"type": "corporate_action", "asof": "2025-01-06T09:00:00+08:00", "event": {"event_id": "dividend-1", "kind": "cash_dividend", "instrument": "DEMO", "effective_at": "2025-01-06T09:00:00+08:00", "known_at": "2025-01-02T18:00:00+08:00", "source": "https://example.org/synthetic-dividend-fixture", "cash_per_share": 0.2, "payment_at": "2025-01-06T17:00:00+08:00"}},
+    {"type": "order", "order": {"order_id": "sell-1", "instrument": "DEMO", "side": "sell", "quantity": 500, "submitted_at": "2025-01-03T18:00:00+08:00"}, "execution": {"at": "2025-01-06T15:00:00+08:00", "raw_price": 9.8, "raw_volume": 10000, "reference_price": 9.8, "quote_source": "https://example.org/synthetic-raw-bars"}},
+    {"type": "settle_cash", "asof": "2025-01-06T17:00:00+08:00"},
+    {"type": "valuation", "asof": "2025-01-06T18:00:00+08:00", "marks": {}}
+  ]
+}

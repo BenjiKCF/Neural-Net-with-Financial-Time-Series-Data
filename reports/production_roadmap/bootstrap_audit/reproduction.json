@@ -1,0 +1,82 @@
+{
+  "qualification": "Deterministic synthetic reproduction of a historical reporting defect, not performance evidence.",
+  "source_file": "/workspace/scratch/f328bea0f8d6/runtime-screen/src/financial_ts/rolling.py",
+  "source_sha256": "a4c9dabda49d1900918ff14bbc518dfef6d8847e7e00f39cc49bbc759e7d6a9e",
+  "date_count": 20,
+  "draws": 200,
+  "seed": 913,
+  "forecast": {
+    "5": {
+      "rmse": {
+        "difference": -0.009538443347449568,
+        "lower_95": -0.013728683509148168,
+        "upper_95": -0.0052244632331525966,
+        "valid_draws": 200,
+        "paired_usable_dates": 20
+      },
+      "ic": {
+        "difference": 0.16864096372708035,
+        "lower_95": -0.042418794469491,
+        "upper_95": 0.45485970690263816,
+        "valid_draws": 200,
+        "paired_usable_dates": 20
+      },
+      "rank_ic": {
+        "difference": 0.225,
+        "lower_95": 0.0,
+        "upper_95": 0.42562500000000014,
+        "valid_draws": 200,
+        "paired_usable_dates": 20
+      }
+    },
+    "20": {
+      "rmse": {
+        "difference": -0.009538443347449568,
+        "lower_95": -0.00953844334744957,
+        "upper_95": -0.009538443347449565,
+        "valid_draws": 200,
+        "paired_usable_dates": 20
+      },
+      "ic": {
+        "difference": 0.16864096372708035,
+        "lower_95": 0.16864096372708032,
+        "upper_95": 0.1686409637270804,
+        "valid_draws": 200,
+        "paired_usable_dates": 20
+      },
+      "rank_ic": {
+        "difference": 0.225,
+        "lower_95": 0.225,
+        "upper_95": 0.225,
+        "valid_draws": 200,
+        "paired_usable_dates": 20
+      }
+    }
+  },
+  "portfolio": {
+    "5": {
+      "mean_daily_net_return": {
+        "difference": 0.0041756433306701524,
+        "lower_95": -0.0010097099110257608,
+        "upper_95": 0.008739846007825895
+      },
+      "compounded_net_return": {
+        "difference": 0.0807321649488345,
+        "lower_95": -0.020309009741010853,
+        "upper_95": 0.1734927099712536
+      }
+    },
+    "20": {
+      "mean_daily_net_return": {
+        "difference": 0.0041756433306701524,
+        "lower_95": 0.0041756433306701524,
+        "upper_95": 0.004175643330670153
+      },
+      "compounded_net_return": {
+        "difference": 0.0807321649488345,
+        "lower_95": 0.08073216494883362,
+        "upper_95": 0.08073216494883506
+      }
+    }
+  }
+}

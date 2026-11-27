@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "trial_id": "fold-000/lightgbm/seed-42",
+  "trial_sha256": "d854fcef54a5eee81a6ebb6244972c9a9d3abea417a04b85c0dc20586d422fe7",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "status": "completed",
+  "attempt": 1,
+  "started_at_utc": "2026-11-27T07:22:35.883291+00:00",
+  "previous_attempt": null,
+  "scenario_status": "completed",
+  "artifacts": {
+    "cost_scenarios.json": {
+      "sha256": "4dc6be6227aeb9b8da19afa9ca8e78fa922283c7ffd3556c803ab95b9181fdae",
+      "bytes": 5877
+    },
+    "daily_ic.csv": {
+      "sha256": "c06c69cfe2ed5a536f5d193ab76d27890a7f33b5b65576c9be2d23a5e4f9132c",
+      "bytes": 1059
+    },
+    "inference_bundle/booster.txt": {
+      "sha256": "c6e956ce7b5ce722c87a0c132c755a5d138d3242568fb8bd99ded7aae3237e4e",
+      "bytes": 9800
+    },
+    "inference_bundle/environment.json": {
+      "sha256": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "bytes": 220
+    },
+    "inference_bundle/manifest.json": {
+      "sha256": "4261d418fb22b156f951eba128871bfa6fb6c856e2499e6a61efc9a52c203381",
+      "bytes": 967
+    },
+    "inference_bundle/metadata.json": {
+      "sha256": "371d1b3ccc08b811985505dd1623e1d90a672f5c896561523b5e56b4fb5b7599",
+      "bytes": 4342
+    },
+    "inference_bundle/model.json": {
+      "sha256": "baacc0a7dc9acf0c5d2949f594def33600fac271156db94c7da8051fbc55a3bc",
+      "bytes": 20
+    },
+    "inference_bundle/parity.json": {
+      "sha256": "2e3fedee9f431135946de754d57161bbcb512a43eed48955e1a86fe79cab269c",
+      "bytes": 77
+    },
+    "inference_bundle/preprocessing.json": {
+      "sha256": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "bytes": 6116
+    },
+    "inference_bundle/reload_fixture.npz": {
+      "sha256": "8adafa375b115b8679da9f715c914dcd450966d44376f5c7fd41ce1bcc754c57",
+      "bytes": 277368
+    },
+    "inference_bundle/schema.json": {
+      "sha256": "90516890face4bc850c3e794c7db0005be68a05a79437bdccc4a9a825d9136cc",
+      "bytes": 1374
+    },
+    "metrics.json": {
+      "sha256": "d4213e77af32115256fa7f6c84610f99b86bd0b39eb78251f01fd6863222c3e0",
+      "bytes": 3379
+    },
+    "mlruns/710092009799028125/a2c9fb670fcc4772a25785ff074005bb/artifacts/params.pkl": {
+      "sha256": "89010c072973315b2875e3a3a48bab3e16036caa7fbacd5af4c6fac351a72911",
+      "bytes": 10906
+    },
+    "portfolio.csv": {
+      "sha256": "5db50c816bb3210fc8b20ab26c0c7fb72dc9ffdcc1ab8231d19926f763760fed",
+      "bytes": 3977
+    },
+    "predictions.csv": {
+      "sha256": "a275953aeb3af2c3e696a7f6a2906600c8747e02118611c9f856494a6babb381",
+      "bytes": 327722
+    },
+    "qlib_task.yaml": {
+      "sha256": "ebe9517b315e016e0df567df886b9ff4ab805f04978ee2209acc9f08d3dc5715",
+      "bytes": 7239
+    },
+    "resolved_config.json": {
+      "sha256": "d6a3f9d2c899d513879a68da8862f22e56c73508f7a0fba51600d5bcebf4574b",
+      "bytes": 1254
+    },
+    "run.json": {
+      "sha256": "3e5d1ddc08094128699cbd6927f4d51e94155c4bfb189d101cda233ded55a957",
+      "bytes": 16375
+    },
+    "scenarios/account_0.1x/portfolio.csv": {
+      "sha256": "5ecb97025714e24189ea9244b02b791449a8e7bd1614fa0304e41f2950e6d0fc",
+      "bytes": 3993
+    },
+    "scenarios/account_0.1x/positions.json.gz": {
+      "sha256": "2caf2b209c4d157f9c6db22a1b3ccf4f28a36b2315b7c2f7cff17d90b538befd",
+      "bytes": 11915
+    },
+    "scenarios/account_0.1x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/account_0.1x/summary.json": {
+      "sha256": "5cb57594f0c1856a48c293e9c24599a6cb22ef5f1e089a48748a48a35a68dfaa",
+      "bytes": 1233
+    },
+    "scenarios/base/portfolio.csv": {
+      "sha256": "5db50c816bb3210fc8b20ab26c0c7fb72dc9ffdcc1ab8231d19926f763760fed",
+      "bytes": 3977
+    },
+    "scenarios/base/positions.json.gz": {
+      "sha256": "1336e22db7d9bd864e84766d14647a590c7f6a82c2b1195db8bed69e6b84f2f1",
+      "bytes": 11895
+    },
+    "scenarios/base/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/base/summary.json": {
+      "sha256": "f72464e43a5e49a8b4044ffba4c50ce0e00ce70b066dc41e3bb33e4bc60737b9",
+      "bytes": 1224
+    },
+    "scenarios/fees_2x/portfolio.csv": {
+      "sha256": "561cef2ac954b587b27a49068917e4e4be717415897e7dac24603eea8aae20eb",
+      "bytes": 3962
+    },
+    "scenarios/fees_2x/positions.json.gz": {
+      "sha256": "ef6b0c5c694926de4ba53c98d70e268b581dad527d35be9de3cef1f6993725cf",
+      "bytes": 11891
+    },
+    "scenarios/fees_2x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/fees_2x/summary.json": {
+      "sha256": "2f1a4ce6fd43d001b7834edc23c3e45d4bcb556fbaa4d42d22dca2c5e5c39470",
+      "bytes": 1224
+    },
+    "scenarios/slippage_5bps/portfolio.csv": {
+      "sha256": "e5c12b501210c42374a5b5d89a6b0f3f2eb6e0006369859c4e1557f7d0e01832",
+      "bytes": 3946
+    },
+    "scenarios/slippage_5bps/positions.json.gz": {
+      "sha256": "381e12dc96441650d6381a7a30461204a8d267cd093bd6c50bf6fb8f8160384f",
+      "bytes": 11900
+    },
+    "scenarios/slippage_5bps/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/slippage_5bps/summary.json": {
+      "sha256": "ea7761ab0dbfb86eb62e07befa11b2a9475efa9c6e8b761353784654800ba66b",
+      "bytes": 1229
+    },
+    "validation_daily_ic.csv": {
+      "sha256": "5a4ff7bd2d6454f9410af57969b6237ccbe8c733554f34284459593978245896",
+      "bytes": 1580
+    },
+    "validation_predictions.csv": {
+      "sha256": "56033f7ee9569c17672201d1da41f0deb3295cec017742c0978c44882dbfe3f8",
+      "bytes": 490862
+    }
+  },
+  "finished_at_utc": "2026-11-27T07:23:53.491880+00:00",
+  "elapsed_seconds": 77.60807713000031
+}

@@ -1,0 +1,28 @@
+{
+  "name": "csi300_doubleadapt_paper_screening",
+  "purpose": "Independent equations-based DoubleAdapt comparator with raw-return evaluation and chronological frozen, naive-incremental and full-retrain controls. Exploratory forecast screen, not an upstream reproduction or production promotion.",
+  "start": "2023-01-03",
+  "region": "cn",
+  "universe": "csi300",
+  "max_instruments": 20,
+  "warmup_sessions": 60,
+  "support_sessions": 5,
+  "query_sessions": 5,
+  "train_tasks": 3,
+  "valid_tasks": 1,
+  "online_tasks": 3,
+  "seed": 42,
+  "epochs": 2,
+  "num_threads": 1,
+  "model": {
+    "hidden": 16,
+    "heads": 4,
+    "temperature": 1.0,
+    "inner_lr": 0.01,
+    "model_meta_lr": 0.001,
+    "data_meta_lr": 0.001,
+    "label_regularization": 0.1
+  },
+  "bootstrap_repetitions": 200,
+  "bootstrap_block_sessions": 5
+}

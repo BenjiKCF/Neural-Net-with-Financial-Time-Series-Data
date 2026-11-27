@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "trial_id": "fold-001/transformer/seed-42",
+  "trial_sha256": "5260244bfd031a85e19e8c10a19ba0021c68d03d52388a630a091b3debbedd8b",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "status": "completed",
+  "attempt": 1,
+  "started_at_utc": "2026-11-27T07:29:50.887555+00:00",
+  "previous_attempt": null,
+  "scenario_status": "completed",
+  "artifacts": {
+    "cost_scenarios.json": {
+      "sha256": "ad9d7f27b0190c1d07a4323ca5fd912d23d26279bed07bcb5a3dad9d7162788f",
+      "bytes": 5870
+    },
+    "daily_ic.csv": {
+      "sha256": "eaced1051e3262730d052eea777c0fdc4aeb89b87fe9e844d5bce84132b51ea8",
+      "bytes": 1065
+    },
+    "inference_bundle/environment.json": {
+      "sha256": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "bytes": 220
+    },
+    "inference_bundle/manifest.json": {
+      "sha256": "aee77080fd9636cf4b6947c35bfa2e1d7c5230f87b88e31e65ef84caf0d19c07",
+      "bytes": 970
+    },
+    "inference_bundle/metadata.json": {
+      "sha256": "cb4cce90342607fd522606bdcdf26606a0f92e44c6812c143dc85478d3e83568",
+      "bytes": 4342
+    },
+    "inference_bundle/model.json": {
+      "sha256": "4ecafc1034b6a254c59a989be7a2662394cc38001304bbba9a9dcc186d64437d",
+      "bytes": 258
+    },
+    "inference_bundle/parity.json": {
+      "sha256": "2e3fedee9f431135946de754d57161bbcb512a43eed48955e1a86fe79cab269c",
+      "bytes": 77
+    },
+    "inference_bundle/preprocessing.json": {
+      "sha256": "e79dcb24b8dc4a1b153ce27ce9c9db59be82904db476dfc75490c6e874911529",
+      "bytes": 6146
+    },
+    "inference_bundle/reload_fixture.npz": {
+      "sha256": "e436dbb08021023b325369f9ae2eaffbba98c4bf47f27e4f1bcb74057080e2a9",
+      "bytes": 9151770
+    },
+    "inference_bundle/schema.json": {
+      "sha256": "b6f57c54879e46bf13f9ab4010a2c4328863a9a47866003d9247624234e3bf5d",
+      "bytes": 1375
+    },
+    "inference_bundle/weights.npz": {
+      "sha256": "af01624a1b6180d83f9939e9dd0ea29e5fbbb9132832ad41399c2b80daf41c15",
+      "bytes": 26052
+    },
+    "learning_curves.json": {
+      "sha256": "7991b004460baed74296025f2fc8190c69006fb9f6ae7fbaa9cf518e409bd1b8",
+      "bytes": 146
+    },
+    "metrics.json": {
+      "sha256": "e01aac0bc842c66f842f7b0785923b99373feef4ed330584a27bad4a94028941",
+      "bytes": 3253
+    },
+    "mlruns/739142991685406784/7a359b5acacf4769b08d6d3612066386/artifacts/params.pkl": {
+      "sha256": "828933f7cb4e7b357ac0e484078ae3e9a2afce798627420ffda28a80ac028500",
+      "bytes": 32608
+    },
+    "portfolio.csv": {
+      "sha256": "b59c3f7f8756a567c558ac54cef3d0029b1c9584d516015f6ac3ce7021eb62f8",
+      "bytes": 3988
+    },
+    "predictions.csv": {
+      "sha256": "ef8abf9bf177fba3291349f248798bb199b97a986fe6ab58ad9b341a173ddbd9",
+      "bytes": 326212
+    },
+    "qlib_task.yaml": {
+      "sha256": "ecb4a4d425e14ca29f4f1c2bf4d37aa470a3b42e48920b29b04f5503ac3bca06",
+      "bytes": 7319
+    },
+    "resolved_config.json": {
+      "sha256": "f48afff45465b70464f0827d4e530a1af8b93072fb055f2a7475a35e27253f64",
+      "bytes": 1432
+    },
+    "run.json": {
+      "sha256": "577cca4e3b64e2ed8fd3a2ba5997c2989384a4a482a67c9737621200a7c11d3a",
+      "bytes": 16376
+    },
+    "scenarios/account_0.1x/portfolio.csv": {
+      "sha256": "578c5c17992686da57035bcb5531c965a5eed4189a60860358e756f96820cd35",
+      "bytes": 3993
+    },
+    "scenarios/account_0.1x/positions.json.gz": {
+      "sha256": "96c64c90ee51b22d6ff601fb811733191a60e3bf4c8c1a3297b3269de5685465",
+      "bytes": 12614
+    },
+    "scenarios/account_0.1x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/account_0.1x/summary.json": {
+      "sha256": "aaf0241d1ea5adce6bec16d8f23da51b0f413e95e11168e5e712725bc1fdb1e6",
+      "bytes": 1231
+    },
+    "scenarios/base/portfolio.csv": {
+      "sha256": "b59c3f7f8756a567c558ac54cef3d0029b1c9584d516015f6ac3ce7021eb62f8",
+      "bytes": 3988
+    },
+    "scenarios/base/positions.json.gz": {
+      "sha256": "b7c6c6f3a5af872852f8b48f799bc841dcbde5cff6813376eeb03eafd791dbe0",
+      "bytes": 12541
+    },
+    "scenarios/base/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/base/summary.json": {
+      "sha256": "32cf48a67288f72d7befbda80056ba10c6aff644e82549bdd97bc1a44867a3ba",
+      "bytes": 1223
+    },
+    "scenarios/fees_2x/portfolio.csv": {
+      "sha256": "2947a3e61a7d611d0cd66fba899292d048e4e0f3d39a08a0872590ca8c9138c5",
+      "bytes": 3969
+    },
+    "scenarios/fees_2x/positions.json.gz": {
+      "sha256": "337329e6fdf05b5314b59aae2118279ae53f6838291066e3f1ad67dea56a54fa",
+      "bytes": 12550
+    },
+    "scenarios/fees_2x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/fees_2x/summary.json": {
+      "sha256": "9676f0c3b97b134c0ab90c319831f929ae8718dcc5c4cca9e326b17e9d4d52d9",
+      "bytes": 1223
+    },
+    "scenarios/slippage_5bps/portfolio.csv": {
+      "sha256": "bf3e40eb2b7ead42d7413a4d52fb660798e505e915756c97610da3b00e4c0e67",
+      "bytes": 3980
+    },
+    "scenarios/slippage_5bps/positions.json.gz": {
+      "sha256": "d79394baf22a0076f8753204ee47ca1ae8918dde33e9bdad51056c243035977b",
+      "bytes": 12556
+    },
+    "scenarios/slippage_5bps/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/slippage_5bps/summary.json": {
+      "sha256": "ac16561f90b57d4a3c389acc1aaff352056bb48004d9348023c3429f5391651d",
+      "bytes": 1226
+    },
+    "validation_daily_ic.csv": {
+      "sha256": "e366f9914042eeed29c824d71e6df5c68912e55acb74a543814c31fc9e7d5f6d",
+      "bytes": 1583
+    },
+    "validation_predictions.csv": {
+      "sha256": "3430540d663353614fce87a6643e7f33b28e28ca385ed66c78add1070dbe3571",
+      "bytes": 492316
+    }
+  },
+  "finished_at_utc": "2026-11-27T07:31:27.524323+00:00",
+  "elapsed_seconds": 96.63663954899675
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "status": "passed_software_and_bounded_research_acceptance",
+  "date": "2026-11-27",
+  "display_timezone": "Asia/Hong_Kong",
+  "version": "2.3.0",
+  "implementation_commit": "7f8aecb6138e0abb2c79991528b3a632b907b598",
+  "source_code_sha256": "25339ff4c9c57533ebb6f55c893007675af634c95ce6967a83745cade1ded6dd",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "pyqlib": "0.9.7",
+      "torch": "2.15.0+cpu",
+      "lightgbm": "4.7.0",
+      "mlflow": "2.22.5",
+      "pytest": "8.4.2",
+      "ruff": "0.17.6",
+      "psutil": "7.2.2"
+    }
+  },
+  "tests": {
+    "command": "PYTHONPATH=src python -m pytest -q",
+    "passed": 563,
+    "failed": 0,
+    "duration_seconds": 47.62,
+    "warnings": 271,
+    "log": "verification/pytest.txt",
+    "log_sha256": "631bd6d7abae3537cbec81accb289f7f4a32b88bb38889e4c6e5530810301e1a"
+  },
+  "lint": {
+    "command": "python -m ruff check .",
+    "status": "passed"
+  },
+  "dependencies": {
+    "command": "uv pip check --python <locked-research-python>",
+    "status": "passed",
+    "checked_packages": 198
+  },
+  "wheel": {
+    "status": "passed",
+    "version": "2.3.0",
+    "sha256": "922ecc6ee57f49f2c354809c0c6a7c59320b049a464f8ede140a577e1d775b92",
+    "current_source_files_matched": 44,
+    "isolated_imports": true,
+    "cli_help_passed": true,
+    "qualification": "Isolated package installation reused the exact locked dependency installation; CI installs dependencies on clean runners. Build artifact can be regenerated from source; binary is not redistributed here."
+  },
+  "rolling": {
+    "status": "completed",
+    "trials": 40,
+    "folds": 2,
+    "seeds": [
+      7,
+      42
+    ],
+    "candidates": 10,
+    "native_cost_scenario_replays": 160,
+    "failed_attempts": 0,
+    "archive_files_verified": 1724,
+    "receipt_artifacts_verified": 1556,
+    "archive_sha256": "8f2716752bbd9aae87ce0293c4a658b79e9107c300fe0b470a2eccbeba35571b",
+    "evidence": "rolling_screening/README.md",
+    "interpretation": "Exploratory historical screen, no promotion; original and separately audited statistical reports retained."
+  },
+  "blend": {
+    "status": "completed",
+    "folds": 2,
+    "forecast_panels": 8,
+    "native_cost_scenario_replays": 32,
+    "validation_selected_lightgbm_weights": [
+      0.0,
+      0.5
+    ],
+    "evidence": "rolling_blend/verification.json"
+  },
+  "operational_replays": {
+    "status": "passed",
+    "models": [
+      "ridge",
+      "transformer",
+      "master_style"
+    ],
+    "stocks_per_model": 300,
+    "checks_per_model": 11,
+    "evidence": "operations_acceptance/summary.json",
+    "prospective": false,
+    "publication_times_certified": false
+  },
+  "advanced_research": {
+    "status": "completed",
+    "evidence": "advanced_screening/results.json",
+    "qualification": "Small historical experiment with mixed results across horizons."
+  },
+  "doubleadapt": {
+    "status": "completed",
+    "evidence": "doubleadapt_screening/results.json",
+    "qualification": "No advantage established; all paired RMSE intervals against learned controls include zero."
+  },
+  "precision": {
+    "status": "completed",
+    "evidence": "precision_profile/summary.json",
+    "decision": "retain_float32",
+    "bfloat16_numerical_gate": "failed"
+  },
+  "historical_accounting": {
+    "evidence": "lifecycle_transformer/assessment.json",
+    "archived_terminated_series_final_weight": 0.06489845337614548,
+    "revised_return_published": false
+  },
+  "paper_execution": {
+    "status": "passed",
+    "evidence": "paper_session_demo/completion.json",
+    "synthetic": true,
+    "orders_submitted": false
+  },
+  "preservation": {
+    "archived_reports_and_qlib_gallery_changed": false,
+    "original_12_setup_campaign_changed": false,
+    "registered_trial_protocol_changed": false
+  },
+  "promotion": {
+    "status": "blocked",
+    "production_promoted": false,
+    "live_orders_submitted": false,
+    "remaining": [
+      "prospective confirmation and shadow observations",
+      "complete point-in-time publication evidence",
+      "account-level corporate-action settlement",
+      "reviewed model and data usage rights",
+      "deployment-specific service objectives, ownership and reviewed decision",
+      "real broker execution reconciliation"
+    ]
+  }
+}

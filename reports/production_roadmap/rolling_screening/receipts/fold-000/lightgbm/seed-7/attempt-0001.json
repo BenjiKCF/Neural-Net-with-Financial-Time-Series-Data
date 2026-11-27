@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "trial_id": "fold-000/lightgbm/seed-7",
+  "trial_sha256": "b21a16729202a88a46b5de634deda8dfdcfb1f15e141a11e5c40a0a955ada069",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "status": "completed",
+  "attempt": 1,
+  "started_at_utc": "2026-11-27T07:21:16.528885+00:00",
+  "previous_attempt": null,
+  "scenario_status": "completed",
+  "artifacts": {
+    "cost_scenarios.json": {
+      "sha256": "4dc6be6227aeb9b8da19afa9ca8e78fa922283c7ffd3556c803ab95b9181fdae",
+      "bytes": 5877
+    },
+    "daily_ic.csv": {
+      "sha256": "c06c69cfe2ed5a536f5d193ab76d27890a7f33b5b65576c9be2d23a5e4f9132c",
+      "bytes": 1059
+    },
+    "inference_bundle/booster.txt": {
+      "sha256": "a9e0e8211dd5fd3a86c085d186329e557cdfdfc71a125aa13a8d58f938100d2c",
+      "bytes": 9798
+    },
+    "inference_bundle/environment.json": {
+      "sha256": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "bytes": 220
+    },
+    "inference_bundle/manifest.json": {
+      "sha256": "d45bed210fd183290286fb19225884fa56c8b35d1e967b0721a43c7106a77818",
+      "bytes": 967
+    },
+    "inference_bundle/metadata.json": {
+      "sha256": "b9cce47d75598ddcf47ec12687688ea2d77f4991a247172c2538eb6b194e77e8",
+      "bytes": 4341
+    },
+    "inference_bundle/model.json": {
+      "sha256": "baacc0a7dc9acf0c5d2949f594def33600fac271156db94c7da8051fbc55a3bc",
+      "bytes": 20
+    },
+    "inference_bundle/parity.json": {
+      "sha256": "2e3fedee9f431135946de754d57161bbcb512a43eed48955e1a86fe79cab269c",
+      "bytes": 77
+    },
+    "inference_bundle/preprocessing.json": {
+      "sha256": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "bytes": 6116
+    },
+    "inference_bundle/reload_fixture.npz": {
+      "sha256": "8adafa375b115b8679da9f715c914dcd450966d44376f5c7fd41ce1bcc754c57",
+      "bytes": 277368
+    },
+    "inference_bundle/schema.json": {
+      "sha256": "90516890face4bc850c3e794c7db0005be68a05a79437bdccc4a9a825d9136cc",
+      "bytes": 1374
+    },
+    "metrics.json": {
+      "sha256": "d4213e77af32115256fa7f6c84610f99b86bd0b39eb78251f01fd6863222c3e0",
+      "bytes": 3379
+    },
+    "mlruns/949250114643254249/60425644671740aab7654ecfded9c37c/artifacts/params.pkl": {
+      "sha256": "853203457a47c2e158570dadd1c869f806d864af4892fc2ac31d0fb56b82942c",
+      "bytes": 10904
+    },
+    "portfolio.csv": {
+      "sha256": "5db50c816bb3210fc8b20ab26c0c7fb72dc9ffdcc1ab8231d19926f763760fed",
+      "bytes": 3977
+    },
+    "predictions.csv": {
+      "sha256": "a275953aeb3af2c3e696a7f6a2906600c8747e02118611c9f856494a6babb381",
+      "bytes": 327722
+    },
+    "qlib_task.yaml": {
+      "sha256": "33e636a7ba27bc32b2c8299489772a337601a58b13cdee0de347e6498e019930",
+      "bytes": 7235
+    },
+    "resolved_config.json": {
+      "sha256": "e1095e5d8d6637e85b362f3506e0190ff100ca1bc5a66a2600c4fa4ff74576e8",
+      "bytes": 1252
+    },
+    "run.json": {
+      "sha256": "49a9151d438177736bb39ef21809f14318adbafe425271b9ab15ea471122ec45",
+      "bytes": 16375
+    },
+    "scenarios/account_0.1x/portfolio.csv": {
+      "sha256": "5ecb97025714e24189ea9244b02b791449a8e7bd1614fa0304e41f2950e6d0fc",
+      "bytes": 3993
+    },
+    "scenarios/account_0.1x/positions.json.gz": {
+      "sha256": "2caf2b209c4d157f9c6db22a1b3ccf4f28a36b2315b7c2f7cff17d90b538befd",
+      "bytes": 11915
+    },
+    "scenarios/account_0.1x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/account_0.1x/summary.json": {
+      "sha256": "5cb57594f0c1856a48c293e9c24599a6cb22ef5f1e089a48748a48a35a68dfaa",
+      "bytes": 1233
+    },
+    "scenarios/base/portfolio.csv": {
+      "sha256": "5db50c816bb3210fc8b20ab26c0c7fb72dc9ffdcc1ab8231d19926f763760fed",
+      "bytes": 3977
+    },
+    "scenarios/base/positions.json.gz": {
+      "sha256": "1336e22db7d9bd864e84766d14647a590c7f6a82c2b1195db8bed69e6b84f2f1",
+      "bytes": 11895
+    },
+    "scenarios/base/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/base/summary.json": {
+      "sha256": "f72464e43a5e49a8b4044ffba4c50ce0e00ce70b066dc41e3bb33e4bc60737b9",
+      "bytes": 1224
+    },
+    "scenarios/fees_2x/portfolio.csv": {
+      "sha256": "561cef2ac954b587b27a49068917e4e4be717415897e7dac24603eea8aae20eb",
+      "bytes": 3962
+    },
+    "scenarios/fees_2x/positions.json.gz": {
+      "sha256": "ef6b0c5c694926de4ba53c98d70e268b581dad527d35be9de3cef1f6993725cf",
+      "bytes": 11891
+    },
+    "scenarios/fees_2x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/fees_2x/summary.json": {
+      "sha256": "2f1a4ce6fd43d001b7834edc23c3e45d4bcb556fbaa4d42d22dca2c5e5c39470",
+      "bytes": 1224
+    },
+    "scenarios/slippage_5bps/portfolio.csv": {
+      "sha256": "e5c12b501210c42374a5b5d89a6b0f3f2eb6e0006369859c4e1557f7d0e01832",
+      "bytes": 3946
+    },
+    "scenarios/slippage_5bps/positions.json.gz": {
+      "sha256": "381e12dc96441650d6381a7a30461204a8d267cd093bd6c50bf6fb8f8160384f",
+      "bytes": 11900
+    },
+    "scenarios/slippage_5bps/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/slippage_5bps/summary.json": {
+      "sha256": "ea7761ab0dbfb86eb62e07befa11b2a9475efa9c6e8b761353784654800ba66b",
+      "bytes": 1229
+    },
+    "validation_daily_ic.csv": {
+      "sha256": "5a4ff7bd2d6454f9410af57969b6237ccbe8c733554f34284459593978245896",
+      "bytes": 1580
+    },
+    "validation_predictions.csv": {
+      "sha256": "56033f7ee9569c17672201d1da41f0deb3295cec017742c0978c44882dbfe3f8",
+      "bytes": 490862
+    }
+  },
+  "finished_at_utc": "2026-11-27T07:22:35.880592+00:00",
+  "elapsed_seconds": 79.3515997200011
+}

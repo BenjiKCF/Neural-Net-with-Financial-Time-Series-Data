@@ -1,25 +1,45 @@
 # Production roadmap
 
-**Updated 27 November 2026 (Hong Kong time). Status: proposed research and
-engineering work, except for the completed foundation identified below.**
+**Updated 27 November 2026 (Hong Kong time). Status: implementation and retained
+exploratory evidence available; production acceptance remains gated.**
 
-The goal is a reliable daily financial-DL research and inference system with
-defensible model selection, reproducible artifacts, realistic portfolio
-accounting, and observable operation. Model quality and operational reliability
-need separate evidence. A larger network or a successful backtest cannot by
-itself establish readiness to trade.
+Version 2.3 implements the first research and shadow-operation software tranche.
+The [implementation map and evidence](production-implementation.md) connect each
+component to its source, tests, recipes and retained experiments. The
+[40-trial rolling screen](rolling-screening.md),
+[complete campaign archive](../reports/production_roadmap/rolling_screening/README.md)
+and additional bounded studies are now available for inspection. Their original
+source/protocol identities are preserved; publication does not rerun those
+experiments with later software. Use the [operation guide](production-operation.md)
+to generate a separate campaign in your own environment.
 
-This document turns the production recommendations into an ordered backlog.
-The phase names are planning labels, not released package versions. The
-proposed models, commands, services, and controls are not implemented merely
-because they appear here. Each implementation should arrive in a focused PR
-with its own acceptance evidence.
+The goal remains reliable daily financial-DL research and inference, with
+causal selection, reproducible artifacts, realistic accounting and observable
+operation. A running implementation is one requirement; candidate quality,
+publication-time availability, account settlement and prospective operation
+need additional evidence. Phase names below describe work packages rather than
+released package versions.
 
 [Current evidence](#current-evidence-and-limitations) ·
 [Priorities](#delivery-priorities) ·
 [DL experiments](#deep-learning-experiments) ·
 [Production gates](#promotion-gates) ·
-[First PRs](#first-implementation-prs)
+[Implementation packages](#first-implementation-prs)
+
+## Software delivery status
+
+| Component | Available source | Remaining acceptance boundary |
+| --- | --- | --- |
+| Availability and refreshes | Timestamp/lag contracts, immutable snapshot comparison and quarantine. | Original publication vintages or justified source-arrival evidence. |
+| Lifecycle and execution | Raw-share ledger, sourced event fixtures, dated trading rules and durable paper sessions. | Actual allocations, complete event coverage, successor tradability and revised portfolio replay. |
+| Rolling evaluation | Registered folds/seeds, mature labels, simple controls, retained attempts and paired date-block comparisons. | Adequate campaign budget and uninspected confirmation observations. |
+| DL experiments | Same-date objectives, temporal/MASTER-style/MoE models, blends, horizons, intervals, pretraining and adaptation comparators. | Controlled empirical value over simpler models under matching information and declared budgets. |
+| Operation | Numerical bundles, registry, atomic predictions, delayed monitoring, scheduler examples and rollback. | Deployed service objectives, real arrival schedule, prospective shadow observation and execution reconciliation. |
+
+Tests and recipes are listed in the
+[implementation map](production-implementation.md#implementation-map).
+The detailed checklists below retain their complete acceptance meaning. An
+unchecked evidence gate does not imply that its software component is absent.
 
 ## Current evidence and limitations
 
@@ -54,7 +74,7 @@ the next final confirmation.
 
 | Priority / phase | Work package | Completion evidence |
 | --- | --- | --- |
-| P0 · V3.0 foundation | **Completed:** all-model evidence collection, independent audit, native Qlib gallery. **Open:** point-in-time data contracts and corporate-action accounting. | Source-backed lifecycle fixtures, reconciled positions/cash, and a new audited campaign for revised accounting. |
+| P0 · V3.0 foundation | **Available:** existing all-model evidence/gallery, new availability contracts and event ledger. **Open:** historical publication and account-level settlement evidence. | Source-backed lifecycle fixtures, reconciled positions/cash, and a new audited campaign for revised accounting. |
 | P1 · V3.1 evaluation | Rolling evaluation, multiple seeds, stronger simple/Qlib baselines, IC and ranking objectives, realistic execution scenarios. | Every fold, seed, selection decision, failed trial, cost assumption, and paired comparison retained. |
 | P2 · V3.2 architecture | MASTER-style comparator, cross-stock attention, regime-conditioned MoE, tree/neural ensemble, multi-horizon and uncertainty ablations. | Incremental value against controlled baselines with declared compute and tuning budgets. |
 | P3 · V3.3 adaptation | Self-supervised pretraining and incremental learning, including a DoubleAdapt comparator. | Chronological pretraining/adaptation receipts, mature-label checks, and improvement over simple periodic retraining. |
@@ -192,8 +212,11 @@ score smoothing; it cannot be labeled realized transaction cost.
 
 ### Candidate architecture: QuantFormer-MoE
 
-**Working research name; no implementation or performance claim.** Establish
-the MASTER-style comparator before building the combined model. The
+**Working research name; implemented as `quantformer_moe`.** The
+`master_style` and `daily_transformer` controls use the same pipeline. Their
+[architecture guide](architectures/cross-sectional.md) documents the available
+ablations. No performance advantage is established by the retained exploratory
+screen. The
 [official MASTER repository](https://github.com/SJTU-DMTai/MASTER) includes
 preprocessing and evaluation-data caveats, reinforcing the need to use our own
 pinned pipeline rather than importing headline scores or processed test dumps.
@@ -237,10 +260,13 @@ in the existing [checkpoint/license qualification](architectures/timesfm.md#time
 Keep those variants outside production promotion; use a separately permitted
 checkpoint or license for deployment, with documented rights for market data too.
 
-[DoubleAdapt](https://github.com/SJTU-DMTai/DoubleAdapt) is a later adaptation
-comparator. Its upstream examples also need evaluation review; compute our
-reported metrics against raw, aligned returns. Compare it with scheduled
-retraining before accepting the additional state and maintenance cost.
+[DoubleAdapt](https://github.com/SJTU-DMTai/DoubleAdapt) now has an
+[independent method comparator](doubleadapt.md), with frozen, incremental and
+full-retraining controls. Its configuration, tests and
+[compact-screen results](doubleadapt.md#actual-compact-screen-results) are
+included. The screen does not establish an advantage. Compute local metrics
+against aligned raw returns and disclose implementation and compute differences
+before accepting the additional state and maintenance cost.
 
 ## Production operation
 
@@ -325,9 +351,12 @@ research improvement does not waive operational gates.
 | 5 | Daily inference bundle and shadow runner | Existing model persistence, [workflow.py](../src/financial_ts/workflow.py), [record.py](../src/financial_ts/record.py) | Immutable bundle, idempotent scheduled output, freshness checks, rollback rehearsal, and shadow receipts. |
 | 6 | Selected advanced experiment | QuantFormer-MoE or the best-supported item from the experiment backlog | Isolated ablations and incremental evidence sufficient for the registered promotion decision. |
 
-These are extension points, not assertions that new modules or CLI commands
-already exist. Keep each PR reviewable and retain separate campaign identifiers
-when scientific or execution assumptions change.
+These six packages describe the original implementation boundaries. The
+[version 2.3 source tranche](production-implementation.md) supplies their initial
+software interfaces together, with separate tests and recipes. Their full
+scientific and deployment acceptance conditions remain open until supported by
+the appropriate evidence. Retain separate campaign identities when scientific
+or execution assumptions change.
 
 ### Reporting standard for every completed experiment
 
@@ -339,6 +368,20 @@ through the existing [exporter](../src/financial_ts/qlib_visuals.py), and add
 fold, cost, uncertainty, or regime views where they answer a specific question.
 Retain the distinction between Qlib's additive chart conventions and the
 comparison's compounded-return conventions.
+
+**Evidence-delivery status:** the retained roadmap experiments are published
+with their original [acceptance receipt](../reports/production_roadmap/acceptance.json),
+[source identity](../reports/production_roadmap/runtime_source.json),
+[archive verification instructions](../reports/production_roadmap/rolling_screening/README.md)
+and [result guides](production-implementation.md#published-research-evidence).
+The original 563-test receipt describes the earlier implementation; the later
+[570-test software receipt](validation/production-software.json) covers the
+calendar-coverage and prediction-manifest fixes. The new
+[600-test publication receipt](validation/production-publication.json) records
+standalone bundle-export and valuation-calendar review fixes, exact reassembly
+and complete archive verification. Earlier records are preserved without
+implying a new research run. Full-budget, prospective and production acceptance
+requirements remain separate from evidence publication.
 
 ## Primary references
 

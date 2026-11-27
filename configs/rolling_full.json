@@ -1,0 +1,94 @@
+{
+  "name": "csi300_registered_rolling_full",
+  "purpose": "Longer predeclared research campaign; run after compact screen and retain every outcome.",
+  "region": "cn",
+  "instruments": "csi300",
+  "rolling": {
+    "start": "2017-01-03",
+    "train_sessions": 756,
+    "valid_sessions": 126,
+    "test_sessions": 63,
+    "step_sessions": 63,
+    "max_folds": 16,
+    "expanding": false
+  },
+  "models": [
+    "zero",
+    "ridge",
+    "lightgbm",
+    "transformer",
+    "daily_transformer",
+    "master_style",
+    "quantformer_moe"
+  ],
+  "seeds": [
+    7,
+    42,
+    2026,
+    2027,
+    2028
+  ],
+  "epochs": 12,
+  "device": "cpu",
+  "num_threads": 2,
+  "warmup_sessions": 60,
+  "sequence_length": 32,
+  "selection_metric": "rank_ic",
+  "reference": "transformer",
+  "bootstrap": {
+    "block_lengths": [
+      5,
+      20,
+      60
+    ],
+    "draws": 2000,
+    "seed": 913
+  },
+  "backtest": {
+    "enabled": true,
+    "topk": 50,
+    "n_drop": 5,
+    "account": 100000000
+  },
+  "cost_scenarios": [
+    {
+      "id": "base",
+      "fee_multiplier": 1,
+      "account_multiplier": 1
+    },
+    {
+      "id": "fees_2x",
+      "fee_multiplier": 2,
+      "account_multiplier": 1
+    },
+    {
+      "id": "account_0.1x",
+      "fee_multiplier": 1,
+      "account_multiplier": 0.1
+    },
+    {
+      "id": "account_10x",
+      "fee_multiplier": 1,
+      "account_multiplier": 10
+    },
+    {
+      "id": "slippage_5bps",
+      "fee_multiplier": 1,
+      "account_multiplier": 1,
+      "slippage_bps": 5
+    }
+  ],
+  "export_inference_bundle": true,
+  "holdout_status": "Historical rolling development evidence, not fresh prospective confirmation. Register a later uninspected observation window separately.",
+  "model_params": {
+    "daily_transformer": {
+      "objective": "mse"
+    },
+    "master_style": {
+      "objective": "mse"
+    },
+    "quantformer_moe": {
+      "objective": "mse"
+    }
+  }
+}

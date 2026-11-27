@@ -1,0 +1,59 @@
+{
+  "qualification": "Historical software replay with hypothetical arrivals; not prospective or publication-time evidence.",
+  "cases": {
+    "ridge": {
+      "status": "passed",
+      "check_count": 11,
+      "parity": {
+        "status": "passed",
+        "count": 300,
+        "maximum_absolute_error": 7.538756628504284e-09,
+        "mean_absolute_error": 1.5199827196748474e-09
+      },
+      "artifact_hashes_verified": 9,
+      "bundle_file_hashes_verified": 16,
+      "decision_date": "2024-08-21",
+      "result_sha256": "08831d7ac16d7e601b86f47de0f5774a9d07a73446791bd4998958a2eb526055",
+      "bundle_ids": [
+        "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+        "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06"
+      ]
+    },
+    "transformer": {
+      "status": "passed",
+      "check_count": 11,
+      "parity": {
+        "status": "passed",
+        "count": 300,
+        "maximum_absolute_error": 4.144439402125125e-09,
+        "mean_absolute_error": 8.255723133873437e-10
+      },
+      "artifact_hashes_verified": 9,
+      "bundle_file_hashes_verified": 18,
+      "decision_date": "2024-08-21",
+      "result_sha256": "e2ae1e7962717af96a576444e22f99dbc3d01d217cae660f698ad6586bbe02ab",
+      "bundle_ids": [
+        "40a727b85334df6879988d866ae93b2efbb79616794c9205369d8f3bd3d51bf7",
+        "7bfd3ed41a2e746dd55f94d4da99e4aa4b53f9233bcb91bf5e02e3d0b18d04f0"
+      ]
+    },
+    "master_style": {
+      "status": "passed",
+      "check_count": 11,
+      "parity": {
+        "status": "passed",
+        "count": 300,
+        "maximum_absolute_error": 1.900146185361551e-09,
+        "mean_absolute_error": 4.52765571823417e-10
+      },
+      "artifact_hashes_verified": 9,
+      "bundle_file_hashes_verified": 18,
+      "decision_date": "2024-08-21",
+      "result_sha256": "01108e7e43a384cac7696199687c5e728e851d68a90109c4b110675a1be1e3f1",
+      "bundle_ids": [
+        "e4825cbf1d6933d931377cf93a36581d4e6450781e8e3ed42ad174d098865950",
+        "3ccdfdcb2bf0988271888a957de618b82b6649f83011c28f039d3f7dc44eaf3e"
+      ]
+    }
+  }
+}

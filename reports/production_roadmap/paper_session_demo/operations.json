@@ -1,0 +1,199 @@
+[
+  {
+    "ordinal": 0,
+    "receipt": {
+      "cash_delta": -5010.0,
+      "cumulative_daily_participation": 0.1,
+      "fees": 5,
+      "fill_price": 10.01,
+      "filled_quantity": 500,
+      "participation": 0.1,
+      "reason": null,
+      "request": {
+        "at": "2025-01-03T15:00:00+08:00",
+        "order": {
+          "instrument": "DEMO",
+          "order_id": "buy-1",
+          "quantity": 1000,
+          "side": "buy",
+          "submitted_at": "2025-01-02T18:00:00+08:00"
+        },
+        "quote_source": "https://example.org/synthetic-raw-bars",
+        "raw_price": 10,
+        "raw_volume": 5000,
+        "reference_price": 10,
+        "suspended": false
+      },
+      "requested_quantity": 1000,
+      "rule": {
+        "allow_odd_lot_liquidation": true,
+        "buy_minimum": 100,
+        "instrument": "DEMO",
+        "known_at": "2024-12-31T18:00:00+08:00",
+        "limit_down": 0.1,
+        "limit_up": 0.1,
+        "maximum_order": 1000000,
+        "price_tick": 0.01,
+        "quantity_step": 100,
+        "sell_delay_sessions": 1,
+        "source": "https://example.org/synthetic-trading-rule-fixture",
+        "valid_from": "2025-01-01",
+        "valid_until": "2025-12-31"
+      },
+      "scenario": {
+        "commission_rate": 0.0005,
+        "fee_multiplier": 1,
+        "fee_source": "Explicit synthetic fee assumption, not an actual broker tariff",
+        "impact_bps_at_full_participation": 0,
+        "minimum_commission": 5,
+        "name": "synthetic-software-fixture",
+        "participation_limit": 0.1,
+        "sell_tax_rate": 0.001,
+        "slippage_bps": 5,
+        "slippage_multiplier": 1
+      },
+      "status": "partial"
+    },
+    "type": "order"
+  },
+  {
+    "ordinal": 1,
+    "receipt": {
+      "asof": "2025-01-03T16:00:00+08:00",
+      "cash": 4990.0,
+      "currency": "CNY",
+      "holdings": [
+        {
+          "instrument": "DEMO",
+          "quantity": 500.0,
+          "raw_price": 10,
+          "staleness_sessions": 0,
+          "tradable": true,
+          "value": 5000.0
+        }
+      ],
+      "indicative_nav": 9990.0,
+      "nav": 9990.0,
+      "promotion_ready": true,
+      "quantity_units": "raw shares",
+      "receivables": 0,
+      "unresolved": []
+    },
+    "type": "valuation"
+  },
+  {
+    "ordinal": 2,
+    "receipt": {
+      "applied_at": "2025-01-06T09:00:00+08:00",
+      "cash_delta": 0.0,
+      "event": {
+        "allocated_quantity": null,
+        "allocation_source": null,
+        "cash_per_share": 0.2,
+        "effective_at": "2025-01-06T09:00:00+08:00",
+        "event_id": "dividend-1",
+        "instrument": "DEMO",
+        "kind": "cash_dividend",
+        "known_at": "2025-01-02T18:00:00+08:00",
+        "payment_at": "2025-01-06T17:00:00+08:00",
+        "ratio": 1.0,
+        "source": "https://example.org/synthetic-dividend-fixture",
+        "successor": null,
+        "tradable_at": null
+      },
+      "event_id": "dividend-1",
+      "instrument": "DEMO",
+      "quantity_after": 500.0,
+      "quantity_before": 500.0,
+      "quantity_deltas": {},
+      "receivable_added": 100.0,
+      "status": "applied"
+    },
+    "type": "corporate_action"
+  },
+  {
+    "ordinal": 3,
+    "receipt": {
+      "cash_delta": 4885.105,
+      "cumulative_daily_participation": 0.05,
+      "fees": 9.895000000000001,
+      "fill_price": 9.790000000000001,
+      "filled_quantity": 500,
+      "participation": 0.05,
+      "reason": null,
+      "request": {
+        "at": "2025-01-06T15:00:00+08:00",
+        "order": {
+          "instrument": "DEMO",
+          "order_id": "sell-1",
+          "quantity": 500,
+          "side": "sell",
+          "submitted_at": "2025-01-03T18:00:00+08:00"
+        },
+        "quote_source": "https://example.org/synthetic-raw-bars",
+        "raw_price": 9.8,
+        "raw_volume": 10000,
+        "reference_price": 9.8,
+        "suspended": false
+      },
+      "requested_quantity": 500,
+      "rule": {
+        "allow_odd_lot_liquidation": true,
+        "buy_minimum": 100,
+        "instrument": "DEMO",
+        "known_at": "2024-12-31T18:00:00+08:00",
+        "limit_down": 0.1,
+        "limit_up": 0.1,
+        "maximum_order": 1000000,
+        "price_tick": 0.01,
+        "quantity_step": 100,
+        "sell_delay_sessions": 1,
+        "source": "https://example.org/synthetic-trading-rule-fixture",
+        "valid_from": "2025-01-01",
+        "valid_until": "2025-12-31"
+      },
+      "scenario": {
+        "commission_rate": 0.0005,
+        "fee_multiplier": 1,
+        "fee_source": "Explicit synthetic fee assumption, not an actual broker tariff",
+        "impact_bps_at_full_participation": 0,
+        "minimum_commission": 5,
+        "name": "synthetic-software-fixture",
+        "participation_limit": 0.1,
+        "sell_tax_rate": 0.001,
+        "slippage_bps": 5,
+        "slippage_multiplier": 1
+      },
+      "status": "filled"
+    },
+    "type": "order"
+  },
+  {
+    "ordinal": 4,
+    "receipt": [
+      {
+        "applied_at": "2025-01-06T17:00:00+08:00",
+        "cash_delta": 100.0,
+        "instrument": "DEMO",
+        "settlement_for": "dividend-1"
+      }
+    ],
+    "type": "settle_cash"
+  },
+  {
+    "ordinal": 5,
+    "receipt": {
+      "asof": "2025-01-06T18:00:00+08:00",
+      "cash": 9975.105,
+      "currency": "CNY",
+      "holdings": [],
+      "indicative_nav": 9975.105,
+      "nav": 9975.105,
+      "promotion_ready": true,
+      "quantity_units": "raw shares",
+      "receivables": 0,
+      "unresolved": []
+    },
+    "type": "valuation"
+  }
+]

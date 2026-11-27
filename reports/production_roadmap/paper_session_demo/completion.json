@@ -1,0 +1,39 @@
+{
+  "artifacts": {
+    "ledger.json": "a208a167fe473bbac300e4a597991b8ecdfe14799573c9c91cd1eff50e9b941e",
+    "operations.json": "77e7ff6e0984251e509fa4cfa7686c4127d83a579bbf4667e9d44683906bf422",
+    "valuations.json": "193cb0109e9f718b3385f37b7e2c4dcf6c9ccda94fa3ba3a54cda055b0b73bbd"
+  },
+  "campaign_id": "synthetic-paper-restart-demonstration",
+  "deployment_approved": false,
+  "filled": 1,
+  "final_valuation": {
+    "asof": "2025-01-06T18:00:00+08:00",
+    "cash": 9975.105,
+    "currency": "CNY",
+    "holdings": [],
+    "indicative_nav": 9975.105,
+    "nav": 9975.105,
+    "promotion_ready": true,
+    "quantity_units": "raw shares",
+    "receivables": 0,
+    "unresolved": []
+  },
+  "mode": "paper_replay_only",
+  "orders": 2,
+  "partial": 1,
+  "protocol_sha256": "cb2646ef3cf5798e6338658fded7e80d0f3965d8f399aeb50c874f86bb5c4c92",
+  "qualification": "Registered paper simulation; economic edge, prospective arrival and deployment approval are not established.",
+  "reconciliation": {
+    "cash": 9975.105,
+    "cash_reconciled": true,
+    "expected_cash": 9975.105,
+    "receipts": 4,
+    "shares_reconciled": true,
+    "state_sha256": "5f99c371a1cbf820cf8c9b178d94333debf902a9b1bcabf34836a3bab9461fbd",
+    "unresolved_events": 0
+  },
+  "rejected": 0,
+  "spec_sha256": "41a74ccda079cd531f7d20e599d544476e26d3aec9f823bf56a0660d50befa54",
+  "status": "completed"
+}

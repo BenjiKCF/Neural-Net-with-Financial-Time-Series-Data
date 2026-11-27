@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "trial_id": "fold-000/master_style/seed-7",
+  "trial_sha256": "2860372842cbe6fc4870dae5071fe29d3d800e2b88bd1ffbc0ba16b7f194df6a",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "status": "completed",
+  "attempt": 1,
+  "started_at_utc": "2026-11-27T07:30:12.809362+00:00",
+  "previous_attempt": null,
+  "scenario_status": "completed",
+  "artifacts": {
+    "cost_scenarios.json": {
+      "sha256": "285df1dd1ed9fa5d595b7dbeb45c46cbde869f2433c347414dace5c64a44b547",
+      "bytes": 5878
+    },
+    "daily_ic.csv": {
+      "sha256": "0b39c06f865243dd366497d1b102512b82c2150fb4adf9982600df4d93d62743",
+      "bytes": 1045
+    },
+    "inference_bundle/environment.json": {
+      "sha256": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "bytes": 220
+    },
+    "inference_bundle/manifest.json": {
+      "sha256": "3096991e45d9e5f2b5efa44e27724517bbc83d2fb41613b8dfded2d9c13b14cf",
+      "bytes": 970
+    },
+    "inference_bundle/metadata.json": {
+      "sha256": "b9cce47d75598ddcf47ec12687688ea2d77f4991a247172c2538eb6b194e77e8",
+      "bytes": 4341
+    },
+    "inference_bundle/model.json": {
+      "sha256": "657f3f3dacc06532a16273d863f74a2ef711937509c4d1e4ca8de51e000535f3",
+      "bytes": 546
+    },
+    "inference_bundle/parity.json": {
+      "sha256": "ff859430207b21a1cbff631dd71b49c03597f6a47dba63216351ccbac011a2cd",
+      "bytes": 96
+    },
+    "inference_bundle/preprocessing.json": {
+      "sha256": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "bytes": 6116
+    },
+    "inference_bundle/reload_fixture.npz": {
+      "sha256": "88203e9c019145c4faae9f502e76b0e8dffec76c78c6c9f17a492853a4183b34",
+      "bytes": 8936062
+    },
+    "inference_bundle/schema.json": {
+      "sha256": "b6f57c54879e46bf13f9ab4010a2c4328863a9a47866003d9247624234e3bf5d",
+      "bytes": 1375
+    },
+    "inference_bundle/weights.npz": {
+      "sha256": "e5a1126319fd7c352f0d7125b6da03d25456195296d3c0aea73bd3e22b8c917f",
+      "bytes": 76049
+    },
+    "learning_curves.json": {
+      "sha256": "8f976a2ff0854db870fb12ab880ef2e7bc5e2fabaea25f46dba294002cbb653a",
+      "bytes": 143
+    },
+    "metrics.json": {
+      "sha256": "62a30d3a8f0b01708179dbfcbd1d66f1ccc691d37e9ac8dc19e97fecdcbc1a64",
+      "bytes": 3283
+    },
+    "mlruns/587284577424163940/06650f5bab8841d59a5f105c9f5b1ecf/artifacts/params.pkl": {
+      "sha256": "aaa7b89619a1a7d9f511925e41297960441d5a0c767cfd0012ef186671c53843",
+      "bytes": 94715
+    },
+    "objective_history.json": {
+      "sha256": "062d542ffbca51918276d858725c50995fd2b46177670522058ff07c87bde406",
+      "bytes": 382
+    },
+    "portfolio.csv": {
+      "sha256": "8e07934894185b81d5ed039ed1aeb07f2976b3773e293db34ee4b658b6bd087d",
+      "bytes": 3983
+    },
+    "predictions.csv": {
+      "sha256": "c6d45644826bb6f203bf559dc43663757a18956c4a59536f5e27253859e34733",
+      "bytes": 330111
+    },
+    "pretraining_receipt.json": {
+      "sha256": "2767ae6591f9292bfd014ae79633c64cb69154a804c54afdb3590a364b718a27",
+      "bytes": 197
+    },
+    "qlib_task.yaml": {
+      "sha256": "6e4d74512c083849fe395bfbb9a6538c16e9823a836e58287bc1dfd3aae7ac84",
+      "bytes": 7355
+    },
+    "resolved_config.json": {
+      "sha256": "dfc6aa114a966dbaeb078bfe5ebc0615f9442b5863c95a31acd7dd1f4ec416d1",
+      "bytes": 1458
+    },
+    "routing_history.json": {
+      "sha256": "aa28c3549837f5aa66cef6d5d000c9f5c49506d2c7ccd6343fd2b844eb1fd3fe",
+      "bytes": 7175
+    },
+    "run.json": {
+      "sha256": "f68100b1ecd6646459678bde7e62b79a03da69ba460cbf201c28e163656bc6f2",
+      "bytes": 16373
+    },
+    "scenarios/account_0.1x/portfolio.csv": {
+      "sha256": "e35c994546c59a9cb352019fe930605c1cc47f831013e51dbf5f3c972a9a3939",
+      "bytes": 3978
+    },
+    "scenarios/account_0.1x/positions.json.gz": {
+      "sha256": "0684f6de6f8872ea8000961be6088c57b70bbffecdcbfbebbd0b727f4d9d099a",
+      "bytes": 11758
+    },
+    "scenarios/account_0.1x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/account_0.1x/summary.json": {
+      "sha256": "5fc07538321f27a21d4f2d11099a0ecb9033c3dde13bb805594991ffe4cd90a1",
+      "bytes": 1231
+    },
+    "scenarios/base/portfolio.csv": {
+      "sha256": "8e07934894185b81d5ed039ed1aeb07f2976b3773e293db34ee4b658b6bd087d",
+      "bytes": 3983
+    },
+    "scenarios/base/positions.json.gz": {
+      "sha256": "52d351ce59ebc9cb09ad797f7eaacc6a3fc16c1a752d39c0c50f8e3f788a2396",
+      "bytes": 11731
+    },
+    "scenarios/base/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/base/summary.json": {
+      "sha256": "4317eb9a67056ffbe1bc618ff890e1210b88b251314857a66aa8f1b943bc4104",
+      "bytes": 1224
+    },
+    "scenarios/fees_2x/portfolio.csv": {
+      "sha256": "e0092b248f4ac82800789bc735492224563dff638067e343b7b60f1eba402b95",
+      "bytes": 3974
+    },
+    "scenarios/fees_2x/positions.json.gz": {
+      "sha256": "4d086a63c311208a614e729056bf0e928959441257ece9ac684564226c10dffa",
+      "bytes": 11742
+    },
+    "scenarios/fees_2x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/fees_2x/summary.json": {
+      "sha256": "8ab8ca33a0cdc7df9dbab0b643f646c8ac35d411ac23a3349cc62e206fc334d6",
+      "bytes": 1227
+    },
+    "scenarios/slippage_5bps/portfolio.csv": {
+      "sha256": "631d1d79c401b69540c7edfbf760f27ca953c9bcb341417b5b1574b4c59af8ff",
+      "bytes": 3966
+    },
+    "scenarios/slippage_5bps/positions.json.gz": {
+      "sha256": "8de56a14069d0b18579c0d46ebff84df20865da1a1250d23e39a35e797043527",
+      "bytes": 11677
+    },
+    "scenarios/slippage_5bps/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/slippage_5bps/summary.json": {
+      "sha256": "99f48dacbc2dffce658158a68f609eba1821d1d9502d896a3ea15cdb79b2dc6c",
+      "bytes": 1229
+    },
+    "training_receipt.json": {
+      "sha256": "6892fa074058ccf7cf01870ba4918f03d9ea8fcce4d4e138263c5cc0359d50fb",
+      "bytes": 1051
+    },
+    "validation_daily_ic.csv": {
+      "sha256": "d83b190fc32fc6373cb01f428edf7ba53ca9520837b225384d7bf1c3cc6f8e1e",
+      "bytes": 1558
+    },
+    "validation_predictions.csv": {
+      "sha256": "b8fc8bdf26ef914821e221ec705491448e03e95312c9e6adc0d945d2b8f0b03f",
+      "bytes": 495924
+    }
+  },
+  "finished_at_utc": "2026-11-27T07:32:26.389125+00:00",
+  "elapsed_seconds": 133.57961835099923
+}

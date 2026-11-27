@@ -1,0 +1,25 @@
+{
+  "name": "csi300_advanced_forecast_screening",
+  "purpose": "Bounded exploratory software/research screen; no production or model-superiority claim.",
+  "start": "2023-01-03",
+  "region": "cn",
+  "universe": "csi300",
+  "max_instruments": 20,
+  "horizons": [1, 5, 20],
+  "sequence_length": 8,
+  "warmup_sessions": 60,
+  "segment_sessions": {
+    "train": 40,
+    "valid": 10,
+    "calibration": 10,
+    "test": 10,
+    "update_train": 20,
+    "update_valid": 10,
+    "post_update_test": 10
+  },
+  "seed": 42,
+  "epochs": 2,
+  "num_threads": 2,
+  "network": {"d_model": 16, "nhead": 2, "num_layers": 1, "dropout": 0.0},
+  "coverage": 0.8
+}

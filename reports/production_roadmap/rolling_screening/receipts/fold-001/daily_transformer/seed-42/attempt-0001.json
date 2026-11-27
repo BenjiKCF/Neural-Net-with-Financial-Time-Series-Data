@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "trial_id": "fold-001/daily_transformer/seed-42",
+  "trial_sha256": "b79c04c55cf02a464064d31706a6ac4aaf3f14a1979fcab6c5ee39f0a1cbff9e",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "status": "completed",
+  "attempt": 1,
+  "started_at_utc": "2026-11-27T07:33:05.968003+00:00",
+  "previous_attempt": null,
+  "scenario_status": "completed",
+  "artifacts": {
+    "cost_scenarios.json": {
+      "sha256": "4b5db066e1db47b836e9e1e5c1f7c31fd8d75028e9dc85b829f8da516b95562a",
+      "bytes": 5870
+    },
+    "daily_ic.csv": {
+      "sha256": "25aa14bb7c035a627f5b46d0a5074dfdc54e79e5762f333e7a21a307900e302e",
+      "bytes": 1050
+    },
+    "inference_bundle/environment.json": {
+      "sha256": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "bytes": 220
+    },
+    "inference_bundle/manifest.json": {
+      "sha256": "b80bcd1b427482cc3e331a20ba08c60c21bba0629ca7bdfdc4d4c0b8e6dfef42",
+      "bytes": 970
+    },
+    "inference_bundle/metadata.json": {
+      "sha256": "cb4cce90342607fd522606bdcdf26606a0f92e44c6812c143dc85478d3e83568",
+      "bytes": 4342
+    },
+    "inference_bundle/model.json": {
+      "sha256": "36089e8ab1a158085109a5ba400c910268c8185919b21495f130135f7ff66b86",
+      "bytes": 552
+    },
+    "inference_bundle/parity.json": {
+      "sha256": "2bd96ef874fdb6b5cbb67107fb235979db7d3123212245e15a9f0caf08ab2859",
+      "bytes": 95
+    },
+    "inference_bundle/preprocessing.json": {
+      "sha256": "e79dcb24b8dc4a1b153ce27ce9c9db59be82904db476dfc75490c6e874911529",
+      "bytes": 6146
+    },
+    "inference_bundle/reload_fixture.npz": {
+      "sha256": "b2309910fa8920f174fce6862dae7a00764c760a6d810ceaca83e56d266a0954",
+      "bytes": 9150801
+    },
+    "inference_bundle/schema.json": {
+      "sha256": "b6f57c54879e46bf13f9ab4010a2c4328863a9a47866003d9247624234e3bf5d",
+      "bytes": 1375
+    },
+    "inference_bundle/weights.npz": {
+      "sha256": "54814c0288e8b16ca816c6522d797133a7277743578c6917a29add74cfedf3a5",
+      "bytes": 35186
+    },
+    "learning_curves.json": {
+      "sha256": "6d4c1749724a5000db33841dd9f54a69f2b2f33ed30ecc305275f270b8fd87e5",
+      "bytes": 145
+    },
+    "metrics.json": {
+      "sha256": "fcb5abbbd9f37a30fe35df9e894f4ba8eb717e97839ea862415d7bf451962943",
+      "bytes": 3274
+    },
+    "mlruns/880911333346663718/d3cd5b3c6bd54980804d53528b7ebdc9/artifacts/params.pkl": {
+      "sha256": "388933d72ff948b80fc454ef550df51ae85855523a5b3bf8b0398292780dce0d",
+      "bytes": 48395
+    },
+    "objective_history.json": {
+      "sha256": "91a5b0d7dd25b1496132f8ec2827a61f48b7ca4e5eba021a2a0ce49cc47351a1",
+      "bytes": 379
+    },
+    "portfolio.csv": {
+      "sha256": "78afa41890d7adb01a5af566073688e502af53020cb2d8a9e3fae415096b2179",
+      "bytes": 3967
+    },
+    "predictions.csv": {
+      "sha256": "ca7025c1f1c086d53c4b907f103b4981ab6e1ec92c8f6ce269ff4665b92ff9ad",
+      "bytes": 328133
+    },
+    "pretraining_receipt.json": {
+      "sha256": "d96d00aa16a1269e0077f2c51e96c4e6437ec0aeb60bf88f4a60bd7c4c44e99d",
+      "bytes": 197
+    },
+    "qlib_task.yaml": {
+      "sha256": "05b631a88b7727be8fcd8ca53b8c277aeff948a413d36bda422064af00d5eea5",
+      "bytes": 7374
+    },
+    "resolved_config.json": {
+      "sha256": "a99c5cdf9cf12085ca4b4dbd76e6c9289468d090ff83dfd112f1773a1304ae5b",
+      "bytes": 1470
+    },
+    "routing_history.json": {
+      "sha256": "aa28c3549837f5aa66cef6d5d000c9f5c49506d2c7ccd6343fd2b844eb1fd3fe",
+      "bytes": 7175
+    },
+    "run.json": {
+      "sha256": "d8fd9a9106df1da9641685192f8f8436566adb939e0a04a98c6a869dad4466f8",
+      "bytes": 16375
+    },
+    "scenarios/account_0.1x/portfolio.csv": {
+      "sha256": "def4a5b4aca6a8a7d5f341a682236e1101605b8e522f6e391622ce408221f7d4",
+      "bytes": 3977
+    },
+    "scenarios/account_0.1x/positions.json.gz": {
+      "sha256": "452115f4f54465ee749b5d9686629822805b68ac0fc51a090a8a9e294ce81a4b",
+      "bytes": 12149
+    },
+    "scenarios/account_0.1x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/account_0.1x/summary.json": {
+      "sha256": "3cb3cbc9a43f7416196136f30ccfde885f6e97fedca3912147c05afe86cbfba9",
+      "bytes": 1233
+    },
+    "scenarios/base/portfolio.csv": {
+      "sha256": "78afa41890d7adb01a5af566073688e502af53020cb2d8a9e3fae415096b2179",
+      "bytes": 3967
+    },
+    "scenarios/base/positions.json.gz": {
+      "sha256": "ddc208fffcf5dbf81b22b7cce766c0643cb40bfef3e81dc07845e2ce2dced099",
+      "bytes": 12125
+    },
+    "scenarios/base/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/base/summary.json": {
+      "sha256": "bbc9ff156bf9c4bfcea8a9af633b836e7475bf121949e040f6e953a609de9338",
+      "bytes": 1222
+    },
+    "scenarios/fees_2x/portfolio.csv": {
+      "sha256": "ee9a0332b359d0cdcb367af6daf82f4cd9ba80fc184ad6b967e8bb1c422145df",
+      "bytes": 3974
+    },
+    "scenarios/fees_2x/positions.json.gz": {
+      "sha256": "7b894c94b65395fb0c1f95587dc6f0f7c05ef0e1a5273b6236bda64de2e4e8e1",
+      "bytes": 12130
+    },
+    "scenarios/fees_2x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/fees_2x/summary.json": {
+      "sha256": "8a0f4e2a0cceb2b9d8236bb90edaa84cca3d450a9b469dbadd8f597b63e53163",
+      "bytes": 1223
+    },
+    "scenarios/slippage_5bps/portfolio.csv": {
+      "sha256": "9b12834dbf8642f5a40c28bc0440cf060de67c3a1c1fbe509c343b566d54c23a",
+      "bytes": 3957
+    },
+    "scenarios/slippage_5bps/positions.json.gz": {
+      "sha256": "915d74643c4666d40ad81981c2b03eaa129ed1b413852007ebc9c84c0f9fd916",
+      "bytes": 12114
+    },
+    "scenarios/slippage_5bps/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/slippage_5bps/summary.json": {
+      "sha256": "b0e0ffc75ede8c3cd0a47713d9859ecbf5c109bd63eed5877fe9fe5eaf6a7662",
+      "bytes": 1225
+    },
+    "training_receipt.json": {
+      "sha256": "26f4ee972ada4da1708cb2d157fa3007ad5a3b1f0363a274fc6887a4c1aa91bd",
+      "bytes": 1051
+    },
+    "validation_daily_ic.csv": {
+      "sha256": "7ede7ddf1a1200fc2dd55c77555c8c8be3d19599c15f98cbcba667b85a7f7e29",
+      "bytes": 1555
+    },
+    "validation_predictions.csv": {
+      "sha256": "af02ef8697c075c0375423c835446f705fda4f80b9ddb7f6e97f744456c84a54",
+      "bytes": 495978
+    }
+  },
+  "finished_at_utc": "2026-11-27T07:34:40.902822+00:00",
+  "elapsed_seconds": 94.93452093700034
+}

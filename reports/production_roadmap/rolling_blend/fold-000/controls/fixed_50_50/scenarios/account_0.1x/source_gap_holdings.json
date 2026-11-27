@@ -1,0 +1,6 @@
+{
+  "status": "checked",
+  "terminated_series_holdings": [],
+  "total_final_stale_weight": 0,
+  "interpretation": "Terminated-series corporate-action settlement remains unresolved. Deterministic tie handling changes trading reproducibility, not source valuation. Returns are Qlib simulations, not executable realized P&L."
+}

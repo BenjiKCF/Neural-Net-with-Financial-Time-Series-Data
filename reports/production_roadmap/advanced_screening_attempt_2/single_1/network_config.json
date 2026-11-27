@@ -1,0 +1,11 @@
+{
+  "d_feat": 157,
+  "d_model": 16,
+  "nhead": 2,
+  "num_layers": 1,
+  "dropout": 0.0,
+  "horizons": [
+    1
+  ],
+  "quantiles": []
+}

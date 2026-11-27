@@ -1,0 +1,9 @@
+{
+  "max_runtime_seconds": 600,
+  "max_memory_mb": 4096,
+  "minimum_coverage": 1.0,
+  "max_missing_feature_fraction": 0.25,
+  "max_abs_score": 1.0,
+  "max_data_age_hours": 24,
+  "min_cross_section": 100
+}

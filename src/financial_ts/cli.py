@@ -7,7 +7,13 @@ import json
 import sys
 from pathlib import Path
 
-from financial_ts.catalog import MODEL_NAMES, NEURAL_MODELS, TRAINABLE_MODELS
+from financial_ts.catalog import (
+    CROSS_SECTIONAL_MODELS,
+    EXPERIMENTAL_MODEL_NAMES,
+    MODEL_NAMES,
+    NEURAL_MODELS,
+    TRAINABLE_MODELS,
+)
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -15,6 +21,108 @@ def _parser() -> argparse.ArgumentParser:
         prog="fts", description="Financial time-series research with Qlib and PyTorch."
     )
     commands = parser.add_subparsers(dest="command", required=True)
+    rolling = commands.add_parser(
+        "rolling-evaluate", help="Register and run causal folds, seeds and objective/model controls"
+    )
+    rolling.add_argument("--provider", type=Path)
+    rolling.add_argument("--config", type=Path)
+    rolling.add_argument("--output", type=Path, required=True)
+    rolling.add_argument("--register-only", action="store_true")
+    rolling.add_argument("--summarize-only", action="store_true")
+    rolling.add_argument(
+        "--summary-output",
+        type=Path,
+        help="Write an audited derived summary separately, preserving original campaign reports",
+    )
+    rolling.add_argument("--retry-failed", action="store_true")
+    rolling.add_argument("--trial-ids", nargs="+")
+    bundle = commands.add_parser(
+        "verify-bundle", help="Check every immutable numerical model artifact"
+    )
+    bundle.add_argument("--bundle", type=Path, required=True)
+    register = commands.add_parser(
+        "register-bundle", help="Register an immutable numerical model version"
+    )
+    register.add_argument("--registry", type=Path, required=True)
+    register.add_argument("--bundle", type=Path, required=True)
+    alias = commands.add_parser(
+        "set-model-alias",
+        help="Assign a reviewed version or roll back a compatible retained version",
+    )
+    alias.add_argument("--registry", type=Path, required=True)
+    alias.add_argument("--alias", required=True)
+    alias.add_argument("--version", required=True)
+    alias.add_argument("--evidence", type=Path)
+    alias.add_argument("--rollback", action="store_true")
+    daily = commands.add_parser(
+        "daily-infer", help="Publish a validated, immutable daily prediction batch"
+    )
+    daily.add_argument("--registry", type=Path, required=True)
+    daily.add_argument("--alias", default="shadow")
+    daily.add_argument("--output", type=Path, required=True)
+    daily.add_argument("--policy", type=Path)
+    source = daily.add_mutually_exclusive_group(required=True)
+    source.add_argument("--provider", type=Path)
+    source.add_argument("--input-npz", type=Path)
+    daily.add_argument("--input-manifest", type=Path)
+    daily.add_argument("--decision-date")
+    daily.add_argument("--decision-cutoff")
+    daily.add_argument("--data-available-at")
+    monitor = commands.add_parser(
+        "monitor-labels", help="Evaluate forecasts only against matured labels"
+    )
+    monitor.add_argument("--predictions", type=Path, required=True)
+    monitor.add_argument("--labels", type=Path, required=True)
+    monitor.add_argument("--cutoff", required=True)
+    monitor.add_argument("--minimum-rank-ic", type=float)
+    monitor.add_argument("--output", type=Path)
+    blend = commands.add_parser(
+        "rolling-blend", help="Evaluate a validation-selected tree/neural ensemble"
+    )
+    blend.add_argument("--campaign", type=Path, required=True)
+    blend.add_argument("--output", type=Path, required=True)
+    blend.add_argument("--left", default="lightgbm")
+    blend.add_argument("--right", default="master_style")
+    blend.add_argument("--weights", nargs="+", type=float, default=[0.0, 0.25, 0.5, 0.75, 1.0])
+    blend.add_argument("--metric", choices=["rank_ic", "ic", "rmse"], default="rank_ic")
+    lifecycle = commands.add_parser(
+        "lifecycle-assess", help="Assess archived holdings against sourced corporate actions"
+    )
+    lifecycle.add_argument("--run-dir", type=Path, required=True)
+    lifecycle.add_argument("--provider", type=Path, required=True)
+    lifecycle.add_argument("--events", type=Path, default=Path("configs/lifecycle_events.json"))
+    lifecycle.add_argument("--output", type=Path, required=True)
+    scheduled = commands.add_parser(
+        "scheduled-shadow", help="Run one scheduled shadow batch using an admitted arrival receipt"
+    )
+    scheduled.add_argument("--config", type=Path, required=True)
+    advanced = commands.add_parser(
+        "research-advanced",
+        help="Run registered multi-horizon, uncertainty and adaptation controls",
+    )
+    advanced.add_argument("--provider", type=Path, required=True)
+    advanced.add_argument("--config", type=Path, required=True)
+    advanced.add_argument("--output", type=Path, required=True)
+    doubleadapt = commands.add_parser(
+        "research-doubleadapt",
+        help="Run a source-documented DoubleAdapt-style comparator and matched controls",
+    )
+    doubleadapt.add_argument("--provider", type=Path, required=True)
+    doubleadapt.add_argument("--config", type=Path, required=True)
+    doubleadapt.add_argument("--output", type=Path, required=True)
+    paper = commands.add_parser(
+        "paper-replay", help="Replay a registered paper execution session with durable receipts"
+    )
+    paper.add_argument("--spec", type=Path, required=True)
+    paper.add_argument("--output", type=Path, required=True)
+    snapshot = commands.add_parser(
+        "snapshot-audit", help="Admit or quarantine an immutable tabular snapshot"
+    )
+    snapshot.add_argument("--current", type=Path, required=True)
+    snapshot.add_argument("--identity", type=Path, required=True)
+    snapshot.add_argument("--previous", type=Path)
+    snapshot.add_argument("--previous-identity", type=Path)
+    snapshot.add_argument("--output", type=Path, required=True)
     download = commands.add_parser(
         "download-chenditc", help="Download and verify the latest or a pinned chenditc Qlib release"
     )
@@ -187,7 +295,196 @@ def main(argv: list[str] | None = None) -> int:
         from financial_ts.data import create_demo_csv, import_csv
         from financial_ts.workflow import load_config, run_workflow
 
-        if args.command == "download-chenditc":
+        if args.command == "rolling-evaluate":
+            from financial_ts.rolling import (
+                prepare_rolling_campaign,
+                run_rolling_campaign,
+                summarize_rolling_campaign,
+            )
+
+            if args.config is not None:
+                if args.provider is None:
+                    raise ValueError("A new rolling campaign requires --provider with --config.")
+                import yaml
+
+                prepare_rolling_campaign(
+                    args.provider, args.output, yaml.safe_load(args.config.read_text())
+                )
+            if args.register_only:
+                result = {"status": "registered", "protocol": str(args.output / "protocol.json")}
+            else:
+                if not args.summarize_only:
+                    run_rolling_campaign(
+                        args.output, retry_failed=args.retry_failed, trial_ids=args.trial_ids
+                    )
+                result = summarize_rolling_campaign(
+                    args.output, summary_output_dir=args.summary_output
+                )
+            print(json.dumps(result, indent=2, allow_nan=False))
+            if result.get("status") == "failed":
+                return 1
+        elif args.command == "verify-bundle":
+            from financial_ts.bundles import verify_bundle
+
+            print(json.dumps(verify_bundle(args.bundle), indent=2, allow_nan=False))
+        elif args.command == "register-bundle":
+            from financial_ts.operations import register_bundle
+
+            print(
+                json.dumps(register_bundle(args.registry, args.bundle), indent=2, allow_nan=False)
+            )
+        elif args.command == "set-model-alias":
+            from financial_ts.operations import set_alias
+
+            evidence = json.loads(args.evidence.read_text()) if args.evidence else None
+            print(
+                json.dumps(
+                    set_alias(
+                        args.registry,
+                        args.alias,
+                        args.version,
+                        evidence=evidence,
+                        rollback=args.rollback,
+                    ),
+                    indent=2,
+                    allow_nan=False,
+                )
+            )
+        elif args.command == "daily-infer":
+            import numpy as np
+
+            from financial_ts.operations import (
+                BatchPolicy,
+                build_provider_packet,
+                resolve_alias,
+                run_daily_batch,
+            )
+
+            policy = (
+                BatchPolicy(**json.loads(args.policy.read_text())) if args.policy else BatchPolicy()
+            )
+            if args.provider:
+                if not all((args.decision_date, args.decision_cutoff, args.data_available_at)):
+                    raise ValueError(
+                        "Provider inference requires --decision-date, --decision-cutoff and --data-available-at."
+                    )
+                path, pinned_version = resolve_alias(args.registry, args.alias)
+                packet, features, padding = build_provider_packet(
+                    args.provider,
+                    path,
+                    decision_date=args.decision_date,
+                    decision_cutoff=args.decision_cutoff,
+                    data_available_at=args.data_available_at,
+                )
+            else:
+                if args.input_manifest is None:
+                    raise ValueError("Numerical input requires --input-manifest.")
+                packet = json.loads(args.input_manifest.read_text())
+                pinned_version = None
+                with np.load(args.input_npz, allow_pickle=False) as archive:
+                    features = archive["features"].copy()
+                    padding = archive["padding"].copy() if "padding" in archive else None
+            print(
+                json.dumps(
+                    run_daily_batch(
+                        args.registry,
+                        args.alias,
+                        args.output,
+                        packet=packet,
+                        features=features,
+                        padding=padding,
+                        policy=policy,
+                        pinned_bundle_id=pinned_version,
+                    ),
+                    indent=2,
+                    allow_nan=False,
+                )
+            )
+        elif args.command == "monitor-labels":
+            import pandas as pd
+
+            from financial_ts.bundles import atomic_json
+            from financial_ts.operations import monitor_mature_labels
+
+            result = monitor_mature_labels(
+                pd.read_csv(args.predictions),
+                pd.read_csv(args.labels),
+                cutoff=args.cutoff,
+                minimum_rank_ic=args.minimum_rank_ic,
+            )
+            if args.output:
+                atomic_json(args.output, result)
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "scheduled-shadow":
+            from financial_ts.operations import run_scheduled_shadow
+
+            result = run_scheduled_shadow(json.loads(args.config.read_text()))
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "research-advanced":
+            from financial_ts.advanced_research import run_advanced_research
+
+            result = run_advanced_research(
+                args.provider, args.output, json.loads(args.config.read_text())
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "research-doubleadapt":
+            from financial_ts.doubleadapt import run_doubleadapt_research
+
+            result = run_doubleadapt_research(
+                args.provider, args.output, json.loads(args.config.read_text())
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "paper-replay":
+            from financial_ts.execution import run_paper_session
+
+            print(json.dumps(run_paper_session(args.spec, args.output), indent=2, allow_nan=False))
+        elif args.command == "snapshot-audit":
+            import pandas as pd
+
+            from financial_ts.data_contracts import audit_snapshot, save_snapshot_audit
+
+            current = pd.read_csv(
+                args.current, parse_dates=["datetime"], dtype={"instrument": str}
+            ).set_index(["datetime", "instrument"])
+            previous = (
+                pd.read_csv(
+                    args.previous, parse_dates=["datetime"], dtype={"instrument": str}
+                ).set_index(["datetime", "instrument"])
+                if args.previous
+                else None
+            )
+            result = audit_snapshot(
+                current,
+                json.loads(args.identity.read_text()),
+                previous=previous,
+                previous_identity=json.loads(args.previous_identity.read_text())
+                if args.previous_identity
+                else None,
+            )
+            path = save_snapshot_audit(result, args.output)
+            print(json.dumps({**result, "receipt": str(path)}, indent=2, allow_nan=False))
+            if result["status"] == "quarantined":
+                return 1
+        elif args.command == "rolling-blend":
+            from financial_ts.ensembles import run_rolling_blend
+
+            result = run_rolling_blend(
+                args.campaign,
+                args.output,
+                left=args.left,
+                right=args.right,
+                weights=args.weights,
+                metric=args.metric,
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "lifecycle-assess":
+            from financial_ts.lifecycle import assess_archived_lifecycles
+
+            result = assess_archived_lifecycles(
+                args.run_dir, args.provider, args.events, args.output
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "download-chenditc":
             from financial_ts.chenditc import download_chenditc
 
             result = download_chenditc(
@@ -221,7 +518,7 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(json.dumps(result, indent=2, allow_nan=False))
         elif args.command == "models":
-            print("\n".join(MODEL_NAMES))
+            print("\n".join(EXPERIMENTAL_MODEL_NAMES))
         elif args.command == "research-papers":
             from financial_ts.paper_research import run_paper_research
 
@@ -334,7 +631,7 @@ def main(argv: list[str] | None = None) -> int:
                 config["output_dir"] = str(args.output)
             if args.device:
                 name = config.get("model", {}).get("name")
-                if name not in (*NEURAL_MODELS, "timesfm3_pretrained"):
+                if name not in (*NEURAL_MODELS, *CROSS_SECTIONAL_MODELS, "timesfm3_pretrained"):
                     raise ValueError("--device applies to neural model configurations only.")
                 if name == "timesfm3_pretrained" and args.device == "auto":
                     import torch

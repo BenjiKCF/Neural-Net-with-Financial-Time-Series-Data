@@ -1,0 +1,416 @@
+{
+  "version": 1,
+  "spec": {
+    "name": "csi300_doubleadapt_paper_screening",
+    "purpose": "Independent equations-based DoubleAdapt comparator with raw-return evaluation and chronological frozen, naive-incremental and full-retrain controls. Exploratory forecast screen, not an upstream reproduction or production promotion.",
+    "start": "2023-01-03",
+    "region": "cn",
+    "universe": "csi300",
+    "max_instruments": 20,
+    "warmup_sessions": 60,
+    "support_sessions": 5,
+    "query_sessions": 5,
+    "train_tasks": 3,
+    "valid_tasks": 1,
+    "online_tasks": 3,
+    "seed": 42,
+    "epochs": 2,
+    "num_threads": 1,
+    "model": {
+      "hidden": 16,
+      "heads": 4,
+      "temperature": 1.0,
+      "inner_lr": 0.01,
+      "model_meta_lr": 0.001,
+      "data_meta_lr": 0.001,
+      "label_regularization": 0.1
+    },
+    "bootstrap_repetitions": 200,
+    "bootstrap_block_sessions": 5
+  },
+  "status": "registered",
+  "registered_at_utc": "2026-11-27T07:22:26.903605+00:00",
+  "provider": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  },
+  "tasks": [
+    {
+      "name": "train-000",
+      "group": "train",
+      "support": [
+        "2023-01-03",
+        "2023-01-09"
+      ],
+      "query": [
+        "2023-01-12",
+        "2023-01-18"
+      ],
+      "support_cutoff": "2023-01-11",
+      "query_mature_at": "2023-01-20"
+    },
+    {
+      "name": "train-001",
+      "group": "train",
+      "support": [
+        "2023-01-30",
+        "2023-02-03"
+      ],
+      "query": [
+        "2023-02-08",
+        "2023-02-14"
+      ],
+      "support_cutoff": "2023-02-07",
+      "query_mature_at": "2023-02-16"
+    },
+    {
+      "name": "train-002",
+      "group": "train",
+      "support": [
+        "2023-02-17",
+        "2023-02-23"
+      ],
+      "query": [
+        "2023-02-28",
+        "2023-03-06"
+      ],
+      "support_cutoff": "2023-02-27",
+      "query_mature_at": "2023-03-08"
+    },
+    {
+      "name": "valid-003",
+      "group": "valid",
+      "support": [
+        "2023-03-09",
+        "2023-03-15"
+      ],
+      "query": [
+        "2023-03-20",
+        "2023-03-24"
+      ],
+      "support_cutoff": "2023-03-17",
+      "query_mature_at": "2023-03-28"
+    },
+    {
+      "name": "online-004",
+      "group": "online",
+      "support": [
+        "2023-03-29",
+        "2023-04-04"
+      ],
+      "query": [
+        "2023-04-10",
+        "2023-04-14"
+      ],
+      "support_cutoff": "2023-04-07",
+      "query_mature_at": "2023-04-18"
+    },
+    {
+      "name": "online-005",
+      "group": "online",
+      "support": [
+        "2023-04-19",
+        "2023-04-25"
+      ],
+      "query": [
+        "2023-04-28",
+        "2023-05-09"
+      ],
+      "support_cutoff": "2023-04-27",
+      "query_mature_at": "2023-05-11"
+    },
+    {
+      "name": "online-006",
+      "group": "online",
+      "support": [
+        "2023-05-12",
+        "2023-05-18"
+      ],
+      "query": [
+        "2023-05-23",
+        "2023-05-29"
+      ],
+      "support_cutoff": "2023-05-22",
+      "query_mature_at": "2023-05-31"
+    }
+  ],
+  "initial_universe": [
+    "SH600000",
+    "SH600009",
+    "SH600010",
+    "SH600011",
+    "SH600015",
+    "SH600016",
+    "SH600018",
+    "SH600019",
+    "SH600025",
+    "SH600028",
+    "SH600029",
+    "SH600030",
+    "SH600031",
+    "SH600036",
+    "SH600039",
+    "SH600048",
+    "SH600050",
+    "SH600061",
+    "SH600085",
+    "SH600089"
+  ],
+  "universe_selection": "alphabetical budget among members eligible on initial training date; historical membership respected afterwards",
+  "source_metadata": {
+    "schema_version": 1,
+    "source": "chenditc/investment_data",
+    "region": "cn",
+    "frequency": "day",
+    "synthetic": false,
+    "calendar": "SSE observed trading sessions; future calendar is not market data",
+    "retrieved_at_utc": "2026-11-27T02:00:13.056135+00:00",
+    "release_tag": "2026-11-26",
+    "release_url": "https://github.com/chenditc/investment_data/releases/tag/2026-11-26",
+    "release_id": 459236414,
+    "release_published_at": "2026-11-26T10:08:41Z",
+    "target_trade_date": "2026-11-26",
+    "assets": {
+      "qlib_bin.manifest.json": {
+        "url": "https://api.github.com/repos/chenditc/investment_data/releases/assets/795301257",
+        "id": 795301257,
+        "node_id": "RA_kwDOHrrSr84vZ1WJ",
+        "name": "qlib_bin.manifest.json",
+        "label": "",
+        "uploader": {
+          "login": "chenditc",
+          "id": 3244845,
+          "node_id": "MDQ6VXNlcjMyNDQ4NDU=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/3244845?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chenditc",
+          "html_url": "https://github.com/chenditc",
+          "followers_url": "https://api.github.com/users/chenditc/followers",
+          "following_url": "https://api.github.com/users/chenditc/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chenditc/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chenditc/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chenditc/subscriptions",
+          "organizations_url": "https://api.github.com/users/chenditc/orgs",
+          "repos_url": "https://api.github.com/users/chenditc/repos",
+          "events_url": "https://api.github.com/users/chenditc/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chenditc/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "content_type": "application/json",
+        "state": "uploaded",
+        "size": 511,
+        "digest": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+        "download_count": 627,
+        "created_at": "2026-11-26T10:09:25Z",
+        "updated_at": "2026-11-26T10:09:25Z",
+        "browser_download_url": "https://github.com/chenditc/investment_data/releases/download/2026-11-26/qlib_bin.manifest.json"
+      },
+      "qlib_bin.tar.gz": {
+        "url": "https://api.github.com/repos/chenditc/investment_data/releases/assets/795298729",
+        "id": 795298729,
+        "node_id": "RA_kwDOHrrSr84vZ0up",
+        "name": "qlib_bin.tar.gz",
+        "label": "",
+        "uploader": {
+          "login": "chenditc",
+          "id": 3244845,
+          "node_id": "MDQ6VXNlcjMyNDQ4NDU=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/3244845?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chenditc",
+          "html_url": "https://github.com/chenditc",
+          "followers_url": "https://api.github.com/users/chenditc/followers",
+          "following_url": "https://api.github.com/users/chenditc/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chenditc/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chenditc/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chenditc/subscriptions",
+          "organizations_url": "https://api.github.com/users/chenditc/orgs",
+          "repos_url": "https://api.github.com/users/chenditc/repos",
+          "events_url": "https://api.github.com/users/chenditc/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chenditc/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "content_type": "application/gzip",
+        "state": "uploaded",
+        "size": 573153280,
+        "digest": "sha256:5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559",
+        "download_count": 896,
+        "created_at": "2026-11-26T10:08:43Z",
+        "updated_at": "2026-11-26T10:09:05Z",
+        "browser_download_url": "https://github.com/chenditc/investment_data/releases/download/2026-11-26/qlib_bin.tar.gz"
+      }
+    },
+    "validation": {
+      "manifest": {
+        "release_tag": "2026-11-26",
+        "target_trade_date": "2026-11-26",
+        "future_start_date": "2026-11-27",
+        "future_end_date": "2026-12-31",
+        "dolt_commit": "3u6lh4is4alt7ec4p8vfq74j083d7s16",
+        "investment_data_commit": "1114a57210c59cf0a13d69ec07465e1e73137cbc",
+        "qlib_commit": "b87a2c294d364a33fb739359886acffe8ec907d1",
+        "image_digest": "sha256:68d5fc24ab095cd8e28fe656521b2573f74868e4ccb9160d876ecf51bfe3819e",
+        "archive_size_bytes": 573153280,
+        "archive_sha256": "sha256:5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559"
+      },
+      "manifest_sha256": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+      "archive_member_count": 67970,
+      "start_date": "2000-01-04",
+      "end_date": "2026-11-26",
+      "sessions": 6518,
+      "future_calendar_sessions": 25,
+      "universes": {
+        "all": {
+          "unique_instruments": 6178,
+          "membership_intervals": 6178,
+          "active_on_target_date": 5583,
+          "start_date": "2000-01-04",
+          "end_date": "2026-11-26"
+        },
+        "csi300": {
+          "unique_instruments": 949,
+          "membership_intervals": 1227,
+          "active_on_target_date": 300,
+          "start_date": "2005-04-08",
+          "end_date": "2026-11-26"
+        },
+        "csi500": {
+          "unique_instruments": 1805,
+          "membership_intervals": 2471,
+          "active_on_target_date": 500,
+          "start_date": "2007-01-31",
+          "end_date": "2026-11-26"
+        },
+        "csi800": {
+          "unique_instruments": 2018,
+          "membership_intervals": 64344,
+          "active_on_target_date": 800,
+          "start_date": "2007-01-22",
+          "end_date": "2026-11-26"
+        },
+        "csi1000": {
+          "unique_instruments": 2804,
+          "membership_intervals": 3352,
+          "active_on_target_date": 1000,
+          "start_date": "2014-10-31",
+          "end_date": "2026-11-26"
+        },
+        "csiall": {
+          "unique_instruments": 5850,
+          "membership_intervals": 6417,
+          "active_on_target_date": 5117,
+          "start_date": "2011-08-31",
+          "end_date": "2026-11-26"
+        }
+      }
+    },
+    "start_date": "2000-01-04",
+    "end_date": "2026-11-26",
+    "sessions": 6518,
+    "observations": 17600664,
+    "feature_instruments": 6178,
+    "finite_closes_on_target_date": 5583,
+    "future_calendar_sessions": 25,
+    "future_dates_excluded_from_observations": true,
+    "universes": {
+      "all": {
+        "unique_instruments": 6178,
+        "membership_intervals": 6178,
+        "active_on_target_date": 5583,
+        "start_date": "2000-01-04",
+        "end_date": "2026-11-26"
+      },
+      "csi300": {
+        "unique_instruments": 949,
+        "membership_intervals": 1227,
+        "active_on_target_date": 300,
+        "start_date": "2005-04-08",
+        "end_date": "2026-11-26"
+      },
+      "csi500": {
+        "unique_instruments": 1805,
+        "membership_intervals": 2471,
+        "active_on_target_date": 500,
+        "start_date": "2007-01-31",
+        "end_date": "2026-11-26"
+      },
+      "csi800": {
+        "unique_instruments": 2018,
+        "membership_intervals": 64344,
+        "active_on_target_date": 800,
+        "start_date": "2007-01-22",
+        "end_date": "2026-11-26"
+      },
+      "csi1000": {
+        "unique_instruments": 2804,
+        "membership_intervals": 3352,
+        "active_on_target_date": 1000,
+        "start_date": "2014-10-31",
+        "end_date": "2026-11-26"
+      },
+      "csiall": {
+        "unique_instruments": 5850,
+        "membership_intervals": 6417,
+        "active_on_target_date": 5117,
+        "start_date": "2011-08-31",
+        "end_date": "2026-11-26"
+      }
+    },
+    "missing_bars": "NaN; no forward fill",
+    "membership": "Historical intervals from provider index snapshots; not a PIT guarantee"
+  },
+  "feature_normalizer_fit": [
+    "2023-01-03",
+    "2023-03-06"
+  ],
+  "target": "close[t+2] / close[t+1] - 1",
+  "label_information_endpoint_sessions": 2,
+  "model": {
+    "hidden": 16,
+    "heads": 4,
+    "temperature": 1.0,
+    "inner_lr": 0.01,
+    "model_meta_lr": 0.001,
+    "data_meta_lr": 0.001,
+    "label_regularization": 0.1,
+    "seed": 42
+  },
+  "models": [
+    "doubleadapt_paper",
+    "frozen",
+    "naive_incremental",
+    "full_retrain"
+  ],
+  "selection": "minimum offline validation raw-return MSE; fixed registered budget thereafter; no online test-score model selection",
+  "source_sha256": "959bb98453046c72918c600a3f7e584985b22885b9eda23aae52f5636722b1c2",
+  "references": {
+    "paper": "https://arxiv.org/abs/2306.09862v3",
+    "official_source_revision": "https://github.com/SJTU-DMTai/DoubleAdapt/tree/e20b6e46ccbd2b6b8180ff3db62f68b16721684c",
+    "upstream_license": "No license file found at the inspected revision; no source vendored"
+  },
+  "method_differences": [
+    "independent equations-based implementation",
+    "exact second-order gradients instead of first-order approximation",
+    "compact MLP on 157 current-date factors instead of authors' GRU/Alpha360 setting",
+    "positive affine label scales using exp(log_scale)",
+    "finite chronological support/query gaps for mature delayed-return labels",
+    "training-only label normalizer"
+  ],
+  "limitations": [
+    "exploratory bounded historical forecast screen",
+    "not an official-code or paper-score reproduction",
+    "no portfolio return or production approval",
+    "historical publication-time data vintages remain unqualified"
+  ],
+  "software": {
+    "torch": "2.15.0+cpu",
+    "pyqlib": "0.9.7",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3"
+  }
+}

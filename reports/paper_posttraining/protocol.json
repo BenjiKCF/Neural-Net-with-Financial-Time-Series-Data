@@ -1,0 +1,142 @@
+{
+  "status": "completed",
+  "created_at_utc": "2026-11-27T00:39:02.532600+00:00",
+  "papers": [
+    "https://arxiv.org/html/2509.24372v3",
+    "https://arxiv.org/html/2611.21885v2"
+  ],
+  "method_scope": "forecasting adaptation; externally diagnosed edits, not LLM self-rewriting",
+  "roster": [
+    "baseline",
+    "directional_edit",
+    "random_edit",
+    "es_seed_7",
+    "combined_seed_7",
+    "es_seed_42",
+    "combined_seed_42",
+    "es_seed_2026",
+    "combined_seed_2026"
+  ],
+  "base_seeds": [
+    7,
+    42,
+    2026
+  ],
+  "es_seeds": [
+    7,
+    42,
+    2026
+  ],
+  "primary_es_seed": 42,
+  "primary_objective": "common-date return RMSE; portfolio results are separate outcomes",
+  "es": {
+    "population": 12,
+    "generations": 8,
+    "sigma": 0.001,
+    "learning_rate": 1e-06,
+    "seed": 42
+  },
+  "es_objective": "negative normalized return MSE on fixed training-only examples",
+  "selection": "generation zero and generation means eligible; full validation MSE only",
+  "fit_samples_requested": 512,
+  "fit_sampling": "evenly spaced training indices with 20 prior realized return observations",
+  "edit_layer": "layers.1.ff.3",
+  "alpha_grid": [
+    0.0,
+    0.01,
+    0.025,
+    0.05,
+    0.1
+  ],
+  "edit_selection": "one shared alpha across base members, selected on full validation",
+  "combined_order": "directional edit then ES; same ES budget and paired noise seeds",
+  "random_control": "random direction per base member; identical alpha grid and validation selection",
+  "holdout": "2013-2018 interval previously inspected; exploratory historical follow-up, not fresh holdout",
+  "development_reuse": "base checkpoints and post-training both selected on the same development validation set",
+  "trading_rule": "fixed forecast>0 long/cash, next-session close execution, no trading-rule tuning",
+  "costs_bps": [
+    0,
+    5,
+    10,
+    20
+  ],
+  "bootstrap": {
+    "block_length": 20,
+    "draws": 2000,
+    "seed": 913
+  },
+  "target": "Ref($close, -2) / Ref($close, -1) - 1",
+  "provider_fingerprint": {
+    "sha256": "7bb6bcfa19c770b7ec528a6f058cbde875d4d347041028db24398724a8af9d53",
+    "file_count": 8,
+    "bytes": 253870
+  },
+  "sources": [
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-7/config.json",
+      "bytes": 816,
+      "sha256": "aa18ecf4b25cd84051fd892f95c766cde7fdbac974cdd75fe18da09b2ea96695"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-7/state.pt",
+      "bytes": 133017,
+      "sha256": "1ca61241debb6738929b4b17be19c2b68d5071177d74fbaa0f35c02621bd63f5"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-42/config.json",
+      "bytes": 818,
+      "sha256": "435119d9e3738a0d8cd426b16e39813f7427d528f5c9615044f8d064933b57f6"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-42/state.pt",
+      "bytes": 133017,
+      "sha256": "718c6d2ae1e1d9e1c95e4ea41d526b79e74f0d2714b1c988abb0b648c3eb88cb"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-2026/config.json",
+      "bytes": 822,
+      "sha256": "9478baeef78a6771596965f8f3272dc158b10a9d5abed456c77db5542730e0f6"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-2026/state.pt",
+      "bytes": 133017,
+      "sha256": "23bb0f10558ed13b53e12af3701fe2a81480dbe92e97700d23bd6b505b9e3ee8"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/selection.json",
+      "bytes": 3690,
+      "sha256": "15134ee44f2ecf38a0e1a491147d9c3b2c0dff9e52f0c92b008ada1192d0dba0"
+    },
+    {
+      "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/protocol.json",
+      "bytes": 11695,
+      "sha256": "b0d870fcad3cb4cac9940ae3b7f80373b257a95fb0f15b6c490c61adef31ad6c"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/reports/financial_research/spy_prices.csv",
+      "bytes": 48264,
+      "sha256": "b80498a2bda56e41fab77bab63ca1df29c06f9df926d46f8ccfa22328ba09e7a"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/src/financial_ts/paper_research.py",
+      "bytes": 24815,
+      "sha256": "c8efaf2d01977b5aeb9cf45ddbc5623928a5fb130a7c7612da4f16c59b4c4512"
+    },
+    {
+      "path": "/workspace/scratch/c621416a6646/financial-research/src/financial_ts/posttraining.py",
+      "bytes": 15369,
+      "sha256": "b798602515872dc387d3f7816e10caf0ea6b1a35e071cb4ddd856b4f74fee185"
+    }
+  ],
+  "packages": {
+    "torch": "2.15.0+cpu",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "pyqlib": "0.9.7"
+  },
+  "parameter_count": 90471,
+  "finished_at_utc": "2026-11-27T00:46:09.913303+00:00",
+  "elapsed_seconds": 427.40802353100025
+}

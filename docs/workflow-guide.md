@@ -69,7 +69,7 @@ Feature normalization is fitted on training dates and reused for validation and 
 
 ## Configure models and backtesting
 
-Choose a YAML from the [model table](../README.md#model-catalog), then set the provider, output directory, and training parameters. Paths are relative to your working directory; these examples assume the repository root. The six trainable models share feature definitions, the raw target, split rules, and evaluation exports. Neural models additionally receive historical windows. The official TimesFM adapter reads provider-adjusted close histories; see its [separate setup guide](architectures/timesfm.md#timesfm3_pretrained).
+Choose a YAML from the [model table](../README.md#model-catalog), then set the provider, output directory, and training parameters. Paths are relative to your working directory; these examples assume the repository root. The eight trainable models share feature definitions, the raw target, split rules, and evaluation exports. Neural models additionally receive historical windows. The official TimesFM adapter reads provider-adjusted close histories; see its [separate setup guide](architectures/timesfm.md#timesfm3_pretrained).
 
 Set common neural dimensions directly under `model.params`. Architecture-specific options belong under `architecture_kwargs`, for example:
 

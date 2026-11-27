@@ -1,0 +1,52 @@
+{
+  "status": "completed",
+  "variant": "gated_adapter_only",
+  "formula": "h + (1 + gate(h)) * adapter(h)",
+  "settings": {
+    "epochs": 3,
+    "train_samples": 256,
+    "valid_samples": 128,
+    "context_length": 128,
+    "batch_size": 4,
+    "lr": 0.001,
+    "seed": 42,
+    "device": "cpu"
+  },
+  "segments": {
+    "train": [
+      "1990-03-28",
+      "2007-05-04"
+    ],
+    "valid": [
+      "2007-05-09",
+      "2013-01-18"
+    ],
+    "test": [
+      "2013-01-24",
+      "2018-10-08"
+    ]
+  },
+  "last_training_price_read": "2013-01-23",
+  "sample_counts": {
+    "train": 256,
+    "valid": 128
+  },
+  "target_normalization": {
+    "fit_partition": "train",
+    "mean": 0.0007839964237064123,
+    "scale": 0.009315037165177708
+  },
+  "base_frozen": true,
+  "optimizer_names": [
+    "model.transformer_stack.refinements.0.gate.weight",
+    "model.transformer_stack.refinements.0.gate.bias",
+    "model.transformer_stack.refinements.0.adapter_down.weight",
+    "model.transformer_stack.refinements.0.adapter_up.weight"
+  ],
+  "adapter_file": {
+    "path": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/timesfm-comparison/gated_adapter_only/adapter.pt",
+    "bytes": 89437,
+    "sha256": "a483cae3ab07b9b9f1dca7bba4d4baf61b780f7df2d2a36e348152798b968e86"
+  },
+  "elapsed_seconds": 137.59848938000005
+}

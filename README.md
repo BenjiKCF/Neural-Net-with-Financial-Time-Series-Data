@@ -7,9 +7,9 @@
 [![Qlib 0.9.7](https://img.shields.io/badge/Qlib-0.9.7-14b8a6)](https://github.com/microsoft/qlib)
 [![Offline CPU demo](https://img.shields.io/badge/Demo-offline%20%2B%20CPU-6366f1)](#quick-start)
 
-**Train and compare financial forecasters with Qlib and PyTorch.** Explore compact DeepSeek V4.1, GLM-5.4, Qwen4, and TimesFM 3 architectures alongside LightGBM and a plain Transformer. Start with generated example data, then use your own daily market CSVs.
+**Train and compare financial forecasters with Qlib and PyTorch.** Explore compact DeepSeek V4.1, GLM-5.4, Qwen4, and TimesFM 3 architectures alongside LightGBM, a plain Transformer, and two small financial forecasting designs. Start with generated example data, then replay the recorded SPY backtest or use your own daily market CSVs.
 
-[**Start here**](docs/getting-started.md) · [**Results**](#results) · [**Models**](#model-catalog) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3) · [**Detailed guide**](docs/workflow-guide.md)
+[**Start here**](docs/getting-started.md) · [**Results & backtest**](#results) · [**Models**](#model-catalog) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3) · [**ES & weight editing**](docs/paper-posttraining.md) · [**Research report**](docs/financial-research.md)
 
 | Start small | Compare fairly | Inspect the evidence |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ Your distribution may require its Python 3.12 virtual-environment package first;
 
 The dot in `-e ".[neural]"` means **install this downloaded project**. There is no need to find a similarly named package on PyPI. Keep the quotes, and reactivate `.venv` whenever you open a new terminal.
 
-### 3. Run all six models
+### 3. Run all eight models
 
 ```bash
 fts models
@@ -93,7 +93,7 @@ This creates synthetic prices, trains the models briefly, and exercises Qlib's p
 
 | Open this file | What it tells you |
 | --- | --- |
-| `runs/my-first-demo/comparison.json` | Metrics for all six models. |
+| `runs/my-first-demo/comparison.json` | Metrics for all eight models. |
 | `runs/my-first-demo/timesfm3_mini/predictions.csv` | Each date's prediction beside the observed return. |
 | `runs/my-first-demo/timesfm3_mini/portfolio.csv` | The example portfolio's daily returns and costs. |
 
@@ -101,7 +101,77 @@ CSV files open in a spreadsheet; JSON files open in a text editor. **Synthetic d
 
 ## Results
 
-### Six models, three seeds, one recorded protocol
+### Common-period forecasts and SPY backtest
+
+**The new TimesFM mini ensemble has the lowest forecast error; SPY buy-and-hold has the highest net return in this comparison.** Loop fine-tuning improves the official TimesFM checkpoint's RMSE slightly, but does not beat the mini model or the zero-return forecast. The two new architectures also fall short. These are completed experiments, including the unsuccessful candidates.
+
+![Common-period forecast errors for archived models, new designs and official TimesFM variants](docs/assets/research-forecast.svg)
+
+All test forecasts use the same **1,438 SPX dates, 24 January 2013–8 October 2018**. Scratch-model rows below average the predictions from seeds **7, 42, and 2026 before scoring**. That ensemble RMSE differs from the mean of individual seed RMSEs in the original table further down.
+
+| Forecast / strategy | Test RMSE ↓ | Net return | Annualized return | Max drawdown |
+| --- | ---: | ---: | ---: | ---: |
+| **SPY buy-and-hold** | — | **107.23%** | **13.62%** | −13.02% |
+| Zero return / cash | 0.00773293 | 0.00% | 0.00% | 0.00% |
+| LightGBM | 0.00773053 | 92.13% | 12.13% | −16.80% |
+| TimesFM mini, archived ensemble | 0.00771651 | 81.35% | 11.00% | −14.76% |
+| **TimesFM mini, newly trained ensemble** | **0.00770693** | **65.10%** | **9.19%** | −13.03% |
+| Official TimesFM, 128 closes | 0.00790151 | 35.38% | 5.45% | −13.85% |
+| TimesFM loop + adapter, retrained | 0.00787693 | 34.40% | 5.32% | −13.79% |
+| TimesFM gated adapter-only control | 0.00788071 | 33.86% | 5.24% | −13.57% |
+| New multiscale residual mixer | 0.00782547 | 15.69% | 2.59% | −10.42% |
+| New regime-gated linear experts | 0.00782310 | 15.73% | 2.59% | −8.78% |
+
+The trading rule is fixed: **positive forecast → hold SPY; otherwise hold cash**. A signal observed after close **t** trades at close **t+1**, then earns the **t+1 → t+2** return. The table assumes **5 basis points each way**, including the initial purchase and final sale. SPY adjusted closes supply a dividend-adjusted return proxy; they are not executable fill quotes. Cash earns zero. The portfolio period is **25 January 2013–10 October 2018**.
+
+![SPY buy-and-hold and fixed model strategies: net equity and drawdown at 5 basis points each way](docs/assets/research-backtest.svg)
+
+The newly trained mini ensemble was selected by validation RMSE before its test predictions were generated. Its test RMSE is **0.124% below the archived mini ensemble**, but the paired block-bootstrap interval for the RMSE difference includes zero. It also trades more often and has a lower net return. **This does not establish an improved trading edge.** The historical test interval had already been inspected, so the follow-up is exploratory.
+
+![Trading-cost sensitivity at zero, five, ten and twenty basis points each way](docs/assets/research-costs.svg)
+
+**Why validation was around 0.016 rather than 0.0077:** it uses the same SPX dataset and target, but a different period. The full validation interval's zero-return RMSE is **0.01599491**, versus **0.00773293** on test: about **2.07× the target scale**. The original TimesFM pilot also used only 128 sampled validation rows. Comparing those numbers directly confounds the period and sample with model quality.
+
+[Full results and interpretation](docs/financial-research.md) · [All model/cost results](reports/financial_research/comparison.csv) · [Aligned predictions](reports/financial_research/predictions.csv) · [Equity curves](reports/financial_research/equity.csv) · [Protocol and sources](reports/financial_research/settings.json)
+
+#### Replay this backtest without training or downloading prices
+
+After installation, run this single command from the project folder:
+
+```bash
+fts backtest --predictions reports/financial_research/predictions.csv --spy-csv reports/financial_research/spy_prices.csv --output runs/my-backtest
+```
+
+Open `runs/my-backtest/metrics.csv` for the result table and `ledger.csv` for each signal, position, fee and portfolio value. The supplied predictions and adjusted-price window make this replay fully offline. See the [beginner explanation](docs/getting-started.md#7-replay-the-recorded-spy-backtest).
+
+### Paper-inspired post-training: ES and directional weight editing
+
+We tested [evolution strategies](https://arxiv.org/html/2509.24372v3) and a [directional weight-editing idea](https://arxiv.org/html/2611.21885v2) on the validation-selected mini ensemble. These are forecasting adaptations; the small model is not a reasoning LLM that rewrites itself.
+
+**The ES improvement is too small to establish a better forecaster, and trading performance declined.** The declared primary run lowers RMSE by **0.0083%**, while its paired 95% RMSE-difference interval includes zero. All three optimizer seeds have slightly lower RMSE and lower net return.
+
+| Method | Test RMSE ↓ | Net return at 5 bps | Trades |
+| --- | ---: | ---: | ---: |
+| Current mini ensemble | 0.00770693 | 65.10% | 316 |
+| Directional weight edit | 0.00770693 | 65.10% | 316 |
+| ES, predeclared seed 42 | 0.00770629 | 62.72% | 342 |
+| Directional edit then ES | 0.00770629 | 62.72% | 342 |
+| Random-direction control | 0.00770689 | 63.91% | 316 |
+| SPY buy-and-hold | — | 107.23% | 2 |
+
+Validation selected **zero attenuation** for the diagnosed edit, so the combined arm is exactly ES alone. That is a rejected edit, not evidence that combining the papers works. Every proposal seed and reward, generation result, selected checkpoint, prediction, and fee scenario is retained.
+
+![ES and weight-edit comparison, with the tiny effect and seed stability shown explicitly](docs/assets/posttraining-comparison.svg)
+
+[Full experiment, figures, and interpretation](docs/paper-posttraining.md) · [Registered protocol](reports/paper_posttraining/protocol.json) · [All results](reports/paper_posttraining/metrics.csv) · [Independent replay](reports/paper_posttraining/independent_audit.json)
+
+Replay its backtest offline:
+
+```bash
+fts backtest --predictions reports/paper_posttraining/predictions.csv --spy-csv reports/paper_posttraining/spy_prices.csv --output runs/my-paper-backtest
+```
+
+### Original six-model comparison: mean of three seed scores
 
 The table reports the completed **18-run comparison** on the bundled S&P 500 history. Each trial has **1,438 test predictions**, from **24 January 2013 to 8 October 2018**. RMSE measures return-prediction error in decimal return units; **lower is better**.
 
@@ -143,9 +213,11 @@ The `*_mini` models are independently implemented, **randomly initialized numeri
 | `glm54_mini` | **A loop Transformer:** the same attention/MoE blocks refine the hidden state over repeated passes. | [Config](configs/glm54_mini.yaml) · [Notes](docs/architectures/glm_qwen.md#glm-54-adaptation-a-loop-transformer) |
 | `qwen4_mini` | Three gated-delta mixers per sparse-attention mixer, four residual streams, and experts. | [Config](configs/qwen4_mini.yaml) · [Notes](docs/architectures/glm_qwen.md#qwen4-adaptation) |
 | `timesfm3_mini` | Temporal/variate mixing, patches, prefix normalization, and forecast refinement. | [Config](configs/timesfm3_mini.yaml) · [Notes](docs/architectures/timesfm.md#timesfm3_mini) |
+| `multiscale_residual_mixer` | Four causal historical scales, a linear forecast path, and a small gated convolution/MLP residual. | [Config](configs/multiscale_residual_mixer.yaml) · [Notes](docs/architectures/financial.md#multiscale-residual-mixer) |
+| `regime_linear_moe` | Three linear experts mixed by a gate using historical feature descriptors. | [Config](configs/regime_linear_moe.yaml) · [Notes](docs/architectures/financial.md#regime-gated-linear-experts) |
 | `timesfm3_pretrained` | Google's fixed-weight model through an explicit local-checkpoint adapter. | [Config](configs/timesfm3_pretrained.yaml) · [Notes](docs/architectures/timesfm.md#timesfm3_pretrained) |
 
-`fts demo --model all` includes the six trainable models. The official checkpoint and the loop fine-tuning experiment below are optional, separate workflows.
+`fts demo --model all` includes the eight trainable models. The official checkpoint and the loop fine-tuning experiment below are optional, separate workflows.
 
 ### GLM-5.4 is a loop Transformer
 
@@ -192,10 +264,10 @@ The **provider** is the local data folder Qlib reads. This old index is a foreca
 ### Reproduce the three-seed architecture comparison
 
 ```bash
-fts benchmark --provider .data/my-spx --output runs/my-comparison --seeds 7 42 2026 --epochs 12 --device cpu
+fts benchmark --provider .data/my-spx --output runs/my-comparison --models lightgbm transformer deepseek_v41_mini glm54_mini qwen4_mini timesfm3_mini --seeds 7 42 2026 --epochs 12 --device cpu
 ```
 
-This runs all six trainable models under three seeds. It is a longer research job than the one-epoch demo. Every output includes configurations and provenance; nothing is silently overwritten.
+This reproduces the original six-model roster under three seeds. Omitting `--models` also includes the two newer research architectures (24 runs total). It is a longer research job than the one-epoch demo. Every output includes configurations and provenance; nothing is silently overwritten.
 
 ## Looped TimesFM 3
 
@@ -210,7 +282,7 @@ The conversion keeps the 20 pretrained layers, freezes their weights, and replay
 | Effective depth | 24 layer evaluations using 20 original layer objects |
 | Trainable addition | 21,761 gate and rank-8 adapter parameters |
 | Selection | Training labels for updates; validation chooses the saved adapter, including the unchanged initialization |
-| Test segment | Excluded from this fine-tuning pilot |
+| Test segment | Excluded from the original pilot; evaluated separately in the follow-up above |
 
 ### Actual checkpoint fine-tuning pilot
 
@@ -224,7 +296,9 @@ The fixed CPU run used **256 training examples, 128 validation examples, one see
 | **Epoch 2** | **0.01587005** | **Selected; 128 optimizer updates** |
 | Epoch 3 | 0.01599213 | 192 optimizer updates |
 
-The selected state has **0.844% lower validation RMSE than the unchanged checkpoint**. Initial forecasts matched exactly, and reloading the selected adapter reproduced the checked predictions exactly. This is a **combined loop-and-adapter feasibility pilot**, not a test-set result or evidence that looping itself caused the gain. A matched adapter-only control is still needed. [Protocol, limitations, and saved evidence](docs/timesfm-loop-validation.md).
+The original selected state had **0.844% lower sampled-validation RMSE than the unchanged checkpoint**. Initial forecasts matched exactly, and reloading that selected adapter reproduced its checked predictions exactly. This remains a **combined loop-and-adapter feasibility pilot**, not evidence that looping itself caused the gain. [Original protocol and saved evidence](docs/timesfm-loop-validation.md).
+
+The follow-up now includes the full validation/test periods and a **parameter-matched gated adapter-only control**. The original private adapter was unavailable after the temporary environment reset, so the original recipe was rerun once. Its selected epoch stayed at 2, with small numerical differences; the new result is explicitly labeled **a fresh retrain**, not restoration of the old weights. Loop test RMSE is **0.00787693**, versus **0.00788071** for the control and **0.00790151** for the frozen model. The control has the same trainable parameter count but less computation and a different gate role, so the small gap does not isolate a causal benefit from looping. [Completed comparison and reproducibility limits](docs/financial-research.md#timesfm-loop-and-adapter-comparison).
 
 The optional command is:
 
@@ -243,6 +317,7 @@ See [the loop architecture and API](docs/architectures/timesfm-loop.md), [checkp
 | Install it and understand my first output | [Getting started](docs/getting-started.md) |
 | Change features, models, splits, or portfolio costs | [Workflow and configuration](docs/workflow-guide.md) |
 | Inspect every benchmark setting and result | [Validation report](docs/architecture-validation.md) |
+| Compare TimesFM variants, new models and trading results | [Common-period research and backtest](docs/financial-research.md) |
 | Understand the architecture adaptations | [DeepSeek](docs/architectures/deepseek.md) · [GLM/Qwen](docs/architectures/glm_qwen.md) · [TimesFM](docs/architectures/timesfm.md) |
 | Load the official TimesFM checkpoint | [Pretrained inference](docs/architectures/timesfm.md#timesfm3_pretrained) |
 | Inspect the removed notebook pipeline | [Legacy audit and Git history](docs/legacy-audit.md) |
@@ -255,6 +330,6 @@ ruff check src tests
 python -m pytest -q
 ```
 
-CI exercises Python 3.10 and 3.12 with CPU PyTorch, including the six-model offline demo. Actual official-checkpoint experiments are documented separately; CI uses small test doubles and does not download those weights.
+CI exercises Python 3.10 and 3.12 with CPU PyTorch, including the eight-model offline demo and the saved historical backtest. Actual official-checkpoint experiments are documented separately; CI uses small test doubles and does not download those weights.
 
 Built with [Microsoft Qlib](https://github.com/microsoft/qlib) and [PyTorch](https://pytorch.org/). The [dependency policy](docs/workflow-guide.md#dependency-policy) explains the supported versions. Legacy notebooks and unused artifacts were removed; the original material remains in Git history.

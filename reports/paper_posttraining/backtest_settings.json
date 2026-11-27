@@ -1,0 +1,27 @@
+{
+  "policy": "long if score > 0, otherwise cash; fixed for every model",
+  "signal_instrument": "SPX",
+  "execution_asset": "SPY",
+  "price_basis": "supplied dividend/split-adjusted close; total-return proxy",
+  "signal_time": "after close t",
+  "entry_time": "close of next observed session t+1",
+  "exit_time": "close of following observed session t+2",
+  "session_calendar": "supplied price index; completeness is a data-source requirement",
+  "costs_bps": [
+    0.0,
+    5.0,
+    10.0,
+    20.0
+  ],
+  "primary_cost_bps": 5.0,
+  "cost_assumption": "one-way proportional cost on traded notional, not a quoted fee",
+  "initial_equity": 1.0,
+  "initial_position": "cash",
+  "terminal_liquidation": true,
+  "cash_return": 0.0,
+  "shorting": false,
+  "leverage": false,
+  "taxes": "not modeled",
+  "annualization": "CAGR uses actual elapsed days/365.25; volatility/Sharpe use 252",
+  "threshold_selection": "none; threshold fixed at zero"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "epoch": 0,
+    "train_rmse": 0.009540669023004168,
+    "validation_rmse": 0.016005099952096837,
+    "updates": 0,
+    "train_measurement": "fixed baseline"
+  },
+  {
+    "epoch": 1,
+    "train_rmse": 0.0095461859389949,
+    "validation_rmse": 0.015986839275435847,
+    "updates": 64,
+    "train_measurement": "online pre-update batches"
+  },
+  {
+    "epoch": 2,
+    "train_rmse": 0.009467755482225906,
+    "validation_rmse": 0.015870297423783014,
+    "updates": 128,
+    "train_measurement": "online pre-update batches"
+  },
+  {
+    "epoch": 3,
+    "train_rmse": 0.009166109153616374,
+    "validation_rmse": 0.01599219625894595,
+    "updates": 192,
+    "train_measurement": "online pre-update batches"
+  }
+]

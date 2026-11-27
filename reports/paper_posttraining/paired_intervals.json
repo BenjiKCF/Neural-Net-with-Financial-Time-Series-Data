@@ -1,0 +1,96 @@
+{
+  "reference": "baseline",
+  "qualification": "conditional historical diagnostics; no correction for prior or current research selection",
+  "comparisons": {
+    "directional_edit": {
+      "rmse_difference": 0.0,
+      "lower_95": 0.0,
+      "upper_95": 0.0,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "random_edit": {
+      "rmse_difference": -4.377318994861629e-08,
+      "lower_95": -1.4347299779808674e-07,
+      "upper_95": 4.875416393587679e-08,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "es_seed_7": {
+      "rmse_difference": -8.56905847704606e-07,
+      "lower_95": -2.3743479434255864e-06,
+      "upper_95": 4.7113932366692526e-07,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "combined_seed_7": {
+      "rmse_difference": -8.56905847704606e-07,
+      "lower_95": -2.3743479434255864e-06,
+      "upper_95": 4.7113932366692526e-07,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "es_seed_42": {
+      "rmse_difference": -6.391524320688985e-07,
+      "lower_95": -2.3409512960254843e-06,
+      "upper_95": 6.689971167379408e-07,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "combined_seed_42": {
+      "rmse_difference": -6.391524320688985e-07,
+      "lower_95": -2.3409512960254843e-06,
+      "upper_95": 6.689971167379408e-07,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "es_seed_2026": {
+      "rmse_difference": -5.083935732171779e-07,
+      "lower_95": -1.1316896742969525e-06,
+      "upper_95": 1.777608215371357e-08,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "combined_seed_2026": {
+      "rmse_difference": -5.083935732171779e-07,
+      "lower_95": -1.1316896742969525e-06,
+      "upper_95": 1.777608215371357e-08,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "zero_return": {
+      "rmse_difference": 2.6001296007967592e-05,
+      "lower_95": 1.849262000171073e-06,
+      "upper_95": 5.312373220885958e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    },
+    "training_mean": {
+      "rmse_difference": 1.263664059591909e-05,
+      "lower_95": -9.059522528837384e-06,
+      "upper_95": 3.455412102332096e-05,
+      "block_length": 20,
+      "draws": 2000,
+      "seed": 913,
+      "method": "paired circular moving-block bootstrap; negative favors candidate"
+    }
+  }
+}

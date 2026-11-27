@@ -1,0 +1,31 @@
+{
+  "provider_uri": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.data/spx-history",
+  "output_dir": "/workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/runs/model-research/timesfm3_mini/seed-42",
+  "experiment_name": "architecture_comparison",
+  "region": "us",
+  "instruments": "all",
+  "seed": 42,
+  "warmup_sessions": 60,
+  "sequence_length": 32,
+  "segments": null,
+  "model": {
+    "name": "timesfm3_mini",
+    "params": {
+      "d_model": 32,
+      "nhead": 4,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "n_epochs": 12,
+      "early_stop": 4,
+      "batch_size": 128,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "device": "cpu",
+      "num_threads": 2,
+      "aux_loss_weight": 0.01
+    }
+  },
+  "backtest": {
+    "enabled": false
+  }
+}

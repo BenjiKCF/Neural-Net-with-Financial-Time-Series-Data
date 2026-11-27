@@ -116,11 +116,39 @@ unknown.
 
 This experiment changes both looping and adapters. Comparing it with the
 unchanged checkpoint measures their combined effect and cannot attribute any
-improvement specifically to repeated transformer computation. A matched
-adapter-only control, using the same data, adapter placement/rank, optimizer,
-training budget, and validation selection, is needed before claiming a benefit
-from looping itself. Multiple seeds and a larger, independently justified
-evaluation would be required for a stronger performance conclusion.
+improvement specifically to repeated transformer computation. The
+[subsequent common-period comparison](../timesfm-loop-validation.md#follow-up-evaluation-on-common-periods)
+includes a gated adapter-only control with matched trainable parameters,
+initial tensors, data, placement/rank, optimizer, training budget, and selection.
+Its gate modulates the adapter rather than the shared-block residual, and it
+executes fewer layers. A stricter compute/architecture ablation, multiple
+seeds, and an independently justified evaluation are still needed before
+claiming a benefit caused by looping itself.
+
+### Parameter-matched gated adapter-only control
+
+[`GatedAdapterTimesFM3`](../../src/financial_ts/timesfm_comparison.py) keeps the
+same initial 21,761 gate/adapter parameters and replaces the loop refinement
+with:
+
+```text
+h_next = h + (1 + gate_r(h)) * adapter_r(h)
+```
+
+It applies that update after layer 11 without replaying the middle block,
+for 20 layer evaluations. Identity initialization is retained because the
+adapter's up-projection starts at zero. The gate starts receiving useful
+gradient after the adapter output changes. Constructor-seed tests verify that
+the initial trainable tensors match the loop variant; behavior tests verify
+there are no extra layer calls and the original backbone remains frozen.
+
+The completed one-seed comparison selected epoch 2 for both variants using
+the same 128 sampled validation rows. Test RMSE was 0.00787693 for the loop
+retrain and 0.00788071 for the gated adapter-only control. Both were worse
+than zero return and the previous TimesFM mini benchmark. The small gap is
+exploratory and does not establish a looping-specific advantage. See the
+[complete predictions and provenance](../../reports/timesfm_comparison/comparison.json)
+and the [shared backtest and plots](../financial-research.md).
 
 ## Saving and restoring
 
@@ -178,3 +206,15 @@ RMSE 0.01587005, compared with 0.01600509 for the unchanged checkpoint. The
 report contains every epoch, sample boundaries, source/checkpoint hashes, and
 selected predictions. The test partition was unused. The original checkpoint
 and historical test benchmark outputs were not changed.
+
+The later full-period evaluation uses a **fresh same-recipe retrain**, because
+the original adapter was unavailable after the execution environment was
+restored. Its strict reproduction check failed slightly despite matching
+data, checkpoint, sample records, source, seed, and dependency versions. The
+failure and all numerical discrepancies are preserved, and the run is marked
+`numerical_replication_only`. Epoch 2 remained selected; the retrain was reused
+without another training attempt. Both selected states were saved before any
+test-price query. Full validation/test scoring did not reselect checkpoints.
+The [follow-up report](../timesfm-loop-validation.md#follow-up-evaluation-on-common-periods)
+distinguishes these forecasts from the original pilot and records the current
+execution environment without asserting a proven cause for the drift.

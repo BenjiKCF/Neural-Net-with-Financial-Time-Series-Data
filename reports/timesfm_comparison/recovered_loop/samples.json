@@ -1,0 +1,3846 @@
+{
+  "train": [
+    {
+      "instrument": "SPX",
+      "datetime": "1990-07-03",
+      "context_start": "1990-01-02",
+      "context_end": "1990-07-03",
+      "entry_date": "1990-07-05",
+      "exit_date": "1990-07-06",
+      "context_sha256": "e1dd315cdd994370b9710ab7ab7061e26542c8dcfe93feccc5c277c005bfb6dc",
+      "label": 0.007703661918640137
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-07-26",
+      "context_start": "1990-01-24",
+      "context_end": "1990-07-26",
+      "entry_date": "1990-07-27",
+      "exit_date": "1990-07-30",
+      "context_sha256": "038f2288fcda1ecb31eb4d7935b865081ce0b7d17c34945c02808fe8c53a7658",
+      "label": 0.005969882011413574
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-08-20",
+      "context_start": "1990-02-16",
+      "context_end": "1990-08-20",
+      "entry_date": "1990-08-21",
+      "exit_date": "1990-08-22",
+      "context_sha256": "f034f857d74187711d6d69f6231ca7786e2873a7c10f109c1e6b9ce13bd3e2d5",
+      "label": -0.01649785041809082
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-09-12",
+      "context_start": "1990-03-13",
+      "context_end": "1990-09-12",
+      "entry_date": "1990-09-13",
+      "exit_date": "1990-09-14",
+      "context_sha256": "54207391a31be772ecd0278d01174de846b7fe420af4fb1c359caa1483fb2e7a",
+      "label": -0.005711615085601807
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-10-05",
+      "context_start": "1990-04-05",
+      "context_end": "1990-10-05",
+      "entry_date": "1990-10-08",
+      "exit_date": "1990-10-09",
+      "context_sha256": "5794f4d341d4f7973d47373b151311eb3f00d4b063a8b7ef21461452b72ab623",
+      "label": -0.026732206344604492
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-10-30",
+      "context_start": "1990-05-01",
+      "context_end": "1990-10-30",
+      "entry_date": "1990-10-31",
+      "exit_date": "1990-11-01",
+      "context_sha256": "8716f5957475453c28bf4126acf721b9d5d9e0be41dbc8689c3c1f5b67da47b2",
+      "label": 0.009934186935424805
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-11-21",
+      "context_start": "1990-05-23",
+      "context_end": "1990-11-21",
+      "entry_date": "1990-11-23",
+      "exit_date": "1990-11-26",
+      "context_sha256": "665cf105286d3d2f2922eb7374e928751fd63f5ef27ec4d6b63315a2d3be2758",
+      "label": 0.004474759101867676
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1990-12-17",
+      "context_start": "1990-06-18",
+      "context_end": "1990-12-17",
+      "entry_date": "1990-12-18",
+      "exit_date": "1990-12-19",
+      "context_sha256": "11c9958aa0579a5baf3b4fa96e08a53fab05a8114f1b81d7c476f75dda07f25b",
+      "label": 0.0004545450210571289
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-01-11",
+      "context_start": "1990-07-12",
+      "context_end": "1991-01-11",
+      "entry_date": "1991-01-14",
+      "exit_date": "1991-01-15",
+      "context_sha256": "5a53b47b79ea187a94e4013041a0fac2dd7966e2b1c2ef3bdc426d9612f8290f",
+      "label": 0.003968238830566406
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-02-04",
+      "context_start": "1990-08-03",
+      "context_end": "1991-02-04",
+      "entry_date": "1991-02-05",
+      "exit_date": "1991-02-06",
+      "context_sha256": "69b3cbeb19ddfdd634f5cc5901bb56479b7231ee1bdfbc597db380547c144368",
+      "label": 0.019387364387512207
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-02-28",
+      "context_start": "1990-08-28",
+      "context_end": "1991-02-28",
+      "entry_date": "1991-03-01",
+      "exit_date": "1991-03-04",
+      "context_sha256": "7983479690e68cbf501b1fb30c2514b3e382509eeb400d7e46014d10c14cdd02",
+      "label": -0.003077208995819092
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-03-25",
+      "context_start": "1990-09-21",
+      "context_end": "1991-03-25",
+      "entry_date": "1991-03-26",
+      "exit_date": "1991-03-27",
+      "context_sha256": "99020398b2b7d3857186161407d26908ad3d84781b079fe4e11f8c068f198b7b",
+      "label": -0.00252455472946167
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-04-17",
+      "context_start": "1990-10-15",
+      "context_end": "1991-04-17",
+      "entry_date": "1991-04-18",
+      "exit_date": "1991-04-19",
+      "context_sha256": "11894fe811d5a6e1abe904ab2c360a62ae185deb1edeafb13556c1c6ed3db180",
+      "label": -0.010966300964355469
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-05-10",
+      "context_start": "1990-11-07",
+      "context_end": "1991-05-10",
+      "entry_date": "1991-05-13",
+      "exit_date": "1991-05-14",
+      "context_sha256": "7a6923197646504ed59f1c37fd6327cc478a9b4fdeebf7c1c0cd0b0e7ad2e640",
+      "label": -0.013642668724060059
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-06-05",
+      "context_start": "1990-12-03",
+      "context_end": "1991-06-05",
+      "entry_date": "1991-06-06",
+      "exit_date": "1991-06-07",
+      "context_sha256": "e24bcb2ce249b4204ec6ff1bc9412159303569dc42ecd454bbb04e71cbdb8513",
+      "label": -0.0109480619430542
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-06-27",
+      "context_start": "1990-12-26",
+      "context_end": "1991-06-27",
+      "entry_date": "1991-06-28",
+      "exit_date": "1991-07-01",
+      "context_sha256": "4f7ef9d472cea80fd463247e0c8fabcc5ddb2ad3c63500f27ffadc73d04d9389",
+      "label": 0.01821315288543701
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-07-23",
+      "context_start": "1991-01-21",
+      "context_end": "1991-07-23",
+      "entry_date": "1991-07-24",
+      "exit_date": "1991-07-25",
+      "context_sha256": "a76b9a305d0ea05f8e178fa261f2bafb2aa4749c24da1e9db37d6f8d39c639ad",
+      "label": 0.006127119064331055
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-08-14",
+      "context_start": "1991-02-12",
+      "context_end": "1991-08-14",
+      "entry_date": "1991-08-15",
+      "exit_date": "1991-08-16",
+      "context_sha256": "677b6837ddb7bba21f24f5f5c6953e30e678c92ff9a19dbefb43a56b604a085c",
+      "label": -0.009631931781768799
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-09-09",
+      "context_start": "1991-03-08",
+      "context_end": "1991-09-09",
+      "entry_date": "1991-09-10",
+      "exit_date": "1991-09-11",
+      "context_sha256": "1f1461c78a688e4ee351e1df8611bed624aa07124b253ee71a6abc984fb62088",
+      "label": 0.001378178596496582
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-10-02",
+      "context_start": "1991-04-03",
+      "context_end": "1991-10-02",
+      "entry_date": "1991-10-03",
+      "exit_date": "1991-10-04",
+      "context_sha256": "5fe6312820e976bb6112c390544f45e2b2ca2e6f80ee151ce4ef75add5c70b73",
+      "label": -0.008375167846679688
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-10-24",
+      "context_start": "1991-04-25",
+      "context_end": "1991-10-24",
+      "entry_date": "1991-10-25",
+      "exit_date": "1991-10-28",
+      "context_sha256": "c15e9ed019fa1837daa77fe4d08800ddb4eadf5ac1436937740744850a776828",
+      "label": 0.013846874237060547
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-11-18",
+      "context_start": "1991-05-20",
+      "context_end": "1991-11-18",
+      "entry_date": "1991-11-19",
+      "exit_date": "1991-11-20",
+      "context_sha256": "4565ab8c074d55db1e2badb1a137f94861aade3d596bafd5b3175095535b5c05",
+      "label": -0.002345740795135498
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1991-12-12",
+      "context_start": "1991-06-13",
+      "context_end": "1991-12-12",
+      "entry_date": "1991-12-13",
+      "exit_date": "1991-12-16",
+      "context_sha256": "def48b54512a34d0086ff8cf6c21b73394ed8a8b734c35431107f3d7e18ab7b4",
+      "label": -2.6047229766845703e-05
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-01-07",
+      "context_start": "1991-07-08",
+      "context_end": "1992-01-07",
+      "entry_date": "1992-01-08",
+      "exit_date": "1992-01-09",
+      "context_sha256": "7cdb9ed74700c5781c984c71e7a534751f626f31cedfff55501d46455d0640f8",
+      "label": -0.0011720061302185059
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-01-30",
+      "context_start": "1991-07-31",
+      "context_end": "1992-01-30",
+      "entry_date": "1992-01-31",
+      "exit_date": "1992-02-03",
+      "context_sha256": "f9d10407b145334aa91a70bf992662f0c8b1273577caf9516d00a1711abd8b24",
+      "label": 0.0018347501754760742
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-02-25",
+      "context_start": "1991-08-23",
+      "context_end": "1992-02-25",
+      "entry_date": "1992-02-26",
+      "exit_date": "1992-02-27",
+      "context_sha256": "fdab4ffb871fbf26b6307b66e48ec33b1864952e5195aaf280c2ad431ec3d610",
+      "label": -0.00358736515045166
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-03-18",
+      "context_start": "1991-09-17",
+      "context_end": "1992-03-18",
+      "entry_date": "1992-03-19",
+      "exit_date": "1992-03-20",
+      "context_sha256": "f10071c8def3ef6108ea93dda3007db75405c31cc3e2256d7cc2fdbc768d5d5f",
+      "label": 0.0036603212356567383
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-04-10",
+      "context_start": "1991-10-10",
+      "context_end": "1992-04-10",
+      "entry_date": "1992-04-13",
+      "exit_date": "1992-04-14",
+      "context_sha256": "2b7e87ed3b54dfa836fc2c325efc757b6d096dbe6cc5387bf48ee96371800860",
+      "label": 0.015538930892944336
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-05-06",
+      "context_start": "1991-11-04",
+      "context_end": "1992-05-06",
+      "entry_date": "1992-05-07",
+      "exit_date": "1992-05-08",
+      "context_sha256": "24c105770112ff9d03e5cfffeb03ac5d3461b38081d4808a8b2f0c96f15644b6",
+      "label": 0.00048089027404785156
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-05-29",
+      "context_start": "1991-11-26",
+      "context_end": "1992-05-29",
+      "entry_date": "1992-06-01",
+      "exit_date": "1992-06-02",
+      "context_sha256": "c04adcdd0289b0e663c03c15829ab6ebbed96439b072f3a795d0b0f676ef1019",
+      "label": -0.009106159210205078
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-06-23",
+      "context_start": "1991-12-20",
+      "context_end": "1992-06-23",
+      "entry_date": "1992-06-24",
+      "exit_date": "1992-06-25",
+      "context_sha256": "caff87e7714cdacfef81b8d369144f81059259ebfa509fac6cac847135959d83",
+      "label": -0.0017828941345214844
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-07-16",
+      "context_start": "1992-01-15",
+      "context_end": "1992-07-16",
+      "entry_date": "1992-07-17",
+      "exit_date": "1992-07-20",
+      "context_sha256": "0a8c05123718724cd5e15c50a30364a7ce86a2ca1ec91bc3a67bf88f6b478ff9",
+      "label": -0.004499316215515137
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-08-10",
+      "context_start": "1992-02-07",
+      "context_end": "1992-08-10",
+      "entry_date": "1992-08-11",
+      "exit_date": "1992-08-12",
+      "context_sha256": "d6e45157318c170cface720cd2aa9dc5cca15cc374fecfdeacca632ac24231ce",
+      "label": -0.0026736855506896973
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-09-02",
+      "context_start": "1992-03-04",
+      "context_end": "1992-09-02",
+      "entry_date": "1992-09-03",
+      "exit_date": "1992-09-04",
+      "context_sha256": "d4c8fb8ceb0423d0d640334e331446b647121dc0401c039d6ccc6da0708bbfe5",
+      "label": -0.0021532773971557617
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-09-25",
+      "context_start": "1992-03-26",
+      "context_end": "1992-09-25",
+      "entry_date": "1992-09-28",
+      "exit_date": "1992-09-29",
+      "context_sha256": "1dc77fe220c0c578bce0fbbe84d7aceb0901f4454d2020bdacb51603ff296db4",
+      "label": 0.00043201446533203125
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-10-20",
+      "context_start": "1992-04-21",
+      "context_end": "1992-10-20",
+      "entry_date": "1992-10-21",
+      "exit_date": "1992-10-22",
+      "context_sha256": "d448288aba122fd51407697fe4eb2e35fa9addb7ba3f64e7d1df945b2072c8cf",
+      "label": -0.0018524527549743652
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-11-12",
+      "context_start": "1992-05-14",
+      "context_end": "1992-11-12",
+      "entry_date": "1992-11-13",
+      "exit_date": "1992-11-16",
+      "context_sha256": "14aa47bdfe31c8026a0af1e64772deadbe00d47377111018605b3b14560da98e",
+      "label": -0.004142701625823975
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-12-07",
+      "context_start": "1992-06-08",
+      "context_end": "1992-12-07",
+      "entry_date": "1992-12-08",
+      "exit_date": "1992-12-09",
+      "context_sha256": "98e747003eb3a79ac5e4157113012136369b6861b37c5ea3e1d962edff52cd7c",
+      "label": -0.003066420555114746
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1992-12-31",
+      "context_start": "1992-07-01",
+      "context_end": "1992-12-31",
+      "entry_date": "1993-01-04",
+      "exit_date": "1993-01-05",
+      "context_sha256": "a7937716253d4c1465de0a84d42f6d999ef2bec9c8b62bc10f64d019b215a124",
+      "label": -0.0023887157440185547
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-01-26",
+      "context_start": "1992-07-27",
+      "context_end": "1993-01-26",
+      "entry_date": "1993-01-27",
+      "exit_date": "1993-01-28",
+      "context_sha256": "af3f8417f3a15da8d48d2cbe2c6cb95d933da967224915a11f2b726919a8e793",
+      "label": 0.0012553930282592773
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-02-18",
+      "context_start": "1992-08-18",
+      "context_end": "1993-02-18",
+      "entry_date": "1993-02-19",
+      "exit_date": "1993-02-22",
+      "context_sha256": "c88c7a34d2d6cc86676bf0f72dc7a01825d5cc8942cf6d64c160b20c05215176",
+      "label": 0.0023490190505981445
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-03-15",
+      "context_start": "1992-09-11",
+      "context_end": "1993-03-15",
+      "entry_date": "1993-03-16",
+      "exit_date": "1993-03-17",
+      "context_sha256": "b1f88e6075954bc287d5dd25e4172881f0173b4823279c830d405ed16d0d6923",
+      "label": -0.006779372692108154
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-04-07",
+      "context_start": "1992-10-06",
+      "context_end": "1993-04-07",
+      "entry_date": "1993-04-08",
+      "exit_date": "1993-04-12",
+      "context_sha256": "edc4609e6f947bc989d8ed97b61a108ffc032af20d63360ad06786ae6f1b74e3",
+      "label": 0.014779090881347656
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-04-30",
+      "context_start": "1992-10-28",
+      "context_end": "1993-04-30",
+      "entry_date": "1993-05-03",
+      "exit_date": "1993-05-04",
+      "context_sha256": "c1e847c06ae74ae00fd7ca8e99e87ad086797dfcce4b54b54240156836c3d0e3",
+      "label": 0.0035935640335083008
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-05-25",
+      "context_start": "1992-11-20",
+      "context_end": "1993-05-25",
+      "entry_date": "1993-05-26",
+      "exit_date": "1993-05-27",
+      "context_sha256": "84a6f02ddcd85476c372f067ef42b6f3c56d5cdb0eec9ebdcbf312d7c8af2cdc",
+      "label": -0.0022715330123901367
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-06-17",
+      "context_start": "1992-12-15",
+      "context_end": "1993-06-17",
+      "entry_date": "1993-06-18",
+      "exit_date": "1993-06-21",
+      "context_sha256": "98a9733f04aff0cb49707b31874461edd9e907569502dcb774469a6cd001cbad",
+      "label": 0.005724906921386719
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-07-13",
+      "context_start": "1993-01-11",
+      "context_end": "1993-07-13",
+      "entry_date": "1993-07-14",
+      "exit_date": "1993-07-15",
+      "context_sha256": "07a9dbe1b2fa29d74701180e10250cff44ad51cfe08cea4421f11a6cee4b2808",
+      "label": -0.0019107460975646973
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-08-05",
+      "context_start": "1993-02-03",
+      "context_end": "1993-08-05",
+      "entry_date": "1993-08-06",
+      "exit_date": "1993-08-09",
+      "context_sha256": "729e6da2a669649840ce86aed51105700b8d91462049178625dc905994755c6d",
+      "label": 0.004546642303466797
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-08-27",
+      "context_start": "1993-02-26",
+      "context_end": "1993-08-27",
+      "entry_date": "1993-08-30",
+      "exit_date": "1993-08-31",
+      "context_sha256": "10d5019054091ee4d73abfd81394d991c0d9c95c272e18305c27adcde49ae0d3",
+      "label": 0.0035938024520874023
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-09-22",
+      "context_start": "1993-03-23",
+      "context_end": "1993-09-22",
+      "entry_date": "1993-09-23",
+      "exit_date": "1993-09-24",
+      "context_sha256": "ef4601bdaa04774b85b5444a29f8299253298ce60ffeb4ebbd0ce9314fef3548",
+      "label": -0.0002402663230895996
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-10-15",
+      "context_start": "1993-04-16",
+      "context_end": "1993-10-15",
+      "entry_date": "1993-10-18",
+      "exit_date": "1993-10-19",
+      "context_sha256": "c3356b37980bd6096ab1df8a4e279d86a0615fb3e186505bbbb61308186ca218",
+      "label": -0.004781782627105713
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-11-08",
+      "context_start": "1993-05-10",
+      "context_end": "1993-11-08",
+      "entry_date": "1993-11-09",
+      "exit_date": "1993-11-10",
+      "context_sha256": "0eda597b79a3d04738b68b903532d4b0e648de669f435ff8efdda4c1aab2a956",
+      "label": 0.0073642730712890625
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-12-02",
+      "context_start": "1993-06-03",
+      "context_end": "1993-12-02",
+      "entry_date": "1993-12-03",
+      "exit_date": "1993-12-06",
+      "context_sha256": "247416c8c282f595d0dc0957caa98e8f70c1692191f8987b23c9d66b20b0a13f",
+      "label": 0.0033125877380371094
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1993-12-28",
+      "context_start": "1993-06-28",
+      "context_end": "1993-12-28",
+      "entry_date": "1993-12-29",
+      "exit_date": "1993-12-30",
+      "context_sha256": "824052b29ded977dda0b0e2e1144a9676adad0111b22ce57d1fde47f91d9829e",
+      "label": -0.004122495651245117
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-01-19",
+      "context_start": "1993-07-21",
+      "context_end": "1994-01-19",
+      "entry_date": "1994-01-20",
+      "exit_date": "1994-01-21",
+      "context_sha256": "933da877f6239c6d3660fc72da3dd0695bac48be4cabe0ff0c9c0dbefbc98b4c",
+      "label": -0.0005474090576171875
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-02-11",
+      "context_start": "1993-08-13",
+      "context_end": "1994-02-11",
+      "entry_date": "1994-02-14",
+      "exit_date": "1994-02-15",
+      "context_sha256": "94ac4566a6e76d99df45d63429e85c0e86461c2ba2aab686129e141fcabe369e",
+      "label": 0.004869937896728516
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-03-09",
+      "context_start": "1993-09-08",
+      "context_end": "1994-03-09",
+      "entry_date": "1994-03-10",
+      "exit_date": "1994-03-11",
+      "context_sha256": "0eab2b034510320d89bc6ebf13ef20357b10bf695b7a17572ff8944d244f2220",
+      "label": 0.005475282669067383
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-03-31",
+      "context_start": "1993-09-30",
+      "context_end": "1994-03-31",
+      "entry_date": "1994-04-04",
+      "exit_date": "1994-04-05",
+      "context_sha256": "ee5610f4e11dbee775ea7522dbe62e751cc67c6c780a88e3b74a51f07699fa29",
+      "label": 0.021347880363464355
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-04-26",
+      "context_start": "1993-10-25",
+      "context_end": "1994-04-26",
+      "entry_date": "1994-04-28",
+      "exit_date": "1994-04-29",
+      "context_sha256": "5c00c27fd0f5cfb1ea81e720d6346aedc99989938d2f7509e949f2f787d8a035",
+      "label": 0.0040302276611328125
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-05-19",
+      "context_start": "1993-11-16",
+      "context_end": "1994-05-19",
+      "entry_date": "1994-05-20",
+      "exit_date": "1994-05-23",
+      "context_sha256": "647d42ed1d1b7d07ce31c30355acac36a2bc183b05ad9071b6f5b53919178a9f",
+      "label": -0.0037809014320373535
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-06-14",
+      "context_start": "1993-12-10",
+      "context_end": "1994-06-14",
+      "entry_date": "1994-06-15",
+      "exit_date": "1994-06-16",
+      "context_sha256": "f02383a0aa7d9e7823ee9035f4e15b6d3ee5772487711720d4d05de1e2a901b0",
+      "label": 0.0028657913208007812
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-07-08",
+      "context_start": "1994-01-05",
+      "context_end": "1994-07-08",
+      "entry_date": "1994-07-11",
+      "exit_date": "1994-07-12",
+      "context_sha256": "b6e744c21c70cd3734d601557322fe18ca4c4f799d32e52cba59e5d92e0cbd2a",
+      "label": -0.0002454519271850586
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-08-01",
+      "context_start": "1994-01-27",
+      "context_end": "1994-08-01",
+      "entry_date": "1994-08-02",
+      "exit_date": "1994-08-03",
+      "context_sha256": "5d5a6c9f7334a690c1004e4b6a772fd7fdac4a19dc9e82aa1b405cdd09eb640c",
+      "label": 0.0019325017929077148
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-08-24",
+      "context_start": "1994-02-22",
+      "context_end": "1994-08-24",
+      "entry_date": "1994-08-25",
+      "exit_date": "1994-08-26",
+      "context_sha256": "cd25752a8479c38e4dfedd248dd40e542bf3e3040385319d5f0c408e35c67f36",
+      "label": 0.012220144271850586
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-09-19",
+      "context_start": "1994-03-17",
+      "context_end": "1994-09-19",
+      "entry_date": "1994-09-20",
+      "exit_date": "1994-09-21",
+      "context_sha256": "271067e87f1a2703ac17d475a6394ff537b2cabc3cb6627c0e9aa6f29a09f814",
+      "label": -0.004100441932678223
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-10-11",
+      "context_start": "1994-04-11",
+      "context_end": "1994-10-11",
+      "entry_date": "1994-10-12",
+      "exit_date": "1994-10-13",
+      "context_sha256": "1bf62f0b25500bfc97894cf495222f47760e0f6610ca23abf1cfc21f96795d5a",
+      "label": 0.004984259605407715
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-11-03",
+      "context_start": "1994-05-05",
+      "context_end": "1994-11-03",
+      "entry_date": "1994-11-04",
+      "exit_date": "1994-11-07",
+      "context_sha256": "f57397ddc61de58fd83f046c7d4c044e728260ef154814407a4ccf1152bd2a6a",
+      "label": 0.001708984375
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-11-29",
+      "context_start": "1994-05-31",
+      "context_end": "1994-11-29",
+      "entry_date": "1994-11-30",
+      "exit_date": "1994-12-01",
+      "context_sha256": "147502f2ea2ce2489f1c6a4f560428d13732e8e5547b1ba549f7cb2afc75ede3",
+      "label": -0.010513782501220703
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1994-12-21",
+      "context_start": "1994-06-22",
+      "context_end": "1994-12-21",
+      "entry_date": "1994-12-22",
+      "exit_date": "1994-12-23",
+      "context_sha256": "89621a1fc345f32d754cbd42ae6fd4cb08b0a5d9624f11f7d86c7306aff04d3d",
+      "label": 0.0003262758255004883
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-01-17",
+      "context_start": "1994-07-18",
+      "context_end": "1995-01-17",
+      "entry_date": "1995-01-18",
+      "exit_date": "1995-01-19",
+      "context_sha256": "66c638691918aeb618dc49999c2638d5393aff0870321f5d248d08c7f98dd305",
+      "label": -0.005875945091247559
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-02-09",
+      "context_start": "1994-08-10",
+      "context_end": "1995-02-09",
+      "entry_date": "1995-02-10",
+      "exit_date": "1995-02-13",
+      "context_sha256": "f6d50874cb3fa4152d64632e3e93f2ad5abb14f3dc59a5c4b356a1881c67106a",
+      "label": 0.00039458274841308594
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-03-06",
+      "context_start": "1994-09-01",
+      "context_end": "1995-03-06",
+      "entry_date": "1995-03-07",
+      "exit_date": "1995-03-08",
+      "context_sha256": "f0bcc270cdf9d1d03d0509c1386ecc920a6d49a8edb291cdbff5435caa392a21",
+      "label": 0.0021157264709472656
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-03-29",
+      "context_start": "1994-09-27",
+      "context_end": "1995-03-29",
+      "entry_date": "1995-03-30",
+      "exit_date": "1995-03-31",
+      "context_sha256": "fa0b07868774f2b790b1f6a59ddca7bf04aa7e1c9f8910ebd4ef44a300e29005",
+      "label": -0.0030066967010498047
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-04-21",
+      "context_start": "1994-10-19",
+      "context_end": "1995-04-21",
+      "entry_date": "1995-04-24",
+      "exit_date": "1995-04-25",
+      "context_sha256": "fa72dc1bf90d37c68fb68fb6b3af185f63a8b78d6b8d6614bef9c33cfa62aeb8",
+      "label": -0.00154036283493042
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-05-16",
+      "context_start": "1994-11-11",
+      "context_end": "1995-05-16",
+      "entry_date": "1995-05-17",
+      "exit_date": "1995-05-18",
+      "context_sha256": "51d6de5b86b2582d9d27629f9f938fe7ee944c3c681ec35a0a263c1803cb2fdf",
+      "label": -0.014210641384124756
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-06-09",
+      "context_start": "1994-12-07",
+      "context_end": "1995-06-09",
+      "entry_date": "1995-06-12",
+      "exit_date": "1995-06-13",
+      "context_sha256": "54c252dd88b4d04082b3d87d27b89e8f6180cc104eee6a463c6c50dbfde084b8",
+      "label": 0.009738564491271973
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-07-03",
+      "context_start": "1994-12-30",
+      "context_end": "1995-07-03",
+      "entry_date": "1995-07-05",
+      "exit_date": "1995-07-06",
+      "context_sha256": "f3c014899389e0bb06ecde4f60762abb0682258f29ffbb33ebe0c0e1ac578f6a",
+      "label": 0.012297630310058594
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-07-27",
+      "context_start": "1995-01-25",
+      "context_end": "1995-07-27",
+      "entry_date": "1995-07-28",
+      "exit_date": "1995-07-31",
+      "context_sha256": "6261e5b776c7c6fce74a7cc89155e2ef9b52d5f6274730829da3b3de4978a942",
+      "label": -0.0015454888343811035
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-08-21",
+      "context_start": "1995-02-17",
+      "context_end": "1995-08-21",
+      "entry_date": "1995-08-22",
+      "exit_date": "1995-08-23",
+      "context_sha256": "f7670a4bb02f6a29647832654d7b676587ee8e8e12dccd38bdfb957534aadb1a",
+      "label": -0.0042536258697509766
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-09-13",
+      "context_start": "1995-03-14",
+      "context_end": "1995-09-13",
+      "entry_date": "1995-09-14",
+      "exit_date": "1995-09-15",
+      "context_sha256": "c5cb55cd59a5e60d1e159d132a02b48dac43892c603b9eb810d3b85c0866fceb",
+      "label": -0.0004455447196960449
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-10-06",
+      "context_start": "1995-04-06",
+      "context_end": "1995-10-06",
+      "entry_date": "1995-10-09",
+      "exit_date": "1995-10-10",
+      "context_sha256": "2b365c34f076e97163a738e997a0443591f77500545f4917e8dfa7e150cde4ea",
+      "label": -0.0014696121215820312
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-10-31",
+      "context_start": "1995-05-02",
+      "context_end": "1995-10-31",
+      "entry_date": "1995-11-01",
+      "exit_date": "1995-11-02",
+      "context_sha256": "e59d1a83fcf760e3776368ac97f9b0808d8b85629ae9d9273f5198e5cebf10c5",
+      "label": 0.009414315223693848
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-11-22",
+      "context_start": "1995-05-24",
+      "context_end": "1995-11-22",
+      "entry_date": "1995-11-24",
+      "exit_date": "1995-11-27",
+      "context_sha256": "1279f29890eeab3604826b6bd2dceb53ed5202bf269a8615f88d322eee3f16cd",
+      "label": 0.002250194549560547
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1995-12-18",
+      "context_start": "1995-06-19",
+      "context_end": "1995-12-18",
+      "entry_date": "1995-12-19",
+      "exit_date": "1995-12-20",
+      "context_sha256": "8a3e85db8740d6e343e727431dab29013c94ce1df9380aeca9119e48d2597293",
+      "label": -0.009788691997528076
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-01-12",
+      "context_start": "1995-07-13",
+      "context_end": "1996-01-12",
+      "entry_date": "1996-01-15",
+      "exit_date": "1996-01-16",
+      "context_sha256": "f9bb5be593690ebe9151798b546df9930322e0775f67758ebf992602307ca0a3",
+      "label": 0.014370918273925781
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-02-05",
+      "context_start": "1995-08-04",
+      "context_end": "1996-02-05",
+      "entry_date": "1996-02-06",
+      "exit_date": "1996-02-07",
+      "context_sha256": "89ac5765d53c1fab315a2a2ed054cae942893f645037aef36b4e11ff9eb0f67d",
+      "label": 0.005569815635681152
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-02-29",
+      "context_start": "1995-08-29",
+      "context_end": "1996-02-29",
+      "entry_date": "1996-03-01",
+      "exit_date": "1996-03-04",
+      "context_sha256": "a072e9ed30ce156fa06800de3282a4d520f83a3976d4b76d407de82cf71b513c",
+      "label": 0.009994268417358398
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-03-22",
+      "context_start": "1995-09-21",
+      "context_end": "1996-03-22",
+      "entry_date": "1996-03-25",
+      "exit_date": "1996-03-26",
+      "context_sha256": "3ccdf39b5c967840bd45bf97240c39c7f10c28b9a2fd03a0bb26c8a92891460e",
+      "label": 0.00450742244720459
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-04-17",
+      "context_start": "1995-10-16",
+      "context_end": "1996-04-17",
+      "entry_date": "1996-04-18",
+      "exit_date": "1996-04-19",
+      "context_sha256": "13f36d5d6a2ab5f992716ad29adaa5f98b2317440fdb8c7ed49e1d484fcc1e2d",
+      "label": 0.0022684335708618164
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-05-10",
+      "context_start": "1995-11-08",
+      "context_end": "1996-05-10",
+      "entry_date": "1996-05-13",
+      "exit_date": "1996-05-14",
+      "context_sha256": "4f4bf9c051a58645dcac22165dab47bfa8ab4309df3d5734421b946b6c67038d",
+      "label": 0.0061827898025512695
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-06-04",
+      "context_start": "1995-12-01",
+      "context_end": "1996-06-04",
+      "entry_date": "1996-06-05",
+      "exit_date": "1996-06-06",
+      "context_sha256": "5722e3607dae9510f679cfef3db7c38978bd70c651fad4d994146830649e3ae5",
+      "label": -0.00797414779663086
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-06-27",
+      "context_start": "1995-12-27",
+      "context_end": "1996-06-27",
+      "entry_date": "1996-06-28",
+      "exit_date": "1996-07-01",
+      "context_sha256": "eff615851eb1cd5b9ac60a378af31fd068f857ddedab715d85f14336efd4625d",
+      "label": 0.007828474044799805
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-07-23",
+      "context_start": "1996-01-22",
+      "context_end": "1996-07-23",
+      "entry_date": "1996-07-24",
+      "exit_date": "1996-07-25",
+      "context_sha256": "dc69ab748cb2ac616da5899cb919b5d0966c08c1568163e6a88a236002586938",
+      "label": 0.00721287727355957
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-08-14",
+      "context_start": "1996-02-13",
+      "context_end": "1996-08-14",
+      "entry_date": "1996-08-15",
+      "exit_date": "1996-08-16",
+      "context_sha256": "7a72e22df2ec0e301f362d567daec93801407bf4f1e0bfc3b88a587bc974e225",
+      "label": 0.004424095153808594
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-09-09",
+      "context_start": "1996-03-08",
+      "context_end": "1996-09-09",
+      "entry_date": "1996-09-10",
+      "exit_date": "1996-09-11",
+      "context_sha256": "8a4133e69021857d75779fec2756939929813669b0ed0f907997ecebcffe17f1",
+      "label": 0.005227446556091309
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-10-02",
+      "context_start": "1996-04-02",
+      "context_end": "1996-10-02",
+      "entry_date": "1996-10-03",
+      "exit_date": "1996-10-04",
+      "context_sha256": "cf7c9319c4de6e4f8fe0c8a158615bace07dd399378c70a9d435bcb8f0a9813a",
+      "label": 0.012529253959655762
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-10-24",
+      "context_start": "1996-04-25",
+      "context_end": "1996-10-24",
+      "entry_date": "1996-10-25",
+      "exit_date": "1996-10-28",
+      "context_sha256": "f22b3549aa917d714f95bacadfd274b15f330db7a51aae89b32a51728cc600be",
+      "label": -0.005221664905548096
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-11-18",
+      "context_start": "1996-05-20",
+      "context_end": "1996-11-18",
+      "entry_date": "1996-11-19",
+      "exit_date": "1996-11-20",
+      "context_sha256": "98244742b0ab1164afb8b8eeda65152e843bfc49fce36bdcc1e94de9306bd921",
+      "label": 0.002411961555480957
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1996-12-12",
+      "context_start": "1996-06-13",
+      "context_end": "1996-12-12",
+      "entry_date": "1996-12-13",
+      "exit_date": "1996-12-16",
+      "context_sha256": "1fecee0c3233b112d529c54040127700b9525208f80fb8d9e84bcd3b20842797",
+      "label": -0.010512769222259521
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-01-07",
+      "context_start": "1996-07-08",
+      "context_end": "1997-01-07",
+      "entry_date": "1997-01-08",
+      "exit_date": "1997-01-09",
+      "context_sha256": "7e5d7b151a228e2a1d2465ddd2c685a2a13b7eed2437b448650af3f7ad27a565",
+      "label": 0.008604884147644043
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-01-30",
+      "context_start": "1996-07-31",
+      "context_end": "1997-01-30",
+      "entry_date": "1997-01-31",
+      "exit_date": "1997-02-03",
+      "context_sha256": "218373be34eeff68769696765c93e6827840301b53726d3ef498743b9f98298c",
+      "label": 0.0007250308990478516
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-02-24",
+      "context_start": "1996-08-22",
+      "context_end": "1997-02-24",
+      "entry_date": "1997-02-25",
+      "exit_date": "1997-02-26",
+      "context_sha256": "c111d6293d4c121884c730ec65560e59cd0a5ff743884be1ea179e92fa60f6e5",
+      "label": -0.007819950580596924
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-03-19",
+      "context_start": "1996-09-17",
+      "context_end": "1997-03-19",
+      "entry_date": "1997-03-20",
+      "exit_date": "1997-03-21",
+      "context_sha256": "f274b095f8b77a13108e5bd9b25459900af7ac62d735da91d000f1dd33709e0a",
+      "label": 0.0018526315689086914
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-04-14",
+      "context_start": "1996-10-10",
+      "context_end": "1997-04-14",
+      "entry_date": "1997-04-15",
+      "exit_date": "1997-04-16",
+      "context_sha256": "e57995bf9610e42cdeb76476b26314367b7f1d163e7a4bc6b7398fe395e49dd0",
+      "label": 0.011673331260681152
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-05-06",
+      "context_start": "1996-11-01",
+      "context_end": "1997-05-06",
+      "entry_date": "1997-05-07",
+      "exit_date": "1997-05-08",
+      "context_sha256": "fd9ced50eda0717552dd229f539a442bca2e5cad1ac48d49a8fa46ada6cd08e8",
+      "label": 0.005688905715942383
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-05-30",
+      "context_start": "1996-11-26",
+      "context_end": "1997-05-30",
+      "entry_date": "1997-06-02",
+      "exit_date": "1997-06-03",
+      "context_sha256": "853c80d07640e9e94a13a891e9c9c1a9e12ff1294ae5eda395a2cb150590a0ff",
+      "label": -0.001039743423461914
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-06-24",
+      "context_start": "1996-12-20",
+      "context_end": "1997-06-24",
+      "entry_date": "1997-06-25",
+      "exit_date": "1997-06-26",
+      "context_sha256": "468904fd8f1e6b470b9af9eeb2d32c7702585106449743788df4caac524e33f0",
+      "label": -0.00597304105758667
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-07-17",
+      "context_start": "1997-01-15",
+      "context_end": "1997-07-17",
+      "entry_date": "1997-07-18",
+      "exit_date": "1997-07-21",
+      "context_sha256": "8ab0e17de79765e8d9feec24ab746d3e654e2a3f2bd76984c18c08330d6299a6",
+      "label": -0.0025783777236938477
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-08-11",
+      "context_start": "1997-02-07",
+      "context_end": "1997-08-11",
+      "entry_date": "1997-08-12",
+      "exit_date": "1997-08-13",
+      "context_sha256": "e348695c80fc98cf322ca4fe80469bd4cb8241481840785d12a455f13ea4f3fb",
+      "label": -0.004867613315582275
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-09-04",
+      "context_start": "1997-03-05",
+      "context_end": "1997-09-04",
+      "entry_date": "1997-09-05",
+      "exit_date": "1997-09-08",
+      "context_sha256": "7d17058e2c492b7ab01bc8ee16c81721f68f9cad0267d2d0f3a68a423a9e5c6a",
+      "label": 0.0023142099380493164
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-09-26",
+      "context_start": "1997-03-27",
+      "context_end": "1997-09-26",
+      "entry_date": "1997-09-29",
+      "exit_date": "1997-09-30",
+      "context_sha256": "def8c9567866a8e3f4b677e2a57499c0847c15699e9dec634b610c0a33308d57",
+      "label": -0.006356596946716309
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-10-21",
+      "context_start": "1997-04-22",
+      "context_end": "1997-10-21",
+      "entry_date": "1997-10-22",
+      "exit_date": "1997-10-23",
+      "context_sha256": "2180d0e64b45b3d62ffa022f169255f2f9078f7cd8f204aa38d0ad5b40a24e83",
+      "label": -0.0183790922164917
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-11-13",
+      "context_start": "1997-05-15",
+      "context_end": "1997-11-13",
+      "entry_date": "1997-11-14",
+      "exit_date": "1997-11-17",
+      "context_sha256": "7f789427a8bb2621631dd53ebdce98b55c64cbb4b9ae779320c4384bcb46e5d6",
+      "label": 0.01922774314880371
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1997-12-08",
+      "context_start": "1997-06-09",
+      "context_end": "1997-12-08",
+      "entry_date": "1997-12-09",
+      "exit_date": "1997-12-10",
+      "context_sha256": "a731a705469d71cea57fb94f951e72fa2da7b489c9ae333ab0df14d5c3cd5ded",
+      "label": -0.006138741970062256
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-01-02",
+      "context_start": "1997-07-02",
+      "context_end": "1998-01-02",
+      "entry_date": "1998-01-05",
+      "exit_date": "1998-01-06",
+      "context_sha256": "fd03a0d2ec87f5d934fd93eba3b37645783f3224550860890707fc6eb560f437",
+      "label": -0.010736167430877686
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-01-27",
+      "context_start": "1997-07-25",
+      "context_end": "1998-01-27",
+      "entry_date": "1998-01-28",
+      "exit_date": "1998-01-29",
+      "context_sha256": "48aa9dd5ce4c455310b26a2966f74b26a84e67360465cacd41492936f9993420",
+      "label": 0.008215188980102539
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-02-20",
+      "context_start": "1997-08-19",
+      "context_end": "1998-02-20",
+      "entry_date": "1998-02-23",
+      "exit_date": "1998-02-24",
+      "context_sha256": "4084d8b33c9c6a53d48da2f02b55a6b897d739dbe9b78d3e88a7be833b1b7735",
+      "label": -0.007301449775695801
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-03-17",
+      "context_start": "1997-09-12",
+      "context_end": "1998-03-17",
+      "entry_date": "1998-03-18",
+      "exit_date": "1998-03-19",
+      "context_sha256": "05f60866690684ba71b3fd14a7d3a54d94d7443db19b5fd544f657fe11b7c38c",
+      "label": 0.0038875341415405273
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-04-08",
+      "context_start": "1997-10-06",
+      "context_end": "1998-04-08",
+      "entry_date": "1998-04-09",
+      "exit_date": "1998-04-13",
+      "context_sha256": "2330396cde1d76904733fea4cafca4cfe871b4443b45eeac68ddcacf46468dd4",
+      "label": -0.0008824467658996582
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-05-04",
+      "context_start": "1997-10-29",
+      "context_end": "1998-05-04",
+      "entry_date": "1998-05-05",
+      "exit_date": "1998-05-06",
+      "context_sha256": "e990e5c78e75492e0a8fd81ceefd5879e04796beafc6db36e86bbee9ff15a091",
+      "label": -0.009484469890594482
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-05-28",
+      "context_start": "1997-11-21",
+      "context_end": "1998-05-28",
+      "entry_date": "1998-05-29",
+      "exit_date": "1998-06-01",
+      "context_sha256": "5078c82070d9c2b3d3146bc1cba8ff5bba7ce91f36d630a1dc6bd85d0e1fb6f1",
+      "label": 0.00014674663543701172
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-06-19",
+      "context_start": "1997-12-16",
+      "context_end": "1998-06-19",
+      "entry_date": "1998-06-22",
+      "exit_date": "1998-06-23",
+      "context_sha256": "210b0d8d650d5dfa27891f1a1510356dca534d39fdce1be3b359b45a9ad07be2",
+      "label": 0.014756917953491211
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-07-15",
+      "context_start": "1998-01-12",
+      "context_end": "1998-07-15",
+      "entry_date": "1998-07-16",
+      "exit_date": "1998-07-17",
+      "context_sha256": "1b65688a94016ce56bd99b196d2278bdf3621b4fb7530f90f7430e018b70141b",
+      "label": 0.0023311376571655273
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-08-07",
+      "context_start": "1998-02-05",
+      "context_end": "1998-08-07",
+      "entry_date": "1998-08-10",
+      "exit_date": "1998-08-11",
+      "context_sha256": "f7cb177c27f867cd893d2dcd0fe07619585066481799014242df372929e93969",
+      "label": -0.013073146343231201
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-08-31",
+      "context_start": "1998-03-02",
+      "context_end": "1998-08-31",
+      "entry_date": "1998-09-01",
+      "exit_date": "1998-09-02",
+      "context_sha256": "291af0626d63360ec6125c860078928b5b468db8993da1f8e62c7891306f6f45",
+      "label": -0.0038018226623535156
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-09-24",
+      "context_start": "1998-03-25",
+      "context_end": "1998-09-24",
+      "entry_date": "1998-09-25",
+      "exit_date": "1998-09-28",
+      "context_sha256": "d1b8d8bde9f2c400bf6930f573cdd75c7899e8a7ee38d026f8c0f0ee21faf851",
+      "label": 0.003771185874938965
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-10-19",
+      "context_start": "1998-04-20",
+      "context_end": "1998-10-19",
+      "entry_date": "1998-10-20",
+      "exit_date": "1998-10-21",
+      "context_sha256": "3dbabb51c972e1b8e207f8246b05fac2f0145719bb0efa6319ee26aa5bbf070b",
+      "label": 0.005630016326904297
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-11-10",
+      "context_start": "1998-05-12",
+      "context_end": "1998-11-10",
+      "entry_date": "1998-11-11",
+      "exit_date": "1998-11-12",
+      "context_sha256": "d00ecfebc0bbb9458fd79164eba3ffa642221b99d178ec9932a0da95241b9ec1",
+      "label": -0.002926051616668701
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-12-04",
+      "context_start": "1998-06-05",
+      "context_end": "1998-12-04",
+      "entry_date": "1998-12-07",
+      "exit_date": "1998-12-08",
+      "context_sha256": "f94b5fcd9488bd44e285dd967dd1e153217a3c61ad50d74f898b3aa8ef425dd9",
+      "label": -0.005321145057678223
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1998-12-29",
+      "context_start": "1998-06-29",
+      "context_end": "1998-12-29",
+      "entry_date": "1998-12-30",
+      "exit_date": "1998-12-31",
+      "context_sha256": "14ec22e1bd1637c839895fd35f236b7bf3f0d67a209a1291cd5c8c3273dc3ff7",
+      "label": -0.0021917223930358887
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-01-25",
+      "context_start": "1998-07-23",
+      "context_end": "1999-01-25",
+      "entry_date": "1999-01-26",
+      "exit_date": "1999-01-27",
+      "context_sha256": "75a87f3ed3250500b2b935e6a105d65f8505d4e6c7b9a9a70f6a01131a53c24e",
+      "label": -0.007298529148101807
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-02-18",
+      "context_start": "1998-08-17",
+      "context_end": "1999-02-18",
+      "entry_date": "1999-02-19",
+      "exit_date": "1999-02-22",
+      "context_sha256": "f8f2b06a11a95fd0067b6253c2154a5db7952ce099c08b3653ebca334cdda942",
+      "label": 0.026565074920654297
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-03-12",
+      "context_start": "1998-09-09",
+      "context_end": "1999-03-12",
+      "entry_date": "1999-03-15",
+      "exit_date": "1999-03-16",
+      "context_sha256": "70d6c5cd4348b0d44146025e3d3d144ff8de41124df0ff49fa59e09212460d04",
+      "label": -0.0006731748580932617
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-04-07",
+      "context_start": "1998-10-02",
+      "context_end": "1999-04-07",
+      "entry_date": "1999-04-08",
+      "exit_date": "1999-04-09",
+      "context_sha256": "4521605bf501e641a99f87aab37976bbc6f12bc9cf6bc18d41b31f91a6fdd9de",
+      "label": 0.0032515525817871094
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-04-30",
+      "context_start": "1998-10-27",
+      "context_end": "1999-04-30",
+      "entry_date": "1999-05-03",
+      "exit_date": "1999-05-04",
+      "context_sha256": "19c3b694e303b482477404556964d88c70daa54af6ce740e57b907fc066dff5b",
+      "label": -0.016705691814422607
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-05-24",
+      "context_start": "1998-11-18",
+      "context_end": "1999-05-24",
+      "entry_date": "1999-05-25",
+      "exit_date": "1999-05-26",
+      "context_sha256": "2f1afa1d4eb8941e54d7fe36b6c94139837ce274944ae17161030fa28e483684",
+      "label": 0.015851736068725586
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-06-17",
+      "context_start": "1998-12-14",
+      "context_end": "1999-06-17",
+      "entry_date": "1999-06-18",
+      "exit_date": "1999-06-21",
+      "context_sha256": "521cdc1d62888c326428b5147c9a93f86fb3bdd746d1fca27b580baa20671870",
+      "label": 0.004587292671203613
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-07-13",
+      "context_start": "1999-01-08",
+      "context_end": "1999-07-13",
+      "entry_date": "1999-07-14",
+      "exit_date": "1999-07-15",
+      "context_sha256": "0d12c912334b8e118112d90a8108b7cbb1b3270cc10e767a9d59cbf04d2ed625",
+      "label": 0.008189201354980469
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-08-04",
+      "context_start": "1999-02-02",
+      "context_end": "1999-08-04",
+      "entry_date": "1999-08-05",
+      "exit_date": "1999-08-06",
+      "context_sha256": "5040305797a6a681fa3ecfd73ac7232efb1e4ad46ad005aed89d243792b1d677",
+      "label": -0.010215282440185547
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-08-27",
+      "context_start": "1999-02-26",
+      "context_end": "1999-08-27",
+      "entry_date": "1999-08-30",
+      "exit_date": "1999-08-31",
+      "context_sha256": "d7e9acc797ff4a056157ced890317d03b516dcb9adbff9b85cac39fe2521bf44",
+      "label": -0.0027265548706054688
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-09-22",
+      "context_start": "1999-03-23",
+      "context_end": "1999-09-22",
+      "entry_date": "1999-09-23",
+      "exit_date": "1999-09-24",
+      "context_sha256": "7d7b6a50b9e2c70d22e69d67a33791cbb6096da8716d9f252bc795572543f070",
+      "label": -0.0023820996284484863
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-10-14",
+      "context_start": "1999-04-15",
+      "context_end": "1999-10-14",
+      "entry_date": "1999-10-15",
+      "exit_date": "1999-10-18",
+      "context_sha256": "220c16684ae37e649e255dbb2978b79bad44e1b359dc47e727ed5cf4211cdb01",
+      "label": 0.0053871870040893555
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-11-08",
+      "context_start": "1999-05-10",
+      "context_end": "1999-11-08",
+      "entry_date": "1999-11-09",
+      "exit_date": "1999-11-10",
+      "context_sha256": "398cbf6d720d8808d33cf8df23ac883476753cf0733b850cadbc62d4f875ce69",
+      "label": 0.005991339683532715
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-12-01",
+      "context_start": "1999-06-02",
+      "context_end": "1999-12-01",
+      "entry_date": "1999-12-02",
+      "exit_date": "1999-12-03",
+      "context_sha256": "3385e7df4a9f0535f92831fc800b7a555cdd3999bddf626f5e99c899ddd13b52",
+      "label": 0.017217397689819336
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "1999-12-27",
+      "context_start": "1999-06-25",
+      "context_end": "1999-12-27",
+      "entry_date": "1999-12-28",
+      "exit_date": "1999-12-29",
+      "context_sha256": "cb1cbd962a63c17e2a387ffa446783822df55c0aa3a2bf8f832baa36822c83c9",
+      "label": 0.0039789676666259766
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-01-20",
+      "context_start": "1999-07-21",
+      "context_end": "2000-01-20",
+      "entry_date": "2000-01-21",
+      "exit_date": "2000-01-24",
+      "context_sha256": "996c1e306895c315458860bffb3a5b4e6d15d090ea04a1c8a4d8502cddcea718",
+      "label": -0.027633607387542725
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-02-11",
+      "context_start": "1999-08-12",
+      "context_end": "2000-02-11",
+      "entry_date": "2000-02-14",
+      "exit_date": "2000-02-15",
+      "context_sha256": "b13b45654aee3a889b53f7c2802fabf60774c81a294e16a73960136437ceff17",
+      "label": 0.00871264934539795
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-03-08",
+      "context_start": "1999-09-07",
+      "context_end": "2000-03-08",
+      "entry_date": "2000-03-09",
+      "exit_date": "2000-03-10",
+      "context_sha256": "a53511a8e3052215fb8a96edfbf4146468f61ab5eaebf282e8b63cfc13d34ddb",
+      "label": -0.004722893238067627
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-03-31",
+      "context_start": "1999-09-30",
+      "context_end": "2000-03-31",
+      "entry_date": "2000-04-03",
+      "exit_date": "2000-04-04",
+      "context_sha256": "c02af88d268d7c3834bd123b7895ffe8817edf7ab0458ac7457a611c3f3eb28e",
+      "label": -0.007463634014129639
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-04-25",
+      "context_start": "1999-10-22",
+      "context_end": "2000-04-25",
+      "entry_date": "2000-04-26",
+      "exit_date": "2000-04-27",
+      "context_sha256": "4e96b0c23af341969f0a1c1791612a437ffd1df9a4eaf7a89a2375652e2c46a3",
+      "label": 0.002689957618713379
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-05-18",
+      "context_start": "1999-11-16",
+      "context_end": "2000-05-18",
+      "entry_date": "2000-05-19",
+      "exit_date": "2000-05-22",
+      "context_sha256": "6eeeb6a0d2ff5e33d9c0e367cc9ba4bf3b4684d40e51c44d018b4016ef67b81b",
+      "label": -0.0044280290603637695
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-06-13",
+      "context_start": "1999-12-10",
+      "context_end": "2000-06-13",
+      "entry_date": "2000-06-14",
+      "exit_date": "2000-06-15",
+      "context_sha256": "2cfba019bf194da420a42be40135cbc1efbf4703906342e846be0b3c38c569f7",
+      "label": 0.005569338798522949
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-07-06",
+      "context_start": "2000-01-04",
+      "context_end": "2000-07-06",
+      "entry_date": "2000-07-07",
+      "exit_date": "2000-07-10",
+      "context_sha256": "438b53bbfadcd00ac380e7ef03580c94f88af110e77386d27f291ea02aeb880e",
+      "label": -0.002217888832092285
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-07-31",
+      "context_start": "2000-01-28",
+      "context_end": "2000-07-31",
+      "entry_date": "2000-08-01",
+      "exit_date": "2000-08-02",
+      "context_sha256": "ace574fe092b7a83e6d238ac738ea10c216f82c3e2be5889e3e5c367ac09e193",
+      "label": 0.0004172325134277344
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-08-23",
+      "context_start": "2000-02-23",
+      "context_end": "2000-08-23",
+      "entry_date": "2000-08-24",
+      "exit_date": "2000-08-25",
+      "context_sha256": "c728263aab0ca3350026fed26dd8647181a19466e30f5da384f0f6eaa4ee16cc",
+      "label": -0.001233220100402832
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-09-15",
+      "context_start": "2000-03-16",
+      "context_end": "2000-09-15",
+      "entry_date": "2000-09-18",
+      "exit_date": "2000-09-19",
+      "context_sha256": "fc66b74df73a65565c8c64fe8cc0a7cbc20c60fc76eb0d43aa45f0e34a982361",
+      "label": 0.010654091835021973
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-10-10",
+      "context_start": "2000-04-10",
+      "context_end": "2000-10-10",
+      "entry_date": "2000-10-11",
+      "exit_date": "2000-10-12",
+      "context_sha256": "ca08f64252d102ff41135999cd89fbe6ec9238f42f45a8ba5fce90fa1796d820",
+      "label": -0.02550947666168213
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-11-01",
+      "context_start": "2000-05-03",
+      "context_end": "2000-11-01",
+      "entry_date": "2000-11-02",
+      "exit_date": "2000-11-03",
+      "context_sha256": "7cf52268e0564065439fa908ac4c3d1393b13a91caeb7a35c22c6f3270093a54",
+      "label": -0.001141190528869629
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-11-27",
+      "context_start": "2000-05-26",
+      "context_end": "2000-11-27",
+      "entry_date": "2000-11-28",
+      "exit_date": "2000-11-29",
+      "context_sha256": "c699de8bede697568297229eb855c4f292c6fd8e56c0b86d9cf685e00a6bdf75",
+      "label": 0.004371047019958496
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2000-12-20",
+      "context_start": "2000-06-21",
+      "context_end": "2000-12-20",
+      "entry_date": "2000-12-21",
+      "exit_date": "2000-12-22",
+      "context_sha256": "608bdd7cee4d52cd5912c723050c3edc91448aef683af346eccc0f8b0279f6c5",
+      "label": 0.024387001991271973
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-01-16",
+      "context_start": "2000-07-14",
+      "context_end": "2001-01-16",
+      "entry_date": "2001-01-17",
+      "exit_date": "2001-01-18",
+      "context_sha256": "95d9f1673e8a46e3c2f9cd32c2dfd71ead78f36a09b8587a5cf078946ec84fa3",
+      "label": 0.013915300369262695
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-02-08",
+      "context_start": "2000-08-08",
+      "context_end": "2001-02-08",
+      "entry_date": "2001-02-09",
+      "exit_date": "2001-02-12",
+      "context_sha256": "6a010ac8dccdd37101879db085bf522fe715d7be0a807a6bb71dbe8f86ef35b0",
+      "label": 0.011827349662780762
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-03-06",
+      "context_start": "2000-08-31",
+      "context_end": "2001-03-06",
+      "entry_date": "2001-03-07",
+      "exit_date": "2001-03-08",
+      "context_sha256": "e914fe9190b9253a963087e5693dcba39d2844cc6f4141100300ee902117db54",
+      "label": 0.0022585391998291016
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-03-28",
+      "context_start": "2000-09-25",
+      "context_end": "2001-03-28",
+      "entry_date": "2001-03-29",
+      "exit_date": "2001-03-30",
+      "context_sha256": "7f46b9621d7fb0b403dbd2181d08aed5563695363512eeff55a7c65deb645f02",
+      "label": 0.010784387588500977
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-04-23",
+      "context_start": "2000-10-18",
+      "context_end": "2001-04-23",
+      "entry_date": "2001-04-24",
+      "exit_date": "2001-04-25",
+      "context_sha256": "35498da2e8f72da34557fcfb71a3d4a31f2d2eaf42297f73403a8ae92f570f1e",
+      "label": 0.01594090461730957
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-05-16",
+      "context_start": "2000-11-10",
+      "context_end": "2001-05-16",
+      "entry_date": "2001-05-17",
+      "exit_date": "2001-05-18",
+      "context_sha256": "ac20bfc64352d7b95ea1469e8427a9081ca19b403f00d556d4ae9603b6f8c839",
+      "label": 0.0026930570602416992
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-06-08",
+      "context_start": "2000-12-05",
+      "context_end": "2001-06-08",
+      "entry_date": "2001-06-11",
+      "exit_date": "2001-06-12",
+      "context_sha256": "80c7aa7d27937776be425311b789f9a66ba3f354d4341e380b35128c49a1b62a",
+      "label": 0.0011638402938842773
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-07-03",
+      "context_start": "2000-12-29",
+      "context_end": "2001-07-03",
+      "entry_date": "2001-07-05",
+      "exit_date": "2001-07-06",
+      "context_sha256": "4d58748bf7ffd65153b57e8fa47cfd0b1f623acceb6d4a63cf3cdd228c06525e",
+      "label": -0.023498237133026123
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-07-27",
+      "context_start": "2001-01-25",
+      "context_end": "2001-07-27",
+      "entry_date": "2001-07-30",
+      "exit_date": "2001-07-31",
+      "context_sha256": "1377e412449c4b8570d73eb4ffaf2c8f8e21bc9f5289362d9af5a3d0453e2293",
+      "label": 0.005570650100708008
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-08-20",
+      "context_start": "2001-02-16",
+      "context_end": "2001-08-20",
+      "entry_date": "2001-08-21",
+      "exit_date": "2001-08-22",
+      "context_sha256": "c427b81b1dc387d9cac056e1f9da90f56205a1e3d7b4e63770b2e62fbf07572c",
+      "label": 0.0069561004638671875
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-09-19",
+      "context_start": "2001-03-14",
+      "context_end": "2001-09-19",
+      "entry_date": "2001-09-20",
+      "exit_date": "2001-09-21",
+      "context_sha256": "b078f682292a28147f31d063586c82cb555d8f70ca8af7762659d57e7f127c84",
+      "label": -0.019034266471862793
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-10-11",
+      "context_start": "2001-04-05",
+      "context_end": "2001-10-11",
+      "entry_date": "2001-10-12",
+      "exit_date": "2001-10-15",
+      "context_sha256": "a76d7e63af2db72ac0d7529dd753ae70201d93c0cb12632532d1fe02e576d75e",
+      "label": -0.0015298128128051758
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-11-05",
+      "context_start": "2001-05-01",
+      "context_end": "2001-11-05",
+      "entry_date": "2001-11-06",
+      "exit_date": "2001-11-07",
+      "context_sha256": "143c96a3a3f17dad5939ca40abf6462d4c77958dfc3545d8d68bb96abbeb4fa5",
+      "label": -0.0027348995208740234
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-11-29",
+      "context_start": "2001-05-24",
+      "context_end": "2001-11-29",
+      "entry_date": "2001-11-30",
+      "exit_date": "2001-12-03",
+      "context_sha256": "fdda7f5bf0633194294365a00c5e8e523d0400aa0265b169950d44ed2279c77f",
+      "label": -0.008381187915802002
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2001-12-21",
+      "context_start": "2001-06-18",
+      "context_end": "2001-12-21",
+      "entry_date": "2001-12-24",
+      "exit_date": "2001-12-26",
+      "context_sha256": "4eac1084edfa4e9704f4aeb93a9fce9a90e82526cdce781db4869d18ec762c22",
+      "label": 0.0041234493255615234
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-01-17",
+      "context_start": "2001-07-12",
+      "context_end": "2002-01-17",
+      "entry_date": "2002-01-18",
+      "exit_date": "2002-01-22",
+      "context_sha256": "c449afcda6ee471b00128c98d478cad3d1302972e1f72b4a6043e0e14a88d392",
+      "label": -0.00733417272567749
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-02-12",
+      "context_start": "2001-08-06",
+      "context_end": "2002-02-12",
+      "entry_date": "2002-02-13",
+      "exit_date": "2002-02-14",
+      "context_sha256": "196125cdb71acef6aa105eac3064e3b278b3f7ff0c2b60e4975d6f7ea2625cd3",
+      "label": -0.0018149614334106445
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-03-07",
+      "context_start": "2001-08-28",
+      "context_end": "2002-03-07",
+      "entry_date": "2002-03-08",
+      "exit_date": "2002-03-11",
+      "context_sha256": "a98512cd70dcf7fb48ee049f3d1d469fef17069aa4ece7b80b079dcc8a8997b7",
+      "label": 0.0033925771713256836
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-04-02",
+      "context_start": "2001-09-27",
+      "context_end": "2002-04-02",
+      "entry_date": "2002-04-03",
+      "exit_date": "2002-04-04",
+      "context_sha256": "60d8106e39c534f7d730096b86a6dc9d6b7d2543d2e1605d713bba198c9d3e84",
+      "label": 0.0008351802825927734
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-04-25",
+      "context_start": "2001-10-22",
+      "context_end": "2002-04-25",
+      "entry_date": "2002-04-26",
+      "exit_date": "2002-04-29",
+      "context_sha256": "4af6f0ff2e980902bc9559fe2959b27fcea084723ae7162e090199faf6fd3dab",
+      "label": -0.010099232196807861
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-05-17",
+      "context_start": "2001-11-13",
+      "context_end": "2002-05-17",
+      "entry_date": "2002-05-20",
+      "exit_date": "2002-05-21",
+      "context_sha256": "a73f96da77244528d152438afe02591282389ca13eef172278e1bb9501f0d79a",
+      "label": -0.0109902024269104
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-06-12",
+      "context_start": "2001-12-07",
+      "context_end": "2002-06-12",
+      "entry_date": "2002-06-13",
+      "exit_date": "2002-06-14",
+      "context_sha256": "a6e469df12bb64f6cfaa20bd63b6ffcc85b03d643b11bb56acb4573afb9d71bb",
+      "label": -0.0022683143615722656
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-07-08",
+      "context_start": "2002-01-03",
+      "context_end": "2002-07-08",
+      "entry_date": "2002-07-09",
+      "exit_date": "2002-07-10",
+      "context_sha256": "138f6851adc9b9f00499a4274b3dd9170b6d33def55837422e32dd60ad378e22",
+      "label": -0.03396201133728027
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-07-30",
+      "context_start": "2002-01-28",
+      "context_end": "2002-07-30",
+      "entry_date": "2002-07-31",
+      "exit_date": "2002-08-01",
+      "context_sha256": "ac2c6fe9959c09f9da980b57fc2db7f912350ef82979f5ea0ea1ea14a86df8ce",
+      "label": -0.02957373857498169
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-08-22",
+      "context_start": "2002-02-21",
+      "context_end": "2002-08-22",
+      "entry_date": "2002-08-23",
+      "exit_date": "2002-08-26",
+      "context_sha256": "a34b8fe3a0d5aa7e4a5ee7c8ae123b17b947d214c2d43a6eb58dc4c1782fd384",
+      "label": 0.007535696029663086
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-09-16",
+      "context_start": "2002-03-15",
+      "context_end": "2002-09-16",
+      "entry_date": "2002-09-17",
+      "exit_date": "2002-09-18",
+      "context_sha256": "7c9712cea0ea685f9bde205a3dbe9493f4f1fee54f22b05ac48471a2ad347ea7",
+      "label": -0.00464785099029541
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-10-09",
+      "context_start": "2002-04-10",
+      "context_end": "2002-10-09",
+      "entry_date": "2002-10-10",
+      "exit_date": "2002-10-11",
+      "context_sha256": "fe0fc0b9bade59c0bbb752b5576523906c4de81366f4749be470b51f607d67b8",
+      "label": 0.039058685302734375
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-11-01",
+      "context_start": "2002-05-03",
+      "context_end": "2002-11-01",
+      "entry_date": "2002-11-04",
+      "exit_date": "2002-11-05",
+      "context_sha256": "41bce2ded9f27abede61bce167260e21562dd3c3e9bf78050d67d013e9761bff",
+      "label": 0.007750391960144043
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-11-25",
+      "context_start": "2002-05-28",
+      "context_end": "2002-11-25",
+      "entry_date": "2002-11-26",
+      "exit_date": "2002-11-27",
+      "context_sha256": "8c4173ad94f01f6a2b78b2a016c3995abf8f37bced945a695701809cb3a84e50",
+      "label": 0.02798616886138916
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2002-12-19",
+      "context_start": "2002-06-20",
+      "context_end": "2002-12-19",
+      "entry_date": "2002-12-20",
+      "exit_date": "2002-12-23",
+      "context_sha256": "45041b78fd789efbeabbc4a6fd0be9e791ce8340500b653d1e66e29e7dbaa792",
+      "label": 0.0018085241317749023
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-01-15",
+      "context_start": "2002-07-16",
+      "context_end": "2003-01-15",
+      "entry_date": "2003-01-16",
+      "exit_date": "2003-01-17",
+      "context_sha256": "25f48dd0ee1db16c68ed970c60a192f3c74122619bc6a2dd8d4a75d76c8062a0",
+      "label": -0.014016985893249512
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-02-07",
+      "context_start": "2002-08-07",
+      "context_end": "2003-02-07",
+      "entry_date": "2003-02-10",
+      "exit_date": "2003-02-11",
+      "context_sha256": "0972cffc0a53ded243eeb2fb77bc9366dd338f1c8da5eaa3698d51b9da28573f",
+      "label": -0.008098304271697998
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-03-05",
+      "context_start": "2002-08-30",
+      "context_end": "2003-03-05",
+      "entry_date": "2003-03-06",
+      "exit_date": "2003-03-07",
+      "context_sha256": "858fa816b6c1f86a8ebd63824c50fee5e3186d44e227155581ea44e55edf284d",
+      "label": 0.008259415626525879
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-03-28",
+      "context_start": "2002-09-25",
+      "context_end": "2003-03-28",
+      "entry_date": "2003-03-31",
+      "exit_date": "2003-04-01",
+      "context_sha256": "485f5159b4f26b1f961a96d9e1a77d2ea8a28332916e5b99d09b510c7b314045",
+      "label": 0.012143611907958984
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-04-22",
+      "context_start": "2002-10-17",
+      "context_end": "2003-04-22",
+      "entry_date": "2003-04-23",
+      "exit_date": "2003-04-24",
+      "context_sha256": "826bf2ea6f6c967db88e67c0609bc4ce168981c518d1122e372cd18082f60fe1",
+      "label": -0.008258819580078125
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-05-15",
+      "context_start": "2002-11-11",
+      "context_end": "2003-05-15",
+      "entry_date": "2003-05-16",
+      "exit_date": "2003-05-19",
+      "context_sha256": "61f86109339423420f7ab0ffc9415ae7a819276d1863121368da2184de6679f1",
+      "label": -0.024917900562286377
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-06-10",
+      "context_start": "2002-12-05",
+      "context_end": "2003-06-10",
+      "entry_date": "2003-06-11",
+      "exit_date": "2003-06-12",
+      "context_sha256": "cb15fa1ecbdf50394e982f01d84aff1e14c6759dbed850963fd33705a9c57336",
+      "label": 0.0010325908660888672
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-07-02",
+      "context_start": "2002-12-30",
+      "context_end": "2003-07-02",
+      "entry_date": "2003-07-03",
+      "exit_date": "2003-07-07",
+      "context_sha256": "2d1e56453109543fb25ac0be92f9d18a99bb2f211d374d8201ba91155bf1da6f",
+      "label": 0.018991589546203613
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-07-28",
+      "context_start": "2003-01-24",
+      "context_end": "2003-07-28",
+      "entry_date": "2003-07-29",
+      "exit_date": "2003-07-30",
+      "context_sha256": "04457757e96d0e562d263eee81356274372f10dacae9982db80a0f7ed2d9b191",
+      "label": -0.0018094182014465332
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-08-19",
+      "context_start": "2003-02-18",
+      "context_end": "2003-08-19",
+      "entry_date": "2003-08-20",
+      "exit_date": "2003-08-21",
+      "context_sha256": "e5b41e5b05de58f9f40d302d609577ac722b97ab3894d5272d4e2ff1063d1dab",
+      "label": 0.0029691457748413086
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-09-12",
+      "context_start": "2003-03-13",
+      "context_end": "2003-09-12",
+      "entry_date": "2003-09-15",
+      "exit_date": "2003-09-16",
+      "context_sha256": "42cd7313bff3d2da7a07b911a8361ace55dae12012835b24a1423fa07e47aef2",
+      "label": 0.014298200607299805
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-10-07",
+      "context_start": "2003-04-07",
+      "context_end": "2003-10-07",
+      "entry_date": "2003-10-08",
+      "exit_date": "2003-10-09",
+      "context_sha256": "09c85d1bc5ebf81900d37c8a999e7652a1c0a8be0251f22eca1f12f9e80ad5f8",
+      "label": 0.00478816032409668
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-10-29",
+      "context_start": "2003-04-30",
+      "context_end": "2003-10-29",
+      "entry_date": "2003-10-30",
+      "exit_date": "2003-10-31",
+      "context_sha256": "a10f3ef9766877312b8abe7387a851060e0d689e01669bb00c510b34bf062165",
+      "label": 0.0036009550094604492
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-11-21",
+      "context_start": "2003-05-23",
+      "context_end": "2003-11-21",
+      "entry_date": "2003-11-24",
+      "exit_date": "2003-11-25",
+      "context_sha256": "4152f61d3a1ec9846dec1f3354703956834040368eca3da4060ca53609c08a51",
+      "label": 0.001720428466796875
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2003-12-17",
+      "context_start": "2003-06-18",
+      "context_end": "2003-12-17",
+      "entry_date": "2003-12-18",
+      "exit_date": "2003-12-19",
+      "context_sha256": "4beff5a7acb4579472c0e9ac6c38b25f8595016de9d6b96718eb9f82c221a173",
+      "label": -0.0004774332046508789
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-01-12",
+      "context_start": "2003-07-11",
+      "context_end": "2004-01-12",
+      "entry_date": "2004-01-13",
+      "exit_date": "2004-01-14",
+      "context_sha256": "e38f60e63272f6251078394c21c05b96bfeb012e795f02b66b9c39b619af8426",
+      "label": 0.00829458236694336
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-02-05",
+      "context_start": "2003-08-05",
+      "context_end": "2004-02-05",
+      "entry_date": "2004-02-06",
+      "exit_date": "2004-02-09",
+      "context_sha256": "dfaf0e29da84a649eb63790376453833d337a17130a4e8967315f65c81f335fd",
+      "label": -0.0025814175605773926
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-03-02",
+      "context_start": "2003-08-28",
+      "context_end": "2004-03-02",
+      "entry_date": "2004-03-03",
+      "exit_date": "2004-03-04",
+      "context_sha256": "15cccd9928956b28308bf37deeaa34c23ad3a446ccf03499a5196788e56bd994",
+      "label": 0.0033360719680786133
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-03-24",
+      "context_start": "2003-09-22",
+      "context_end": "2004-03-24",
+      "entry_date": "2004-03-25",
+      "exit_date": "2004-03-26",
+      "context_sha256": "88fa020619b7b0e4ef127480229d467ad8291105469186418b11b2c222dd839a",
+      "label": -0.0010186433792114258
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-04-19",
+      "context_start": "2003-10-15",
+      "context_end": "2004-04-19",
+      "entry_date": "2004-04-20",
+      "exit_date": "2004-04-21",
+      "context_sha256": "34ae9965cdcf48550d659f2911ae78ca6480920116812169471752dcfac29926",
+      "label": 0.005312323570251465
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-05-12",
+      "context_start": "2003-11-07",
+      "context_end": "2004-05-12",
+      "entry_date": "2004-05-13",
+      "exit_date": "2004-05-14",
+      "context_sha256": "664e68151709f51d76e81f9a50fb0441ac03cbaeedb37197856fe2a665eae97a",
+      "label": -0.000674903392791748
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-06-04",
+      "context_start": "2003-12-02",
+      "context_end": "2004-06-04",
+      "entry_date": "2004-06-07",
+      "exit_date": "2004-06-08",
+      "context_sha256": "eea63578940f8d37e58964a0528681cab4c099d0acd33734ab28c0acad5a0880",
+      "label": 0.001543283462524414
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-06-30",
+      "context_start": "2003-12-26",
+      "context_end": "2004-06-30",
+      "entry_date": "2004-07-01",
+      "exit_date": "2004-07-02",
+      "context_sha256": "534d9c6e2eff44ffbfd0d8918d9df139873d1b26cafe2aaea441b02fc94a2e0d",
+      "label": -0.0031533241271972656
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-07-23",
+      "context_start": "2004-01-21",
+      "context_end": "2004-07-23",
+      "entry_date": "2004-07-26",
+      "exit_date": "2004-07-27",
+      "context_sha256": "2698aa420bdcb621cd948bc37201dfd119366f96431b45c0c28394931c4d9270",
+      "label": 0.009925603866577148
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-08-17",
+      "context_start": "2004-02-13",
+      "context_end": "2004-08-17",
+      "entry_date": "2004-08-18",
+      "exit_date": "2004-08-19",
+      "context_sha256": "6bf0149f2c16ed059439e0cff6531285072591469b9283d367caacbd0a127bd4",
+      "label": -0.0035976767539978027
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-09-10",
+      "context_start": "2004-03-10",
+      "context_end": "2004-09-10",
+      "entry_date": "2004-09-13",
+      "exit_date": "2004-09-14",
+      "context_sha256": "fb903376408960682d9bb613a8ff1c1614fc0a10260f1f10cbcc5600858b90e6",
+      "label": 0.002229452133178711
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-10-04",
+      "context_start": "2004-04-01",
+      "context_end": "2004-10-04",
+      "entry_date": "2004-10-05",
+      "exit_date": "2004-10-06",
+      "context_sha256": "4352103bb251747695de79b82df032ca11b080c82fd725cc1af9c3df9701878c",
+      "label": 0.0066727399826049805
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-10-27",
+      "context_start": "2004-04-27",
+      "context_end": "2004-10-27",
+      "entry_date": "2004-10-28",
+      "exit_date": "2004-10-29",
+      "context_sha256": "912c291a3a0d86d32335ff94423517ac143432ae67cb3b572ef26f45eb196b6a",
+      "label": 0.0024480819702148438
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-11-19",
+      "context_start": "2004-05-20",
+      "context_end": "2004-11-19",
+      "entry_date": "2004-11-22",
+      "exit_date": "2004-11-23",
+      "context_sha256": "69f70d7942b762b1b3f7f356e211f5a529763752b05f75efb0cf7f13e059e9ad",
+      "label": -0.0002548694610595703
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2004-12-14",
+      "context_start": "2004-06-15",
+      "context_end": "2004-12-14",
+      "entry_date": "2004-12-15",
+      "exit_date": "2004-12-16",
+      "context_sha256": "24f073c59d04cd629ce8352297ea21e63233a03d61a9fd8583e41d80322de355",
+      "label": -0.002081751823425293
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-01-07",
+      "context_start": "2004-07-09",
+      "context_end": "2005-01-07",
+      "entry_date": "2005-01-10",
+      "exit_date": "2005-01-11",
+      "context_sha256": "73e163c88e00a8572bbd4ceb1bbd8c1688ce3eecd5bc1f6c9ee69970c228fc04",
+      "label": -0.006099581718444824
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-02-02",
+      "context_start": "2004-08-03",
+      "context_end": "2005-02-02",
+      "entry_date": "2005-02-03",
+      "exit_date": "2005-02-04",
+      "context_sha256": "c75ddd4ef82098b2e11dd6e94152cb59d132d4eccf36ea3dd36e722118c08ac1",
+      "label": 0.011043071746826172
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-02-25",
+      "context_start": "2004-08-25",
+      "context_end": "2005-02-25",
+      "entry_date": "2005-02-28",
+      "exit_date": "2005-03-01",
+      "context_sha256": "f98a4e60e61453f205908bd550d36f3cd1fe402de1009effda019965a308ca62",
+      "label": 0.0056580305099487305
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-03-22",
+      "context_start": "2004-09-20",
+      "context_end": "2005-03-22",
+      "entry_date": "2005-03-23",
+      "exit_date": "2005-03-24",
+      "context_sha256": "a33f05586abeefbd0437fdabc8a3f63fd6b3297f51c2e63dd7854a38b764846f",
+      "label": -0.0009466409683227539
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-04-15",
+      "context_start": "2004-10-13",
+      "context_end": "2005-04-15",
+      "entry_date": "2005-04-18",
+      "exit_date": "2005-04-19",
+      "context_sha256": "b0417fc86ea35922fa8143d56b2537a74303dee40cfb2cac4c14b1df37dc81c5",
+      "label": 0.005933880805969238
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-05-09",
+      "context_start": "2004-11-04",
+      "context_end": "2005-05-09",
+      "entry_date": "2005-05-10",
+      "exit_date": "2005-05-11",
+      "context_sha256": "2ceb56c33778ea44ce32e759f050f52bf09b9545dfd47adae40729bac92c7b25",
+      "label": 0.00419306755065918
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-06-02",
+      "context_start": "2004-11-30",
+      "context_end": "2005-06-02",
+      "entry_date": "2005-06-03",
+      "exit_date": "2005-06-06",
+      "context_sha256": "deac57efe6973ad3570751cb7b5223cd061a62b7489fb9646b20a1b87f1a40c2",
+      "label": 0.001245737075805664
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-06-24",
+      "context_start": "2004-12-22",
+      "context_end": "2005-06-24",
+      "entry_date": "2005-06-27",
+      "exit_date": "2005-06-28",
+      "context_sha256": "b0d2befbf6dafa35817148cb34756dc7726ddbc10ebc40a0b8a6a6b04244cccb",
+      "label": 0.009137511253356934
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-07-20",
+      "context_start": "2005-01-18",
+      "context_end": "2005-07-20",
+      "entry_date": "2005-07-21",
+      "exit_date": "2005-07-22",
+      "context_sha256": "e5962ccf4afc8e08340733059f56e593183664a8ca4ed29cbb6b8e49cc9d6a34",
+      "label": 0.005411386489868164
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-08-12",
+      "context_start": "2005-02-10",
+      "context_end": "2005-08-12",
+      "entry_date": "2005-08-15",
+      "exit_date": "2005-08-16",
+      "context_sha256": "4e53e219aa7f4619e7298d151164c06110f1462f838a2902618eda9c72dec1d8",
+      "label": -0.011775970458984375
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-09-06",
+      "context_start": "2005-03-07",
+      "context_end": "2005-09-06",
+      "entry_date": "2005-09-07",
+      "exit_date": "2005-09-08",
+      "context_sha256": "2077732db1c558c6ca99bfbb6f2cc336a57e9a558c8ed20804ef009c1d5d0b2e",
+      "label": -0.00379335880279541
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-09-29",
+      "context_start": "2005-03-31",
+      "context_end": "2005-09-29",
+      "entry_date": "2005-09-30",
+      "exit_date": "2005-10-03",
+      "context_sha256": "bee2f339b322953712dca92bafcfd99c4928cc815f2839b3f47a718d3a86e5e2",
+      "label": -0.001717209815979004
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-10-24",
+      "context_start": "2005-04-25",
+      "context_end": "2005-10-24",
+      "entry_date": "2005-10-25",
+      "exit_date": "2005-10-26",
+      "context_sha256": "4a1000441b78a3dbd388225bdd20a1089c71b105fe9d19cd3a1ef4a17f236f38",
+      "label": -0.004312455654144287
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-11-15",
+      "context_start": "2005-05-17",
+      "context_end": "2005-11-15",
+      "entry_date": "2005-11-16",
+      "exit_date": "2005-11-17",
+      "context_sha256": "46ac2b5ee81fe978a4191c2fa9115e8bed4d17843b3ea9b18f0d32ae1265d6ab",
+      "label": 0.009413599967956543
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2005-12-09",
+      "context_start": "2005-06-10",
+      "context_end": "2005-12-09",
+      "entry_date": "2005-12-12",
+      "exit_date": "2005-12-13",
+      "context_sha256": "ed1be90ca12cf8d2b8aa6f1e3cfe316e560adf149ba8eca1f2ad4eaaa26e3660",
+      "label": 0.005553603172302246
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-01-05",
+      "context_start": "2005-07-06",
+      "context_end": "2006-01-05",
+      "entry_date": "2006-01-06",
+      "exit_date": "2006-01-09",
+      "context_sha256": "b4cc7157c88a1b7c89fd1aa19e70cbee2db3b563b75f42104ac601339ab250c8",
+      "label": 0.0036563873291015625
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-01-30",
+      "context_start": "2005-07-28",
+      "context_end": "2006-01-30",
+      "entry_date": "2006-01-31",
+      "exit_date": "2006-02-01",
+      "context_sha256": "17b4fc0402edab9877bb5b96839cd117fac7d2c4f246ab9fd42ff03d5a343212",
+      "label": 0.0018593072891235352
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-02-23",
+      "context_start": "2005-08-22",
+      "context_end": "2006-02-23",
+      "entry_date": "2006-02-24",
+      "exit_date": "2006-02-27",
+      "context_sha256": "e1821a413f2fc75b90464d9196cdcf54f753494f44d532f7059c43201c6aa116",
+      "label": 0.0036371946334838867
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-03-20",
+      "context_start": "2005-09-15",
+      "context_end": "2006-03-20",
+      "entry_date": "2006-03-21",
+      "exit_date": "2006-03-22",
+      "context_sha256": "b277457459a973f19c203d8fd817ff1b48d77645aea15f76faf0bd70c71dd488",
+      "label": 0.006020545959472656
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-04-11",
+      "context_start": "2005-10-07",
+      "context_end": "2006-04-11",
+      "entry_date": "2006-04-12",
+      "exit_date": "2006-04-13",
+      "context_sha256": "605e9364d50813fd69554b65eba8e0383212717ab6b905e5e745919c351f70da",
+      "label": 0.0007762908935546875
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-05-05",
+      "context_start": "2005-11-01",
+      "context_end": "2006-05-05",
+      "entry_date": "2006-05-08",
+      "exit_date": "2006-05-09",
+      "context_sha256": "d8043f3d54eee3dbc62ada20194c5a08ba7e8921757611830efcb8deacc020f8",
+      "label": 0.000362396240234375
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-05-30",
+      "context_start": "2005-11-23",
+      "context_end": "2006-05-30",
+      "entry_date": "2006-05-31",
+      "exit_date": "2006-06-01",
+      "context_sha256": "5d52fff78064572787671d9c4a23dc745ad0030419bfcf43e2f6223a9a58db26",
+      "label": 0.012298345565795898
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-06-22",
+      "context_start": "2005-12-19",
+      "context_end": "2006-06-22",
+      "entry_date": "2006-06-23",
+      "exit_date": "2006-06-26",
+      "context_sha256": "6f2bf13fe96cfc89145c8c992dfe5e896ccf6ce03b41237e9da1c40e2874034f",
+      "label": 0.0048694610595703125
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-07-18",
+      "context_start": "2006-01-13",
+      "context_end": "2006-07-18",
+      "entry_date": "2006-07-19",
+      "exit_date": "2006-07-20",
+      "context_sha256": "820e3e03962712c4552e8d911a1fbba127e48c3065acfa7a68a2b8f54fd96111",
+      "label": -0.008477509021759033
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-08-09",
+      "context_start": "2006-02-07",
+      "context_end": "2006-08-09",
+      "entry_date": "2006-08-10",
+      "exit_date": "2006-08-11",
+      "context_sha256": "0ed8795ff62f290da9fe35166116048eb35e4a3afb1e162059cad565de0f2c51",
+      "label": -0.003986477851867676
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-09-01",
+      "context_start": "2006-03-03",
+      "context_end": "2006-09-01",
+      "entry_date": "2006-09-05",
+      "exit_date": "2006-09-06",
+      "context_sha256": "1b5c2d9d334d5b1d8e62f2268af699716be1ef7a81f60aae5a61051fcbf6c288",
+      "label": -0.009891510009765625
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-09-27",
+      "context_start": "2006-03-28",
+      "context_end": "2006-09-27",
+      "entry_date": "2006-09-28",
+      "exit_date": "2006-09-29",
+      "context_sha256": "59685866a0c415cb84f06fad0f0715789322ebb18de84905290c1dd46a574256",
+      "label": -0.0022631287574768066
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-10-19",
+      "context_start": "2006-04-20",
+      "context_end": "2006-10-19",
+      "entry_date": "2006-10-20",
+      "exit_date": "2006-10-23",
+      "context_sha256": "f9240be8e41cad6fa559398e19ef9567913937dd8c48c7f1003c77bf961eca9e",
+      "label": 0.0061522722244262695
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-11-13",
+      "context_start": "2006-05-15",
+      "context_end": "2006-11-13",
+      "entry_date": "2006-11-14",
+      "exit_date": "2006-11-15",
+      "context_sha256": "c4931626d0e207353641b8b9fb1be9d0705fbd085d55ff42a8bea588c94b8f77",
+      "label": 0.002404451370239258
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2006-12-07",
+      "context_start": "2006-06-08",
+      "context_end": "2006-12-07",
+      "entry_date": "2006-12-08",
+      "exit_date": "2006-12-11",
+      "context_sha256": "c3d3e94db4d1dc8506471d9a1581d5b163ae565ed1f09b3d499c8980598c20a5",
+      "label": 0.0022698640823364258
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-01-03",
+      "context_start": "2006-06-30",
+      "context_end": "2007-01-03",
+      "entry_date": "2007-01-04",
+      "exit_date": "2007-01-05",
+      "context_sha256": "aa5aac6829ac13089ad9c9d58a6b88f8df8fe6a4820b111529d64f7f37d236f5",
+      "label": -0.006084561347961426
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-01-29",
+      "context_start": "2006-07-26",
+      "context_end": "2007-01-29",
+      "entry_date": "2007-01-30",
+      "exit_date": "2007-01-31",
+      "context_sha256": "22193b5590c755466713045f040b10dc72d4d45d00abd9835ea9ee7eaa59bdf2",
+      "label": 0.006592869758605957
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-02-22",
+      "context_start": "2006-08-18",
+      "context_end": "2007-02-22",
+      "entry_date": "2007-02-23",
+      "exit_date": "2007-02-26",
+      "context_sha256": "f4daca3dd3fa58f5af1eacf3bdc76cdd1011b231fe2128afc9aabfaf67930c37",
+      "label": -0.0012540817260742188
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-03-16",
+      "context_start": "2006-09-12",
+      "context_end": "2007-03-16",
+      "entry_date": "2007-03-19",
+      "exit_date": "2007-03-20",
+      "context_sha256": "8444e501419d5b1a5f29f50573426b420a3b2c35d28e071f248b553c6a649e95",
+      "label": 0.006333470344543457
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-04-11",
+      "context_start": "2006-10-05",
+      "context_end": "2007-04-11",
+      "entry_date": "2007-04-12",
+      "exit_date": "2007-04-13",
+      "context_sha256": "7c84882559e238c21268cdf686a27d7f1e1029daca56e0f6b9a2e547acd72e21",
+      "label": 0.0034879446029663086
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-05-04",
+      "context_start": "2006-10-30",
+      "context_end": "2007-05-04",
+      "entry_date": "2007-05-07",
+      "exit_date": "2007-05-08",
+      "context_sha256": "729c35711b3f116f65dcde9ec7852d4555635c6e3da1747fdcccad69561cdd74",
+      "label": -0.0011659860610961914
+    }
+  ],
+  "valid": [
+    {
+      "instrument": "SPX",
+      "datetime": "2007-05-09",
+      "context_start": "2006-11-02",
+      "context_end": "2007-05-09",
+      "entry_date": "2007-05-10",
+      "exit_date": "2007-05-11",
+      "context_sha256": "a04a54b6c1067fbe8508539a989af4d7f7a41ee549ad46770badea87cc1cd5e2",
+      "label": 0.009641528129577637
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-05-24",
+      "context_start": "2006-11-17",
+      "context_end": "2007-05-24",
+      "entry_date": "2007-05-25",
+      "exit_date": "2007-05-29",
+      "context_sha256": "29486f584e87bbf76d304ed902815b201659ded885ce1111fb32b35c885071bd",
+      "label": 0.0015702247619628906
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-06-11",
+      "context_start": "2006-12-05",
+      "context_end": "2007-06-11",
+      "entry_date": "2007-06-12",
+      "exit_date": "2007-06-13",
+      "context_sha256": "f72fe89bdf8e00dccf9550c27c7af84557272230ee68484cfaaa01cc19fb0262",
+      "label": 0.015184164047241211
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-06-26",
+      "context_start": "2006-12-20",
+      "context_end": "2007-06-26",
+      "entry_date": "2007-06-27",
+      "exit_date": "2007-06-28",
+      "context_sha256": "2b6fb9fcf4d61cdd7233fefd5186fe63799b2eb9b39f4559a9fe4053085a1030",
+      "label": -0.000418245792388916
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-07-13",
+      "context_start": "2007-01-10",
+      "context_end": "2007-07-13",
+      "entry_date": "2007-07-16",
+      "exit_date": "2007-07-17",
+      "context_sha256": "874b27de8848b6c9aac310049c0ae503898e4f181a1fb052c25a9a8cf9917626",
+      "label": -9.679794311523438e-05
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-07-30",
+      "context_start": "2007-01-26",
+      "context_end": "2007-07-30",
+      "entry_date": "2007-07-31",
+      "exit_date": "2007-08-01",
+      "context_sha256": "39adb101fd5c35e57e10871857c19540d740212c9284f79a70010f602c40a575",
+      "label": 0.007242679595947266
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-08-14",
+      "context_start": "2007-02-12",
+      "context_end": "2007-08-14",
+      "entry_date": "2007-08-15",
+      "exit_date": "2007-08-16",
+      "context_sha256": "796f3546e4315a9a0f60e18d0b98daf791260149dcc88061a172689d712746ae",
+      "label": 0.0032488107681274414
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-08-30",
+      "context_start": "2007-03-01",
+      "context_end": "2007-08-30",
+      "entry_date": "2007-08-31",
+      "exit_date": "2007-09-04",
+      "context_sha256": "32e46ebdee4818a84579c03a3b509341d7933a6552a5ab915e35d34fe7280aa8",
+      "label": 0.010468244552612305
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-09-17",
+      "context_start": "2007-03-16",
+      "context_end": "2007-09-17",
+      "entry_date": "2007-09-18",
+      "exit_date": "2007-09-19",
+      "context_sha256": "721fc4e1d489094aa808201d5b928a07dfb854c3e6ba36677467ffa71fdda0e1",
+      "label": 0.0060863494873046875
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-10-02",
+      "context_start": "2007-04-02",
+      "context_end": "2007-10-02",
+      "entry_date": "2007-10-03",
+      "exit_date": "2007-10-04",
+      "context_sha256": "947112c78f8a7c0015c38f4c2948cbd755324fa989edbc6f10c2f35cca6678ca",
+      "label": 0.0021109580993652344
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-10-17",
+      "context_start": "2007-04-18",
+      "context_end": "2007-10-17",
+      "entry_date": "2007-10-18",
+      "exit_date": "2007-10-19",
+      "context_sha256": "6f0b4bc46eed9dda4ca50fa34027bc1e3e4ce7f5e1d8e053736ed20e76cc2558",
+      "label": -0.02561551332473755
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-11-02",
+      "context_start": "2007-05-04",
+      "context_end": "2007-11-02",
+      "entry_date": "2007-11-05",
+      "exit_date": "2007-11-06",
+      "context_sha256": "528c3d6bca759bbfb8913bdfe37fa68c8469d56f440ff3641daa3199fe293976",
+      "label": 0.012049198150634766
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-11-19",
+      "context_start": "2007-05-21",
+      "context_end": "2007-11-19",
+      "entry_date": "2007-11-20",
+      "exit_date": "2007-11-21",
+      "context_sha256": "74b77ea45833d93bfa01fadddf9e59c9ca91a4a4f9f0381c345efee9ecdd610b",
+      "label": -0.015926897525787354
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-12-05",
+      "context_start": "2007-06-06",
+      "context_end": "2007-12-05",
+      "entry_date": "2007-12-06",
+      "exit_date": "2007-12-07",
+      "context_sha256": "46bfb2891b7e0e66e908bb6e1b486820462c817236e1eaeb182dbd36fc76b60a",
+      "label": -0.001777946949005127
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2007-12-21",
+      "context_start": "2007-06-22",
+      "context_end": "2007-12-21",
+      "entry_date": "2007-12-24",
+      "exit_date": "2007-12-26",
+      "context_sha256": "590b5bb2f71dbf93cc03d1db18df14d236db0da625ac9fdb5a7d087d1229a527",
+      "label": 0.0008085966110229492
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-01-09",
+      "context_start": "2007-07-10",
+      "context_end": "2008-01-09",
+      "entry_date": "2008-01-10",
+      "exit_date": "2008-01-11",
+      "context_sha256": "a1087c33294fbd4ad434113d26fa7849e57abb58c92f88bff0d17b53827912a8",
+      "label": -0.013595402240753174
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-01-25",
+      "context_start": "2007-07-25",
+      "context_end": "2008-01-25",
+      "entry_date": "2008-01-28",
+      "exit_date": "2008-01-29",
+      "context_sha256": "5b950b35c1bc673a00457de8dd6f93fa3c77dc23aed224d47548a7836dfc6bde",
+      "label": 0.006159782409667969
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-02-12",
+      "context_start": "2007-08-10",
+      "context_end": "2008-02-12",
+      "entry_date": "2008-02-13",
+      "exit_date": "2008-02-14",
+      "context_sha256": "a9d94a7574a0d1c92263f4d7d444ae3fb8a8ea1d35400d85aa51175064b58487",
+      "label": -0.013421475887298584
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-02-28",
+      "context_start": "2007-08-27",
+      "context_end": "2008-02-28",
+      "entry_date": "2008-02-29",
+      "exit_date": "2008-03-03",
+      "context_sha256": "15845f094aa10c3ac20af5d502c5164553726dce7f376af14506179d7820404b",
+      "label": 0.0005335807800292969
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-03-14",
+      "context_start": "2007-09-12",
+      "context_end": "2008-03-14",
+      "entry_date": "2008-03-17",
+      "exit_date": "2008-03-18",
+      "context_sha256": "ea3fbdda63db31f0a3fea911404d84cb588a2db051e4f89c303d5773be9ff438",
+      "label": 0.042409539222717285
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-04-01",
+      "context_start": "2007-09-27",
+      "context_end": "2008-04-01",
+      "entry_date": "2008-04-02",
+      "exit_date": "2008-04-03",
+      "context_sha256": "060dac24ffd5c6abaa8d4e6d2a2e55371d262c997346cc811e20f78c1b357b5b",
+      "label": 0.0013016462326049805
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-04-17",
+      "context_start": "2007-10-15",
+      "context_end": "2008-04-17",
+      "entry_date": "2008-04-18",
+      "exit_date": "2008-04-21",
+      "context_sha256": "f6f547ebcccd4699a3f23ce26aeab399cb0057048ac335612c735f35730efaa6",
+      "label": -0.0015535354614257812
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-05-02",
+      "context_start": "2007-10-30",
+      "context_end": "2008-05-02",
+      "entry_date": "2008-05-05",
+      "exit_date": "2008-05-06",
+      "context_sha256": "316a6cf4065fc271a3c5e2dcebc697d1a261c1851df27a961c0b1376d717bbd9",
+      "label": 0.007651925086975098
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-05-19",
+      "context_start": "2007-11-14",
+      "context_end": "2008-05-19",
+      "entry_date": "2008-05-20",
+      "exit_date": "2008-05-21",
+      "context_sha256": "073fc064aa215665c6f64f880225af1caeca02ea615aaa9c736c788013dc832b",
+      "label": -0.01605355739593506
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-06-05",
+      "context_start": "2007-12-03",
+      "context_end": "2008-06-05",
+      "entry_date": "2008-06-06",
+      "exit_date": "2008-06-09",
+      "context_sha256": "b10a697a4fe57b8578a51512dd02a064f89fc8fcb9e91e41184ab1100e575078",
+      "label": 0.0007936954498291016
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-06-20",
+      "context_start": "2007-12-18",
+      "context_end": "2008-06-20",
+      "entry_date": "2008-06-23",
+      "exit_date": "2008-06-24",
+      "context_sha256": "8c199abf89b753a2251b5954889cce24f444f6e8d10c505bc368071c44963649",
+      "label": -0.0028148293495178223
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-07-08",
+      "context_start": "2008-01-04",
+      "context_end": "2008-07-08",
+      "entry_date": "2008-07-09",
+      "exit_date": "2008-07-10",
+      "context_sha256": "00271a6688001f6c80447d89dcc051e31bf8e36926128c527cb27b3df16641e1",
+      "label": 0.006989717483520508
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-07-24",
+      "context_start": "2008-01-23",
+      "context_end": "2008-07-24",
+      "entry_date": "2008-07-25",
+      "exit_date": "2008-07-28",
+      "context_sha256": "0700caf00d23e3fb4673967e8f67c91c655c77aa41ab35ca62aedf2643e510dc",
+      "label": -0.0185965895652771
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-08-08",
+      "context_start": "2008-02-07",
+      "context_end": "2008-08-08",
+      "entry_date": "2008-08-11",
+      "exit_date": "2008-08-12",
+      "context_sha256": "5ba3533e03c47529230eb211feaac64b42fdcf6e1b85085da41ae75e4d4352e3",
+      "label": -0.01205068826675415
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-08-25",
+      "context_start": "2008-02-25",
+      "context_end": "2008-08-25",
+      "entry_date": "2008-08-26",
+      "exit_date": "2008-08-27",
+      "context_sha256": "94bc157d06776c1e264b262152794a587f8490f2403a1db2abcc4eb4ca7fac25",
+      "label": 0.007982611656188965
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-09-10",
+      "context_start": "2008-03-11",
+      "context_end": "2008-09-10",
+      "entry_date": "2008-09-11",
+      "exit_date": "2008-09-12",
+      "context_sha256": "17a75ed9d62eb90fcfce824a23c0b3e25c3888003eb022d9ffef9765d7884507",
+      "label": 0.002121567726135254
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-09-26",
+      "context_start": "2008-03-28",
+      "context_end": "2008-09-26",
+      "entry_date": "2008-09-29",
+      "exit_date": "2008-09-30",
+      "context_sha256": "0b916e8f5c592cc0eddeabb50d891df9c905dc8773393f28a86d04d77028dc8d",
+      "label": 0.05417466163635254
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-10-13",
+      "context_start": "2008-04-14",
+      "context_end": "2008-10-13",
+      "entry_date": "2008-10-14",
+      "exit_date": "2008-10-15",
+      "context_sha256": "ba876de534b5cd1dab86d8314e2982ed1f06c431e49287ad5f37427a744506a9",
+      "label": -0.09034979343414307
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-10-28",
+      "context_start": "2008-04-29",
+      "context_end": "2008-10-28",
+      "entry_date": "2008-10-29",
+      "exit_date": "2008-10-30",
+      "context_sha256": "0603c02424aa92ce38762952498a4cb204ec44aa66b0ad4da3c9f6ccb2ccb954",
+      "label": 0.02580392360687256
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-11-13",
+      "context_start": "2008-05-15",
+      "context_end": "2008-11-13",
+      "entry_date": "2008-11-14",
+      "exit_date": "2008-11-17",
+      "context_sha256": "f75806c1e06e82b0b51573007f7353d63c9a5f43c2769328b56bbea7f19519ef",
+      "label": -0.025810420513153076
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-12-01",
+      "context_start": "2008-06-02",
+      "context_end": "2008-12-01",
+      "entry_date": "2008-12-02",
+      "exit_date": "2008-12-03",
+      "context_sha256": "c58de9a9dfec42815eff969df7ae5a8be4753b292383cc1ca869ff0047b6a705",
+      "label": 0.02583611011505127
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2008-12-16",
+      "context_start": "2008-06-17",
+      "context_end": "2008-12-16",
+      "entry_date": "2008-12-17",
+      "exit_date": "2008-12-18",
+      "context_sha256": "e5be721c7a8a565944c85dd1c284fa45ed9351891b17b0af1a8b0ab0d40bf802",
+      "label": -0.021162688732147217
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-01-05",
+      "context_start": "2008-07-03",
+      "context_end": "2009-01-05",
+      "entry_date": "2009-01-06",
+      "exit_date": "2009-01-07",
+      "context_sha256": "8df4be4e0621c4869d08e0bb407fa48291caa5de7d3d9c6b1b4e724fb5eb230b",
+      "label": -0.03000962734222412
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-01-21",
+      "context_start": "2008-07-21",
+      "context_end": "2009-01-21",
+      "entry_date": "2009-01-22",
+      "exit_date": "2009-01-23",
+      "context_sha256": "ae661c8b29c5acb7b5398d429f2d498e127b187dd0ad4b67901d4daa0e543bc4",
+      "label": 0.005377650260925293
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-02-05",
+      "context_start": "2008-08-05",
+      "context_end": "2009-02-05",
+      "entry_date": "2009-02-06",
+      "exit_date": "2009-02-09",
+      "context_sha256": "2fe08947ceaa449ae9b8d762d6ac0e2de9926d4da8bcbc3645349cd5fa253684",
+      "label": 0.0014852285385131836
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-02-23",
+      "context_start": "2008-08-20",
+      "context_end": "2009-02-23",
+      "entry_date": "2009-02-24",
+      "exit_date": "2009-02-25",
+      "context_sha256": "1663bf0fc12b813bd6644087b01ea23e7837ac68a28d08495110b4c6834dbd75",
+      "label": -0.010657846927642822
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-03-11",
+      "context_start": "2008-09-08",
+      "context_end": "2009-03-11",
+      "entry_date": "2009-03-12",
+      "exit_date": "2009-03-13",
+      "context_sha256": "01a291ba1cbbf9e0e749584ff9757fc7880ae2781b0768c29a33514c0d2b0035",
+      "label": 0.007739067077636719
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-03-26",
+      "context_start": "2008-09-23",
+      "context_end": "2009-03-26",
+      "entry_date": "2009-03-27",
+      "exit_date": "2009-03-30",
+      "context_sha256": "157ae8120c9240bca632bd5ec9365d4e4b6b612092a81de8737dc72a8462fa0f",
+      "label": -0.03481870889663696
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-04-13",
+      "context_start": "2008-10-08",
+      "context_end": "2009-04-13",
+      "entry_date": "2009-04-14",
+      "exit_date": "2009-04-15",
+      "context_sha256": "56591d4590fde5591fef8cca1c6810ac825598c49ba1b53c603504280b997bc1",
+      "label": 0.012549042701721191
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-04-29",
+      "context_start": "2008-10-24",
+      "context_end": "2009-04-29",
+      "entry_date": "2009-04-30",
+      "exit_date": "2009-05-01",
+      "context_sha256": "f5098eefd4cbc37e1cc91963e04a074c4fe519904b4ebde917b260bad3efeec5",
+      "label": 0.005396366119384766
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-05-14",
+      "context_start": "2008-11-10",
+      "context_end": "2009-05-14",
+      "entry_date": "2009-05-15",
+      "exit_date": "2009-05-18",
+      "context_sha256": "e79990186ec16494fcc28808dc9d634e54c97818a85dd774e27c04f6bd7bb7e4",
+      "label": 0.03038918972015381
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-06-01",
+      "context_start": "2008-11-25",
+      "context_end": "2009-06-01",
+      "entry_date": "2009-06-02",
+      "exit_date": "2009-06-03",
+      "context_sha256": "1fe925bff8d0f246f3371a5d63fa1259145cdbc1da7ebc14e18d43fccc572ea8",
+      "label": -0.013739228248596191
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-06-17",
+      "context_start": "2008-12-12",
+      "context_end": "2009-06-17",
+      "entry_date": "2009-06-18",
+      "exit_date": "2009-06-19",
+      "context_sha256": "5aa2f71fe0d69b9e97e8fdcc1827398efd4b834549e8c0036629985cab4692d2",
+      "label": 0.0031142234802246094
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-07-02",
+      "context_start": "2008-12-30",
+      "context_end": "2009-07-02",
+      "entry_date": "2009-07-06",
+      "exit_date": "2009-07-07",
+      "context_sha256": "54be1ebbe0f86b4f4da0ce7e01e7f0fcbd40df24cc663c7ce14aa98eff887785",
+      "label": -0.019683480262756348
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-07-20",
+      "context_start": "2009-01-15",
+      "context_end": "2009-07-20",
+      "entry_date": "2009-07-21",
+      "exit_date": "2009-07-22",
+      "context_sha256": "c6e2603ce4b4b7336855e209e7a69d86ae74fc8f50e5298e316dd420b8c318d1",
+      "label": -0.0005342960357666016
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-08-04",
+      "context_start": "2009-02-02",
+      "context_end": "2009-08-04",
+      "entry_date": "2009-08-05",
+      "exit_date": "2009-08-06",
+      "context_sha256": "84ec0d7fb7494b4ee57e3260abab44ab5874a0e5f7dd563890c0a491f4a59d02",
+      "label": -0.005624651908874512
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-08-20",
+      "context_start": "2009-02-19",
+      "context_end": "2009-08-20",
+      "entry_date": "2009-08-21",
+      "exit_date": "2009-08-24",
+      "context_sha256": "cfc55829b139361dc9f30da55864bfe0bac8305585b00a1d377b56f9ad6ecb44",
+      "label": -0.000545799732208252
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-09-04",
+      "context_start": "2009-03-06",
+      "context_end": "2009-09-04",
+      "entry_date": "2009-09-08",
+      "exit_date": "2009-09-09",
+      "context_sha256": "4f6e5ec7af5994aba178188ea397454f4372d4f41624665db8abc2455f3e49e0",
+      "label": 0.007782340049743652
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-09-22",
+      "context_start": "2009-03-23",
+      "context_end": "2009-09-22",
+      "entry_date": "2009-09-23",
+      "exit_date": "2009-09-24",
+      "context_sha256": "0b04da94e45d679a70cbf757a84a9f6a7334a768ef4f227d98d46d100d2b3a0b",
+      "label": -0.009511053562164307
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-10-08",
+      "context_start": "2009-04-08",
+      "context_end": "2009-10-08",
+      "entry_date": "2009-10-09",
+      "exit_date": "2009-10-12",
+      "context_sha256": "198f7be68ed413351866285db3fe778b6706b18956306d3b2317fe60bd1b343d",
+      "label": 0.004386425018310547
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-10-23",
+      "context_start": "2009-04-24",
+      "context_end": "2009-10-23",
+      "entry_date": "2009-10-26",
+      "exit_date": "2009-10-27",
+      "context_sha256": "3aaf7a93abe3e2db765613eaf10fe28948bab7fcd7692d50cc068358164775a1",
+      "label": -0.0033177733421325684
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-11-09",
+      "context_start": "2009-05-11",
+      "context_end": "2009-11-09",
+      "entry_date": "2009-11-10",
+      "exit_date": "2009-11-11",
+      "context_sha256": "04d67e47d16e05125fb3a4b9ba3d3bf93e49b031fc479db1836a465b15ec03b3",
+      "label": 0.005031943321228027
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-11-25",
+      "context_start": "2009-05-28",
+      "context_end": "2009-11-25",
+      "entry_date": "2009-11-27",
+      "exit_date": "2009-11-30",
+      "context_sha256": "6b50a11471f000d9ef6cc0b411739d3b5a8ea8f3ee9de7aa4fdfe216619ee850",
+      "label": 0.003793001174926758
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-12-11",
+      "context_start": "2009-06-12",
+      "context_end": "2009-12-11",
+      "entry_date": "2009-12-14",
+      "exit_date": "2009-12-15",
+      "context_sha256": "6c422d3287f476d21f014cf7e30f78e4910c00993ad5fc82cdb2446ea6ed3599",
+      "label": -0.005546987056732178
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2009-12-29",
+      "context_start": "2009-06-29",
+      "context_end": "2009-12-29",
+      "entry_date": "2009-12-30",
+      "exit_date": "2009-12-31",
+      "context_sha256": "94389b8dc6f7ec9e660c4f10a33fc2124e9194adec89e9d2f9c3701ae13401ff",
+      "label": -0.010049581527709961
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-01-14",
+      "context_start": "2009-07-15",
+      "context_end": "2010-01-14",
+      "entry_date": "2010-01-15",
+      "exit_date": "2010-01-19",
+      "context_sha256": "72d4efdd75a8cb6d691e63564d7446aadbd00cc80869c5695f9cfa1913ec02f3",
+      "label": 0.012499570846557617
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-02-02",
+      "context_start": "2009-07-31",
+      "context_end": "2010-02-02",
+      "entry_date": "2010-02-03",
+      "exit_date": "2010-02-04",
+      "context_sha256": "7374e48c40749b94e837f14ef1a39be3009c968fdcea3bc313d0fb1b19414505",
+      "label": -0.031140685081481934
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-02-18",
+      "context_start": "2009-08-17",
+      "context_end": "2010-02-18",
+      "entry_date": "2010-02-19",
+      "exit_date": "2010-02-22",
+      "context_sha256": "0e57a9dc0a4eafbadadffbdbd3965ff369f0a0c28557d1db30ce87d3dafc588c",
+      "label": -0.0010458827018737793
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-03-05",
+      "context_start": "2009-09-01",
+      "context_end": "2010-03-05",
+      "entry_date": "2010-03-08",
+      "exit_date": "2010-03-09",
+      "context_sha256": "2b8ef3e82596614777ad891b2adbacf69d132f3ab13f2168824102e370dbd21a",
+      "label": 0.0017126798629760742
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-03-23",
+      "context_start": "2009-09-18",
+      "context_end": "2010-03-23",
+      "entry_date": "2010-03-24",
+      "exit_date": "2010-03-25",
+      "context_sha256": "3c531dc690c3e4ac4fba8bb62490d0bda024fc734e57d8241fc2c1f0f4f68bdc",
+      "label": -0.0017041563987731934
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-04-08",
+      "context_start": "2009-10-05",
+      "context_end": "2010-04-08",
+      "entry_date": "2010-04-09",
+      "exit_date": "2010-04-12",
+      "context_sha256": "dbfe974ef2037e5461a93365f222c6f6dff6c312add1f633f21e4dbf4f888202",
+      "label": 0.0017665624618530273
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-04-23",
+      "context_start": "2009-10-20",
+      "context_end": "2010-04-23",
+      "entry_date": "2010-04-26",
+      "exit_date": "2010-04-27",
+      "context_sha256": "a463c7205956e8cd6da8bca33e0d0642a57c9de15728ec0d3228c8f044e0dd02",
+      "label": -0.023381948471069336
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-05-11",
+      "context_start": "2009-11-05",
+      "context_end": "2010-05-11",
+      "entry_date": "2010-05-12",
+      "exit_date": "2010-05-13",
+      "context_sha256": "bbc04b03661a972eb2f25eea2b14f84ac8f8f0df4292e19ae55457698f2b2a68",
+      "label": -0.012145161628723145
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-05-26",
+      "context_start": "2009-11-20",
+      "context_end": "2010-05-26",
+      "entry_date": "2010-05-27",
+      "exit_date": "2010-05-28",
+      "context_sha256": "d7b14e6bfbbc2698e3e6d6a2d33584cdd818d58a2fd02e54b98ada1143985e5c",
+      "label": -0.012374699115753174
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-06-11",
+      "context_start": "2009-12-08",
+      "context_end": "2010-06-11",
+      "entry_date": "2010-06-14",
+      "exit_date": "2010-06-15",
+      "context_sha256": "afc1ae4a30607b1c625c6954dde6f6eb8b1272858c6612d4bc7e03c37d4f3790",
+      "label": 0.023494243621826172
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-06-28",
+      "context_start": "2009-12-23",
+      "context_end": "2010-06-28",
+      "entry_date": "2010-06-29",
+      "exit_date": "2010-06-30",
+      "context_sha256": "d52ae2f7ae8c631f48fb822ea95f7ac92cc165e629feb5aed84934e96a207a69",
+      "label": -0.010112941265106201
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-07-15",
+      "context_start": "2010-01-12",
+      "context_end": "2010-07-15",
+      "entry_date": "2010-07-16",
+      "exit_date": "2010-07-19",
+      "context_sha256": "6737441bc38cf2e4e8f85cc9a5a75ad5ed72ed7395f0d0fcb50cfd95e6452e48",
+      "label": 0.005981922149658203
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-07-30",
+      "context_start": "2010-01-28",
+      "context_end": "2010-07-30",
+      "entry_date": "2010-08-02",
+      "exit_date": "2010-08-03",
+      "context_sha256": "3709201b11ab1d4415224772b063b7c5c6d5af42dc5e5b8fd0859ac36f016eb4",
+      "label": -0.004796326160430908
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-08-16",
+      "context_start": "2010-02-12",
+      "context_end": "2010-08-16",
+      "entry_date": "2010-08-17",
+      "exit_date": "2010-08-18",
+      "context_sha256": "8e7543c9be018059b6eb4355756cd23f6680269a51eb8c208f6b6d26ca700dae",
+      "label": 0.0014827251434326172
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-09-01",
+      "context_start": "2010-03-03",
+      "context_end": "2010-09-01",
+      "entry_date": "2010-09-02",
+      "exit_date": "2010-09-03",
+      "context_sha256": "8bd15750c04f885335b1bdf3e1c7c72c7b4ca3df24060c3e2cdb2a77808ba870",
+      "label": 0.013218998908996582
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-09-17",
+      "context_start": "2010-03-18",
+      "context_end": "2010-09-17",
+      "entry_date": "2010-09-20",
+      "exit_date": "2010-09-21",
+      "context_sha256": "5683cbfda01174763d0283e7fdb1378234ce419dd87a5efc8d4a80ef4f9078c2",
+      "label": -0.0025640130043029785
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-10-04",
+      "context_start": "2010-04-05",
+      "context_end": "2010-10-04",
+      "entry_date": "2010-10-05",
+      "exit_date": "2010-10-06",
+      "context_sha256": "0e58d6d5ec65c7c56dcd6900ca898a3dd9b0fa764a7dcec2f3ef33e78ec60a8e",
+      "label": -0.0006719827651977539
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-10-20",
+      "context_start": "2010-04-21",
+      "context_end": "2010-10-20",
+      "entry_date": "2010-10-21",
+      "exit_date": "2010-10-22",
+      "context_sha256": "153865029a17a2d07b0e3648a56aee6f31fcdd12e62f7fdc49da24d71179568f",
+      "label": 0.0023893117904663086
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-11-04",
+      "context_start": "2010-05-06",
+      "context_end": "2010-11-04",
+      "entry_date": "2010-11-05",
+      "exit_date": "2010-11-08",
+      "context_sha256": "a0289215027785b866bd6be449f44f05f608d68f3588bc4e0acb62986e3dd224",
+      "label": -0.0021209716796875
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-11-19",
+      "context_start": "2010-05-21",
+      "context_end": "2010-11-19",
+      "entry_date": "2010-11-22",
+      "exit_date": "2010-11-23",
+      "context_sha256": "1a0c41c5116b12f8f5d2f695fd4759c84e73966178bddb1916d0b93cd362de32",
+      "label": -0.014284014701843262
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-12-07",
+      "context_start": "2010-06-08",
+      "context_end": "2010-12-07",
+      "entry_date": "2010-12-08",
+      "exit_date": "2010-12-09",
+      "context_sha256": "f974c20fc2feae6f075e8b057b19665e0c404c138b9de76bf7580accae5e6691",
+      "label": 0.0038427114486694336
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2010-12-23",
+      "context_start": "2010-06-24",
+      "context_end": "2010-12-23",
+      "entry_date": "2010-12-27",
+      "exit_date": "2010-12-28",
+      "context_sha256": "82c340bd30e835ce390d36e26ddec331125ca998dab53821e85f1d8731e9b1ae",
+      "label": 0.0007712841033935547
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-01-10",
+      "context_start": "2010-07-12",
+      "context_end": "2011-01-10",
+      "entry_date": "2011-01-11",
+      "exit_date": "2011-01-12",
+      "context_sha256": "f12967f0ad9091bc3b408fb778cf62e6d56012239b5a19ab6d37996b2991a534",
+      "label": 0.009007573127746582
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-01-26",
+      "context_start": "2010-07-27",
+      "context_end": "2011-01-26",
+      "entry_date": "2011-01-27",
+      "exit_date": "2011-01-28",
+      "context_sha256": "77e755d4bd3756a2c900a54d5453c41e788427ea4490e1d476735d6f24a46caf",
+      "label": -0.0178525447845459
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-02-11",
+      "context_start": "2010-08-12",
+      "context_end": "2011-02-11",
+      "entry_date": "2011-02-14",
+      "exit_date": "2011-02-15",
+      "context_sha256": "408a8160998b8046ddf3258fa6fd0f4b87184e288aff2e98506b0129336ac945",
+      "label": -0.0032349228858947754
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-03-01",
+      "context_start": "2010-08-27",
+      "context_end": "2011-03-01",
+      "entry_date": "2011-03-02",
+      "exit_date": "2011-03-03",
+      "context_sha256": "7656c0087a519f39ccacc8442e37443178692ae80747d23e497f5aac0bb2b9d3",
+      "label": 0.017218947410583496
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-03-16",
+      "context_start": "2010-09-14",
+      "context_end": "2011-03-16",
+      "entry_date": "2011-03-17",
+      "exit_date": "2011-03-18",
+      "context_sha256": "fd1da0900fa3e0659502b4a13ec978515d38a715126820b2561db8d250eb74e6",
+      "label": 0.004310250282287598
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-04-01",
+      "context_start": "2010-09-30",
+      "context_end": "2011-04-01",
+      "entry_date": "2011-04-04",
+      "exit_date": "2011-04-05",
+      "context_sha256": "61e372884042dad5eee6ebdf834b198f899e223d5376dc1cf73efed865a7307a",
+      "label": -0.00018006563186645508
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-04-18",
+      "context_start": "2010-10-15",
+      "context_end": "2011-04-18",
+      "entry_date": "2011-04-19",
+      "exit_date": "2011-04-20",
+      "context_sha256": "ee98569ba5de65c4bbeff2af09811350590c469eba6e70bc2e9c7b7ea7d20a13",
+      "label": 0.013514995574951172
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-05-04",
+      "context_start": "2010-11-01",
+      "context_end": "2011-05-04",
+      "entry_date": "2011-05-05",
+      "exit_date": "2011-05-06",
+      "context_sha256": "4d1b1738b2eb2758a36d48c1f8f94874bf700e3c50e682148a9afb4b534fa92e",
+      "label": 0.0038199424743652344
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-05-19",
+      "context_start": "2010-11-16",
+      "context_end": "2011-05-19",
+      "entry_date": "2011-05-20",
+      "exit_date": "2011-05-23",
+      "context_sha256": "eec90333d3b844b527d7eec2e4507f40488c57e493d763435706b155efced91c",
+      "label": -0.011925578117370605
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-06-07",
+      "context_start": "2010-12-03",
+      "context_end": "2011-06-07",
+      "entry_date": "2011-06-08",
+      "exit_date": "2011-06-09",
+      "context_sha256": "6e3df0e721ef3ec0c08bb01872c7550352f3b263d4a90d5cb2fc0bae4c4b4f5f",
+      "label": 0.007377505302429199
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-06-22",
+      "context_start": "2010-12-20",
+      "context_end": "2011-06-22",
+      "entry_date": "2011-06-23",
+      "exit_date": "2011-06-24",
+      "context_sha256": "9e9aca073682e08d4c712f98ff8ae594a13b34105fbdd484c1ef2c0ccdacfd59",
+      "label": -0.011725783348083496
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-07-08",
+      "context_start": "2011-01-05",
+      "context_end": "2011-07-08",
+      "entry_date": "2011-07-11",
+      "exit_date": "2011-07-12",
+      "context_sha256": "195f52f31e18a19ecfc4a08b375486d0714757e492416771dd2fb2eeded76176",
+      "label": -0.0044335126876831055
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-07-26",
+      "context_start": "2011-01-24",
+      "context_end": "2011-07-26",
+      "entry_date": "2011-07-27",
+      "exit_date": "2011-07-28",
+      "context_sha256": "915c5e72ddfc2a28dbca7915a7b84b2b2962d0a3d05f0c271cef33004cb0bd0d",
+      "label": -0.003233969211578369
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-08-10",
+      "context_start": "2011-02-08",
+      "context_end": "2011-08-10",
+      "entry_date": "2011-08-11",
+      "exit_date": "2011-08-12",
+      "context_sha256": "e6469fe386af727b1fbbea9ff0e4600ff4ae7da8cd3f1af59d620ba56eda67ca",
+      "label": 0.005261659622192383
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-08-25",
+      "context_start": "2011-02-24",
+      "context_end": "2011-08-25",
+      "entry_date": "2011-08-26",
+      "exit_date": "2011-08-29",
+      "context_sha256": "adb1b35aeac53e59cded784d1756bb27caea1dde509016089c0e7ac0f4a38518",
+      "label": 0.028280019760131836
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-09-13",
+      "context_start": "2011-03-14",
+      "context_end": "2011-09-13",
+      "entry_date": "2011-09-14",
+      "exit_date": "2011-09-15",
+      "context_sha256": "01b36eee33a7609fcc73721891d2b64d9788ae0b424a63369e3da401729618bb",
+      "label": 0.017187118530273438
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-09-28",
+      "context_start": "2011-03-29",
+      "context_end": "2011-09-28",
+      "entry_date": "2011-09-29",
+      "exit_date": "2011-09-30",
+      "context_sha256": "aebb949d092af7b3e770ec840597f032a65e2a8ebd275a81a82d84e8e5f421d9",
+      "label": -0.02497410774230957
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-10-13",
+      "context_start": "2011-04-13",
+      "context_end": "2011-10-13",
+      "entry_date": "2011-10-14",
+      "exit_date": "2011-10-17",
+      "context_sha256": "4572b58eda094da68475c3553ee7d5c5c829748d332fefb1f8ea97aebebeefaa",
+      "label": -0.019369900226593018
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-10-28",
+      "context_start": "2011-04-29",
+      "context_end": "2011-10-28",
+      "entry_date": "2011-10-31",
+      "exit_date": "2011-11-01",
+      "context_sha256": "d3465d8e476429ed4cbd7d8f0db2f69556703f29dfe5ae3ca0e76ee37d55d4f3",
+      "label": -0.027942240238189697
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-11-15",
+      "context_start": "2011-05-17",
+      "context_end": "2011-11-15",
+      "entry_date": "2011-11-16",
+      "exit_date": "2011-11-17",
+      "context_sha256": "6ce1c3c18d43b401500b25c679a30f31ef43f3397afc7373b58acdfec15d5c01",
+      "label": -0.0167999267578125
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-12-01",
+      "context_start": "2011-06-02",
+      "context_end": "2011-12-01",
+      "entry_date": "2011-12-02",
+      "exit_date": "2011-12-05",
+      "context_sha256": "2e124273df259f66300e5b2d3da603757212f8c11f8ebe951f165f336c3650bf",
+      "label": 0.010287046432495117
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2011-12-16",
+      "context_start": "2011-06-17",
+      "context_end": "2011-12-16",
+      "entry_date": "2011-12-19",
+      "exit_date": "2011-12-20",
+      "context_sha256": "a6f4ed0d1210424c4a82b06601d8ec1ac1e8d0687bc104bbd42e06de8b42ac52",
+      "label": 0.029825448989868164
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-01-05",
+      "context_start": "2011-07-06",
+      "context_end": "2012-01-05",
+      "entry_date": "2012-01-06",
+      "exit_date": "2012-01-09",
+      "context_sha256": "41b6511a646e5c55322af805a448dd4a0506673aaae8b4e016c03ddab8fd2e2f",
+      "label": 0.002261638641357422
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-01-23",
+      "context_start": "2011-07-21",
+      "context_end": "2012-01-23",
+      "entry_date": "2012-01-24",
+      "exit_date": "2012-01-25",
+      "context_sha256": "a9bc307e2e533b458378868f1081a8b526d488d6d072c4c8a1994149148d7979",
+      "label": 0.00867915153503418
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-02-07",
+      "context_start": "2011-08-05",
+      "context_end": "2012-02-07",
+      "entry_date": "2012-02-08",
+      "exit_date": "2012-02-09",
+      "context_sha256": "682eb18c97dee37d29173ea0fcc2e4e68a1ebb8a251ac8f4e810f2fb9d790ac0",
+      "label": 0.001474142074584961
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-02-24",
+      "context_start": "2011-08-23",
+      "context_end": "2012-02-24",
+      "entry_date": "2012-02-27",
+      "exit_date": "2012-02-28",
+      "context_sha256": "cd8938bc41bce9b6bb0960b978a49fc65d1bca14e0fae9c0267bd9e6c2f09e30",
+      "label": 0.003356337547302246
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-03-12",
+      "context_start": "2011-09-08",
+      "context_end": "2012-03-12",
+      "entry_date": "2012-03-13",
+      "exit_date": "2012-03-14",
+      "context_sha256": "1fdc916d54724f379cabf4499c868f1362cf07d0842672426facbb9eff8372bf",
+      "label": -0.0011962652206420898
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-03-27",
+      "context_start": "2011-09-23",
+      "context_end": "2012-03-27",
+      "entry_date": "2012-03-28",
+      "exit_date": "2012-03-29",
+      "context_sha256": "ec548ab4bc4d2f089cd40824e27cbffb2e106067868a491273beec7d41f2d4cd",
+      "label": -0.0016079545021057129
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-04-12",
+      "context_start": "2011-10-10",
+      "context_end": "2012-04-12",
+      "entry_date": "2012-04-13",
+      "exit_date": "2012-04-16",
+      "context_sha256": "df93a1c86daa34c5f1fb4cb9833ee0380acc4a27ab6e64f5c1c92c9c28b68139",
+      "label": -0.0005035996437072754
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-04-30",
+      "context_start": "2011-10-26",
+      "context_end": "2012-04-30",
+      "entry_date": "2012-05-01",
+      "exit_date": "2012-05-02",
+      "context_sha256": "ce5873d3b814dc3700c43f532b2a2587bec27d79b15ae9302f2826fce9ae06f5",
+      "label": -0.002496659755706787
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-05-15",
+      "context_start": "2011-11-10",
+      "context_end": "2012-05-15",
+      "entry_date": "2012-05-16",
+      "exit_date": "2012-05-17",
+      "context_sha256": "8544a52d6336be4277a7d9cc2082ec4c3eab6897be25d6e8be4fdc762b4395f5",
+      "label": -0.01505136489868164
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-05-31",
+      "context_start": "2011-11-28",
+      "context_end": "2012-05-31",
+      "entry_date": "2012-06-01",
+      "exit_date": "2012-06-04",
+      "context_sha256": "be259c4e8d13b0cc71374805f2ae4dfd4e8819fd68ebfaf0b2b8f1639785261e",
+      "label": 0.00010955333709716797
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-06-18",
+      "context_start": "2011-12-14",
+      "context_end": "2012-06-18",
+      "entry_date": "2012-06-19",
+      "exit_date": "2012-06-20",
+      "context_sha256": "ddadad784b4a8220da2a77bfa60fa3c615c4411bea57d9ceb8cbf00d861668b8",
+      "label": -0.0016863346099853516
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-07-03",
+      "context_start": "2011-12-30",
+      "context_end": "2012-07-03",
+      "entry_date": "2012-07-05",
+      "exit_date": "2012-07-06",
+      "context_sha256": "4c9fbe34eaaff88d6f16ee582efc8ca6878cceecc007422f8fc50b3c90c88d01",
+      "label": -0.009432673454284668
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-07-19",
+      "context_start": "2012-01-18",
+      "context_end": "2012-07-19",
+      "entry_date": "2012-07-20",
+      "exit_date": "2012-07-23",
+      "context_sha256": "1fe5b3da60b576724f5c4d0566d2d2e8045d75a486c9611e012f0a874e4f6724",
+      "label": -0.008909046649932861
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-08-06",
+      "context_start": "2012-02-03",
+      "context_end": "2012-08-06",
+      "entry_date": "2012-08-07",
+      "exit_date": "2012-08-08",
+      "context_sha256": "6ea68e4b2c56d44c518e1b45b9e63e6fd55ba209fb5a0e6def40e0e8a9580651",
+      "label": 0.0006208419799804688
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-08-21",
+      "context_start": "2012-02-21",
+      "context_end": "2012-08-21",
+      "entry_date": "2012-08-22",
+      "exit_date": "2012-08-23",
+      "context_sha256": "dfad11df80017cdeee2674ae72de201f87563d14ca4fe1f8692ad10cdb74fe49",
+      "label": -0.008072257041931152
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-09-06",
+      "context_start": "2012-03-07",
+      "context_end": "2012-09-06",
+      "entry_date": "2012-09-07",
+      "exit_date": "2012-09-10",
+      "context_sha256": "46f05cee4bb00b556b65a59b102961dfc5800f63cb70003ccc5fce69c003b1af",
+      "label": -0.006147801876068115
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-09-21",
+      "context_start": "2012-03-22",
+      "context_end": "2012-09-21",
+      "entry_date": "2012-09-24",
+      "exit_date": "2012-09-25",
+      "context_sha256": "1c3ca58e4ce60e2994ae6cc6bf87d4cb99433ebe13a11a84c39611425dd62fc1",
+      "label": -0.010501861572265625
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-10-09",
+      "context_start": "2012-04-10",
+      "context_end": "2012-10-09",
+      "entry_date": "2012-10-10",
+      "exit_date": "2012-10-11",
+      "context_sha256": "6038d48b2a2c24e2502f5192e1e6baa7966e968897b4cd35b1d5058fe31fb080",
+      "label": 0.00019538402557373047
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-10-24",
+      "context_start": "2012-04-25",
+      "context_end": "2012-10-24",
+      "entry_date": "2012-10-25",
+      "exit_date": "2012-10-26",
+      "context_sha256": "71673cce10143000adc50818fe60b0ea4e31dca4609f5501078daa265cfe474b",
+      "label": -0.0007289648056030273
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-11-12",
+      "context_start": "2012-05-10",
+      "context_end": "2012-11-12",
+      "entry_date": "2012-11-13",
+      "exit_date": "2012-11-14",
+      "context_sha256": "157a66d2fe4fb3617bede37d6cea6d62f23b20eaf1201a3a62795ed1e8bfb4a4",
+      "label": -0.013852059841156006
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-11-29",
+      "context_start": "2012-05-29",
+      "context_end": "2012-11-29",
+      "entry_date": "2012-11-30",
+      "exit_date": "2012-12-03",
+      "context_sha256": "28f4deaab2885964773ccd21f7e2bfb1a6ac307caee2463ac7547df470fc9d50",
+      "label": -0.0047452449798583984
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2012-12-14",
+      "context_start": "2012-06-13",
+      "context_end": "2012-12-14",
+      "entry_date": "2012-12-17",
+      "exit_date": "2012-12-18",
+      "context_sha256": "3e88af11e9f1937d52751ba5be293d7b081b70f3505ffb805578c236972702e5",
+      "label": 0.011486649513244629
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2013-01-02",
+      "context_start": "2012-06-28",
+      "context_end": "2013-01-02",
+      "entry_date": "2013-01-03",
+      "exit_date": "2013-01-04",
+      "context_sha256": "619d24dbf4097e4cdb933f69f9d99505ecff21163a13a9ced5f86f542dabc3c5",
+      "label": 0.004865050315856934
+    },
+    {
+      "instrument": "SPX",
+      "datetime": "2013-01-18",
+      "context_start": "2012-07-17",
+      "context_end": "2013-01-18",
+      "entry_date": "2013-01-22",
+      "exit_date": "2013-01-23",
+      "context_sha256": "808aebe0620a056138d9d24893829d6d66d3d25a3d2e8625735cf57d7e0ae6e5",
+      "label": 0.0015075206756591797
+    }
+  ]
+}

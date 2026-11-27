@@ -1,0 +1,89 @@
+{
+  "prediction_count": 137002,
+  "evaluated_count": 136793,
+  "unavailable_label_count": 209,
+  "rmse": 0.02491602038230822,
+  "mae": 0.01654197398429454,
+  "zero_return_rmse": 0.024405932053923607,
+  "directional_accuracy": 0.49087307099047467,
+  "pooled_pearson_correlation": -0.002271795431869795,
+  "ic": -0.004640125428113262,
+  "rank_ic": 0.006558120238564912,
+  "ic_ir": -0.03513801833546327,
+  "rank_ic_ir": 0.052245481160061384,
+  "ic_days": 457,
+  "rank_ic_days": 457,
+  "validation": {
+    "prediction_count": 72000,
+    "evaluated_count": 71907,
+    "unavailable_label_count": 93,
+    "rmse": 0.02634767928830508,
+    "mae": 0.017617169809585154,
+    "zero_return_rmse": 0.025458211079239845,
+    "directional_accuracy": 0.4973785584157314,
+    "pooled_pearson_correlation": -0.03332547829443011,
+    "ic": -0.008821660467584234,
+    "rank_ic": -0.002479252272892682,
+    "ic_ir": -0.05212641119322199,
+    "rank_ic_ir": -0.014811036612271958,
+    "ic_days": 240,
+    "rank_ic_days": 240
+  },
+  "qlib_metrics": {
+    "ICIR": -0.03513801833546327,
+    "Rank IC": 0.006558120238564912,
+    "Rank ICIR": 0.052245481160061384,
+    "IC": -0.004640125428113262,
+    "1day.excess_return_without_cost.mean": 4.52506256454436e-05,
+    "1day.excess_return_without_cost.std": 0.006352997304648978,
+    "1day.excess_return_without_cost.annualized_return": 0.010769648903615576,
+    "1day.excess_return_without_cost.information_ratio": 0.10988398366806512,
+    "1day.excess_return_without_cost.max_drawdown": -0.16111071304435381,
+    "1day.excess_return_with_cost.mean": -0.0001494758360303088,
+    "1day.excess_return_with_cost.std": 0.006352628728421672,
+    "1day.excess_return_with_cost.annualized_return": -0.0355752489752135,
+    "1day.excess_return_with_cost.information_ratio": -0.362999473727438,
+    "1day.excess_return_with_cost.max_drawdown": -0.18141448641326546,
+    "1day.ffr": 1.0,
+    "1day.pa": 0.0,
+    "1day.pos": 0.0
+  },
+  "model_details": {
+    "name": "timesfm3_panel",
+    "parameter_count": 330710976,
+    "best_epoch": 0,
+    "epochs_run": 0,
+    "validation_rmse": 0.02634767928830508,
+    "fit_seconds": 2.35763245199999,
+    "pretrained": true,
+    "mode": "frozen",
+    "trainable_parameter_count": 0
+  },
+  "portfolio": {
+    "gross_cumulative_return": 0.022189263605759457,
+    "net_cumulative_return": -0.06503492410537348,
+    "benchmark_cumulative_return": 0.02037441675427809,
+    "sum_daily_cost_ratios": 0.08918471944749459,
+    "benchmark": "SH000300",
+    "assumptions": "next-close execution; Qlib CN 100-share lots and 9.5% price-limit proxy unless explicitly overridden; suspensions blocked; explicit fees; no liquidity/slippage model; final positions marked to market",
+    "exchange_kwargs": {
+      "freq": "day",
+      "limit_threshold": 0.095,
+      "deal_price": "close",
+      "trade_unit": 100,
+      "open_cost": 0.0005,
+      "close_cost": 0.0015,
+      "min_cost": 5.0
+    },
+    "trade_signal": {
+      "order": [
+        "raw score descending",
+        "instrument ascending"
+      ],
+      "scope": "Each prediction date; trading input only",
+      "encoding": "Unique negative ordinal ranks: best=-1, second=-2, and so on",
+      "strategy": "Native qlib.contrib.strategy.TopkDropoutStrategy",
+      "forecast_metrics": "Original raw scores; no perturbation or ranking for RMSE/IC"
+    }
+  }
+}

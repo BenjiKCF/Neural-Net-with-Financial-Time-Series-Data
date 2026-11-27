@@ -1,0 +1,170 @@
+{
+  "status": "completed",
+  "source": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/finalize-output/assembled/timesfm3_adapter_128",
+  "replay": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/finalize-output/replays/timesfm3_adapter_128",
+  "original_numerical_evidence_retained": true,
+  "forecast_metrics_unchanged": true,
+  "export_policy": "Allowlisted numerical and metadata files only; no weights, adapters, pickles or raw provider",
+  "files": [
+    {
+      "path": "assembly.json",
+      "bytes": 29053,
+      "sha256": "d518134355b652ded286499eb59b5de17cdbf36b1a20f39e69d9737b717c2523"
+    },
+    {
+      "path": "daily_ic.csv",
+      "bytes": 23798,
+      "sha256": "629c0c96c7070b46959f29d7ea2cbcf27b8f288be37de84c513b68563ae48a7c"
+    },
+    {
+      "path": "data_source.json",
+      "bytes": 7907,
+      "sha256": "edc8f34506ba25eea115ce5578c50f8b4d02527e972e4506c88c6bf88debca62"
+    },
+    {
+      "path": "fit_manifest.json",
+      "bytes": 3024,
+      "sha256": "7cd21c66813b3bb700de6223101d7c2225aa8dedc109e576f1cea9e9754d9345"
+    },
+    {
+      "path": "fit_samples.json",
+      "bytes": 314789,
+      "sha256": "af06e87b892eef37e4046724c11c01f3b928a626f11da4e9f8e1d0050b9d0be4"
+    },
+    {
+      "path": "metrics.json",
+      "bytes": 3265,
+      "sha256": "17945a44b5feda9a92b704c522ac80d4725cdcbe676125dcfbac291fc3d5286a"
+    },
+    {
+      "path": "native_risk.csv",
+      "bytes": 589,
+      "sha256": "42ab6f2136f4bcf68646696ff28f71a47c94e80325c646fd96ead5a43f7350dd"
+    },
+    {
+      "path": "original/assembly.json",
+      "bytes": 29053,
+      "sha256": "d518134355b652ded286499eb59b5de17cdbf36b1a20f39e69d9737b717c2523"
+    },
+    {
+      "path": "original/daily_ic.csv",
+      "bytes": 23798,
+      "sha256": "629c0c96c7070b46959f29d7ea2cbcf27b8f288be37de84c513b68563ae48a7c"
+    },
+    {
+      "path": "original/data_source.json",
+      "bytes": 7907,
+      "sha256": "edc8f34506ba25eea115ce5578c50f8b4d02527e972e4506c88c6bf88debca62"
+    },
+    {
+      "path": "original/fit_manifest.json",
+      "bytes": 3024,
+      "sha256": "7cd21c66813b3bb700de6223101d7c2225aa8dedc109e576f1cea9e9754d9345"
+    },
+    {
+      "path": "original/fit_samples.json",
+      "bytes": 314789,
+      "sha256": "af06e87b892eef37e4046724c11c01f3b928a626f11da4e9f8e1d0050b9d0be4"
+    },
+    {
+      "path": "original/metrics.json",
+      "bytes": 1374,
+      "sha256": "24b62f1ad0feca1d4f40da2d6d999f5767e7b7c5ac1c3490a2e5cae163a6cb04"
+    },
+    {
+      "path": "original/predictions.csv.gz",
+      "bytes": 3020119,
+      "sha256": "336897beac31c8660ee8b10cc19be6e59f35f38b203826bd31af6b8650cb7547"
+    },
+    {
+      "path": "original/protocol.json",
+      "bytes": 32451,
+      "sha256": "1bb07a7c8babb4f71778456146f41e08a8389c9baa24988cfbdbd097e1a7a7d8"
+    },
+    {
+      "path": "original/resolved_config.json",
+      "bytes": 1825,
+      "sha256": "e8f3f24619bc67218951398279b2b0274fb7b2716e2b8794121e89066540fd8f"
+    },
+    {
+      "path": "original/run.json",
+      "bytes": 581,
+      "sha256": "114b96ec0507f297125c1a49736e10cf6b859946699e7c91e77ba071e8fa6308"
+    },
+    {
+      "path": "original/source.json",
+      "bytes": 688,
+      "sha256": "6cc6ff49ff827ebffe6a337177fbcb8b3e2ffed6f50bfd4e487152e868a86e88"
+    },
+    {
+      "path": "original/training_curves.json",
+      "bytes": 508,
+      "sha256": "2c9f2bbdaba69b73c5989f0534411da9f4734ef409dd8c2273cc8d4eb02f7817"
+    },
+    {
+      "path": "original/validation_daily_ic.csv",
+      "bytes": 12457,
+      "sha256": "9dcc1e7185cb33185d172feb07acbf692cecfcbdbc72f422bc0bc047024f23fc"
+    },
+    {
+      "path": "original/validation_predictions.csv.gz",
+      "bytes": 1586485,
+      "sha256": "3cadc47d01b5a79841cc951bde84fbc68a18008dea4768ddd92f4448a3c64768"
+    },
+    {
+      "path": "portfolio.csv",
+      "bytes": 86340,
+      "sha256": "23c6e8db4f7902354c4fabab38b9c123ea906f20dcdd6560679cf94cfa748253"
+    },
+    {
+      "path": "positions.json.gz",
+      "bytes": 563955,
+      "sha256": "12831491c085f2a94a09b5e612a73bc784a78fa1aa794f2d6f7c56606b6530bb"
+    },
+    {
+      "path": "predictions.csv.gz",
+      "bytes": 3020119,
+      "sha256": "336897beac31c8660ee8b10cc19be6e59f35f38b203826bd31af6b8650cb7547"
+    },
+    {
+      "path": "replay_manifest.json",
+      "bytes": 4495,
+      "sha256": "ef7282f6ffb409d1fd45a6b0dd84c4c8878ec2f2824d698f5905fc2a9c6bcdc4"
+    },
+    {
+      "path": "resolved_config.json",
+      "bytes": 1825,
+      "sha256": "e8f3f24619bc67218951398279b2b0274fb7b2716e2b8794121e89066540fd8f"
+    },
+    {
+      "path": "run.json",
+      "bytes": 819,
+      "sha256": "de79e2ceab5476dd9b88f0b6e1345109990d8d6ca6ed362649ae50117ce42fe7"
+    },
+    {
+      "path": "source.json",
+      "bytes": 688,
+      "sha256": "6cc6ff49ff827ebffe6a337177fbcb8b3e2ffed6f50bfd4e487152e868a86e88"
+    },
+    {
+      "path": "source_gap_holdings.json",
+      "bytes": 325,
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e"
+    },
+    {
+      "path": "training_curves.json",
+      "bytes": 508,
+      "sha256": "2c9f2bbdaba69b73c5989f0534411da9f4734ef409dd8c2273cc8d4eb02f7817"
+    },
+    {
+      "path": "validation_daily_ic.csv",
+      "bytes": 12457,
+      "sha256": "9dcc1e7185cb33185d172feb07acbf692cecfcbdbc72f422bc0bc047024f23fc"
+    },
+    {
+      "path": "validation_predictions.csv.gz",
+      "bytes": 1586485,
+      "sha256": "3cadc47d01b5a79841cc951bde84fbc68a18008dea4768ddd92f4448a3c64768"
+    }
+  ]
+}

@@ -133,7 +133,26 @@ The release resolved for this campaign is **[2026-11-26](https://github.com/chen
 The three final observed sessions supply the label horizon and Qlib's executor boundary, which is why the last test signal is 23 November. Training uses all eligible CSI300 rows. The seven neural architectures share 157 OHLCV factors, 32-session windows, width 32, and batch size 512; LightGBM uses the same current-day factors. Official TimesFM uses adjusted-close contexts and a separate, explicitly bounded adaptation budget.
 
 <!-- CHENDITC_RESULTS_START -->
-**Campaign status: running.** The new result table will be populated from completed run artifacts. No SPX score has been carried over as a CSI300 result. The primary scratch model will be chosen by **full-validation daily Rank IC**, then shown with all models' test results. This single-seed campaign does not supply the old experiment's three-seed uncertainty estimates.
+All 12 declared model setups are complete and independently audited. The primary scratch model was selected by full-validation daily Rank IC, not test returns. Results use one declared seed (42); the separate official TimesFM setups have different inputs and fitting budgets. These are native Qlib simulations, not an executable profit claim. The source's terminated-series/corporate-action valuation issue remains unresolved.
+
+| Model | Validation Rank IC ↑ | Test RMSE ↓ | Test Rank IC ↑ | Qlib simulated net return | Max drawdown |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Zero-return forecast | — | 0.024406 | — | — | — |
+| CSI300 benchmark | — | — | — | +2.04% | — |
+| LightGBM | 0.003716 | 0.024414 | -0.004868 | +6.69% | -32.90% |
+| **Temporal Transformer (validation-selected)** | 0.026105 | 0.024527 | -0.001884 | -0.94% | -28.35% |
+| DeepSeek V4.1 Mini | 0.024141 | 0.024456 | 0.002400 | +7.19% | -17.09% |
+| GLM-5.4 Loop Mini | 0.016583 | 0.024546 | -0.003553 | -0.57% | -32.06% |
+| Qwen4 Mini | 0.016500 | 0.024687 | -0.004387 | -5.20% | -32.64% |
+| TimesFM 3 Mini | 0.013550 | 0.024462 | 0.000947 | -17.51% | -34.75% |
+| Multiscale Residual Mixer | -0.003143 | 0.024693 | -0.010105 | +6.42% | -37.66% |
+| Regime Linear MoE | -0.008169 | 0.024663 | -0.012311 | +6.02% | -37.32% |
+| Official TimesFM 3 (128) | -0.002479 | 0.024916 | 0.006558 | -6.50% | -31.29% |
+| Official TimesFM 3 (256) | 0.010360 | 0.024710 | 0.003311 | -31.56% | -39.42% |
+| Official TimesFM 3 Loop + adapter | -0.002473 | 0.024916 | 0.006548 | -7.72% | -31.95% |
+| Official TimesFM 3 Adapter-only | -0.002474 | 0.024916 | 0.006550 | -7.72% | -31.95% |
+
+[Full comparison CSV](reports/chenditc_csi300/comparison.csv) · [Numerical audit](reports/chenditc_csi300/audit.json)
 <!-- CHENDITC_RESULTS_END -->
 
 [Dataset provenance, model roster, execution assumptions, and reproduction](docs/chenditc-benchmark.md)
@@ -145,15 +164,19 @@ The three final observed sessions supply the label horizon and Qlib's executor b
 The report exporter calls Qlib's own `report_graph`, `score_ic_graph`, `risk_analysis_graph`, and `model_performance_graph`. Each run produces PNGs, inspectable Plotly JSON, and a self-contained interactive HTML report.
 
 <!-- CHENDITC_GALLERY_START -->
-The measured gallery is awaiting the validation-selected run. Its planned views are the portfolio report, daily IC/rank IC, monthly IC heatmap, score-quintile returns, and risk summary.
+**Validation-selected model: Temporal Transformer.** These figures are generated from the audited full test forecasts and deterministic Qlib portfolio replay. [Offline interactive report](docs/assets/qlib/report.html) · [Chart provenance and hashes](docs/assets/qlib/manifest.json)
 
-<!-- Measured exports only; enable these references after generation and inspection.
 ![Native Qlib portfolio report](docs/assets/qlib/portfolio.png)
+
 ![Native Qlib daily IC and rank IC](docs/assets/qlib/score-ic.png)
+
 ![Native Qlib monthly IC heatmap](docs/assets/qlib/monthly-ic.png)
+
 ![Native Qlib score-quintile return diagnostics](docs/assets/qlib/group-return.png)
+
 ![Native Qlib risk analysis](docs/assets/qlib/risk-summary.png)
--->
+
+[All additional native Qlib diagnostics](docs/assets/qlib/)
 <!-- CHENDITC_GALLERY_END -->
 
 **Read the conventions:** native Qlib curves add daily returns; they are not compounded NAV. Qlib's default daily risk plots annualize with 238 sessions. The model-comparison table uses compounded portfolio returns and, where stated, 252-session CAGR. Quintile return plots diagnose forecast ranking before costs; the Top50 backtest includes the declared trading costs. [Chart guide](docs/chenditc-benchmark.md#read-the-native-qlib-charts).

@@ -238,10 +238,26 @@ separately; they do not repair the portfolio valuation issue.
 ## Results
 
 <!-- CHENDITC_DOC_RESULTS_START -->
-**Status: running.** No complete CSI300 result table is published yet. The
-campaign preserves per-model `run.json`, `metrics.json`, predictions, and
-portfolio reports as models finish. Only completed artifacts will populate
-the result table and measured chart gallery.
+All 12 declared model setups are complete and independently audited. The primary scratch model was selected by full-validation daily Rank IC, not test returns. Results use one declared seed (42); the separate official TimesFM setups have different inputs and fitting budgets. These are native Qlib simulations, not an executable profit claim. The source's terminated-series/corporate-action valuation issue remains unresolved.
+
+| Model | Validation Rank IC ↑ | Test RMSE ↓ | Test Rank IC ↑ | Qlib simulated net return | Max drawdown |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Zero-return forecast | — | 0.024406 | — | — | — |
+| CSI300 benchmark | — | — | — | +2.04% | — |
+| LightGBM | 0.003716 | 0.024414 | -0.004868 | +6.69% | -32.90% |
+| **Temporal Transformer (validation-selected)** | 0.026105 | 0.024527 | -0.001884 | -0.94% | -28.35% |
+| DeepSeek V4.1 Mini | 0.024141 | 0.024456 | 0.002400 | +7.19% | -17.09% |
+| GLM-5.4 Loop Mini | 0.016583 | 0.024546 | -0.003553 | -0.57% | -32.06% |
+| Qwen4 Mini | 0.016500 | 0.024687 | -0.004387 | -5.20% | -32.64% |
+| TimesFM 3 Mini | 0.013550 | 0.024462 | 0.000947 | -17.51% | -34.75% |
+| Multiscale Residual Mixer | -0.003143 | 0.024693 | -0.010105 | +6.42% | -37.66% |
+| Regime Linear MoE | -0.008169 | 0.024663 | -0.012311 | +6.02% | -37.32% |
+| Official TimesFM 3 (128) | -0.002479 | 0.024916 | 0.006558 | -6.50% | -31.29% |
+| Official TimesFM 3 (256) | 0.010360 | 0.024710 | 0.003311 | -31.56% | -39.42% |
+| Official TimesFM 3 Loop + adapter | -0.002473 | 0.024916 | 0.006548 | -7.72% | -31.95% |
+| Official TimesFM 3 Adapter-only | -0.002474 | 0.024916 | 0.006550 | -7.72% | -31.95% |
+
+[Full comparison](../reports/chenditc_csi300/comparison.csv) · [Audit](../reports/chenditc_csi300/audit.json) · [Interactive chart report](assets/qlib/report.html)
 <!-- CHENDITC_DOC_RESULTS_END -->
 
 Read **RMSE** as return forecast error, **IC** as a daily cross-sectional Pearson

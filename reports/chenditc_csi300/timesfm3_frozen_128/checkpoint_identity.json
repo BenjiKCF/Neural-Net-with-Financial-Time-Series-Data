@@ -1,0 +1,19 @@
+{
+  "repository": "google/timesfm-3.0-pytorch",
+  "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+  "files": {
+    "config.json": {
+      "bytes": 1273,
+      "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+    },
+    "model.safetensors": {
+      "bytes": 1322898824,
+      "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+    },
+    "LICENSE": {
+      "bytes": 7270,
+      "sha256": "3e36db7240d23adb6ac6d7d931892dcc5706a14a7d31581f08c35d2f25736dfd"
+    }
+  },
+  "distribution": "No checkpoint, adapter tensors, or model derivative is included in exported evidence."
+}

@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "source": "chenditc/investment_data",
+  "region": "cn",
+  "frequency": "day",
+  "synthetic": false,
+  "calendar": "SSE observed trading sessions; future calendar is not market data",
+  "retrieved_at_utc": "2026-11-27T02:31:17.841172+00:00",
+  "release_tag": "2026-11-26",
+  "release_url": "https://github.com/chenditc/investment_data/releases/tag/2026-11-26",
+  "release_id": 459236414,
+  "release_published_at": "2026-11-26T10:08:41Z",
+  "target_trade_date": "2026-11-26",
+  "assets": {
+    "qlib_bin.manifest.json": {
+      "url": "https://api.github.com/repos/chenditc/investment_data/releases/assets/795301257",
+      "id": 795301257,
+      "node_id": "RA_kwDOHrrSr84vZ1WJ",
+      "name": "qlib_bin.manifest.json",
+      "label": "",
+      "uploader": {
+        "login": "chenditc",
+        "id": 3244845,
+        "node_id": "MDQ6VXNlcjMyNDQ4NDU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3244845?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/chenditc",
+        "html_url": "https://github.com/chenditc",
+        "followers_url": "https://api.github.com/users/chenditc/followers",
+        "following_url": "https://api.github.com/users/chenditc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/chenditc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/chenditc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/chenditc/subscriptions",
+        "organizations_url": "https://api.github.com/users/chenditc/orgs",
+        "repos_url": "https://api.github.com/users/chenditc/repos",
+        "events_url": "https://api.github.com/users/chenditc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/chenditc/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "content_type": "application/json",
+      "state": "uploaded",
+      "size": 511,
+      "digest": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+      "download_count": 649,
+      "created_at": "2026-11-26T10:09:25Z",
+      "updated_at": "2026-11-26T10:09:25Z",
+      "browser_download_url": "https://github.com/chenditc/investment_data/releases/download/2026-11-26/qlib_bin.manifest.json"
+    },
+    "qlib_bin.tar.gz": {
+      "url": "https://api.github.com/repos/chenditc/investment_data/releases/assets/795298729",
+      "id": 795298729,
+      "node_id": "RA_kwDOHrrSr84vZ0up",
+      "name": "qlib_bin.tar.gz",
+      "label": "",
+      "uploader": {
+        "login": "chenditc",
+        "id": 3244845,
+        "node_id": "MDQ6VXNlcjMyNDQ4NDU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3244845?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/chenditc",
+        "html_url": "https://github.com/chenditc",
+        "followers_url": "https://api.github.com/users/chenditc/followers",
+        "following_url": "https://api.github.com/users/chenditc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/chenditc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/chenditc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/chenditc/subscriptions",
+        "organizations_url": "https://api.github.com/users/chenditc/orgs",
+        "repos_url": "https://api.github.com/users/chenditc/repos",
+        "events_url": "https://api.github.com/users/chenditc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/chenditc/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "content_type": "application/gzip",
+      "state": "uploaded",
+      "size": 573153280,
+      "digest": "sha256:5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559",
+      "download_count": 915,
+      "created_at": "2026-11-26T10:08:43Z",
+      "updated_at": "2026-11-26T10:09:05Z",
+      "browser_download_url": "https://github.com/chenditc/investment_data/releases/download/2026-11-26/qlib_bin.tar.gz"
+    }
+  },
+  "validation": {
+    "manifest": {
+      "release_tag": "2026-11-26",
+      "target_trade_date": "2026-11-26",
+      "future_start_date": "2026-11-27",
+      "future_end_date": "2026-12-31",
+      "dolt_commit": "3u6lh4is4alt7ec4p8vfq74j083d7s16",
+      "investment_data_commit": "1114a57210c59cf0a13d69ec07465e1e73137cbc",
+      "qlib_commit": "b87a2c294d364a33fb739359886acffe8ec907d1",
+      "image_digest": "sha256:68d5fc24ab095cd8e28fe656521b2573f74868e4ccb9160d876ecf51bfe3819e",
+      "archive_size_bytes": 573153280,
+      "archive_sha256": "sha256:5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559"
+    },
+    "manifest_sha256": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+    "archive_member_count": 67970,
+    "start_date": "2000-01-04",
+    "end_date": "2026-11-26",
+    "sessions": 6518,
+    "future_calendar_sessions": 25,
+    "universes": {
+      "all": {
+        "unique_instruments": 6178,
+        "membership_intervals": 6178,
+        "active_on_target_date": 5583,
+        "start_date": "2000-01-04",
+        "end_date": "2026-11-26"
+      },
+      "csi300": {
+        "unique_instruments": 949,
+        "membership_intervals": 1227,
+        "active_on_target_date": 300,
+        "start_date": "2005-04-08",
+        "end_date": "2026-11-26"
+      },
+      "csi500": {
+        "unique_instruments": 1805,
+        "membership_intervals": 2471,
+        "active_on_target_date": 500,
+        "start_date": "2007-01-31",
+        "end_date": "2026-11-26"
+      },
+      "csi800": {
+        "unique_instruments": 2018,
+        "membership_intervals": 64344,
+        "active_on_target_date": 800,
+        "start_date": "2007-01-22",
+        "end_date": "2026-11-26"
+      },
+      "csi1000": {
+        "unique_instruments": 2804,
+        "membership_intervals": 3352,
+        "active_on_target_date": 1000,
+        "start_date": "2014-10-31",
+        "end_date": "2026-11-26"
+      },
+      "csiall": {
+        "unique_instruments": 5850,
+        "membership_intervals": 6417,
+        "active_on_target_date": 5117,
+        "start_date": "2011-08-31",
+        "end_date": "2026-11-26"
+      }
+    }
+  },
+  "start_date": "2000-01-04",
+  "end_date": "2026-11-26",
+  "sessions": 6518,
+  "observations": 17600664,
+  "feature_instruments": 6178,
+  "finite_closes_on_target_date": 5583,
+  "future_calendar_sessions": 25,
+  "future_dates_excluded_from_observations": true,
+  "universes": {
+    "all": {
+      "unique_instruments": 6178,
+      "membership_intervals": 6178,
+      "active_on_target_date": 5583,
+      "start_date": "2000-01-04",
+      "end_date": "2026-11-26"
+    },
+    "csi300": {
+      "unique_instruments": 949,
+      "membership_intervals": 1227,
+      "active_on_target_date": 300,
+      "start_date": "2005-04-08",
+      "end_date": "2026-11-26"
+    },
+    "csi500": {
+      "unique_instruments": 1805,
+      "membership_intervals": 2471,
+      "active_on_target_date": 500,
+      "start_date": "2007-01-31",
+      "end_date": "2026-11-26"
+    },
+    "csi800": {
+      "unique_instruments": 2018,
+      "membership_intervals": 64344,
+      "active_on_target_date": 800,
+      "start_date": "2007-01-22",
+      "end_date": "2026-11-26"
+    },
+    "csi1000": {
+      "unique_instruments": 2804,
+      "membership_intervals": 3352,
+      "active_on_target_date": 1000,
+      "start_date": "2014-10-31",
+      "end_date": "2026-11-26"
+    },
+    "csiall": {
+      "unique_instruments": 5850,
+      "membership_intervals": 6417,
+      "active_on_target_date": 5117,
+      "start_date": "2011-08-31",
+      "end_date": "2026-11-26"
+    }
+  },
+  "missing_bars": "NaN; no forward fill",
+  "membership": "Historical intervals from provider index snapshots; not a PIT guarantee"
+}

@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "execution": "Complete batch-aligned inference assembled from identical model states",
+  "provider": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  },
+  "segments": {
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-11-23"
+    ]
+  },
+  "model": "timesfm3_loop_128",
+  "portfolio_status": "completed deterministic native Qlib replay",
+  "portfolio_replay_manifest_sha256": "fe357728010f53b8c8d54811240598aed1fbe64ab851d1176072e94e08da19d4",
+  "original_forecast_run_sha256": "744f61e0d96153a092c888079f1791b49ba8618d5e543364f7273212f28432f7",
+  "forecast_metrics_unchanged": true
+}

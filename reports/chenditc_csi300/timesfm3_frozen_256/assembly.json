@@ -1,0 +1,825 @@
+{
+  "schema_version": 1,
+  "status": "complete_forecasts_pending_portfolio_replay",
+  "identity": {
+    "model": "timesfm3_frozen_256",
+    "batch_size": 64,
+    "settings": {
+      "mode": "frozen",
+      "context_length": 256,
+      "batch_size": 64,
+      "num_threads": 2,
+      "device": "cpu",
+      "train_samples": 1024,
+      "valid_samples": 512,
+      "epochs": 3,
+      "seed": 42,
+      "lr": 0.001
+    },
+    "segments": {
+      "train": [
+        "2020-01-02",
+        "2023-12-27"
+      ],
+      "valid": [
+        "2024-01-02",
+        "2024-12-27"
+      ],
+      "test": [
+        "2025-01-02",
+        "2026-11-23"
+      ]
+    },
+    "provider_fingerprint": {
+      "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+      "file_count": 61788,
+      "bytes": 730118170
+    },
+    "checkpoint": {
+      "repository": "google/timesfm-3.0-pytorch",
+      "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+      "files": {
+        "config.json": {
+          "bytes": 1273,
+          "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+        },
+        "model.safetensors": {
+          "bytes": 1322898824,
+          "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+        },
+        "LICENSE": {
+          "bytes": 7270,
+          "sha256": "3e36db7240d23adb6ac6d7d931892dcc5706a14a7d31581f08c35d2f25736dfd"
+        }
+      },
+      "distribution": "No checkpoint, adapter tensors, or model derivative is included in exported evidence."
+    },
+    "source_files": [
+      {
+        "name": "qlib_timesfm.py",
+        "size_bytes": 29197,
+        "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+      },
+      {
+        "name": "timesfm_pretrained.py",
+        "size_bytes": 8689,
+        "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+      },
+      {
+        "name": "timesfm_loop.py",
+        "size_bytes": 16547,
+        "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+      },
+      {
+        "name": "timesfm_comparison.py",
+        "size_bytes": 30482,
+        "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+      }
+    ],
+    "inference_source_files": {
+      "scripts/run_cn_official_shard.py": "3aa410b5af7a0dccbf9116c56dcc65366006c71074f127cdc35dd17f5adf7a61",
+      "src/financial_ts/cn_inference_shards.py": "a11469ddb158eae68e73462ce312d95cda6f1d69592220916e4c0e46c757b66b",
+      "src/financial_ts/workflow.py": "b17b6c76e620eb7d072c421c5ae08f7613f823316d2ddbaf9ac17d3343a2791a",
+      "src/financial_ts/cn_benchmark.py": "9a1c87b55bfb1963db6638933a12d0d5f2300931865cd443e72eddb85f055aca"
+    },
+    "runtime": {
+      "python": "3.12.16",
+      "packages": {
+        "timesfm": "3.0.2",
+        "pyqlib": "0.9.7",
+        "torch": "2.15.0+cpu",
+        "numpy": "1.26.4",
+        "pandas": "2.3.3"
+      }
+    },
+    "git_commit": "9a3e3dd412fa34fc4d49b800c6cfd8426a7ee861",
+    "trained_state_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fit_samples_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "best_epoch": 0
+  },
+  "shards": [
+    {
+      "schema_version": 1,
+      "status": "completed",
+      "model": "timesfm3_frozen_256",
+      "shard": 0,
+      "count": 4,
+      "identity": {
+        "model": "timesfm3_frozen_256",
+        "batch_size": 64,
+        "settings": {
+          "mode": "frozen",
+          "context_length": 256,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001
+        },
+        "segments": {
+          "train": [
+            "2020-01-02",
+            "2023-12-27"
+          ],
+          "valid": [
+            "2024-01-02",
+            "2024-12-27"
+          ],
+          "test": [
+            "2025-01-02",
+            "2026-11-23"
+          ]
+        },
+        "provider_fingerprint": {
+          "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+          "file_count": 61788,
+          "bytes": 730118170
+        },
+        "checkpoint": {
+          "repository": "google/timesfm-3.0-pytorch",
+          "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+          "files": {
+            "config.json": {
+              "bytes": 1273,
+              "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+            },
+            "model.safetensors": {
+              "bytes": 1322898824,
+              "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+            },
+            "LICENSE": {
+              "bytes": 7270,
+              "sha256": "3e36db7240d23adb6ac6d7d931892dcc5706a14a7d31581f08c35d2f25736dfd"
+            }
+          },
+          "distribution": "No checkpoint, adapter tensors, or model derivative is included in exported evidence."
+        },
+        "source_files": [
+          {
+            "name": "qlib_timesfm.py",
+            "size_bytes": 29197,
+            "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+          },
+          {
+            "name": "timesfm_pretrained.py",
+            "size_bytes": 8689,
+            "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+          },
+          {
+            "name": "timesfm_loop.py",
+            "size_bytes": 16547,
+            "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+          },
+          {
+            "name": "timesfm_comparison.py",
+            "size_bytes": 30482,
+            "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+          }
+        ],
+        "inference_source_files": {
+          "scripts/run_cn_official_shard.py": "3aa410b5af7a0dccbf9116c56dcc65366006c71074f127cdc35dd17f5adf7a61",
+          "src/financial_ts/cn_inference_shards.py": "a11469ddb158eae68e73462ce312d95cda6f1d69592220916e4c0e46c757b66b",
+          "src/financial_ts/workflow.py": "b17b6c76e620eb7d072c421c5ae08f7613f823316d2ddbaf9ac17d3343a2791a",
+          "src/financial_ts/cn_benchmark.py": "9a1c87b55bfb1963db6638933a12d0d5f2300931865cd443e72eddb85f055aca"
+        },
+        "runtime": {
+          "python": "3.12.16",
+          "packages": {
+            "timesfm": "3.0.2",
+            "pyqlib": "0.9.7",
+            "torch": "2.15.0+cpu",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3"
+          }
+        },
+        "git_commit": "9a3e3dd412fa34fc4d49b800c6cfd8426a7ee861",
+        "trained_state_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fit_samples_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "best_epoch": 0
+      },
+      "segments": {
+        "valid": {
+          "start": 0,
+          "stop": 17984,
+          "total": 72000,
+          "full_index_sha256": "db6f81d6b139a912aea4cdcca8d4ee48f30b0de79cac4ca0690b8f10e7b0d8d4",
+          "index_sha256": "88ce94e6cae238e67bd695b7785e8c99a00f250b2b5cf96a8309fce86afa4a40"
+        },
+        "test": {
+          "start": 0,
+          "stop": 34240,
+          "total": 137002,
+          "full_index_sha256": "c11774e8993305a428b35c362103875ea7edcfa549091de93bacf6dc62b0828a",
+          "index_sha256": "c34c84d379dc642db2fa671176588565d9cb856875cdd06204d643dc78bffa1d"
+        }
+      },
+      "model_details": {
+        "name": "timesfm3_panel",
+        "mode": "frozen",
+        "parameter_count": 330710976,
+        "trainable_parameter_count": 0,
+        "best_epoch": 0,
+        "epochs_run": 0,
+        "fit_seconds": 2.945011574000034,
+        "pretrained": true,
+        "selection_rmse": null,
+        "validation_rmse": 0.026118981326010874
+      },
+      "elapsed_seconds": 2277.464545437,
+      "export_policy": "Predictions, hashes, fit metadata only; no weights, adapters, pickles or provider.",
+      "files": [
+        {
+          "path": "data_source.json",
+          "bytes": 7907,
+          "sha256": "c5141de30bae6eb4e9b7dd8d55758b9ec5c6efc3421a391405bb943a2f38d2b3"
+        },
+        {
+          "path": "fit_manifest.json",
+          "bytes": 1596,
+          "sha256": "98aade87465364c787d2e4ff552744ec8fc8f6f1e19c72720f50b29c463943dc"
+        },
+        {
+          "path": "fit_samples.json",
+          "bytes": 3,
+          "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+        },
+        {
+          "path": "predictions.csv.gz",
+          "bytes": 754589,
+          "sha256": "a5e0a1c5c1d9d30b366ae3cbb60803dbe2375df754732f97d4e68dbd5e8dd9df"
+        },
+        {
+          "path": "protocol.json",
+          "bytes": 32451,
+          "sha256": "8da51cd2a1c605ee629edbe83cdabea08e5f81f190f5c024b3d971737fa64fe1"
+        },
+        {
+          "path": "resolved_config.json",
+          "bytes": 1822,
+          "sha256": "9741e239c14b1338c8a7c7a81f7683074f077bf0f1a70f8ffcf2b2182b66fcab"
+        },
+        {
+          "path": "source.json",
+          "bytes": 688,
+          "sha256": "6cc6ff49ff827ebffe6a337177fbcb8b3e2ffed6f50bfd4e487152e868a86e88"
+        },
+        {
+          "path": "training_curves.json",
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        {
+          "path": "validation_predictions.csv.gz",
+          "bytes": 396800,
+          "sha256": "af38482cf6db113ed61baba17f8dca7c7e88dab5b5caf1c4d0f88196ef8483d8"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "status": "completed",
+      "model": "timesfm3_frozen_256",
+      "shard": 1,
+      "count": 4,
+      "identity": {
+        "model": "timesfm3_frozen_256",
+        "batch_size": 64,
+        "settings": {
+          "mode": "frozen",
+          "context_length": 256,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001
+        },
+        "segments": {
+          "train": [
+            "2020-01-02",
+            "2023-12-27"
+          ],
+          "valid": [
+            "2024-01-02",
+            "2024-12-27"
+          ],
+          "test": [
+            "2025-01-02",
+            "2026-11-23"
+          ]
+        },
+        "provider_fingerprint": {
+          "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+          "file_count": 61788,
+          "bytes": 730118170
+        },
+        "checkpoint": {
+          "repository": "google/timesfm-3.0-pytorch",
+          "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+          "files": {
+            "config.json": {
+              "bytes": 1273,
+              "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+            },
+            "model.safetensors": {
+              "bytes": 1322898824,
+              "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+            },
+            "LICENSE": {
+              "bytes": 7270,
+              "sha256": "3e36db7240d23adb6ac6d7d931892dcc5706a14a7d31581f08c35d2f25736dfd"
+            }
+          },
+          "distribution": "No checkpoint, adapter tensors, or model derivative is included in exported evidence."
+        },
+        "source_files": [
+          {
+            "name": "qlib_timesfm.py",
+            "size_bytes": 29197,
+            "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+          },
+          {
+            "name": "timesfm_pretrained.py",
+            "size_bytes": 8689,
+            "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+          },
+          {
+            "name": "timesfm_loop.py",
+            "size_bytes": 16547,
+            "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+          },
+          {
+            "name": "timesfm_comparison.py",
+            "size_bytes": 30482,
+            "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+          }
+        ],
+        "inference_source_files": {
+          "scripts/run_cn_official_shard.py": "3aa410b5af7a0dccbf9116c56dcc65366006c71074f127cdc35dd17f5adf7a61",
+          "src/financial_ts/cn_inference_shards.py": "a11469ddb158eae68e73462ce312d95cda6f1d69592220916e4c0e46c757b66b",
+          "src/financial_ts/workflow.py": "b17b6c76e620eb7d072c421c5ae08f7613f823316d2ddbaf9ac17d3343a2791a",
+          "src/financial_ts/cn_benchmark.py": "9a1c87b55bfb1963db6638933a12d0d5f2300931865cd443e72eddb85f055aca"
+        },
+        "runtime": {
+          "python": "3.12.16",
+          "packages": {
+            "timesfm": "3.0.2",
+            "pyqlib": "0.9.7",
+            "torch": "2.15.0+cpu",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3"
+          }
+        },
+        "git_commit": "9a3e3dd412fa34fc4d49b800c6cfd8426a7ee861",
+        "trained_state_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fit_samples_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "best_epoch": 0
+      },
+      "segments": {
+        "valid": {
+          "start": 17984,
+          "stop": 35968,
+          "total": 72000,
+          "full_index_sha256": "db6f81d6b139a912aea4cdcca8d4ee48f30b0de79cac4ca0690b8f10e7b0d8d4",
+          "index_sha256": "2ba4003661682f0be3879cd0baf12434e191feaecb05e614f1602d0da8d93cd5"
+        },
+        "test": {
+          "start": 34240,
+          "stop": 68480,
+          "total": 137002,
+          "full_index_sha256": "c11774e8993305a428b35c362103875ea7edcfa549091de93bacf6dc62b0828a",
+          "index_sha256": "568c83bc0ec05105b5aae78f2328bf9360495855e39faa9479f65952e8ccf4da"
+        }
+      },
+      "model_details": {
+        "name": "timesfm3_panel",
+        "mode": "frozen",
+        "parameter_count": 330710976,
+        "trainable_parameter_count": 0,
+        "best_epoch": 0,
+        "epochs_run": 0,
+        "fit_seconds": 3.0125777870000263,
+        "pretrained": true,
+        "selection_rmse": null
+      },
+      "elapsed_seconds": 2295.176863664,
+      "export_policy": "Predictions, hashes, fit metadata only; no weights, adapters, pickles or provider.",
+      "files": [
+        {
+          "path": "data_source.json",
+          "bytes": 7907,
+          "sha256": "ab063d735f55e10c1e71d474073686d1636d59e587981cd66263025226cce98e"
+        },
+        {
+          "path": "fit_manifest.json",
+          "bytes": 1596,
+          "sha256": "98aade87465364c787d2e4ff552744ec8fc8f6f1e19c72720f50b29c463943dc"
+        },
+        {
+          "path": "fit_samples.json",
+          "bytes": 3,
+          "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+        },
+        {
+          "path": "predictions.csv.gz",
+          "bytes": 755912,
+          "sha256": "fdc957bc3e1266b293f415974f9ac7ebd86eda5745b66970e93be79e2b9fc88e"
+        },
+        {
+          "path": "protocol.json",
+          "bytes": 32451,
+          "sha256": "c99e1c0462197cd55b5203cde3ab5faf0cda584265f678ed986f207bc1d612b2"
+        },
+        {
+          "path": "resolved_config.json",
+          "bytes": 1822,
+          "sha256": "9741e239c14b1338c8a7c7a81f7683074f077bf0f1a70f8ffcf2b2182b66fcab"
+        },
+        {
+          "path": "source.json",
+          "bytes": 688,
+          "sha256": "6cc6ff49ff827ebffe6a337177fbcb8b3e2ffed6f50bfd4e487152e868a86e88"
+        },
+        {
+          "path": "training_curves.json",
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        {
+          "path": "validation_predictions.csv.gz",
+          "bytes": 397601,
+          "sha256": "f0bffa54588af286be3a4cf634d0ab1337d78cba788ebb65ada0badb966d52c8"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "status": "completed",
+      "model": "timesfm3_frozen_256",
+      "shard": 2,
+      "count": 4,
+      "identity": {
+        "model": "timesfm3_frozen_256",
+        "batch_size": 64,
+        "settings": {
+          "mode": "frozen",
+          "context_length": 256,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001
+        },
+        "segments": {
+          "train": [
+            "2020-01-02",
+            "2023-12-27"
+          ],
+          "valid": [
+            "2024-01-02",
+            "2024-12-27"
+          ],
+          "test": [
+            "2025-01-02",
+            "2026-11-23"
+          ]
+        },
+        "provider_fingerprint": {
+          "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+          "file_count": 61788,
+          "bytes": 730118170
+        },
+        "checkpoint": {
+          "repository": "google/timesfm-3.0-pytorch",
+          "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+          "files": {
+            "config.json": {
+              "bytes": 1273,
+              "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+            },
+            "model.safetensors": {
+              "bytes": 1322898824,
+              "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+            },
+            "LICENSE": {
+              "bytes": 7270,
+              "sha256": "3e36db7240d23adb6ac6d7d931892dcc5706a14a7d31581f08c35d2f25736dfd"
+            }
+          },
+          "distribution": "No checkpoint, adapter tensors, or model derivative is included in exported evidence."
+        },
+        "source_files": [
+          {
+            "name": "qlib_timesfm.py",
+            "size_bytes": 29197,
+            "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+          },
+          {
+            "name": "timesfm_pretrained.py",
+            "size_bytes": 8689,
+            "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+          },
+          {
+            "name": "timesfm_loop.py",
+            "size_bytes": 16547,
+            "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+          },
+          {
+            "name": "timesfm_comparison.py",
+            "size_bytes": 30482,
+            "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+          }
+        ],
+        "inference_source_files": {
+          "scripts/run_cn_official_shard.py": "3aa410b5af7a0dccbf9116c56dcc65366006c71074f127cdc35dd17f5adf7a61",
+          "src/financial_ts/cn_inference_shards.py": "a11469ddb158eae68e73462ce312d95cda6f1d69592220916e4c0e46c757b66b",
+          "src/financial_ts/workflow.py": "b17b6c76e620eb7d072c421c5ae08f7613f823316d2ddbaf9ac17d3343a2791a",
+          "src/financial_ts/cn_benchmark.py": "9a1c87b55bfb1963db6638933a12d0d5f2300931865cd443e72eddb85f055aca"
+        },
+        "runtime": {
+          "python": "3.12.16",
+          "packages": {
+            "timesfm": "3.0.2",
+            "pyqlib": "0.9.7",
+            "torch": "2.15.0+cpu",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3"
+          }
+        },
+        "git_commit": "9a3e3dd412fa34fc4d49b800c6cfd8426a7ee861",
+        "trained_state_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fit_samples_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "best_epoch": 0
+      },
+      "segments": {
+        "valid": {
+          "start": 35968,
+          "stop": 53952,
+          "total": 72000,
+          "full_index_sha256": "db6f81d6b139a912aea4cdcca8d4ee48f30b0de79cac4ca0690b8f10e7b0d8d4",
+          "index_sha256": "1dc1a58a724a40a909e3cf7cce2ff6d0ef69b36f76738895922ae3b8aa88fb60"
+        },
+        "test": {
+          "start": 68480,
+          "stop": 102720,
+          "total": 137002,
+          "full_index_sha256": "c11774e8993305a428b35c362103875ea7edcfa549091de93bacf6dc62b0828a",
+          "index_sha256": "baf4951d0e43d343e6213eaabce437b39d6ebe4b2a1e0094e50aa37dae3a6591"
+        }
+      },
+      "model_details": {
+        "name": "timesfm3_panel",
+        "mode": "frozen",
+        "parameter_count": 330710976,
+        "trainable_parameter_count": 0,
+        "best_epoch": 0,
+        "epochs_run": 0,
+        "fit_seconds": 2.446193649999998,
+        "pretrained": true,
+        "selection_rmse": null
+      },
+      "elapsed_seconds": 2023.4286793410001,
+      "export_policy": "Predictions, hashes, fit metadata only; no weights, adapters, pickles or provider.",
+      "files": [
+        {
+          "path": "data_source.json",
+          "bytes": 7907,
+          "sha256": "f57175230f3e2dee69c2d49ac934267b4e50f98ca26f688cd69df69423d01b46"
+        },
+        {
+          "path": "fit_manifest.json",
+          "bytes": 1596,
+          "sha256": "98aade87465364c787d2e4ff552744ec8fc8f6f1e19c72720f50b29c463943dc"
+        },
+        {
+          "path": "fit_samples.json",
+          "bytes": 3,
+          "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+        },
+        {
+          "path": "predictions.csv.gz",
+          "bytes": 756778,
+          "sha256": "91de3803887ef22500f84a0ef29e46fc2ebcb0286f2d71d108336b9eb1057ef7"
+        },
+        {
+          "path": "protocol.json",
+          "bytes": 32451,
+          "sha256": "6ae24aa4414dcb999f8c5b4f58bee6ab4b1b46e46fcd2cf114c05f5ea5e56d53"
+        },
+        {
+          "path": "resolved_config.json",
+          "bytes": 1822,
+          "sha256": "9741e239c14b1338c8a7c7a81f7683074f077bf0f1a70f8ffcf2b2182b66fcab"
+        },
+        {
+          "path": "source.json",
+          "bytes": 688,
+          "sha256": "6cc6ff49ff827ebffe6a337177fbcb8b3e2ffed6f50bfd4e487152e868a86e88"
+        },
+        {
+          "path": "training_curves.json",
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        {
+          "path": "validation_predictions.csv.gz",
+          "bytes": 396358,
+          "sha256": "dd7eddaf0c0eaeb06196a67eee57869c7aa2bde5ca20f9d44b3eb47647dfecb8"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "status": "completed",
+      "model": "timesfm3_frozen_256",
+      "shard": 3,
+      "count": 4,
+      "identity": {
+        "model": "timesfm3_frozen_256",
+        "batch_size": 64,
+        "settings": {
+          "mode": "frozen",
+          "context_length": 256,
+          "batch_size": 64,
+          "num_threads": 2,
+          "device": "cpu",
+          "train_samples": 1024,
+          "valid_samples": 512,
+          "epochs": 3,
+          "seed": 42,
+          "lr": 0.001
+        },
+        "segments": {
+          "train": [
+            "2020-01-02",
+            "2023-12-27"
+          ],
+          "valid": [
+            "2024-01-02",
+            "2024-12-27"
+          ],
+          "test": [
+            "2025-01-02",
+            "2026-11-23"
+          ]
+        },
+        "provider_fingerprint": {
+          "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+          "file_count": 61788,
+          "bytes": 730118170
+        },
+        "checkpoint": {
+          "repository": "google/timesfm-3.0-pytorch",
+          "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+          "files": {
+            "config.json": {
+              "bytes": 1273,
+              "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+            },
+            "model.safetensors": {
+              "bytes": 1322898824,
+              "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+            },
+            "LICENSE": {
+              "bytes": 7270,
+              "sha256": "3e36db7240d23adb6ac6d7d931892dcc5706a14a7d31581f08c35d2f25736dfd"
+            }
+          },
+          "distribution": "No checkpoint, adapter tensors, or model derivative is included in exported evidence."
+        },
+        "source_files": [
+          {
+            "name": "qlib_timesfm.py",
+            "size_bytes": 29197,
+            "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+          },
+          {
+            "name": "timesfm_pretrained.py",
+            "size_bytes": 8689,
+            "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+          },
+          {
+            "name": "timesfm_loop.py",
+            "size_bytes": 16547,
+            "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+          },
+          {
+            "name": "timesfm_comparison.py",
+            "size_bytes": 30482,
+            "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+          }
+        ],
+        "inference_source_files": {
+          "scripts/run_cn_official_shard.py": "3aa410b5af7a0dccbf9116c56dcc65366006c71074f127cdc35dd17f5adf7a61",
+          "src/financial_ts/cn_inference_shards.py": "a11469ddb158eae68e73462ce312d95cda6f1d69592220916e4c0e46c757b66b",
+          "src/financial_ts/workflow.py": "b17b6c76e620eb7d072c421c5ae08f7613f823316d2ddbaf9ac17d3343a2791a",
+          "src/financial_ts/cn_benchmark.py": "9a1c87b55bfb1963db6638933a12d0d5f2300931865cd443e72eddb85f055aca"
+        },
+        "runtime": {
+          "python": "3.12.16",
+          "packages": {
+            "timesfm": "3.0.2",
+            "pyqlib": "0.9.7",
+            "torch": "2.15.0+cpu",
+            "numpy": "1.26.4",
+            "pandas": "2.3.3"
+          }
+        },
+        "git_commit": "9a3e3dd412fa34fc4d49b800c6cfd8426a7ee861",
+        "trained_state_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fit_samples_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "best_epoch": 0
+      },
+      "segments": {
+        "valid": {
+          "start": 53952,
+          "stop": 72000,
+          "total": 72000,
+          "full_index_sha256": "db6f81d6b139a912aea4cdcca8d4ee48f30b0de79cac4ca0690b8f10e7b0d8d4",
+          "index_sha256": "9b6ca0e335387d31a19122f127271bb9a7600c93afdbda14ac38a4d108a34fbc"
+        },
+        "test": {
+          "start": 102720,
+          "stop": 137002,
+          "total": 137002,
+          "full_index_sha256": "c11774e8993305a428b35c362103875ea7edcfa549091de93bacf6dc62b0828a",
+          "index_sha256": "0a0f59530f30b254d4754c89e00bfdc71f3a716ec7ba66c0bf1bd14426d928aa"
+        }
+      },
+      "model_details": {
+        "name": "timesfm3_panel",
+        "mode": "frozen",
+        "parameter_count": 330710976,
+        "trainable_parameter_count": 0,
+        "best_epoch": 0,
+        "epochs_run": 0,
+        "fit_seconds": 2.897451738000001,
+        "pretrained": true,
+        "selection_rmse": null
+      },
+      "elapsed_seconds": 1409.742156138,
+      "export_policy": "Predictions, hashes, fit metadata only; no weights, adapters, pickles or provider.",
+      "files": [
+        {
+          "path": "data_source.json",
+          "bytes": 7907,
+          "sha256": "d2d5cb6074eb92443ee4d183813b5650122d978fd3cfea35b5350d358d663f25"
+        },
+        {
+          "path": "fit_manifest.json",
+          "bytes": 1596,
+          "sha256": "98aade87465364c787d2e4ff552744ec8fc8f6f1e19c72720f50b29c463943dc"
+        },
+        {
+          "path": "fit_samples.json",
+          "bytes": 3,
+          "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+        },
+        {
+          "path": "predictions.csv.gz",
+          "bytes": 757746,
+          "sha256": "2c6c61e971b631841796d3493a3827f10e7661103a31a7d7d9b1565e3e1fb4d1"
+        },
+        {
+          "path": "protocol.json",
+          "bytes": 32451,
+          "sha256": "2455c005528ab935ed0089c9114af4ac43049aca216365f43a9dac67d1e5c508"
+        },
+        {
+          "path": "resolved_config.json",
+          "bytes": 1822,
+          "sha256": "9741e239c14b1338c8a7c7a81f7683074f077bf0f1a70f8ffcf2b2182b66fcab"
+        },
+        {
+          "path": "source.json",
+          "bytes": 688,
+          "sha256": "6cc6ff49ff827ebffe6a337177fbcb8b3e2ffed6f50bfd4e487152e868a86e88"
+        },
+        {
+          "path": "training_curves.json",
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        {
+          "path": "validation_predictions.csv.gz",
+          "bytes": 398796,
+          "sha256": "d0786a8be99050521aae31e0506540fb65ad8cc8eca319401b9364041a991fca"
+        }
+      ]
+    }
+  ],
+  "rows": {
+    "valid": 72000,
+    "test": 137002
+  },
+  "trained_state_agreement": "Exact SHA256 agreement across all independently fitted workers.",
+  "batch_policy": "All original batch boundaries preserved; no inference rows sampled or omitted."
+}

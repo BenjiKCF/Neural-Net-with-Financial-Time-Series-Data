@@ -108,6 +108,32 @@ def test_install_verified_snapshot_and_exclude_future_dates(tmp_path, monkeypatc
     assert not (target / "qlib_bin").exists()
 
 
+@pytest.mark.parametrize("authenticated", [False, True])
+def test_release_token_is_scoped_to_metadata_request(tmp_path, monkeypatch, authenticated):
+    cache, metadata = _fixture(tmp_path)
+    if authenticated:
+        monkeypatch.setenv("GITHUB_TOKEN", "fixture-token-not-a-secret")
+    else:
+        monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    requests = []
+
+    def open_fixture(request, timeout):
+        requests.append(request)
+        if request.full_url.startswith(chenditc.API_ROOT):
+            return io.BytesIO(json.dumps(metadata).encode())
+        return io.BytesIO((cache / "qlib_bin.manifest.json").read_bytes())
+
+    monkeypatch.setattr(chenditc, "urlopen", open_fixture)
+    result = chenditc.resolve_chenditc_release("2026-11-26")
+    assert result == metadata
+    assert requests[0].get_header("Authorization") == (
+        "Bearer fixture-token-not-a-secret" if authenticated else None
+    )
+    chenditc._download(metadata["assets"][0], tmp_path / "downloaded-manifest.json")
+    assert requests[1].get_header("Authorization") is None
+    assert "fixture-token" not in json.dumps(result)
+
+
 def test_archive_tamper_rejected_before_extraction(tmp_path):
     cache, metadata = _fixture(tmp_path)
     path = cache / "qlib_bin.tar.gz"

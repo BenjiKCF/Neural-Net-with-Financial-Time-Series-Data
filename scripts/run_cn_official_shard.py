@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
+import importlib.metadata
 import json
 import os
+import platform
 import time
 import traceback
 from pathlib import Path
@@ -109,6 +111,22 @@ def run(args):
             "provider_fingerprint": protocol["provider_fingerprint"],
             "checkpoint": checkpoint,
             "source_files": model.manifest_["source_files"],
+            "inference_source_files": {
+                str(path.relative_to(root)): sha256(path)
+                for path in [
+                    Path(__file__),
+                    root / "src/financial_ts/cn_inference_shards.py",
+                    root / "src/financial_ts/workflow.py",
+                    root / "src/financial_ts/cn_benchmark.py",
+                ]
+            },
+            "runtime": {
+                "python": platform.python_version(),
+                "packages": {
+                    name: importlib.metadata.version(name)
+                    for name in ["timesfm", "pyqlib", "torch", "numpy", "pandas"]
+                },
+            },
             "git_commit": source["git_commit"],
             "trained_state_sha256": state_hash,
             "fit_samples_sha256": sample_hash,

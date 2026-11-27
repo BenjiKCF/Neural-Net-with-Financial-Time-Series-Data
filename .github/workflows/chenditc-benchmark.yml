@@ -2,12 +2,6 @@ name: Pinned chenditc CSI300 benchmark
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - codex/chenditc-qlib-benchmark-20261127
-    paths:
-      - .github/workflows/chenditc-benchmark.yml
-      - scripts/run_cn_worker.py
 
 permissions:
   contents: read
@@ -74,6 +68,8 @@ jobs:
       - name: Check the declared runtime
         run: python -c "import torch; assert torch.__version__.split('+')[0] == '2.15.0'; assert not torch.cuda.is_available()"
       - name: Download and verify the pinned chenditc data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: fts download-chenditc --release 2026-11-26 --provider .data/chenditc/2026-11-26
       - name: Run the complete scratch-model panel
         if: ${{ !matrix.official }}

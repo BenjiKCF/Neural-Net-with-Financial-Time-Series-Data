@@ -12,6 +12,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import os
 import re
 import shutil
 import tarfile
@@ -75,10 +76,14 @@ def _json_bytes(raw: bytes) -> dict:
 def resolve_chenditc_release(release: str = "latest") -> dict:
     """Resolve a release and retain its exact API response for provenance."""
     endpoint = "latest" if release == "latest" else f"tags/{_date(release)}"
-    request = Request(
-        f"{API_ROOT}/releases/{endpoint}",
-        headers={"User-Agent": "financial-ts-qlib", "Accept": "application/vnd.github+json"},
-    )
+    headers = {"User-Agent": "financial-ts-qlib", "Accept": "application/vnd.github+json"}
+    # A workflow-scoped token avoids the shared anonymous runner-IP quota.
+    # It is used only for this fixed GitHub API request, never saved in source
+    # metadata or forwarded to the public asset download requests below.
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    request = Request(f"{API_ROOT}/releases/{endpoint}", headers=headers)
     with urlopen(request, timeout=60) as response:
         metadata = _json_bytes(response.read())
     tag = _date(metadata["tag_name"])

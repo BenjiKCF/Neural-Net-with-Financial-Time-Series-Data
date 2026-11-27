@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: chenditc-official-shards-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   inference:
@@ -47,6 +47,8 @@ jobs:
           python -m pip install 'torch==2.15.0' --index-url https://download.pytorch.org/whl/cpu
           python -m pip install -e '.[neural,dev,timesfm]'
       - name: Download and verify the pinned data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: fts download-chenditc --release 2026-11-26 --provider .data/chenditc/2026-11-26
       - name: Fit identically and infer complete assigned batches
         run: python scripts/run_cn_official_shard.py --model '${{ matrix.model }}' --shard '${{ matrix.shard }}' --count 4 --download-checkpoint

@@ -5,15 +5,16 @@
 [![CI](https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/BenjiKCF/Neural-Net-with-Financial-Time-Series-Data/actions/workflows/ci.yml)
 [![Python 3.10–3.12](https://img.shields.io/badge/Python-3.10%E2%80%933.12-3776AB?logo=python&logoColor=white)](docs/getting-started.md)
 [![Qlib 0.9.7](https://img.shields.io/badge/Qlib-0.9.7-14b8a6)](https://github.com/microsoft/qlib)
+[![CSI300 daily data](https://img.shields.io/badge/Data-chenditc%20%C2%B7%20CSI300-0f766e)](docs/chenditc-benchmark.md)
 [![Offline CPU demo](https://img.shields.io/badge/Demo-offline%20%2B%20CPU-6366f1)](#quick-start)
 
-**Train and compare financial forecasters with Qlib and PyTorch.** Explore compact DeepSeek V4.1, GLM-5.4, Qwen4, and TimesFM 3 architectures alongside LightGBM, a plain Transformer, and two small financial forecasting designs. Start with generated example data, then replay the recorded SPY backtest or use your own daily market CSVs.
+**Train financial forecasters, backtest stock portfolios, and inspect Qlib's native diagnostics.** The primary research workflow now uses the latest verified [chenditc Qlib dataset](https://github.com/chenditc/investment_data/releases): daily China-market data with a historical CSI300 universe. Compare eight trainable architectures and four optional official TimesFM variants on a common recent period.
 
-[**Start here**](docs/getting-started.md) · [**Results & backtest**](#results) · [**Models**](#model-catalog) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3) · [**ES & weight editing**](docs/paper-posttraining.md) · [**Research report**](docs/financial-research.md)
+[**Start here**](docs/getting-started.md) · [**Data & results**](#results) · [**Qlib charts**](#native-qlib-diagnostics) · [**Models**](#model-catalog) · [**CSI300 protocol**](docs/chenditc-benchmark.md) · [**GLM loop**](#glm-54-is-a-loop-transformer) · [**Looped TimesFM**](#looped-timesfm-3)
 
 | Start small | Compare fairly | Inspect the evidence |
 | --- | --- | --- |
-| An offline demo; no API key or GPU needed. | Shared data, target, chronological splits, and validation-only checkpoint selection. | Predictions, learning curves, metrics, configuration, and data hashes are exported. |
+| An offline demo, then a verified market-data download. | Shared universe, target, chronological splits, and validation-only checkpoint selection. | Native Qlib charts, predictions, learning curves, portfolio returns, and data hashes. |
 
 ## Quick start
 
@@ -40,7 +41,7 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install "torch>=2.5,<3" --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e ".[neural]"
+python -m pip install -e ".[neural,visualization]"
 ```
 
 If activation is blocked, use the [activation-free alternative](docs/getting-started.md#if-something-goes-wrong).
@@ -58,7 +59,7 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install "torch>=2.5,<3"
-python -m pip install -e ".[neural]"
+python -m pip install -e ".[neural,visualization]"
 ```
 
 These macOS commands use CPU. The current CLI supports CPU and NVIDIA CUDA; it does not select Apple MPS.
@@ -73,16 +74,16 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install "torch>=2.5,<3" --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e ".[neural]"
+python -m pip install -e ".[neural,visualization]"
 ```
 
 Your distribution may require its Python 3.12 virtual-environment package first; see the [setup guide](docs/getting-started.md#1-install-python-312).
 
 </details>
 
-The dot in `-e ".[neural]"` means **install this downloaded project**. There is no need to find a similarly named package on PyPI. Keep the quotes, and reactivate `.venv` whenever you open a new terminal.
+The dot in `-e ".[neural,visualization]"` means **install this downloaded project**. The extras install the trainable models and native chart exporters. Keep the quotes, and reactivate `.venv` whenever you open a new terminal.
 
-### 3. Run all eight models
+### 3. Check the setup with all eight models
 
 ```bash
 fts models
@@ -99,7 +100,70 @@ This creates synthetic prices, trains the models briefly, and exercises Qlib's p
 
 CSV files open in a spreadsheet; JSON files open in a text editor. **Synthetic demo results verify that the software runs.** They do not measure a real trading edge.
 
+### 4. Download chenditc data and run the CSI300 benchmark
+
+```bash
+fts download-chenditc --provider .data/cn --release latest
+fts benchmark-cn --provider .data/cn --output runs/csi300
+fts qlib-report --run-dir runs/csi300/lightgbm --output runs/csi300/plots
+```
+
+The first command resolves the current release, verifies its archive and manifest, and creates a Qlib provider. The second trains all eight catalog models and runs the same CSI300 portfolio simulation for each. The third exports Qlib's native plots for the named run; open `runs/csi300/plots/report.html` in your browser. These market-data runs are substantially longer than the synthetic check.
+
+To include the four official TimesFM variants, install `.[timesfm,visualization]`, [download the separately licensed checkpoint](docs/architectures/timesfm.md#timesfm3_pretrained), and add `--timesfm-checkpoint .data/timesfm3-checkpoint` when starting `benchmark-cn`. Use a new output folder when changing the declared roster. See the [complete reproduction guide](docs/chenditc-benchmark.md#reproduce-the-campaign).
+
 ## Results
+
+### Latest chenditc dataset · CSI300
+
+The release resolved for this campaign is **[2026-11-26](https://github.com/chenditc/investment_data/releases/tag/2026-11-26)**, checked on 27 November 2026. Its observed market data end on **26 November 2026**. Future-calendar entries are excluded from observations. The earlier SPX experiment used a bundled 1990–2018 index CSV and SPY prices for its backtest; those results remain in the archive below.
+
+| Data and protocol | This campaign |
+| --- | --- |
+| Source | chenditc `investment_data`, verified `qlib_bin.tar.gz` and matching manifest |
+| Downloaded coverage | 2000-01-04–2026-11-26; 6,178 instruments; 17,600,664 finite close observations |
+| Research universe | Historical CSI300 membership intervals; 300 members active at the data cutoff |
+| Training signals | 2020-01-02–2023-12-27 |
+| Validation signals | 2024-01-02–2024-12-27 |
+| Test signals | 2025-01-02–2026-11-23 |
+| Target | Next-session close to the following close: `close[t+2] / close[t+1] - 1` |
+| Portfolio | Qlib Top50/Drop5; CSI300 benchmark; next-close execution; 5/15 bps entry/exit costs |
+| Repetition | One declared seed, **42**; up to six neural training epochs |
+
+The three final observed sessions supply the label horizon and Qlib's executor boundary, which is why the last test signal is 23 November. Training uses all eligible CSI300 rows. The seven neural architectures share 157 OHLCV factors, 32-session windows, width 32, and batch size 512; LightGBM uses the same current-day factors. Official TimesFM uses adjusted-close contexts and a separate, explicitly bounded adaptation budget.
+
+<!-- CHENDITC_RESULTS_START -->
+**Campaign status: running.** The new result table will be populated from completed run artifacts. No SPX score has been carried over as a CSI300 result. The primary scratch model will be chosen by **full-validation daily Rank IC**, then shown with all models' test results. This single-seed campaign does not supply the old experiment's three-seed uncertainty estimates.
+<!-- CHENDITC_RESULTS_END -->
+
+[Dataset provenance, model roster, execution assumptions, and reproduction](docs/chenditc-benchmark.md)
+
+**Known portfolio valuation issue:** the completed LightGBM replay carries a holding in `SH600837` after its price series ends on 2025-02-05. Qlib keeps the last price for 440 portfolio dates; that holding accounts for about **1.94% of final simulated account value**. Portfolio numbers are therefore labeled **Qlib simulated returns**, pending correct corporate-action treatment. The universe remains historical; the stopped series has not been retrospectively deleted. Forecast errors use available labels. [Concrete data-quality finding](docs/chenditc-benchmark.md#terminated-series-and-portfolio-valuation).
+
+### Native Qlib diagnostics
+
+The report exporter calls Qlib's own `report_graph`, `score_ic_graph`, `risk_analysis_graph`, and `model_performance_graph`. Each run produces PNGs, inspectable Plotly JSON, and a self-contained interactive HTML report.
+
+<!-- CHENDITC_GALLERY_START -->
+The measured gallery is awaiting the validation-selected run. Its planned views are the portfolio report, daily IC/rank IC, monthly IC heatmap, score-quintile returns, and risk summary.
+
+<!-- Measured exports only; enable these references after generation and inspection.
+![Native Qlib portfolio report](docs/assets/qlib/portfolio.png)
+![Native Qlib daily IC and rank IC](docs/assets/qlib/score-ic.png)
+![Native Qlib monthly IC heatmap](docs/assets/qlib/monthly-ic.png)
+![Native Qlib score-quintile return diagnostics](docs/assets/qlib/group-return.png)
+![Native Qlib risk analysis](docs/assets/qlib/risk-summary.png)
+-->
+<!-- CHENDITC_GALLERY_END -->
+
+**Read the conventions:** native Qlib curves add daily returns; they are not compounded NAV. Qlib's default daily risk plots annualize with 238 sessions. The model-comparison table uses compounded portfolio returns and, where stated, 252-session CAGR. Quintile return plots diagnose forecast ranking before costs; the Top50 backtest includes the declared trading costs. [Chart guide](docs/chenditc-benchmark.md#read-the-native-qlib-charts).
+
+### Archived SPX and SPY experiments
+
+<details>
+<summary><strong>Open the 2013–2018 SPX results, SPY backtests, and ES/weight-edit experiments</strong></summary>
+
+These completed experiments use a different market, period, universe, and trading rule from the CSI300 campaign. Their scores and multi-seed results are preserved for reproducibility.
 
 ### Common-period forecasts and SPY backtest
 
@@ -201,6 +265,8 @@ The seeds are **7, 42, and 2026**; every seed is retained. Seed standard deviati
 
 This actual-checkpoint replay was worse than zero return. Its input and training history differ from the scratch models above. It is a separate experiment, with an explicit local download and a noncommercial weight license. [Setup and provenance](docs/architectures/timesfm.md#timesfm3_pretrained).
 
+</details>
+
 ## Model catalog
 
 The `*_mini` models are independently implemented, **randomly initialized numeric adaptations** of disclosed architecture ideas. They use financial factors and a scalar return head. Their documentation identifies what is retained, adapted, or omitted; they contain no pretrained flagship weights.
@@ -217,7 +283,7 @@ The `*_mini` models are independently implemented, **randomly initialized numeri
 | `regime_linear_moe` | Three linear experts mixed by a gate using historical feature descriptors. | [Config](configs/regime_linear_moe.yaml) · [Notes](docs/architectures/financial.md#regime-gated-linear-experts) |
 | `timesfm3_pretrained` | Google's fixed-weight model through an explicit local-checkpoint adapter. | [Config](configs/timesfm3_pretrained.yaml) · [Notes](docs/architectures/timesfm.md#timesfm3_pretrained) |
 
-`fts demo --model all` includes the eight trainable models. The official checkpoint and the loop fine-tuning experiment below are optional, separate workflows.
+`fts demo --model all` and `fts benchmark-cn` include the eight trainable models. Adding a local checkpoint to `benchmark-cn` includes frozen TimesFM with 128/256 closes, loop + adapter with 128 closes, and a matched adapter-only control. These official models retain different inputs and pretraining from the scratch architectures.
 
 ### GLM-5.4 is a loop Transformer
 
@@ -235,11 +301,9 @@ The later pass reuses first-pass global keys/values and sparse indices, then add
 
 ## How the workflow stays chronological
 
-![Dated training, validation and test periods, with label purging and training-only normalization](docs/assets/splits.svg)
-
 ```mermaid
 flowchart TD
-    D["OHLCV CSV"] --> Q["Validate data and split by date"]
+    D["Verified Qlib provider or OHLCV CSV"] --> Q["Validate data and split by date"]
     Q --> T["Training: fit normalization and weights"]
     Q --> V["Validation: choose the checkpoint"]
     Q --> E["Test: evaluate the selected checkpoint"]
@@ -250,7 +314,10 @@ flowchart TD
 
 Features observed through close **t** predict `close[t+2] / close[t+1] - 1`. Two actual trading sessions are purged at split boundaries to prevent labels crossing into the next partition. Normalization is fitted on training data only. [Data, target, and execution details](docs/workflow-guide.md#target-timing-and-leakage-controls).
 
-## Try real historical data
+## Archived SPX examples
+
+<details>
+<summary><strong>Use the bundled index CSV or reproduce the original three-seed comparison</strong></summary>
 
 The included `^GSPC.csv` works offline. Import it once, then train a model:
 
@@ -269,6 +336,8 @@ fts benchmark --provider .data/my-spx --output runs/my-comparison --models light
 
 This reproduces the original six-model roster under three seeds. Omitting `--models` also includes the two newer research architectures (24 runs total). It is a longer research job than the one-epoch demo. Every output includes configurations and provenance; nothing is silently overwritten.
 
+</details>
+
 ## Looped TimesFM 3
 
 **Experimental: convert the official pretrained model into a shared-depth loop and fine-tune lightweight gates/adapters.** This is a separate research adaptation; Google's released TimesFM 3 remains unchanged.
@@ -282,7 +351,12 @@ The conversion keeps the 20 pretrained layers, freezes their weights, and replay
 | Effective depth | 24 layer evaluations using 20 original layer objects |
 | Trainable addition | 21,761 gate and rank-8 adapter parameters |
 | Selection | Training labels for updates; validation chooses the saved adapter, including the unchanged initialization |
-| Test segment | Excluded from the original pilot; evaluated separately in the follow-up above |
+| New CSI300 campaign | 1,024 training samples, 512 selection samples, three epochs; complete validation/test inference for the declared panel |
+
+The CSI300 comparison reruns the frozen checkpoint, loop + adapter, and matched adapter-only control on the new dataset. The miniature `timesfm3_mini` is a separate model trained from scratch. [All variant definitions and budgets](docs/chenditc-benchmark.md#models-and-training-budget).
+
+<details>
+<summary><strong>Open the archived SPX checkpoint pilot and its follow-up results</strong></summary>
 
 ### Actual checkpoint fine-tuning pilot
 
@@ -310,14 +384,17 @@ fts finetune-timesfm --provider .data/my-spx --checkpoint .data/timesfm3-checkpo
 
 See [the loop architecture and API](docs/architectures/timesfm-loop.md), [checkpoint download instructions](docs/architectures/timesfm.md#timesfm3_pretrained), and [reproduction command](docs/timesfm-loop-validation.md#reproduce-the-pilot). The experiment saves learned adapters locally; **neither checkpoint nor trained adapters are redistributed**. The official [TimesFM license](https://huggingface.co/google/timesfm-3.0-pytorch/blob/43046b85ec22d584a13f8098c2ed39c889e129c2/LICENSE) covers noncommercial, nonproduction research and restricts redistribution of derivatives. Historical pretraining overlap remains unknown.
 
+</details>
+
 ## Explore further
 
 | I want to… | Read this |
 | --- | --- |
 | Install it and understand my first output | [Getting started](docs/getting-started.md) |
+| Download chenditc data, reproduce CSI300, or interpret native Qlib plots | [CSI300 benchmark guide](docs/chenditc-benchmark.md) |
 | Change features, models, splits, or portfolio costs | [Workflow and configuration](docs/workflow-guide.md) |
-| Inspect every benchmark setting and result | [Validation report](docs/architecture-validation.md) |
-| Compare TimesFM variants, new models and trading results | [Common-period research and backtest](docs/financial-research.md) |
+| Inspect the archived six-model SPX benchmark | [Original validation report](docs/architecture-validation.md) |
+| Inspect the archived TimesFM comparison and SPY backtest | [Common-period research and backtest](docs/financial-research.md) |
 | Understand the architecture adaptations | [DeepSeek](docs/architectures/deepseek.md) · [GLM/Qwen](docs/architectures/glm_qwen.md) · [TimesFM](docs/architectures/timesfm.md) |
 | Load the official TimesFM checkpoint | [Pretrained inference](docs/architectures/timesfm.md#timesfm3_pretrained) |
 | Inspect the removed notebook pipeline | [Legacy audit and Git history](docs/legacy-audit.md) |

@@ -15,6 +15,38 @@ def _parser() -> argparse.ArgumentParser:
         prog="fts", description="Financial time-series research with Qlib and PyTorch."
     )
     commands = parser.add_subparsers(dest="command", required=True)
+    download = commands.add_parser(
+        "download-chenditc", help="Download and verify the latest or a pinned chenditc Qlib release"
+    )
+    download.add_argument("--provider", required=True, type=Path)
+    download.add_argument("--release", default="latest")
+    download.add_argument("--cache-dir", type=Path)
+    cn = commands.add_parser(
+        "benchmark-cn", help="Rerun the CSI300 comparison on verified chenditc data"
+    )
+    cn.add_argument("--provider", required=True, type=Path)
+    cn.add_argument("--output", type=Path, default=Path("runs/chenditc-csi300"))
+    cn.add_argument(
+        "--models", nargs="+", help="Declared model names; default runs all available variants"
+    )
+    cn.add_argument("--epochs", type=int, default=6)
+    cn.add_argument("--seed", type=int, default=42)
+    cn.add_argument("--threads", type=int, default=2)
+    cn.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    cn.add_argument("--timesfm-checkpoint", type=Path)
+    cn.add_argument("--summarize-only", action="store_true")
+    cn.add_argument(
+        "--retry-failed",
+        action="store_true",
+        help="Archive incomplete attempts and retry identical configurations",
+    )
+    plots = commands.add_parser(
+        "qlib-report", help="Export Qlib native figures, PNGs and interactive HTML"
+    )
+    plots.add_argument("--run-dir", required=True, type=Path)
+    plots.add_argument("--output", required=True, type=Path)
+    plots.add_argument("--model")
+    plots.add_argument("--dataset-label", default="")
     ingest = commands.add_parser(
         "import-csv", help="Validate adjusted OHLCV and create a Qlib provider"
     )
@@ -155,7 +187,40 @@ def main(argv: list[str] | None = None) -> int:
         from financial_ts.data import create_demo_csv, import_csv
         from financial_ts.workflow import load_config, run_workflow
 
-        if args.command == "models":
+        if args.command == "download-chenditc":
+            from financial_ts.chenditc import download_chenditc
+
+            result = download_chenditc(
+                args.provider, release=args.release, cache_dir=args.cache_dir
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "benchmark-cn":
+            from financial_ts.cn_benchmark import (
+                prepare_cn_benchmark,
+                run_cn_models,
+                summarize_cn_benchmark,
+            )
+
+            protocol = prepare_cn_benchmark(
+                args.provider,
+                args.output,
+                epochs=args.epochs,
+                seed=args.seed,
+                device=args.device,
+                num_threads=args.threads,
+                checkpoint=args.timesfm_checkpoint,
+            )
+            if not args.summarize_only:
+                run_cn_models(protocol, models=args.models, retry_failed=args.retry_failed)
+            print(json.dumps(summarize_cn_benchmark(args.output), indent=2, allow_nan=False))
+        elif args.command == "qlib-report":
+            from financial_ts.qlib_visuals import export_qlib_run
+
+            result = export_qlib_run(
+                args.run_dir, args.output, model_name=args.model, dataset_label=args.dataset_label
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command == "models":
             print("\n".join(MODEL_NAMES))
         elif args.command == "research-papers":
             from financial_ts.paper_research import run_paper_research

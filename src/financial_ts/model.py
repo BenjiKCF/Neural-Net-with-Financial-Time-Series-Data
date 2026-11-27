@@ -25,6 +25,26 @@ from torch.utils.data import DataLoader, Dataset
 from financial_ts.catalog import NEURAL_MODELS, build_mini_encoder
 
 
+class _SelectedAnchors:
+    """Select supervised endpoints without deleting their historical feature rows."""
+
+    def __init__(self, sampler: Any, positions: np.ndarray):
+        self.sampler = sampler
+        self.positions = np.asarray(positions, dtype=np.int64)
+
+    def __len__(self):
+        return len(self.positions)
+
+    def __getitem__(self, index: int):
+        return self.sampler[int(self.positions[index])]
+
+    def get_index(self):
+        return self.sampler.get_index().take(self.positions)
+
+    def config(self, **kwargs):
+        self.sampler.config(**kwargs)
+
+
 class _Windows(Dataset):
     """Turn Qlib's feature-only sampler into tensors without filling from the future."""
 
@@ -207,14 +227,26 @@ class SequenceForecastModel(Model):
         return sampler
 
     def _supervised(self, dataset: Any, segment: str):
-        features = self._features(dataset, segment, DataHandlerLP.DK_L)
+        # DropnaLabel selects supervised endpoints only. Historical factors must
+        # come from the same feature-only view used at inference; otherwise an
+        # unavailable label deletes an observed factor row from later windows.
+        features = self._features(dataset, segment, DataHandlerLP.DK_I)
         if len(features) == 0:
             raise ValueError(f"The {segment} segment is empty")
         labels = dataset.prepare(
             segment, col_set="label", data_key=DataHandlerLP.DK_L, dtype=np.float64
         )
-        if not hasattr(labels, "get_index") or not features.get_index().equals(labels.get_index()):
-            raise ValueError(f"Feature and label indices do not match for {segment}")
+        if not hasattr(labels, "get_index") or not hasattr(labels, "config"):
+            raise ValueError(f"Expected a Qlib label sampler for {segment}")
+        label_index = labels.get_index()
+        if len(label_index) == 0:
+            raise ValueError(f"The {segment} segment is empty after label filtering")
+        if len(label_index) != len(labels) or label_index.has_duplicates:
+            raise ValueError(f"The {segment} segment must have unique label endpoints")
+        positions = features.get_index().get_indexer(label_index)
+        if (positions < 0).any():
+            raise ValueError(f"Feature rows are missing for some {segment} label endpoints")
+        features = _SelectedAnchors(features, positions)
         labels.config(fillna_type="none")
         targets = np.empty(len(labels), dtype=np.float64)
         for index in range(len(labels)):

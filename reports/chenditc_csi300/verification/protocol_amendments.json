@@ -1,0 +1,27 @@
+[
+  {
+    "at_utc": "2026-11-27T02:11:44.139053+00:00",
+    "reason": "Use close-only handler with identical forecast row identities for official TimesFM; add resumable prediction chunks. No change to instruments, dates, training budget or scoring. Official model runs had not started.",
+    "original_registered_at_utc": "2026-11-27T02:03:23.255951+00:00",
+    "changed_configs": [
+      "timesfm3_frozen_128",
+      "timesfm3_frozen_256",
+      "timesfm3_loop_128",
+      "timesfm3_adapter_128"
+    ]
+  },
+  {
+    "at_utc": "2026-11-27T02:23:25.259241+00:00",
+    "reason": "Opt in to SharedTSDatasetH: identical native Qlib windows, sample ordering, padding and labels with shared feature storage. Preserve original data and every numerical training setting. Initial parallel scratch attempts ended with SIGKILL137 before epoch1; failed directories retained.",
+    "changed_fields": [
+      "shared_windows"
+    ],
+    "prior_protocol": "protocol.pre_shared.json",
+    "equivalence_tests": "tests/test_shared_panel.py"
+  },
+  {
+    "at_utc": "2026-11-27T02:30:17.870732+00:00",
+    "reason": "Bind completed-run reuse to the full provider content fingerprint. Fingerprint agrees exactly with the first LightGBM run. Parameterize budget wording; no data or training setting change.",
+    "previous_protocol": "protocol.pre_integrity.json"
+  }
+]

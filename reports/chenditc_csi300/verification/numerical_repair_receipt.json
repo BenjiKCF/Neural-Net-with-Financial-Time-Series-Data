@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "verification": "Real checkpoint numerical failure reproduction, exact forward parity, and full-budget fitting after finite-equivalent repair",
+  "created_at_utc": "2026-11-27T02:54:40.509005+00:00",
+  "source": {
+    "dataset": "chenditc/investment_data",
+    "release": "2026-11-26",
+    "archive_sha256": "5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559",
+    "original_commit": "1496058",
+    "original_source_files": [
+      {
+        "name": "qlib_timesfm.py",
+        "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef",
+        "size_bytes": 29197
+      },
+      {
+        "name": "timesfm_loop.py",
+        "sha256": "3aa6c5ea2b85943e3ff8201b58456c090b592331b60e44e9b2d427bf63e2b9ad",
+        "size_bytes": 15573
+      },
+      {
+        "name": "timesfm_comparison.py",
+        "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc",
+        "size_bytes": 30482
+      },
+      {
+        "name": "timesfm_pretrained.py",
+        "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce",
+        "size_bytes": 8689
+      }
+    ],
+    "repair_file": "src/financial_ts/timesfm_loop.py",
+    "repair_sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+  },
+  "original_failure": {
+    "mode": "loop",
+    "epoch": 1,
+    "batch_zero_based": 7,
+    "batch_one_based": 8,
+    "finite_normalized_mse_before_backward": 0.811323078565444,
+    "nan_gradient_elements": 21761,
+    "infinite_gradient_elements": 0,
+    "anomaly": "Function 'SqrtBackward0' returned nan values in its 0th output.",
+    "location": "timesfm3/torch/util.py:147, update_running_stats, called by cpm_iterative_revin_refine",
+    "trigger": "A causal left-padded IPO context contains constant early patches; masked future-patch zero-variance derivatives poison the unused backward branch.",
+    "witness_instrument": "SH601868",
+    "witness_date": "2021-12-31",
+    "witness_context_sha256": "f92936721f8f09d7a45ff7deaa5d4365bf9874874f60c033dcf1c952e1872eb8"
+  },
+  "repair": {
+    "method": "Temporarily disable iterative CPM RevIN only for the fixed two-step differentiable decode, restoring the original flag in finally.",
+    "bound": "horizon=2 <= input_patch_len=32 and output_patch_len=64",
+    "proof": "Pinned decode selects only the final observed context patch for this horizon, both with and without stitching. CPM refinement modifies only later masked forecast patches. Skipping it removes an unused graph branch and cannot change selected logits or their mathematical derivatives.",
+    "applies_to": [
+      "LoopTimesFM3",
+      "GatedAdapterTimesFM3"
+    ],
+    "applies_during": [
+      "training",
+      "validation",
+      "inference"
+    ],
+    "official_frozen_wrapper_changed": false,
+    "forward_values_changed": false,
+    "rows_omitted": 0,
+    "new_gradient_clamps": false,
+    "epsilon_added": false,
+    "model_hyperparameters_changed": false,
+    "numerical_precision_changed": false
+  },
+  "protocol": {
+    "context_length": 128,
+    "batch_size": 64,
+    "train_samples": 1024,
+    "valid_samples": 512,
+    "epochs": 3,
+    "seed": 42,
+    "lr": 0.001,
+    "optimizer": "AdamW, weight_decay=0",
+    "existing_gradient_norm_guard": "clip_grad_norm_(max_norm=1.0, error_if_nonfinite=True), unchanged",
+    "device": "cpu",
+    "num_threads": 2,
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test_segment_loaded": false,
+    "handler_end_time": "2024-12-31",
+    "selection": "Minimum sampled validation RMSE including epoch zero, unchanged"
+  },
+  "fits": {
+    "loop": {
+      "fit_seconds": 276.8405003120006,
+      "peak_process_rss_mib": 3008.51953125,
+      "train_samples": 1024,
+      "valid_samples": 512,
+      "epochs_run": 3,
+      "optimizer_updates": 48,
+      "training_examples_seen": 3072,
+      "best_epoch": 0,
+      "selected_validation_rmse": 0.021378310432399718,
+      "training_curves": [
+        {
+          "epoch": 0,
+          "train_rmse": 0.024725898938831117,
+          "validation_rmse": 0.021378310432399718,
+          "updates": 0
+        },
+        {
+          "epoch": 1,
+          "train_rmse": 0.024682239009905786,
+          "validation_rmse": 0.021857121824123193,
+          "updates": 16
+        },
+        {
+          "epoch": 2,
+          "train_rmse": 0.02440088922416929,
+          "validation_rmse": 0.022969466730245355,
+          "updates": 32
+        },
+        {
+          "epoch": 3,
+          "train_rmse": 0.024041284771128525,
+          "validation_rmse": 0.02252416330066924,
+          "updates": 48
+        }
+      ],
+      "same_training_samples_as_failure_reproduction": true,
+      "test_labels_read_during_fit": false,
+      "fit_samples_sha256": "c3595b4d328223c1628397130150ae4d40f6eedca294f02a1e55a195e3433071",
+      "selected_adapter_state_sha256": "78f9125551f857b6ec1935ed21bdb027a4b8ff60a156a60cb565097547922d5f",
+      "adapter_hash_definition": "financial_ts.cn_inference_shards.state_sha256",
+      "parity": {
+        "failing_batch": {
+          "rows": 64,
+          "forecast_bit_equal": true,
+          "max_forecast_abs_error": 0.0,
+          "original_gradients_finite": false,
+          "repaired_gradients_finite": true,
+          "finite_gradient_bit_equal": null,
+          "configuration_restored": true
+        },
+        "constant_contexts": {
+          "rows": 2,
+          "forecast_bit_equal": true,
+          "max_forecast_abs_error": 0.0,
+          "original_gradients_finite": false,
+          "repaired_gradients_finite": true,
+          "finite_gradient_bit_equal": null,
+          "configuration_restored": true
+        },
+        "ordinary_batch": {
+          "rows": 64,
+          "forecast_bit_equal": true,
+          "max_forecast_abs_error": 0.0,
+          "original_gradients_finite": true,
+          "repaired_gradients_finite": true,
+          "finite_gradient_bit_equal": true,
+          "configuration_restored": true
+        }
+      },
+      "checkpoint_files": [
+        {
+          "name": "config.json",
+          "size_bytes": 1273,
+          "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+        },
+        {
+          "name": "model.safetensors",
+          "size_bytes": 1322898824,
+          "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+        }
+      ],
+      "source_files": [
+        {
+          "name": "qlib_timesfm.py",
+          "size_bytes": 29197,
+          "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+        },
+        {
+          "name": "timesfm_pretrained.py",
+          "size_bytes": 8689,
+          "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+        },
+        {
+          "name": "timesfm_loop.py",
+          "size_bytes": 16547,
+          "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+        },
+        {
+          "name": "timesfm_comparison.py",
+          "size_bytes": 30482,
+          "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+        }
+      ]
+    },
+    "adapter": {
+      "fit_seconds": 249.1858741670003,
+      "peak_process_rss_mib": 3008.51953125,
+      "train_samples": 1024,
+      "valid_samples": 512,
+      "epochs_run": 3,
+      "optimizer_updates": 48,
+      "training_examples_seen": 3072,
+      "best_epoch": 0,
+      "selected_validation_rmse": 0.021378310432399718,
+      "training_curves": [
+        {
+          "epoch": 0,
+          "train_rmse": 0.024725898938831117,
+          "validation_rmse": 0.021378310432399718,
+          "updates": 0
+        },
+        {
+          "epoch": 1,
+          "train_rmse": 0.024678380785608033,
+          "validation_rmse": 0.02189149424066336,
+          "updates": 16
+        },
+        {
+          "epoch": 2,
+          "train_rmse": 0.024395330495139582,
+          "validation_rmse": 0.02300157301513272,
+          "updates": 32
+        },
+        {
+          "epoch": 3,
+          "train_rmse": 0.02402255727546494,
+          "validation_rmse": 0.022590445062264326,
+          "updates": 48
+        }
+      ],
+      "same_training_samples_as_failure_reproduction": true,
+      "test_labels_read_during_fit": false,
+      "fit_samples_sha256": "c3595b4d328223c1628397130150ae4d40f6eedca294f02a1e55a195e3433071",
+      "selected_adapter_state_sha256": "78f9125551f857b6ec1935ed21bdb027a4b8ff60a156a60cb565097547922d5f",
+      "adapter_hash_definition": "financial_ts.cn_inference_shards.state_sha256",
+      "parity": {
+        "failing_batch": {
+          "rows": 64,
+          "forecast_bit_equal": true,
+          "max_forecast_abs_error": 0.0,
+          "original_gradients_finite": false,
+          "repaired_gradients_finite": true,
+          "finite_gradient_bit_equal": null,
+          "configuration_restored": true
+        },
+        "constant_contexts": {
+          "rows": 2,
+          "forecast_bit_equal": true,
+          "max_forecast_abs_error": 0.0,
+          "original_gradients_finite": false,
+          "repaired_gradients_finite": true,
+          "finite_gradient_bit_equal": null,
+          "configuration_restored": true
+        },
+        "ordinary_batch": {
+          "rows": 64,
+          "forecast_bit_equal": true,
+          "max_forecast_abs_error": 0.0,
+          "original_gradients_finite": true,
+          "repaired_gradients_finite": true,
+          "finite_gradient_bit_equal": true,
+          "configuration_restored": true
+        }
+      },
+      "checkpoint_files": [
+        {
+          "name": "config.json",
+          "size_bytes": 1273,
+          "sha256": "ff17bbc07b792c5a904cca265b8468579d736a4fe84981da25eb871b0a125bc6"
+        },
+        {
+          "name": "model.safetensors",
+          "size_bytes": 1322898824,
+          "sha256": "a7592b0a8432baee54483254e5647856911ce69e09d09a9bb65904b2d98f17da"
+        }
+      ],
+      "source_files": [
+        {
+          "name": "qlib_timesfm.py",
+          "size_bytes": 29197,
+          "sha256": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef"
+        },
+        {
+          "name": "timesfm_pretrained.py",
+          "size_bytes": 8689,
+          "sha256": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce"
+        },
+        {
+          "name": "timesfm_loop.py",
+          "size_bytes": 16547,
+          "sha256": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e"
+        },
+        {
+          "name": "timesfm_comparison.py",
+          "size_bytes": 30482,
+          "sha256": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "files": [
+      "tests/test_timesfm_loop.py",
+      "tests/test_timesfm_comparison.py",
+      "tests/test_qlib_timesfm.py"
+    ],
+    "passed": 47,
+    "failed": 0,
+    "ruff": "passed for both changed source/test files",
+    "regressions": [
+      "Both loop and adapter modes",
+      "Constant and ordinary contexts",
+      "Masked sqrt(0) nonfinite backward reproduction",
+      "Exact forward equality",
+      "Exact gradient equality where original gradients were finite",
+      "Configuration restoration after exceptions",
+      "Patch-bound guard"
+    ]
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "packages": {
+      "torch": "2.15.0+cpu",
+      "timesfm": "3.0.2",
+      "pyqlib": "0.9.7",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3"
+    }
+  },
+  "scope": "This receipt verifies the numerical repair and complete adapter-fitting budgets. Full-panel validation/test inference and portfolio replay have separate campaign receipts.",
+  "export_policy": "Aggregate diagnostics, metrics, hashes and source identities only; no checkpoint, adapter tensors or raw training rows included."
+}

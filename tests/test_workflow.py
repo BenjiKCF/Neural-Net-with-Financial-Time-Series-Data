@@ -189,7 +189,10 @@ def test_single_instrument_uses_raw_labels_and_skips_cross_sectional_statistics(
     assert predictions["label"].std() > 0
     assert result["metrics"]["evaluated_count"] == len(predictions)
     task = yaml.safe_load((output / "qlib_task.yaml").read_text())["task"]
-    assert [record["class"] for record in task["record"]] == ["SignalRecord"]
+    assert [record["class"] for record in task["record"]] == [
+        "ValidationSignalRecord",
+        "SignalRecord",
+    ]
     processors = task["dataset"]["kwargs"]["handler"]["kwargs"]["learn_processors"]
     assert not any(processor["class"] == "CSRankNorm" for processor in processors)
     assert not (output / "portfolio.csv").exists()

@@ -9,6 +9,7 @@ import json
 import math
 import platform
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 from typing import Any
@@ -107,6 +108,10 @@ def load_config(path: str | Path) -> dict[str, Any]:
         "seed",
         "sequence_length",
         "warmup_sessions",
+        "data_start_time",
+        "data_end_time",
+        "handler_cache_path",
+        "shared_windows",
         "segments",
         "model",
         "backtest",
@@ -124,8 +129,54 @@ def _read_calendar(provider: Path) -> pd.DatetimeIndex:
     return pd.DatetimeIndex(pd.to_datetime(path.read_text().splitlines(), errors="raise"))
 
 
+def _window_calendar(config: dict, calendar: pd.DatetimeIndex) -> pd.DatetimeIndex:
+    """Bound feature calculation to observed dates without modifying the provider."""
+    cal = pd.DatetimeIndex(calendar)
+    if cal.empty:
+        raise ValueError("The provider calendar is empty.")
+    bounds = []
+    for name, default in (("data_start_time", cal[0]), ("data_end_time", cal[-1])):
+        date = pd.Timestamp(config.get(name, default))
+        if pd.isna(date) or date.tz is not None or date != date.normalize():
+            raise ValueError(f"{name} must be a finite, timezone-naive daily date.")
+        if date < cal[0] or date > cal[-1]:
+            raise ValueError(f"{name} is outside the provider calendar.")
+        bounds.append(date)
+    start, end = bounds
+    if start > end:
+        raise ValueError("data_start_time must not follow data_end_time.")
+    cal = cal[(cal >= start) & (cal <= end)]
+    if cal.empty:
+        raise ValueError("The requested data window contains no trading sessions.")
+    return cal
+
+
+class ValidationSignalRecord:
+    """Record validation forecasts while the fitted task's live dataset is available."""
+
+    def __init__(self, model, dataset, recorder):
+        self.model, self.dataset, self.recorder = model, dataset, recorder
+
+    def generate(self):
+        from qlib.data.dataset import DatasetH
+        from qlib.data.dataset.handler import DataHandlerLP
+        from qlib.utils import class_casting
+
+        prediction = self.model.predict(self.dataset, segment="valid")
+        if isinstance(prediction, pd.Series):
+            prediction = prediction.to_frame("score")
+        # TSDatasetH's normal prepare returns a window sampler. Raw labels use
+        # DatasetH's tabular view, exactly as Qlib's native SignalRecord does.
+        with class_casting(self.dataset, DatasetH):
+            label = self.dataset.prepare("valid", col_set="label", data_key=DataHandlerLP.DK_R)
+        self.recorder.save_objects(
+            **{"validation_pred.pkl": prediction, "validation_label.pkl": label}
+        )
+
+
 def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
     """Build a native Qlib task, with immutable label semantics and fitted dates."""
+    calendar = _window_calendar(config, calendar)
     # Qlib's executor uses the following real calendar session to close a step.
     # Reserve it in addition to the two future closes needed for the label.
     split_calendar = calendar[:-1] if config.get("backtest", {}).get("enabled", False) else calendar
@@ -170,6 +221,12 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
             "module_path": "financial_ts.model",
             "kwargs": defaults,
         }
+    elif name == "timesfm3_panel":
+        model = {
+            "class": "QlibTimesFM3Model",
+            "module_path": "financial_ts.qlib_timesfm",
+            "kwargs": params,
+        }
     elif name == "timesfm3_pretrained":
         model = {
             "class": "OfficialTimesFM3Model",
@@ -200,7 +257,28 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
             "learn_processors": [{"class": "DropnaLabel"}],
         },
     }
+    if name == "timesfm3_panel":
+        # The official checkpoint consumes prices, not the normalized factors.
+        # Keep exactly the same membership/date/label panel with a smaller cache.
+        handler = {
+            "class": "CloseOnlyHandler",
+            "module_path": "financial_ts.qlib_timesfm",
+            "kwargs": {
+                key: handler["kwargs"][key]
+                for key in (
+                    "instruments",
+                    "start_time",
+                    "end_time",
+                    "fit_start_time",
+                    "fit_end_time",
+                    "label",
+                )
+            },
+        }
     dataset_kwargs = {"handler": handler, "segments": segments}
+    shared_windows = config.get("shared_windows", False)
+    if type(shared_windows) is not bool or (shared_windows and name not in NEURAL_MODELS):
+        raise ValueError("shared_windows must be boolean and is supported only by neural models.")
     if name in NEURAL_MODELS:
         step_len = config.get("sequence_length", 20)
         if not isinstance(step_len, int) or step_len < 1:
@@ -209,50 +287,82 @@ def build_task(config: dict, calendar: pd.DatetimeIndex) -> tuple[dict, dict]:
     task = {
         "model": model,
         "dataset": {
-            "class": "TSDatasetH" if name in NEURAL_MODELS else "DatasetH",
-            "module_path": "qlib.data.dataset",
+            "class": "SharedTSDatasetH"
+            if shared_windows
+            else "TSDatasetH"
+            if name in NEURAL_MODELS
+            else "DatasetH",
+            "module_path": "financial_ts.shared_panel" if shared_windows else "qlib.data.dataset",
             "kwargs": dataset_kwargs,
         },
-        "record": [{"class": "SignalRecord", "module_path": "qlib.workflow.record_temp"}],
+        "record": [
+            {"class": "ValidationSignalRecord", "module_path": "financial_ts.workflow"},
+            {"class": "SignalRecord", "module_path": "qlib.workflow.record_temp"},
+        ],
     }
     return task, segments
 
 
 def _portfolio_config(config: dict, segments: dict, calendar: pd.DatetimeIndex, count: int) -> dict:
     bt = config.get("backtest", {})
-    topk, n_drop = bt.get("topk", 5), bt.get("n_drop", 1)
-    if not isinstance(topk, int) or not isinstance(n_drop, int) or not 1 <= topk <= count:
+    cn = config.get("region", "us") == "cn"
+    topk, n_drop = bt.get("topk", 50 if cn else 5), bt.get("n_drop", 5 if cn else 1)
+    if type(topk) is not int or type(n_drop) is not int or not 1 <= topk <= count:
         raise ValueError(f"backtest.topk must be an integer between 1 and {count} instruments.")
     if not 0 <= n_drop <= topk:
         raise ValueError("backtest.n_drop must be between 0 and topk.")
     costs = {
         key: float(bt.get(key, default))
-        for key, default in (("open_cost", 0.001), ("close_cost", 0.001), ("min_cost", 0.0))
+        for key, default in (
+            ("open_cost", 0.0005 if cn else 0.001),
+            ("close_cost", 0.0015 if cn else 0.001),
+            ("min_cost", 5.0 if cn else 0.0),
+        )
     }
     if any(not math.isfinite(value) or value < 0 for value in costs.values()):
         raise ValueError("Backtest costs must be finite and nonnegative.")
-    account, risk = float(bt.get("account", 100000)), float(bt.get("risk_degree", 0.95))
+    account = float(bt.get("account", 100000000 if cn else 100000))
+    risk = float(bt.get("risk_degree", 0.95))
     if not math.isfinite(account) or account <= 0 or not 0 < risk <= 1:
         raise ValueError("Backtest account must be positive and risk_degree must be in (0,1].")
+    limit = bt.get("limit_threshold", 0.095 if cn else None)
+    if limit is not None:
+        limit = float(limit)
+        if not math.isfinite(limit) or not 0 < limit < 1:
+            raise ValueError("backtest.limit_threshold must be None or a finite value in (0,1).")
+    trade_unit = bt.get("trade_unit", 100 if cn else None)
+    if trade_unit is not None and (type(trade_unit) is not int or trade_unit < 1):
+        raise ValueError("backtest.trade_unit must be None or a positive integer.")
     first = int(calendar.get_loc(pd.Timestamp(segments["test"][0])))
     last = int(calendar.get_loc(pd.Timestamp(segments["test"][1])))
     return {
         "strategy": {
             "class": "TopkDropoutStrategy",
             "module_path": "qlib.contrib.strategy",
-            "kwargs": {"signal": "<PRED>", "topk": topk, "n_drop": n_drop, "risk_degree": risk},
+            "kwargs": {
+                "signal": {
+                    "class": "DeterministicRankSignal",
+                    "module_path": "financial_ts.cn_portfolio",
+                    "kwargs": {"signal": "<PRED>"},
+                }
+                if cn
+                else "<PRED>",
+                "topk": topk,
+                "n_drop": n_drop,
+                "risk_degree": risk,
+            },
         },
         "backtest": {
             # A score at close t enters at close t+1; t+2 values its label return.
             "start_time": calendar[first + 1].strftime("%Y-%m-%d"),
             "end_time": calendar[last + LABEL_HORIZON].strftime("%Y-%m-%d"),
             "account": account,
-            "benchmark": bt.get("benchmark"),
+            "benchmark": bt.get("benchmark", "SH000300" if cn else None),
             "exchange_kwargs": {
                 "freq": "day",
-                "limit_threshold": None,
+                "limit_threshold": limit,
                 "deal_price": "close",
-                "trade_unit": None,
+                "trade_unit": trade_unit,
                 **costs,
             },
         },
@@ -295,6 +405,119 @@ def _provider_fingerprint(provider: Path) -> dict:
     return {"sha256": digest.hexdigest(), "file_count": len(paths), "bytes": nbytes}
 
 
+def _file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(4 * 1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _cached_handler(
+    path: str | Path, handler_config: dict, provider_fingerprint: dict, region: str
+) -> tuple[str, dict]:
+    """Create/reuse a trusted local handler; reject stale or corrupted cache files.
+
+    Qlib serializes handlers with pickle. This cache is only for files created
+    locally by this workflow, never downloaded model/data artifacts. The
+    sidecar binds the exact provider bytes, processing recipe and fit interval
+    to the serialized bytes before Qlib is allowed to deserialize them.
+    """
+    from filelock import FileLock
+    from qlib.utils import init_instance_by_config
+
+    cache = Path(path).expanduser().resolve()
+    sidecar = cache.with_suffix(cache.suffix + ".json")
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    expected = _json_ready(
+        {
+            "schema_version": 1,
+            "origin": "financial_ts.workflow locally generated handler",
+            "raw_storage": "labels_only; processed infer and learn features retained",
+            "provider": provider_fingerprint,
+            "region": region,
+            "handler": handler_config,
+            "handler_source_sha256": _file_sha256(Path(__file__).with_name("handler.py")),
+            "packages": {
+                name: importlib.metadata.version(name) for name in ("pyqlib", "pandas", "numpy")
+            },
+        }
+    )
+    with FileLock(str(cache) + ".lock", timeout=3600):
+        if cache.exists() or sidecar.exists():
+            if not cache.is_file() or not sidecar.is_file():
+                raise ValueError("Handler cache and its provenance sidecar must both exist.")
+            saved = json.loads(sidecar.read_text(encoding="utf-8"))
+            if saved.get("identity") != expected:
+                raise ValueError(
+                    "Handler cache does not match the provider, data/fit dates, universe, "
+                    "or processing recipe; choose a new handler_cache_path."
+                )
+            if saved.get("sha256") != _file_sha256(cache):
+                raise ValueError("Handler cache SHA256 differs from its provenance sidecar.")
+            return cache.as_uri(), {**saved, "reused": True}
+        handler = init_instance_by_config(copy.deepcopy(handler_config))
+        # Native SignalRecord needs DK_R labels, but no shipped model consumes
+        # the unprocessed factors. Avoid a third full factor copy in the cache.
+        handler._data = handler._data.loc[:, ["label"]].copy()
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(dir=cache.parent, suffix=".pkl", delete=False) as f:
+                temporary = Path(f.name)
+            handler.to_pickle(temporary, dump_all=True)
+            saved = {
+                "identity": expected,
+                "sha256": _file_sha256(temporary),
+                "bytes": temporary.stat().st_size,
+            }
+            temporary.replace(cache)
+            _save_json(sidecar, saved)
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
+        return cache.as_uri(), {**saved, "reused": False}
+
+
+def _prediction_statistics(joined: pd.DataFrame) -> tuple[dict, pd.DataFrame]:
+    """Score raw returns and daily cross-sectional correlations using Qlib."""
+    from qlib.contrib.eva.alpha import calc_ic
+
+    if joined.empty or not joined.index.is_unique or not np.isfinite(joined["score"]).all():
+        raise ValueError("Model predictions are empty, duplicated, or nonfinite.")
+    if np.isinf(joined["label"].to_numpy()).any():
+        raise ValueError("Labels contain infinite returns; check price magnitudes/adjustments.")
+    finite = joined.dropna(subset=["score", "label"])
+    if finite.empty:
+        raise ValueError("No evaluable labels; check prices and provider coverage.")
+    errors = finite["score"] - finite["label"]
+    # A constant forecast or a one-instrument day has undefined correlation.
+    # Retain those dates as NaN rather than interpreting them as zero skill.
+    if finite.groupby(level="datetime").size().max() > 1:
+        ic, rank_ic = calc_ic(finite["score"], finite["label"])
+    else:
+        dates = finite.index.get_level_values("datetime").unique()
+        ic = pd.Series(np.nan, index=dates, dtype=float)
+        rank_ic = ic.copy()
+    daily = pd.DataFrame({"ic": ic, "rank_ic": rank_ic})
+    stats = {
+        "prediction_count": len(joined),
+        "evaluated_count": len(finite),
+        "unavailable_label_count": len(joined) - len(finite),
+        "rmse": np.sqrt(np.mean(errors**2)),
+        "mae": np.mean(np.abs(errors)),
+        "zero_return_rmse": np.sqrt(np.mean(finite["label"] ** 2)),
+        "directional_accuracy": np.mean(np.sign(finite["score"]) == np.sign(finite["label"])),
+        "pooled_pearson_correlation": finite["score"].corr(finite["label"]),
+        "ic": ic.mean(),
+        "rank_ic": rank_ic.mean(),
+        "ic_ir": ic.mean() / ic.std() if ic.std() > 0 else np.nan,
+        "rank_ic_ir": rank_ic.mean() / rank_ic.std() if rank_ic.std() > 0 else np.nan,
+        "ic_days": int(ic.notna().sum()),
+        "rank_ic_days": int(rank_ic.notna().sum()),
+    }
+    return stats, daily
+
+
 def run_workflow(config: dict) -> dict:
     """Fit once, evaluate the untouched test split, and export a native Qlib run.
 
@@ -310,18 +533,36 @@ def run_workflow(config: dict) -> dict:
     provider = Path(config.get("provider_uri", ".data/qlib")).expanduser().resolve()
     output = Path(config.get("output_dir", "runs/research")).expanduser().resolve()
     if output.exists() and any(output.iterdir()):
-        raise ValueError(f"Run directory is not empty: {output}. Choose a new output_dir.")
+        model_spec = config.get("model", {})
+        cache = model_spec.get("params", {}).get("prediction_cache_dir")
+        cache_only = (
+            model_spec.get("name") == "timesfm3_panel"
+            and cache is not None
+            and Path(cache).expanduser().resolve() == output / "inference_cache"
+            and list(output.iterdir()) == [output / "inference_cache"]
+            and (output / "inference_cache").is_dir()
+        )
+        if not cache_only:
+            raise ValueError(f"Run directory is not empty: {output}. Choose a new output_dir.")
     if output == provider or provider in output.parents or output in provider.parents:
         raise ValueError("Run output and the Qlib data provider must be separate directories.")
     region = config.get("region", "us")
     if region not in {"us", "cn"}:
         raise ValueError("region must be us or cn.")
-    if config.get("backtest", {}).get("enabled", False) and region != "us":
-        raise ValueError(
-            "The supplied portfolio execution assumptions are US-only; disable backtest for cn."
-        )
     calendar = _read_calendar(provider)
+    data_manifest = {}
+    manifest = provider / "metadata.json"
+    if manifest.exists():
+        data_manifest = json.loads(manifest.read_text())
+        observed_end = data_manifest.get("target_trade_date")
+        if observed_end is not None:
+            observed_end = pd.Timestamp(observed_end)
+            requested_end = pd.Timestamp(config.get("data_end_time", observed_end))
+            if requested_end > observed_end:
+                raise ValueError("data_end_time exceeds the provider's observed target_trade_date.")
+            config["data_end_time"] = requested_end.strftime("%Y-%m-%d")
     task, segments = build_task(config, calendar)
+    calendar = _window_calendar(config, calendar)
     output.mkdir(parents=True, exist_ok=True)
     config.update(provider_uri=str(provider), output_dir=str(output), segments=segments)
     run_init = {
@@ -389,7 +630,9 @@ def run_workflow(config: dict) -> dict:
         "packages": {},
         "provider": _provider_fingerprint(provider),
         "label": LABEL,
-        "feature_count": FEATURE_COUNT,
+        "feature_count": 1
+        if config.get("model", {}).get("name") == "timesfm3_panel"
+        else FEATURE_COUNT,
         "segments": segments,
         "seed": task["model"]["kwargs"].get("seed"),
         "config_file": "resolved_config.json",
@@ -397,9 +640,8 @@ def run_workflow(config: dict) -> dict:
         "instruments": sorted(available),
         "synthetic": False,
     }
-    manifest = provider / "metadata.json"
-    if manifest.exists():
-        metadata["data_manifest"] = json.loads(manifest.read_text())
+    if data_manifest:
+        metadata["data_manifest"] = data_manifest
         metadata["synthetic"] = metadata["data_manifest"].get("synthetic", False)
     for package in (
         "financial-ts-qlib",
@@ -442,6 +684,23 @@ def run_workflow(config: dict) -> dict:
         metadata["git_commit"] = None
     _save_json(output / "run.json", metadata)
     try:
+        if config.get("handler_cache_path"):
+            cache_path = Path(config["handler_cache_path"]).expanduser().resolve()
+            if cache_path == provider or provider in cache_path.parents:
+                raise ValueError("handler_cache_path must be outside the market data provider.")
+            handler, cache_metadata = _cached_handler(
+                cache_path,
+                task["dataset"]["kwargs"]["handler"],
+                metadata["provider"],
+                region,
+            )
+            task["dataset"]["kwargs"]["handler"] = handler
+            metadata["handler_cache"] = cache_metadata
+            _save_json(output / "run.json", metadata)
+            (output / "qlib_task.yaml").write_text(
+                yaml.safe_dump(_json_ready({"qlib_init": run_init, "task": task}), sort_keys=False),
+                encoding="utf-8",
+            )
         recorder = task_train(
             task,
             experiment_name=config.get("experiment_name", "financial_ts"),
@@ -450,29 +709,17 @@ def run_workflow(config: dict) -> dict:
         # These artifacts were created in this process, never obtained from an untrusted download.
         pred = recorder.load_object("pred.pkl").iloc[:, 0].rename("score")
         label = recorder.load_object("label.pkl").iloc[:, 0].rename("label")
-        if pred.empty or not pred.index.is_unique or not np.isfinite(pred.to_numpy()).all():
-            raise ValueError("Model predictions are empty, duplicated, or nonfinite.")
         joined = pred.to_frame().join(label)
-        if np.isinf(joined["label"].to_numpy()).any():
-            raise ValueError(
-                "Test labels contain infinite returns; check price magnitudes/adjustments."
-            )
-        finite = joined.dropna()
-        if finite.empty:
-            raise ValueError("No evaluable test labels; check prices and provider coverage.")
+        metrics, daily_ic = _prediction_statistics(joined)
         joined.to_csv(output / "predictions.csv")
-        errors = finite["score"] - finite["label"]
-        metrics = {
-            "prediction_count": len(pred),
-            "evaluated_count": len(finite),
-            "unavailable_label_count": len(joined) - len(finite),
-            "rmse": np.sqrt(np.mean(errors**2)),
-            "mae": np.mean(np.abs(errors)),
-            "zero_return_rmse": np.sqrt(np.mean(finite["label"] ** 2)),
-            "directional_accuracy": np.mean(np.sign(finite["score"]) == np.sign(finite["label"])),
-            "pooled_pearson_correlation": finite["score"].corr(finite["label"]),
-            "qlib_metrics": recorder.list_metrics(),
-        }
+        daily_ic.to_csv(output / "daily_ic.csv")
+        valid_pred = recorder.load_object("validation_pred.pkl").iloc[:, 0].rename("score")
+        valid_label = recorder.load_object("validation_label.pkl").iloc[:, 0].rename("label")
+        validation = valid_pred.to_frame().join(valid_label)
+        metrics["validation"], valid_ic = _prediction_statistics(validation)
+        validation.to_csv(output / "validation_predictions.csv")
+        valid_ic.to_csv(output / "validation_daily_ic.csv")
+        metrics["qlib_metrics"] = recorder.list_metrics()
         fitted_model = recorder.load_object("params.pkl")
         history = getattr(fitted_model, "evals_result_", {})
         valid_history = history.get("valid", [])
@@ -483,8 +730,18 @@ def run_workflow(config: dict) -> dict:
             "epochs_run": len(valid_history) if valid_history else None,
             "validation_rmse": float(np.sqrt(min(valid_history))) if valid_history else None,
             "fit_seconds": getattr(fitted_model, "fit_seconds_", None),
-            "pretrained": config.get("model", {}).get("name") == "timesfm3_pretrained",
+            "pretrained": config.get("model", {}).get("name")
+            in {"timesfm3_pretrained", "timesfm3_panel"},
         }
+        if config.get("model", {}).get("name") == "timesfm3_panel":
+            metrics["model_details"].update(
+                mode=fitted_model.mode,
+                trainable_parameter_count=fitted_model.trainable_parameter_count_,
+                epochs_run=fitted_model.manifest_.get("epochs_run", 0),
+            )
+            _save_json(output / "fit_manifest.json", fitted_model.manifest_)
+            _save_json(output / "fit_samples.json", getattr(fitted_model, "samples_", {}))
+            _save_json(output / "training_curves.json", fitted_model.training_curves_)
         if config.get("model", {}).get("name", "lightgbm") == "lightgbm":
             booster = fitted_model.model
             valid_l2 = booster.best_score.get("valid", {}).get("l2")
@@ -492,7 +749,8 @@ def run_workflow(config: dict) -> dict:
                 float(np.sqrt(valid_l2)) if valid_l2 is not None else None
             )
             metrics["model_details"]["best_boosting_iteration"] = booster.best_iteration
-        if config.get("model", {}).get("name") == "timesfm3_pretrained":
+        metrics["model_details"]["validation_rmse"] = metrics["validation"]["rmse"]
+        if config.get("model", {}).get("name") in {"timesfm3_pretrained", "timesfm3_panel"}:
             metadata["checkpoint_config_sha256"] = fitted_model.checkpoint_config_sha256_
             metadata["checkpoint_size_bytes"] = fitted_model.checkpoint_size_bytes_
             metadata["pretraining_overlap"] = (
@@ -502,20 +760,11 @@ def run_workflow(config: dict) -> dict:
             _save_json(output / "learning_curves.json", history)
         del fitted_model
         if backtest_enabled:
+            from financial_ts.cn_portfolio import portfolio_metrics
+
             report = recorder.load_object("portfolio_analysis/report_normal_1day.pkl")
             report.to_csv(output / "portfolio.csv")
-            if not {"return", "cost", "bench"}.issubset(report.columns):
-                raise ValueError("Backtest report is missing return, cost, or benchmark columns.")
-            if not np.isfinite(report[["return", "cost", "bench"]].to_numpy()).all():
-                raise ValueError("Backtest report contains nonfinite returns or costs.")
-            metrics["portfolio"] = {
-                "gross_cumulative_return": (1 + report["return"]).prod() - 1,
-                "net_cumulative_return": (1 + report["return"] - report["cost"]).prod() - 1,
-                "benchmark_cumulative_return": (1 + report["bench"]).prod() - 1,
-                "sum_daily_cost_ratios": report["cost"].sum(),
-                "benchmark": config.get("backtest", {}).get("benchmark") or "cash",
-                "assumptions": "next-close execution; explicit fees; fractional shares; no liquidity/slippage model; final positions marked to market",
-            }
+            metrics["portfolio"] = portfolio_metrics(report, portfolio, region)
         _save_json(output / "metrics.json", metrics)
         metadata.update(
             status="completed",

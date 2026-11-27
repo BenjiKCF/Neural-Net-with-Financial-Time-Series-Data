@@ -1,0 +1,56 @@
+{
+  "provider_uri": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/.data/chenditc/2026-11-26",
+  "output_dir": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/glm54_mini",
+  "experiment_name": "chenditc_csi300",
+  "region": "cn",
+  "instruments": "csi300",
+  "seed": 42,
+  "warmup_sessions": 60,
+  "sequence_length": 32,
+  "segments": {
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-11-23"
+    ]
+  },
+  "model": {
+    "name": "glm54_mini",
+    "params": {
+      "d_model": 32,
+      "nhead": 4,
+      "num_layers": 2,
+      "dropout": 0.1,
+      "n_epochs": 6,
+      "early_stop": 4,
+      "batch_size": 512,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "device": "cpu",
+      "num_threads": 2,
+      "aux_loss_weight": 0.01
+    }
+  },
+  "backtest": {
+    "enabled": true,
+    "topk": 50,
+    "n_drop": 5,
+    "account": 100000000,
+    "risk_degree": 0.95,
+    "benchmark": "SH000300",
+    "open_cost": 0.0005,
+    "close_cost": 0.0015,
+    "min_cost": 5
+  },
+  "data_start_time": "2019-01-01",
+  "data_end_time": "2026-11-26",
+  "handler_cache_path": "/home/runner/work/Neural-Net-with-Financial-Time-Series-Data/Neural-Net-with-Financial-Time-Series-Data/runs/chenditc-csi300-20261126/cache/csi300_handler.pkl",
+  "shared_windows": true
+}

@@ -1,0 +1,88 @@
+name: Pinned chenditc CSI300 benchmark
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chenditc-benchmark-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  model:
+    name: ${{ matrix.model }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 11
+      matrix:
+        include:
+          - model: lightgbm
+            official: false
+          - model: transformer
+            official: false
+          - model: deepseek_v41_mini
+            official: false
+          - model: glm54_mini
+            official: false
+          - model: qwen4_mini
+            official: false
+          - model: timesfm3_mini
+            official: false
+          - model: multiscale_residual_mixer
+            official: false
+          - model: regime_linear_moe
+            official: false
+          - model: timesfm3_frozen_128
+            official: true
+          - model: timesfm3_loop_128
+            official: true
+          - model: timesfm3_adapter_128
+            official: true
+    env:
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install pinned CPU PyTorch
+        run: python -m pip install 'torch==2.15.0' --index-url https://download.pytorch.org/whl/cpu
+      - name: Install scratch-model dependencies
+        if: ${{ !matrix.official }}
+        run: python -m pip install -e '.[neural,dev]'
+      - name: Install official TimesFM research dependencies
+        if: ${{ matrix.official }}
+        run: python -m pip install -e '.[neural,dev,timesfm]'
+      - name: Check the declared runtime
+        run: python -c "import torch; assert torch.__version__.split('+')[0] == '2.15.0'; assert not torch.cuda.is_available()"
+      - name: Download and verify the pinned chenditc data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: fts download-chenditc --release 2026-11-26 --provider .data/chenditc/2026-11-26
+      - name: Run the complete scratch-model panel
+        if: ${{ !matrix.official }}
+        run: python scripts/run_cn_worker.py --model '${{ matrix.model }}'
+      - name: Run the official checkpoint panel
+        if: ${{ matrix.official }}
+        run: python scripts/run_cn_worker.py --model '${{ matrix.model }}' --download-checkpoint
+      - name: Upload numerical evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chenditc-20261126-${{ matrix.model }}-${{ github.run_attempt }}
+          path: worker-artifacts/${{ matrix.model }}/
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 6

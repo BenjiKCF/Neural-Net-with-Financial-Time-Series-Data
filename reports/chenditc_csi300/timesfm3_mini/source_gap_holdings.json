@@ -1,0 +1,19 @@
+{
+  "status": "checked",
+  "terminated_series_holdings": [
+    {
+      "instrument": "SH600837",
+      "last_observed_close_date": "2025-02-05",
+      "stale_holding_days": 440,
+      "first_stale_holding_date": "2025-02-06",
+      "last_stale_holding_date": "2026-11-25",
+      "first_stale_weight": 0.021168692557750793,
+      "maximum_stale_weight": 0.02600913780318551,
+      "final_stale_weight": 0.02600913780318551,
+      "marked_price": 38.66765213012695,
+      "last_price_constant": true
+    }
+  ],
+  "total_final_stale_weight": 0.02600913780318551,
+  "interpretation": "Terminated-series corporate-action settlement remains unresolved. Deterministic tie handling changes trading reproducibility, not source valuation. Returns are Qlib simulations, not executable realized P&L."
+}

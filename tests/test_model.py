@@ -46,6 +46,27 @@ class SmallDataset:
         )
 
 
+class LabelFilteredDataset(SmallDataset):
+    """Reproduce Qlib DropnaLabel's different learning and inference views."""
+
+    def prepare(self, segment, col_set, data_key, dtype=None):
+        self.calls.append((segment, col_set, data_key))
+        start, end = self.segments[segment]
+        frame = self.frame
+        if data_key == DataHandlerLP.DK_L:
+            frame = frame.loc[frame[("label", "return")].notna()]
+        elif col_set != "feature":
+            raise AssertionError("Inference feature windows must not inspect labels")
+        return TSDataSampler(
+            frame[col_set].copy(),
+            start=start,
+            end=end,
+            step_len=4,
+            fillna_type="none",
+            dtype=dtype,
+        )
+
+
 def small_model(**overrides):
     config = dict(
         d_feat=2,
@@ -110,6 +131,41 @@ def test_target_scaling_uses_training_labels_only():
     model = small_model().fit(data)
     assert model.target_mean_ == pytest.approx(expected.mean())
     assert model.target_scale_ == pytest.approx(expected.std(ddof=0))
+
+
+def test_supervised_windows_keep_observed_history_with_unavailable_historical_label():
+    data = LabelFilteredDataset()
+    missing = (pd.Timestamp("2024-01-02"), "AAA")
+    anchor = (pd.Timestamp("2024-01-03"), "AAA")
+    data.frame.loc[missing, ("label", "return")] = np.nan
+    model = small_model()
+    windows, targets = model._supervised(data, "train")
+    assert data.calls == [
+        ("train", "feature", DataHandlerLP.DK_I),
+        ("train", "label", DataHandlerLP.DK_L),
+    ]
+    # The missing target removes only its own training endpoint.
+    assert missing not in windows.get_index()
+    assert len(targets) == len(windows) == 5
+    assert np.isfinite(targets).all()
+    current = windows[windows.get_index().get_loc(anchor)]
+    observed_previous_row = data.frame.loc[missing, "feature"].to_numpy(dtype=np.float32)
+    np.testing.assert_array_equal(current[-2], observed_previous_row)
+    inference = data.prepare("train", "feature", DataHandlerLP.DK_I, dtype=np.float32)
+    np.testing.assert_array_equal(current, inference[inference.get_index().get_loc(anchor)])
+    # Demonstrate the old DK_L implementation would have lost this valid history.
+    old = data.prepare("train", "feature", DataHandlerLP.DK_L, dtype=np.float32)
+    assert np.isnan(old[old.get_index().get_loc(anchor)][-2]).all()
+
+
+def test_label_filtered_fit_validation_matches_inference_on_available_targets():
+    data = LabelFilteredDataset()
+    data.frame.loc[(pd.Timestamp("2024-01-02"), "AAA"), ("label", "return")] = np.nan
+    model = small_model().fit(data)
+    prediction = model.predict(data, segment="valid")
+    raw_label = data.frame[("label", "return")].reindex(prediction.index)
+    inference_mse = ((prediction - raw_label) ** 2).mean()
+    assert min(model.evals_result_["valid"]) == pytest.approx(inference_mse, rel=1e-6, abs=1e-10)
 
 
 def test_repeated_seeded_cpu_training_is_reproducible():

@@ -22,6 +22,12 @@ dependencies = [
 neural = ["torch>=2.5,<3"]
 timesfm = ["torch>=2.5,<3", "timesfm[torch]==3.0.2"]
 dev = ["pytest>=8,<9", "ruff>=0.11,<1"]
+visualization = [
+    "plotly>=5.24,<6",
+    "kaleido==0.2.1",
+    "matplotlib>=3.8,<4",
+    "statsmodels>=0.14,<0.15",
+]
 
 [project.scripts]
 fts = "financial_ts.cli:main"

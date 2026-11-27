@@ -1,0 +1,43 @@
+{
+  "status": "checked",
+  "terminated_series_holdings": [
+    {
+      "instrument": "SH600837",
+      "last_observed_close_date": "2025-02-05",
+      "stale_holding_days": 440,
+      "first_stale_holding_date": "2025-02-06",
+      "last_stale_holding_date": "2026-11-25",
+      "first_stale_weight": 0.019230059625274167,
+      "maximum_stale_weight": 0.02103356334388954,
+      "final_stale_weight": 0.020660014724273167,
+      "marked_price": 38.66765213012695,
+      "last_price_constant": true
+    },
+    {
+      "instrument": "SH601059",
+      "last_observed_close_date": "2026-09-14",
+      "stale_holding_days": 46,
+      "first_stale_holding_date": "2026-09-15",
+      "last_stale_holding_date": "2026-11-25",
+      "first_stale_weight": 0.01830873065182179,
+      "maximum_stale_weight": 0.02353399911240987,
+      "final_stale_weight": 0.023475227663053072,
+      "marked_price": 1.3299663066864014,
+      "last_price_constant": true
+    },
+    {
+      "instrument": "SH601989",
+      "last_observed_close_date": "2025-08-12",
+      "stale_holding_days": 311,
+      "first_stale_holding_date": "2025-08-13",
+      "last_stale_holding_date": "2026-11-25",
+      "first_stale_weight": 0.01809151644600872,
+      "maximum_stale_weight": 0.02081519276384733,
+      "final_stale_weight": 0.020763210988819242,
+      "marked_price": 1.0421686172485352,
+      "last_price_constant": true
+    }
+  ],
+  "total_final_stale_weight": 0.06489845337614548,
+  "interpretation": "Terminated-series corporate-action settlement remains unresolved. Deterministic tie handling changes trading reproducibility, not source valuation. Returns are Qlib simulations, not executable realized P&L."
+}

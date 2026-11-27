@@ -94,7 +94,8 @@ def backend_factory(tmp_path, monkeypatch):
     def make(**kwargs):
         defaults = {"loop_start": 1, "loop_end": 3, "adapter_rank": 2}
         defaults.update(kwargs)
-        return LoopTimesFM3(tmp_path, **defaults)
+        model_class = defaults.pop("model_class", LoopTimesFM3)
+        return model_class(tmp_path, **defaults)
 
     return make
 
@@ -234,6 +235,93 @@ def test_baseline_mode_is_restored_when_forecast_fails(backend_factory):
     with pytest.raises(ValueError, match="positive"):
         model.baseline_forecast(torch.zeros(2, 4))
     assert model.loop_stack.refinement_enabled
+
+
+@pytest.mark.parametrize("mode", ["loop", "adapter"])
+@pytest.mark.parametrize("constant_context", [False, True])
+@pytest.mark.parametrize("zero_unused_variance", [False, True])
+def test_unused_cpm_refinement_preserves_forecasts_and_finite_gradients(
+    backend_factory, mode, constant_context, zero_unused_variance
+):
+    from financial_ts.timesfm_comparison import GatedAdapterTimesFM3
+
+    model = backend_factory(model_class=LoopTimesFM3 if mode == "loop" else GatedAdapterTimesFM3)
+    model.model.input_patch_len = 32
+    model.model.output_patch_len = 64
+    model.model.use_iterative_cpm_revin = True
+    original_decode = model._decode_with_grad
+
+    def decode_with_unused_refinement(official, *, target, horizon):
+        logits = original_decode(official, target=target, horizon=horizon)
+        if official.use_iterative_cpm_revin:
+            # Model the pinned implementation's masked, unused future-patch
+            # statistics. sqrt(0) has an infinite derivative even when the
+            # downstream where selects the observed context's statistics.
+            variance_input = logits * (0 if zero_unused_variance else 1)
+            unused_std = variance_input.square().sum().sqrt()
+            logits = logits + torch.where(
+                torch.tensor(False), unused_std, torch.zeros_like(unused_std)
+            )
+        return logits
+
+    model._decode_with_grad = decode_with_unused_refinement
+    values = torch.full_like(contexts(), 100) if constant_context else contexts()
+    unrepaired = (
+        decode_with_unused_refinement(model.model, target=values.unsqueeze(1), horizon=2)
+        .sort(dim=-1)
+        .values[:, 0, :, model.median_quantile_index]
+    )
+    assert torch.isfinite(unrepaired).all()
+    unrepaired.square().mean().backward()
+    parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
+    old_gradients = [parameter.grad.clone() for parameter in parameters]
+    assert all(torch.isfinite(gradient).all() for gradient in old_gradients) != zero_unused_variance
+    model.zero_grad(set_to_none=True)
+
+    repaired = model.forecast(values)
+    assert torch.equal(unrepaired, repaired)
+    repaired.square().mean().backward()
+    assert all(
+        parameter.grad is not None and torch.isfinite(parameter.grad).all()
+        for parameter in parameters
+    )
+    if not zero_unused_variance:
+        for expected, parameter in zip(old_gradients, parameters):
+            assert torch.equal(expected, parameter.grad)
+    assert all(parameter.grad is None for parameter in model.base_parameters())
+    assert model.model.use_iterative_cpm_revin is True
+
+
+@pytest.mark.parametrize("initial_flag", [False, True])
+def test_cpm_configuration_is_restored_after_decode_error(backend_factory, initial_flag):
+    model = backend_factory()
+    model.model.input_patch_len = 32
+    model.model.output_patch_len = 64
+    model.model.use_iterative_cpm_revin = initial_flag
+
+    def failed_decode(official, *, target, horizon):
+        assert official.use_iterative_cpm_revin is False
+        raise RuntimeError("decode failed")
+
+    model._decode_with_grad = failed_decode
+    with pytest.raises(RuntimeError, match="decode failed"):
+        model.forecast(contexts())
+    assert model.model.use_iterative_cpm_revin is initial_flag
+
+
+@pytest.mark.parametrize("patch_sizes", [(1, 64), (32, 1)])
+def test_cpm_bypass_requires_horizon_within_one_context_patch(backend_factory, patch_sizes):
+    model = backend_factory()
+    model.model.input_patch_len, model.model.output_patch_len = patch_sizes
+    model.model.use_iterative_cpm_revin = True
+    original_decode = model._decode_with_grad
+
+    def checked_decode(official, *, target, horizon):
+        assert official.use_iterative_cpm_revin is True
+        return original_decode(official, target=target, horizon=horizon)
+
+    model._decode_with_grad = checked_decode
+    assert torch.isfinite(model.forecast(contexts())).all()
 
 
 @pytest.mark.parametrize(

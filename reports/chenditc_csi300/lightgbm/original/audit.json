@@ -1,0 +1,170 @@
+{
+  "status": "passed",
+  "audited_models": [
+    "lightgbm"
+  ],
+  "pending_models": [
+    "transformer",
+    "deepseek_v41_mini",
+    "glm54_mini",
+    "qwen4_mini",
+    "timesfm3_mini",
+    "multiscale_residual_mixer",
+    "regime_linear_moe"
+  ],
+  "failures": [],
+  "models_with_unresolved_source_gap_holdings": [
+    "lightgbm"
+  ],
+  "backtest_qualification": "native Qlib simulation with unresolved terminated-series valuation",
+  "segments": {
+    "train": [
+      "2020-01-02",
+      "2023-12-27"
+    ],
+    "valid": [
+      "2024-01-02",
+      "2024-12-27"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-11-23"
+    ]
+  },
+  "scope": "Independent raw binary label/membership checks, CSV metric replay, selected-model iteration, and native NAV accounting. Source corporate-action gaps remain unresolved and are quantified, not repaired or excluded.",
+  "models": {
+    "lightgbm": {
+      "valid": {
+        "sha256": "6b16945ea777bf3989970317482325d00b88f9e34344d6f46067620566d3bd88",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 4.881511861398735e-13,
+          "mae": 2.1091461910316411e-13,
+          "zero_return_rmse": 6.602180607773178e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.0941188927082734e-10,
+          "rank_ic": 3.0357660829594124e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.025455923957038325,
+          "mae": 0.017184570938803597,
+          "zero_return_rmse": 0.025458211739457906,
+          "directional_accuracy": 0.49273366987914946,
+          "ic": 0.008767209952065999,
+          "rank_ic": 0.003715674170347763,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "3b2c73e55caf60ca33c309405248686de1e1bc1e674cc1570e9c8d53887bbb35",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 7.901596044135317e-12,
+          "mae": 1.03532113437943e-12,
+          "zero_return_rmse": 1.7525064142931424e-09,
+          "directional_accuracy": 0.0,
+          "ic": 1.785840763462998e-10,
+          "rank_ic": 8.673617379884035e-19,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.02441368083527012,
+          "mae": 0.016197279737045316,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.4889796992536168,
+          "ic": -0.009059673473642314,
+          "rank_ic": -0.004868186975754269,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "be51579e89b73a2e7c3ca5b7880f289ab44715f84a54bd67d08898ac01a66c0c",
+        "days": 458,
+        "start": "2025-01-03",
+        "end": "2026-11-25",
+        "maximum_NAV_relative_error": 2.1752628713160314e-15,
+        "simulated_net_return": 0.025437836508953815,
+        "source_gap_holdings": {
+          "status": "checked",
+          "artifact_sha256": "16bf33d43255dc9ff025bcccf3c8d8e474d061a514a2ef7ca10b115816c4056e",
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH600837",
+              "last_observed_close_date": "2025-02-05",
+              "stale_holding_days": 440,
+              "first_stale_holding_date": "2025-02-06",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.020471064589738366,
+              "maximum_stale_weight": 0.022616034430552035,
+              "final_stale_weight": 0.020871627357255104,
+              "marked_price": 38.66765213012695,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.020871627357255104,
+          "interpretation": "These holdings have no later source close and remain at last observed price. Corporate-action settlement is unresolved; the return is a native Qlib simulation, not executable realized P&L."
+        }
+      },
+      "booster_selection": {
+        "status": "checked",
+        "best_iteration": 10,
+        "saved_tree_count": 10,
+        "logged_rounds": 40,
+        "best_validation_l2": 0.0006480040644816637,
+        "last_logged_validation_l2": 0.0006490638399196326,
+        "selected_validation_rmse": 0.025455923956550146,
+        "exported_rmse_absolute_error": 2.7755575615628914e-17,
+        "interpretation": "recorder.list_metrics()['l2.valid'] is the last logged early-stopping round, while the saved booster and exported predictions use best_iteration."
+      }
+    }
+  },
+  "worker_model": "lightgbm"
+}

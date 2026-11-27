@@ -1,0 +1,826 @@
+{
+  "status": "passed",
+  "audited_models": [
+    "lightgbm",
+    "transformer",
+    "glm54_mini",
+    "timesfm3_mini",
+    "multiscale_residual_mixer",
+    "regime_linear_moe"
+  ],
+  "pending_models": [
+    "deepseek_v41_mini",
+    "qwen4_mini",
+    "timesfm3_frozen_128",
+    "timesfm3_frozen_256",
+    "timesfm3_loop_128",
+    "timesfm3_adapter_128"
+  ],
+  "failures": [],
+  "provider_fingerprint": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  },
+  "models": {
+    "lightgbm": {
+      "valid": {
+        "sha256": "5579fcd5cf9f2f5b1c31d0a347c0068db67dc93539bfe37b180a22bc73b4f1c9",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 4.881511861398735e-13,
+          "mae": 2.1091461910316411e-13,
+          "zero_return_rmse": 6.602180607773178e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.0941189620972125e-10,
+          "rank_ic": 3.0357660829594124e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.025455923957038325,
+          "mae": 0.017184570938803597,
+          "zero_return_rmse": 0.025458211739457906,
+          "directional_accuracy": 0.49273366987914946,
+          "ic": 0.008767209952065992,
+          "rank_ic": 0.003715674170347763,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "373a91519bb83740d14b9468578452741ccd790ee1ab3c44e66e47311ea15770",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 7.901596044135317e-12,
+          "mae": 1.03532113437943e-12,
+          "zero_return_rmse": 1.7525064142931424e-09,
+          "directional_accuracy": 0.0,
+          "ic": 1.7858407461157633e-10,
+          "rank_ic": 8.673617379884035e-19,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.02441368083527012,
+          "mae": 0.016197279737045316,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.4889796992536168,
+          "ic": -0.009059673473642312,
+          "rank_ic": -0.004868186975754269,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "3823bf6e58769568e26dc4ded0cf7d138d0f5d0e85d4e324adfaf4cf8914d07f",
+        "days": 458,
+        "maximum_NAV_relative_error": 1.5351679841346484e-15,
+        "net_cumulative_return": 0.06691683950263427,
+        "gross_cumulative_return": 0.14821764617967292,
+        "benchmark_cumulative_return": 0.02037441675427809,
+        "sum_daily_cost_ratios": 0.07345968004069439,
+        "positions": {
+          "status": "checked",
+          "sha256": "b50ecf898df15eb17e4be4d5ef77bd09ad02dca2b33081965eb97fc3f399d563",
+          "days": 458,
+          "maximum_account_relative_error": 0.0,
+          "maximum_valuation_relative_error": 8.881784197001252e-16,
+          "maximum_weight_absolute_error": 0.0,
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH600837",
+              "last_observed_close_date": "2025-02-05",
+              "stale_holding_days": 440,
+              "first_stale_holding_date": "2025-02-06",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.019786166777184762,
+              "maximum_stale_weight": 0.021748014149178638,
+              "final_stale_weight": 0.019445506904161823,
+              "marked_price": 38.66765213012695,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.019445506904161823
+        }
+      }
+    },
+    "transformer": {
+      "valid": {
+        "sha256": "0afb77778a248be054ffddbbff30bfa45bd1ca671610bf07d3638261f2de968c",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 3.8953909542449594e-13,
+          "mae": 2.6433022437544196e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 2.988494174349654e-11,
+          "rank_ic": 0.0,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.025459606168444775,
+          "mae": 0.017281470187561706,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.5011334084303336,
+          "ic": 0.020371810177108977,
+          "rank_ic": 0.026104972292563835,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "20c524950cb0e7d412bd1258a548ada987046fe9dd3242511570e0155435113c",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.268264545252535e-12,
+          "mae": 1.0898816571458525e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 5.5360146805280563e-11,
+          "rank_ic": 1.3010426069826053e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.02452683533659849,
+          "mae": 0.01635952600935521,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.483657789506773,
+          "ic": -0.0006995301750832347,
+          "rank_ic": -0.0018842214391965608,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "7d0f1550533d39c63723deb7ba33d29d95de977e1a5bcfc7302210b371078350",
+        "days": 458,
+        "maximum_NAV_relative_error": 1.0724841266757266e-15,
+        "net_cumulative_return": -0.009387914495234684,
+        "gross_cumulative_return": 0.049639438339361686,
+        "benchmark_cumulative_return": 0.02037441675427809,
+        "sum_daily_cost_ratios": 0.05790824263474974,
+        "positions": {
+          "status": "checked",
+          "sha256": "a5141700cd32606e01acd098ba096c730fd061dadab9b41fdbc8096bdc1dc63f",
+          "days": 458,
+          "maximum_account_relative_error": 0.0,
+          "maximum_valuation_relative_error": 7.771561172376096e-16,
+          "maximum_weight_absolute_error": 0.0,
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH600837",
+              "last_observed_close_date": "2025-02-05",
+              "stale_holding_days": 440,
+              "first_stale_holding_date": "2025-02-06",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.019230059625274167,
+              "maximum_stale_weight": 0.02103356334388954,
+              "final_stale_weight": 0.020660014724273167,
+              "marked_price": 38.66765213012695,
+              "last_price_constant": true
+            },
+            {
+              "instrument": "SH601059",
+              "last_observed_close_date": "2026-09-14",
+              "stale_holding_days": 46,
+              "first_stale_holding_date": "2026-09-15",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.01830873065182179,
+              "maximum_stale_weight": 0.02353399911240987,
+              "final_stale_weight": 0.023475227663053072,
+              "marked_price": 1.3299663066864014,
+              "last_price_constant": true
+            },
+            {
+              "instrument": "SH601989",
+              "last_observed_close_date": "2025-08-12",
+              "stale_holding_days": 311,
+              "first_stale_holding_date": "2025-08-13",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.01809151644600872,
+              "maximum_stale_weight": 0.02081519276384733,
+              "final_stale_weight": 0.020763210988819242,
+              "marked_price": 1.0421686172485352,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.06489845337614548
+        }
+      }
+    },
+    "glm54_mini": {
+      "valid": {
+        "sha256": "bbd52dacc6c0c11a6279a185df02d7e314c236547cedf0aa39a5edb268a5d45e",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 5.451923634769429e-13,
+          "mae": 2.36650976592756e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.0961636633111116e-10,
+          "rank_ic": 3.469446951953614e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.02543398479522505,
+          "mae": 0.01723334974171195,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.5015784276913235,
+          "ic": 0.012777256918008408,
+          "rank_ic": 0.016582534101905147,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "0ef57292bf7deee7681ecaeadea5664d2c181c9620d8bb8babce147f57ebe671",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.055712347188049e-12,
+          "mae": 1.063066301654203e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.8934973380901887e-11,
+          "rank_ic": 8.673617379884035e-19,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.024545724040067503,
+          "mae": 0.01631234849622635,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.4924886507350522,
+          "ic": -0.005153437649670466,
+          "rank_ic": -0.0035529191134708637,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "d9e8a99101fc3025d3e3c2612651a61d6f946d093ad7e1184e4027e81bd3350e",
+        "days": 458,
+        "maximum_NAV_relative_error": 2.386726361195239e-15,
+        "net_cumulative_return": -0.005674063788354222,
+        "gross_cumulative_return": 0.08715710285550182,
+        "benchmark_cumulative_return": 0.02037441675427809,
+        "sum_daily_cost_ratios": 0.08927583402918629,
+        "positions": {
+          "status": "checked",
+          "sha256": "86e6e25fdc0a78b9d0d1ae7f86cb40c8f1425f767b0e3620335d50340724126e",
+          "days": 458,
+          "maximum_account_relative_error": 0.0,
+          "maximum_valuation_relative_error": 7.771561172376096e-16,
+          "maximum_weight_absolute_error": 0.0,
+          "terminated_series_holdings": [],
+          "total_final_stale_weight": 0
+        }
+      }
+    },
+    "timesfm3_mini": {
+      "valid": {
+        "sha256": "c18c8ca73418ce033b72a6b85d76377dc6057bcfe793bea872dd35a3fadd4173",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 5.170100458862237e-13,
+          "mae": 1.8434559434510334e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 7.742817151323855e-11,
+          "rank_ic": 3.469446951953614e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.025486303475522828,
+          "mae": 0.017199133968913916,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.5002850904640717,
+          "ic": 0.010299962891216681,
+          "rank_ic": 0.013549875803844301,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "ed5b58e54a46aaa81e65087f02719eb01d732b63825d23526dfad9e770f60db2",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.029195364134267e-12,
+          "mae": 1.0325629240526268e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.3173923930909215e-10,
+          "rank_ic": 1.951563910473908e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.02446218317362249,
+          "mae": 0.016237844025709824,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.48961569670962696,
+          "ic": -0.011863867765654474,
+          "rank_ic": 0.0009474432475161109,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "1da86121e4412e5f4842a79da206836b70f9c72d098c3ed935b0501633c0b819",
+        "days": 458,
+        "maximum_NAV_relative_error": 1.3106428433817694e-15,
+        "net_cumulative_return": -0.17511277834424976,
+        "gross_cumulative_return": -0.1134744351353667,
+        "benchmark_cumulative_return": 0.02037441675427809,
+        "sum_daily_cost_ratios": 0.0720472908229258,
+        "positions": {
+          "status": "checked",
+          "sha256": "e7a48990032e78a97f4799644ca10970c102933bd065b04dab4848a02d866d86",
+          "days": 458,
+          "maximum_account_relative_error": 0.0,
+          "maximum_valuation_relative_error": 6.661338147750939e-16,
+          "maximum_weight_absolute_error": 0.0,
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH600837",
+              "last_observed_close_date": "2025-02-05",
+              "stale_holding_days": 440,
+              "first_stale_holding_date": "2025-02-06",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.021168692557750793,
+              "maximum_stale_weight": 0.02600913780318551,
+              "final_stale_weight": 0.02600913780318551,
+              "marked_price": 38.66765213012695,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.02600913780318551
+        }
+      }
+    },
+    "multiscale_residual_mixer": {
+      "valid": {
+        "sha256": "091746bcd073374d49ebe30952814df2a872d220c7d4404d373d60e02dc5b5d5",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 5.684896997593114e-13,
+          "mae": 3.768478584742496e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 2.9555512551238117e-11,
+          "rank_ic": 4.336808689942018e-19,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.02550887843569528,
+          "mae": 0.017378111714985354,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.49551504026033627,
+          "ic": 0.011128953251402108,
+          "rank_ic": -0.003143109018590525,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "857ce1a1db153bcc18d1e4191653a18e503aa84bfa9a70e89b954d50eaa17e30",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.158008990566401e-12,
+          "mae": 1.1131165433830859e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 5.172427156724391e-11,
+          "rank_ic": 0.0,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.024693236031599144,
+          "mae": 0.016545123852435516,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.48605557301908725,
+          "ic": 0.004183192986609543,
+          "rank_ic": -0.010105270499984225,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "dcd4caf495a9015f2730f5a116fbb8aa33675a275848d53ce2230b48ce84ec0b",
+        "days": 458,
+        "maximum_NAV_relative_error": 1.6313189556438606e-15,
+        "net_cumulative_return": 0.06418393775729969,
+        "gross_cumulative_return": 0.14713416619831943,
+        "benchmark_cumulative_return": 0.02037441675427809,
+        "sum_daily_cost_ratios": 0.07510736966755296,
+        "positions": {
+          "status": "checked",
+          "sha256": "181e1022707248481644c41ab0195b3df2f2961ac5702c29280756b4f7d5a198",
+          "days": 458,
+          "maximum_account_relative_error": 0.0,
+          "maximum_valuation_relative_error": 7.771561172376096e-16,
+          "maximum_weight_absolute_error": 0.0,
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH601059",
+              "last_observed_close_date": "2026-09-14",
+              "stale_holding_days": 46,
+              "first_stale_holding_date": "2026-09-15",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.018139988007056476,
+              "maximum_stale_weight": 0.026386553665772017,
+              "final_stale_weight": 0.026386553665772017,
+              "marked_price": 1.3299663066864014,
+              "last_price_constant": true
+            },
+            {
+              "instrument": "SH601989",
+              "last_observed_close_date": "2025-08-12",
+              "stale_holding_days": 311,
+              "first_stale_holding_date": "2025-08-13",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.018699510634701624,
+              "maximum_stale_weight": 0.021769489108896572,
+              "final_stale_weight": 0.021769489108896572,
+              "marked_price": 1.0421686172485352,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.04815604277466859
+        }
+      }
+    },
+    "regime_linear_moe": {
+      "valid": {
+        "sha256": "377c6f71d8f6542b85852b5ef82053b80e642f4d4f5f7312a12c31bef2e167e0",
+        "membership_rows": 72000,
+        "prediction_rows": 72000,
+        "raw_binary_label_max_absolute_error": 7.434082044399659e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 6.106504191194517e-13,
+          "mae": 3.933867120942125e-13,
+          "zero_return_rmse": 6.602180642467648e-10,
+          "directional_accuracy": 0.0,
+          "ic": 2.2041726950583485e-11,
+          "rank_ic": 3.469446951953614e-18,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [],
+        "calculated": {
+          "prediction_count": 72000,
+          "evaluated_count": 71907,
+          "unavailable_label_count": 93,
+          "rmse": 0.025497744844853457,
+          "mae": 0.01735527129199225,
+          "zero_return_rmse": 0.02545821173945791,
+          "directional_accuracy": 0.4973507447119196,
+          "ic": 0.006792484134716271,
+          "rank_ic": -0.008169133609586494,
+          "ic_days": 240,
+          "rank_ic_days": 240
+        }
+      },
+      "test": {
+        "sha256": "baf5084d55b9b40ee792d8c0f91f5069eaf2e4844eca36eb782646a557a14387",
+        "membership_rows": 137100,
+        "prediction_rows": 137002,
+        "raw_binary_label_max_absolute_error": 7.408905017269873e-09,
+        "metric_absolute_errors": {
+          "prediction_count": 0,
+          "evaluated_count": 0,
+          "unavailable_label_count": 0,
+          "rmse": 8.027651460240648e-12,
+          "mae": 1.1369516439430072e-12,
+          "zero_return_rmse": 1.1013873493781468e-10,
+          "directional_accuracy": 0.0,
+          "ic": 1.3039308348339329e-11,
+          "rank_ic": 0.0,
+          "ic_days": 0,
+          "rank_ic_days": 0
+        },
+        "unavailable_source_rows": [
+          {
+            "instrument": "SH600837",
+            "rows": 37,
+            "first": "2025-02-06",
+            "last": "2025-03-28",
+            "last_observed_close_date": "2025-02-05",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601989",
+            "rows": 34,
+            "first": "2025-08-13",
+            "last": "2025-09-29",
+            "last_observed_close_date": "2025-08-12",
+            "finite_close_rows": 0
+          },
+          {
+            "instrument": "SH601059",
+            "rows": 27,
+            "first": "2026-09-15",
+            "last": "2026-10-29",
+            "last_observed_close_date": "2026-09-14",
+            "finite_close_rows": 0
+          }
+        ],
+        "calculated": {
+          "prediction_count": 137002,
+          "evaluated_count": 136793,
+          "unavailable_label_count": 209,
+          "rmse": 0.024663216082352127,
+          "mae": 0.01651573980933802,
+          "zero_return_rmse": 0.02440593380643002,
+          "directional_accuracy": 0.4866623292127521,
+          "ic": 0.0031050413991112356,
+          "rank_ic": -0.012310566235283081,
+          "ic_days": 457,
+          "rank_ic_days": 457
+        }
+      },
+      "portfolio": {
+        "sha256": "c76d2c9336d1de39f87d16a92526ff25827359a6633da9bf959cea645d7f8d08",
+        "days": 458,
+        "maximum_NAV_relative_error": 4.582914439582977e-15,
+        "net_cumulative_return": 0.06019977127442777,
+        "gross_cumulative_return": 0.12317118895765544,
+        "benchmark_cumulative_return": 0.02037441675427809,
+        "sum_daily_cost_ratios": 0.05773698834895315,
+        "positions": {
+          "status": "checked",
+          "sha256": "7bfbdecc149226f6d90913b868e46b49a1600eeb9d73224820b6ac046c9b5c61",
+          "days": 458,
+          "maximum_account_relative_error": 0.0,
+          "maximum_valuation_relative_error": 7.771561172376096e-16,
+          "maximum_weight_absolute_error": 0.0,
+          "terminated_series_holdings": [
+            {
+              "instrument": "SH600837",
+              "last_observed_close_date": "2025-02-05",
+              "stale_holding_days": 440,
+              "first_stale_holding_date": "2025-02-06",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.018318453693806542,
+              "maximum_stale_weight": 0.01995075469545162,
+              "final_stale_weight": 0.018400167314068155,
+              "marked_price": 38.66765213012695,
+              "last_price_constant": true
+            },
+            {
+              "instrument": "SH601059",
+              "last_observed_close_date": "2026-09-14",
+              "stale_holding_days": 46,
+              "first_stale_holding_date": "2026-09-15",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.019654093536928055,
+              "maximum_stale_weight": 0.028100695219040118,
+              "final_stale_weight": 0.028100695219040118,
+              "marked_price": 1.3299663066864014,
+              "last_price_constant": true
+            },
+            {
+              "instrument": "SH601989",
+              "last_observed_close_date": "2025-08-12",
+              "stale_holding_days": 311,
+              "first_stale_holding_date": "2025-08-13",
+              "last_stale_holding_date": "2026-11-25",
+              "first_stale_weight": 0.018288833602986634,
+              "maximum_stale_weight": 0.02016099954836296,
+              "final_stale_weight": 0.02016099954836296,
+              "marked_price": 1.0421686172485352,
+              "last_price_constant": true
+            }
+          ],
+          "total_final_stale_weight": 0.06666186208147123
+        }
+      }
+    }
+  },
+  "scope": "Raw binary labels and membership, common complete forecast panels, recomputed metrics, chronological horizons, compounded NAV, numeric position valuation, exact official shard-state agreement, and terminated-series exposure. No pickle loading.",
+  "qualification": "Arithmetic and provenance checks do not resolve source corporate-action settlement. Portfolio returns remain native Qlib simulations."
+}

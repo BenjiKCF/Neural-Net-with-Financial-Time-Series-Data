@@ -17,6 +17,7 @@ import tempfile
 from pathlib import Path
 
 ARCHIVE_NAME = "rolling_evidence.tar.xz"
+SUPPORTED_ARCHIVE_NAMES = {ARCHIVE_NAME, "registered_store.tar.xz"}
 CHUNK_BYTES = 1024 * 1024
 
 
@@ -60,14 +61,17 @@ def load_manifest(path):
         or manifest["schema_version"] != 1
     ):
         raise ValueError("Unsupported archive-parts manifest; expected schema version 1.")
-    _identity(manifest["archive"], ARCHIVE_NAME)
+    archive_name = manifest["archive"].get("name") if isinstance(manifest["archive"], dict) else None
+    if archive_name not in SUPPORTED_ARCHIVE_NAMES:
+        raise ValueError("Unsafe or unsupported sibling name for evidence archive.")
+    _identity(manifest["archive"], archive_name)
     parts = manifest["parts"]
     if not isinstance(parts, list) or not parts:
         raise ValueError("The manifest must contain a nonempty ordered parts list.")
     for index, part in enumerate(parts):
         # Exact contiguous names reject traversal, aliases, duplicates and
         # reordering before any part or destination is opened.
-        _identity(part, f"{ARCHIVE_NAME}.part-{index:03d}")
+        _identity(part, f"{archive_name}.part-{index:03d}")
     if sum(part["bytes"] for part in parts) != manifest["archive"]["bytes"]:
         raise ValueError("Part byte counts do not sum to the original archive size.")
     return path, manifest
@@ -89,7 +93,7 @@ def reassemble(manifest_path):
     """Verify every part and atomically publish an unchanged archive without replacement."""
     manifest_path, manifest = load_manifest(manifest_path)
     root = manifest_path.parent
-    output = root / ARCHIVE_NAME
+    output = root / manifest["archive"]["name"]
     expected = manifest["archive"]
     if output.exists() or output.is_symlink():
         _verify_existing(output, expected)

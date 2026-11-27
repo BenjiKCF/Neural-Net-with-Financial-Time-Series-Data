@@ -92,6 +92,22 @@ def _parser() -> argparse.ArgumentParser:
     lifecycle.add_argument("--provider", type=Path, required=True)
     lifecycle.add_argument("--events", type=Path, default=Path("configs/lifecycle_events.json"))
     lifecycle.add_argument("--output", type=Path, required=True)
+    settlement = commands.add_parser(
+        "account-settlement", help="Reconcile source-bound raw-share account settlement evidence"
+    )
+    settlement.add_argument("--spec", type=Path, required=True)
+    settlement.add_argument("--output", type=Path, required=True)
+    settlement_audit = commands.add_parser(
+        "audit-account-settlement", help="Recheck retained account evidence and reconciliation"
+    )
+    settlement_audit.add_argument("--output", type=Path, required=True)
+    acceptance = commands.add_parser(
+        "roadmap-acceptance", help="Revalidate evidence for the four remaining roadmap gates"
+    )
+    acceptance.add_argument("--campaign", type=Path)
+    acceptance.add_argument("--account-settlement", type=Path)
+    acceptance.add_argument("--prospective", type=Path)
+    acceptance.add_argument("--output", type=Path)
     scheduled = commands.add_parser(
         "scheduled-shadow", help="Run one scheduled shadow batch using an admitted arrival receipt"
     )
@@ -484,6 +500,34 @@ def main(argv: list[str] | None = None) -> int:
                 args.run_dir, args.provider, args.events, args.output
             )
             print(json.dumps(result, indent=2, allow_nan=False))
+        elif args.command in {"account-settlement", "audit-account-settlement"}:
+            from financial_ts.settlement import (
+                run_account_settlement,
+                verify_account_settlement,
+            )
+
+            result = (
+                run_account_settlement(args.spec, args.output)
+                if args.command == "account-settlement"
+                else verify_account_settlement(args.output)
+            )
+            print(json.dumps(result, indent=2, allow_nan=False))
+            if result["status"] != "passed":
+                return 1
+        elif args.command == "roadmap-acceptance":
+            from financial_ts.acceptance import assess_roadmap_acceptance
+            from financial_ts.bundles import atomic_json
+
+            result = assess_roadmap_acceptance(
+                campaign=args.campaign,
+                account_settlement=args.account_settlement,
+                prospective=args.prospective,
+            )
+            if args.output is not None:
+                atomic_json(args.output, result)
+            print(json.dumps(result, indent=2, allow_nan=False))
+            if result["status"] != "passed_for_review":
+                return 1
         elif args.command == "download-chenditc":
             from financial_ts.chenditc import download_chenditc
 

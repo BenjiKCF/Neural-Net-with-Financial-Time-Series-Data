@@ -1,0 +1,234 @@
+name: Full five-seed historical campaign
+
+on:
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: "Completed workflow run whose immutable registration and attempts must be resumed"
+        required: false
+        type: string
+  push:
+    branches: ['codex/run-five-seed-*']
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: full-five-seed-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONUNBUFFERED: '1'
+  OMP_NUM_THREADS: '2'
+  MKL_NUM_THREADS: '2'
+  OPENBLAS_NUM_THREADS: '2'
+  NUMEXPR_NUM_THREADS: '2'
+
+jobs:
+  register:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[run-five-seed]') || contains(github.event.head_commit.message, '[resume-five-seed:')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      shards: ${{ steps.matrix.outputs.shards }}
+      source_run_id: ${{ steps.registration.outputs.source_run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Select immutable registration and terminal recovery source
+        id: registration
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id || '' }}
+        run: python scripts/select_campaign_recovery.py select
+      - uses: actions/download-artifact@v4
+        if: steps.registration.outputs.found == 'true'
+        with:
+          name: full-five-seed-registration
+          path: runs
+          run-id: ${{ steps.registration.outputs.registration_run_id }}
+          github-token: ${{ github.token }}
+      - name: Install CPU runtime
+        if: steps.registration.outputs.found != 'true'
+        run: |
+          python -m pip install 'torch==2.15.0' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[neural]'
+      - name: Restore registered runtime on rerun
+        if: steps.registration.outputs.found == 'true'
+        run: |
+          python -m pip install -r runs/full-five-seed-environment.txt --extra-index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --no-deps -e .
+      - uses: actions/cache@v4
+        with:
+          path: .data/chenditc/2026-11-26
+          key: full-five-seed-chenditc-20261126-v1
+      - name: Reuse cached provider or download missing pinned data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/restore_campaign_provider.py --download-if-missing --release 2026-11-26 --provider .data/chenditc/2026-11-26
+      - name: Freeze the one global registration
+        if: steps.registration.outputs.found != 'true'
+        run: |
+          python scripts/run_full_campaign.py register --provider .data/chenditc/2026-11-26 --config configs/rolling_full.json --output runs/full-five-seed
+          python -m pip freeze --exclude-editable > runs/full-five-seed-environment.txt
+          cp .data/chenditc/2026-11-26/metadata.json runs/full-five-seed-provider-metadata.json
+      - name: Verify cached or fresh bytes against the registered provider identity
+        if: steps.registration.outputs.found == 'true'
+        run: python scripts/restore_campaign_provider.py --output runs/full-five-seed --provider .data/chenditc/2026-11-26 --registered-metadata runs/full-five-seed-provider-metadata.json --receipts-dir runs/full-five-seed/control/provider-restoration
+      - name: Bind recovery custody to unchanged registration files
+        run: python scripts/select_campaign_recovery.py bind
+      - name: Declare disjoint shards
+        id: matrix
+        run: |
+          python - <<'PY'
+          import json, os
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              stream.write('shards=' + json.dumps(list(range(80))) + '\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.registration.outputs.current_registration != 'true'
+        with:
+          name: full-five-seed-registration
+          path: |
+            runs/full-five-seed/protocol.json
+            runs/full-five-seed/execution.json
+            runs/full-five-seed-runtime/
+            runs/full-five-seed-environment.txt
+            runs/full-five-seed-provider-metadata.json
+            runs/full-five-seed-recovery/
+          if-no-files-found: error
+          retention-days: 30
+
+  shard:
+    needs: register
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: ${{ fromJSON(needs.register.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/download-artifact@v4
+        with:
+          name: full-five-seed-registration
+          path: runs
+      - name: Restore exact registered package versions
+        run: |
+          python -m pip install -r runs/full-five-seed-environment.txt --extra-index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --no-deps -e .
+      - uses: actions/cache@v4
+        with:
+          path: .data/chenditc/2026-11-26
+          key: full-five-seed-chenditc-20261126-v1
+      - name: Reuse cached provider or download missing pinned data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/restore_campaign_provider.py --download-if-missing --release 2026-11-26 --provider .data/chenditc/2026-11-26
+      - name: Verify cached or fresh bytes and restore the original campaign manifest
+        run: python scripts/restore_campaign_provider.py --output runs/full-five-seed --provider .data/chenditc/2026-11-26 --registered-metadata runs/full-five-seed-provider-metadata.json --receipts-dir runs/full-five-seed/control/provider-restoration
+      - name: Discover retained source and current attempts for this shard
+        id: retained
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ needs.register.outputs.source_run_id }}
+          SHARD: ${{ matrix.shard }}
+        run: python scripts/select_campaign_recovery.py shards --shard "$SHARD"
+      - uses: actions/download-artifact@v4
+        if: steps.retained.outputs.source_found == 'true'
+        with:
+          pattern: full-five-seed-shard-${{ matrix.shard }}-attempt-*
+          path: retained-source-shards
+          run-id: ${{ needs.register.outputs.source_run_id }}
+          github-token: ${{ github.token }}
+      - name: Preserve original run attempts before resuming
+        if: steps.retained.outputs.source_found == 'true'
+        run: python scripts/merge_campaign_shards.py --source retained-source-shards --output runs/full-five-seed
+      - uses: actions/download-artifact@v4
+        if: steps.retained.outputs.current_found == 'true'
+        with:
+          pattern: full-five-seed-shard-${{ matrix.shard }}-attempt-*
+          path: retained-shards
+      - name: Preserve this workflow's earlier attempts before resuming
+        if: steps.retained.outputs.current_found == 'true'
+        run: python scripts/merge_campaign_shards.py --source retained-shards --output runs/full-five-seed
+      - name: Run the unchanged registered shard
+        run: python scripts/run_full_campaign.py run --output runs/full-five-seed --workers 1 --shard-index '${{ matrix.shard }}' --shard-count 80 --retry-failed
+      - name: Preserve numerical evidence and failed attempts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-five-seed-shard-${{ matrix.shard }}-attempt-${{ github.run_attempt }}
+          path: |
+            runs/full-five-seed/trials/
+            runs/full-five-seed/control/logs/
+            runs/full-five-seed/control/invocation-*.json
+            runs/full-five-seed/control/provider-restoration/
+          if-no-files-found: warn
+          retention-days: 30
+
+  audit:
+    if: always() && needs.register.result == 'success'
+    needs: [register, shard]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/download-artifact@v4
+        with:
+          name: full-five-seed-registration
+          path: runs
+      - name: Restore analysis dependencies
+        run: |
+          python -m pip install -r runs/full-five-seed-environment.txt --extra-index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --no-deps -e .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: full-five-seed-shard-*
+          path: completed-shards
+      - name: Reassemble without overwriting conflicting evidence
+        run: python scripts/merge_campaign_shards.py --source completed-shards --output runs/full-five-seed
+      - name: Audit every registered trial and scenario
+        run: |
+          python scripts/run_full_campaign.py status --output runs/full-five-seed --verify-artifacts > runs/full-five-seed/acceptance.json
+          python - <<'PY'
+          import json
+          receipt = json.load(open('runs/full-five-seed/acceptance.json'))
+          assert receipt['full_campaign_execution_gate'] == 'passed', receipt['counts']
+          assert receipt['verified_completed_scenario_replays'] == 2800
+          PY
+      - name: Write registered paired summaries once
+        run: python scripts/run_full_campaign.py summarize --output runs/full-five-seed
+      - name: Preserve acceptance and summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-five-seed-audit-${{ github.run_attempt }}
+          path: |
+            runs/full-five-seed/acceptance.json
+            runs/full-five-seed/protocol.json
+            runs/full-five-seed/comparison.*
+            runs/full-five-seed/trial_history.json
+            runs/full-five-seed/summary/
+            runs/full-five-seed-recovery/
+          if-no-files-found: warn
+          retention-days: 30

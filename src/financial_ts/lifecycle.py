@@ -13,7 +13,7 @@ import gzip
 import hashlib
 import json
 import math
-from dataclasses import asdict, dataclass, replace
+from dataclasses import asdict, dataclass
 from decimal import Decimal
 from pathlib import Path
 
@@ -127,6 +127,7 @@ class EventLedger:
         self.unresolved: dict[str, dict] = {}
         self.receipts: list[dict] = []
         self._actions: dict[str, CorporateAction] = {}
+        self._allocations: dict[str, dict] = {}
         self._fills: dict[str, dict] = {}
         self._last_at: pd.Timestamp | None = None
         self.initial_cash = self.cash
@@ -182,9 +183,11 @@ class EventLedger:
                 if event.allocated_quantity is not None and allocation not in {math.floor(exact), math.ceil(exact)}:
                     raise ValueError("Observed allocation must match the whole-share entitlement bounds")
                 self.positions[event.instrument] = allocation
-                if event.cash_per_share is not None and quantity:
-                    self.receivables[event.event_id] = {"amount": quantity * event.cash_per_share,
-                                                       "payment_at": event.payment_at, "instrument": event.instrument}
+            # Fixed cash consideration belongs to the original entitlement;
+            # unresolved whole-share rounding must not delay its accrual.
+            if event.cash_per_share is not None and quantity:
+                self.receivables[event.event_id] = {"amount": quantity * event.cash_per_share,
+                                                   "payment_at": event.payment_at, "instrument": event.instrument}
         elif event.kind in {"merger", "ticker_change"}:
             exact = Decimal(str(quantity)) * Decimal(str(event.ratio))
             if event.allocated_quantity is None and exact != exact.to_integral_value():
@@ -202,8 +205,13 @@ class EventLedger:
                     original_release = self.restrictions.get(event.instrument)
                     self.restrictions.pop(event.instrument, None)
                     if event.kind == "merger":
-                        self.restrictions[event.successor] = event.tradable_at
-                        if event.tradable_at is None:
+                        release = event.tradable_at
+                        if event.successor in self.restrictions:
+                            old_release = self.restrictions[event.successor]
+                            release = (None if old_release is None or release is None else
+                                       max(_time(old_release), _time(release)).isoformat())
+                        self.restrictions[event.successor] = release
+                        if release is None:
                             self.unresolved[event.event_id] = {
                                 "instrument": event.successor,
                                 "reason": "successor_tradability_unverified",
@@ -211,11 +219,9 @@ class EventLedger:
                     elif restricted:
                         self.restrictions[event.successor] = original_release
                 receipt["successor_quantity"] = allocation
-                if event.cash_per_share is not None and quantity:
-                    if event.payment_at is None:
-                        raise ValueError("Cash consideration requires a payment time")
-                    self.receivables[event.event_id] = {"amount": quantity * event.cash_per_share,
-                                                       "payment_at": event.payment_at, "instrument": event.instrument}
+            if event.cash_per_share is not None and quantity:
+                self.receivables[event.event_id] = {"amount": quantity * event.cash_per_share,
+                                                   "payment_at": event.payment_at, "instrument": event.instrument}
         elif event.kind == "cash_dividend":
             # Caller applies this at entitlement fixation with the actual entitled
             # holdings; payment is a later operation, independent of later sales.
@@ -250,17 +256,77 @@ class EventLedger:
         return copy.deepcopy(receipt)
 
     def resolve_allocation(self, event_id: str, *, allocated_quantity: float, source: str, asof, tradable_at=None) -> dict:
-        """Resolve a preserved fractional entitlement with actual allocation evidence."""
+        """Resolve the frozen entitlement when an actual account allocation arrives.
+
+        Receipt time and economic event time remain distinct. A late registrar
+        statement may arrive after payment or successor trading began; neither
+        historical date is rewritten to manufacture a new corporate action.
+        """
+        allocated_quantity = _number(allocated_quantity, "allocated_quantity")
+        _source(source)
+        asof = _time(asof)
+        request = {"event_id": event_id, "allocated_quantity": allocated_quantity,
+                   "source": source, "asof": asof.isoformat(),
+                   "tradable_at": _time(tradable_at).isoformat() if tradable_at else None}
+        if event_id in self._allocations:
+            previous = self._allocations[event_id]
+            if previous["request"] != request:
+                raise ValueError("An existing allocation receipt cannot change contents")
+            return copy.deepcopy(previous["receipt"])
         if event_id not in self.unresolved or self.unresolved[event_id]["reason"] != "account_specific_fractional_allocation_required":
             raise ValueError("No unresolved fractional entitlement for this event")
         event = self._actions[event_id]
-        resolved = replace(event, event_id=event_id + ":allocation", known_at=_time(asof).isoformat(),
-                           effective_at=_time(asof).isoformat(),
-                           allocated_quantity=allocated_quantity, allocation_source=source,
-                           tradable_at=tradable_at or event.tradable_at)
-        receipt = self.apply(resolved, asof=asof)
+        self._advance(asof)
+        if asof < max(_time(event.effective_at), _time(event.known_at)):
+            raise ValueError("Allocation receipt precedes the known effective entitlement")
+        original = next(item for item in self.receipts if item.get("event_id") == event_id)
+        quantity = original["quantity_before"]
+        if self.positions.get(event.instrument, 0.0) != quantity:
+            raise ValueError("Frozen entitlement changed; replay the account before resolving allocation")
+        exact = Decimal(str(quantity)) * Decimal(str(event.ratio))
+        if allocated_quantity not in {math.floor(exact), math.ceil(exact)}:
+            raise ValueError("Observed allocation must match the whole-share entitlement bounds")
+        release = tradable_at or event.tradable_at
+        if release is not None and _time(release) < _time(event.effective_at):
+            raise ValueError("Successor tradability cannot precede the economic event")
+        before = self.positions.copy()
+        successor = event.instrument if event.kind == "split" else event.successor
+        if successor == event.instrument:
+            self.positions[successor] = allocated_quantity
+        else:
+            self.positions.pop(event.instrument, None)
+            self.positions[successor] = self.positions.get(successor, 0.0) + allocated_quantity
+            self.restrictions.pop(event.instrument, None)
+            if event.kind == "merger":
+                # Do not clear a pre-existing restriction on already held
+                # successor shares simply because this allocation has arrived.
+                if successor in self.restrictions:
+                    old_release = self.restrictions[successor]
+                    release = (None if old_release is None or release is None else
+                               max(_time(old_release), _time(release)).isoformat())
+                self.restrictions[successor] = release
+        # Any fixed cash consideration accrued when apply() froze the original
+        # entitlement. It may already be paid; allocating shares cannot add it
+        # again or create a second receivable.
         self.unresolved.pop(event_id)
-        return receipt
+        if event.kind == "merger" and release is None:
+            self.unresolved[event_id + ":allocation"] = {
+                "instrument": successor, "reason": "successor_tradability_unverified"}
+        receipt = {"event_id": event_id + ":allocation", "resolution_for": event_id,
+                   "event": asdict(event), "entitlement_effective_at": event.effective_at,
+                   "allocation_source": source, "applied_at": asof.isoformat(),
+                   "instrument": event.instrument, "quantity_before": quantity,
+                   "successor_quantity": allocated_quantity,
+                   "quantity_after": self.positions.get(event.instrument, 0.0),
+                   "cash_delta": 0.0, "status": "applied",
+                   "quantity_deltas": {symbol: self.positions.get(symbol, 0.0) - before.get(symbol, 0.0)
+                                       for symbol in sorted(set(before) | set(self.positions))
+                                       if self.positions.get(symbol, 0.0) != before.get(symbol, 0.0)},
+                   "receivable_added": 0.0}
+        self.receipts.append(receipt)
+        self._allocations[event_id] = {"request": request, "receipt": copy.deepcopy(receipt)}
+        self._stamp(asof)
+        return copy.deepcopy(receipt)
 
     def settle_cash(self, *, asof) -> list[dict]:
         asof = self._advance(asof)

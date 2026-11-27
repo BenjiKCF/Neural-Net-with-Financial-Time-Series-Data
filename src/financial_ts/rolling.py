@@ -866,6 +866,34 @@ def _verify_attempt(attempt, trial, protocol):
         "trial_sha256"
     ) != _digest(trial):
         raise ValueError("Trial receipt identity differs from its registered protocol.")
+    ordinal = int(attempt.name.removeprefix("attempt-"))
+    previous = attempt.parent / f"attempt-{ordinal - 1:04d}"
+    expected_previous = (
+        str(previous.relative_to(Path(protocol["output_dir"]))) if ordinal > 1 else None
+    )
+    if receipt.get("attempt") != ordinal or receipt.get("previous_attempt") != expected_previous:
+        raise ValueError("Trial receipt attempt ordinal/previous_attempt chain is invalid.")
+    if ordinal > 1 and not (previous / "receipt.json").is_file():
+        raise ValueError("Trial attempt chain is missing its previous receipt.")
+    if "interruption_recovery" in receipt:
+        recovery = receipt["interruption_recovery"]
+        original = attempt / "receipt.before-recovery.json"
+        if (
+            receipt.get("status") != "failed"
+            or not original.is_file()
+            or _sha256(original) != recovery.get("previous_receipt_sha256")
+        ):
+            raise ValueError("Interrupted attempt recovery evidence is invalid.")
+        original_receipt = json.loads(original.read_text())
+        if (
+            original_receipt.get("status") != "running"
+            or original_receipt.get("trial_sha256") != receipt["trial_sha256"]
+            or original_receipt.get("protocol_sha256") != receipt["protocol_sha256"]
+            or original_receipt.get("attempt") != receipt["attempt"]
+        ):
+            raise ValueError(
+                "Interrupted attempt recovery does not match original running receipt."
+            )
     if receipt.get("status") == "completed":
         for relative, identity in receipt["artifacts"].items():
             if Path(relative).is_absolute() or ".." in Path(relative).parts:
@@ -881,16 +909,24 @@ def _verify_attempt(attempt, trial, protocol):
 
 
 def _attempts(root, trial):
-    return sorted((root / "trials" / trial["id"]).glob("attempt-*"))
+    attempts = sorted((root / "trials" / trial["id"]).glob("attempt-*"))
+    if any(
+        not path.is_dir() or path.name != f"attempt-{ordinal:04d}"
+        for ordinal, path in enumerate(attempts, 1)
+    ):
+        raise ValueError("Trial attempt directories must form a contiguous numbered chain.")
+    return attempts
 
 
-def run_rolling_campaign(value, *, retry_failed=False, trial_ids=None):
+def run_rolling_campaign(value, *, retry_failed=False, trial_ids=None, summarize=True):
     """Run/resume registered trials sequentially, preserving every failed attempt.
 
     A failed trial does not prevent the other registered trials from running.
     Retry creates a new attempt directory. Completed receipts are verified before
     reuse, including predictions, metrics, inference bundle and scenario ledgers.
     """
+    if type(summarize) is not bool:
+        raise ValueError("summarize must be boolean.")
     protocol = _load_protocol(value)
     root, provider = Path(protocol["output_dir"]), Path(protocol["provider_uri"])
     if _provider_fingerprint(provider) != protocol["provider_fingerprint"]:
@@ -919,7 +955,52 @@ def run_rolling_campaign(value, *, retry_failed=False, trial_ids=None):
         with FileLock(str(lock)):
             attempts = _attempts(root, trial)
             if attempts:
+                # A terminated worker can leave the directory before its first
+                # atomic receipt. Holding the trial lock proves it is no longer
+                # owned; preserve the directory and record the missing evidence.
+                if not (attempts[-1] / "receipt.json").exists():
+                    _save(
+                        attempts[-1] / "receipt.json",
+                        {
+                            "schema_version": 1,
+                            "trial_id": trial["id"],
+                            "trial_sha256": _digest(trial),
+                            "protocol_sha256": protocol["protocol_sha256"],
+                            "status": "failed",
+                            "attempt": len(attempts),
+                            "started_at_utc": None,
+                            "finished_at_utc": _now(),
+                            "elapsed_seconds": None,
+                            "error": "Interrupted attempt has no receipt; no completed work is inferred.",
+                            "previous_attempt": str(attempts[-2].relative_to(root))
+                            if len(attempts) > 1
+                            else None,
+                        },
+                    )
                 previous = _verify_attempt(attempts[-1], trial, protocol)
+                if previous["status"] == "running":
+                    # The exclusive lock is free, so the prior owner is gone.
+                    # Retain its exact bytes before recording the observed interruption.
+                    receipt_path = attempts[-1] / "receipt.json"
+                    archived_receipt = attempts[-1] / "receipt.before-recovery.json"
+                    if (
+                        archived_receipt.exists()
+                        and archived_receipt.read_bytes() != receipt_path.read_bytes()
+                    ):
+                        raise ValueError("Conflicting preserved interruption receipt.")
+                    archived_receipt.write_bytes(receipt_path.read_bytes())
+                    observed = _now()
+                    previous.update(
+                        status="failed",
+                        finished_at_utc=observed,
+                        elapsed_seconds=None,
+                        error="Worker disappeared while its attempt was running; completion unverified.",
+                        interruption_recovery={
+                            "observed_at_utc": observed,
+                            "previous_receipt_sha256": _sha256(archived_receipt),
+                        },
+                    )
+                    _save(receipt_path, previous)
                 if previous["status"] == "completed" or not retry_failed:
                     continue
             attempt = lock.parent / f"attempt-{len(attempts) + 1:04d}"
@@ -955,7 +1036,9 @@ def run_rolling_campaign(value, *, retry_failed=False, trial_ids=None):
                 receipt.update(status="failed", error=f"{type(exc).__name__}: {exc}")
             receipt.update(finished_at_utc=_now(), elapsed_seconds=time.perf_counter() - started)
             _save(attempt / "receipt.json", receipt)
-    return summarize_rolling_campaign(root)
+    if summarize:
+        return summarize_rolling_campaign(root)
+    return {"protocol_sha256": protocol["protocol_sha256"], "requested_trials": requested}
 
 
 def _seed_ensemble(paths, filename):

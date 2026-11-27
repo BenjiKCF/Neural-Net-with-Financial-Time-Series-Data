@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-27T10:33:33.207416+00:00",
+  "prospective": {
+    "title": "Run prospective shadow pilot",
+    "is_enabled": true,
+    "timezone": "Asia/Hong_Kong",
+    "schedule": "BEGIN:VEVENT\nDTSTART;TZID=Asia/Hong_Kong:20261130T181500\nRRULE:FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=18,19;BYMINUTE=15;BYSECOND=0;UNTIL=20261229T111500Z\nEND:VEVENT",
+    "next_run": "2026-11-30T18:15:00+08:00",
+    "first_execution_observed": false,
+    "forecast_observations": 0,
+    "registered_forecast_sessions": 20,
+    "protocol_id": "e0130e4dbcb1e6a8240e1ce91e428623775c052e95f39c57b5cf83a5ccaf1edb",
+    "scheduler_kind": "ChatGPT research automation; no operating-system service installed",
+    "environment_selection": "inherited",
+    "attached_environment_details_reported": false,
+    "qualification": "Enabled scheduling is not evidence of an executed future task or a delivery SLA; every task must recheck the registered environment and actual clock."
+  },
+  "historical_campaign_watch": {
+    "title": "Five-seed campaign completion",
+    "is_enabled": true,
+    "schedule": "BEGIN:VEVENT\nDTSTART;TZID=Asia/Hong_Kong:20261127T191000\nRRULE:FREQ=HOURLY;COUNT=72\nEND:VEVENT",
+    "next_run": "2026-11-27T19:10:00+08:00",
+    "active_recovery_run": 45981758029,
+    "original_registration_run": 45978766798
+  },
+  "production_ready": false,
+  "orders_submitted": false
+}

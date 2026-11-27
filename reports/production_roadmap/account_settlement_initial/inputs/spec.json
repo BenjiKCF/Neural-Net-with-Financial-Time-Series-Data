@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "campaign_id": "archived-transformer-account-settlement-inventory-20261127",
+  "account_id": "UNRESOLVED-ARCHIVED-SIMULATION",
+  "currency": "CNY",
+  "asof": "2026-11-27T00:00:00Z",
+  "account_export": null,
+  "source_artifacts": [],
+  "archived_assessment": {
+    "path": "../reports/production_roadmap/lifecycle_transformer/assessment.json",
+    "sha256": "377fee7120d15d46fa9e535101e5ddae4ed96a9968ad4e5d3808815495355ff5"
+  },
+  "event_catalog": {
+    "path": "../configs/lifecycle_events.json",
+    "sha256": "5bbc7e840993bd0dfc078fbbf0b6b7f2e39c3618b3912cfd7d9ae69883f6712a"
+  }
+}

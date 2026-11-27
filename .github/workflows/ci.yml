@@ -50,6 +50,33 @@ jobs:
           mkdir -p runs/ci-evidence
           python -I scripts/reassemble_rolling_evidence.py --manifest reports/production_roadmap/rolling_screening/archive_parts.json > runs/ci-evidence/reassembly.json
           python -I scripts/export_rolling_evidence.py --audit reports/production_roadmap/rolling_screening/archive_manifest.json > runs/ci-evidence/audit.json
+      - name: Verify the registered prospective store archive
+        run: |
+          python -I scripts/reassemble_rolling_evidence.py --manifest reports/remaining_acceptance/prospective_pilot/archive_parts.json > runs/ci-evidence/prospective-reassembly.json
+          python -I - <<'PY'
+          import hashlib, json, tarfile
+          from pathlib import Path, PurePosixPath
+          root = Path('reports/remaining_acceptance/prospective_pilot')
+          manifest = json.loads((root / 'store_archive_manifest.json').read_text())
+          archive = root / manifest['archive']
+          assert archive.stat().st_size == manifest['bytes']
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == manifest['sha256']
+          with tarfile.open(archive, 'r:xz') as stream:
+              members = stream.getmembers()
+              for member in members:
+                  path = PurePosixPath(member.name)
+                  assert not path.is_absolute() and '..' not in path.parts
+                  assert member.isfile() or member.isdir()
+              files = [member for member in members if member.isfile()]
+              assert len(files) == len(manifest['files'])
+              assert {member.name for member in files} == set(manifest['files'])
+              for member in files:
+                  raw = stream.extractfile(member).read()
+                  expected = manifest['files'][member.name]
+                  assert len(raw) == expected['bytes']
+                  assert hashlib.sha256(raw).hexdigest() == expected['sha256']
+          print('Verified prospective archive:', len(files), 'files; no checkpoint deserialization')
+          PY
       - name: Upload inspectable demo results
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,13 @@
+{
+  "source_metadata_path": "/workspace/scratch/be1ac217cace/financial-ts/.data/chenditc/2026-11-26/metadata.json",
+  "source_metadata_sha256": "69bf5bd2415e3c8fa061eae523d4a6a3cdbc6bae1ced6be51053c988486ed20d",
+  "source": "chenditc/investment_data",
+  "release_tag": "2026-11-26",
+  "release_url": "https://github.com/chenditc/investment_data/releases/tag/2026-11-26",
+  "release_published_at": "2026-11-26T10:08:41Z",
+  "archive_uploaded_at": "2026-11-26T10:09:05Z",
+  "manifest_uploaded_at": "2026-11-26T10:09:25Z",
+  "manifest_sha256": "sha256:4b99d670cc781fb6498c7a609c509c59bbe228ee9583fd8af77ba058f2c72149",
+  "retrieved_at_utc": "2026-11-27T02:00:13.056135+00:00",
+  "interpretation": "The pinned 2026-11-26 release became available after the original 18:00 HKT cutoff. This is one observed source timing, not a promise of future publication timing. The replacement fixes a known schedule incompatibility before any prospective observation."
+}

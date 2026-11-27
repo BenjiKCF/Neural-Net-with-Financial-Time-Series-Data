@@ -1,0 +1,79 @@
+{
+  "account_id": "UNRESOLVED-ARCHIVED-SIMULATION",
+  "archived_backtest_repaired": false,
+  "archived_exposure": {
+    "affected_final_weight": 0.06489845337614548,
+    "archived_final_date": "2026-11-25",
+    "events": [
+      {
+        "catalog_identity_matches": true,
+        "event_id": "haitong-merger-20250304",
+        "implied_raw_quantity": 196600.0,
+        "instrument": "SH600837",
+        "missing_evidence": [
+          "complete_corporate_action_replay_not_executed",
+          "account_allocation_not_verified",
+          "successor_tradability_not_registered"
+        ],
+        "successor": "SH601211",
+        "theoretical_successor_quantity": 121892.0
+      },
+      {
+        "catalog_identity_matches": true,
+        "event_id": "china-heavy-industry-merger-20250905",
+        "implied_raw_quantity": 403299.79534838645,
+        "instrument": "SH601989",
+        "missing_evidence": [
+          "complete_corporate_action_replay_not_executed",
+          "account_allocation_not_verified",
+          "implied_raw_quantity_is_not_an_integer",
+          "successor_tradability_not_registered"
+        ],
+        "successor": "SH600150",
+        "theoretical_successor_quantity": 54001.84259714894
+      },
+      {
+        "catalog_identity_matches": true,
+        "event_id": "cinda-merger-20261019",
+        "implied_raw_quantity": 149452.7355423788,
+        "instrument": "SH601059",
+        "missing_evidence": [
+          "complete_corporate_action_replay_not_executed",
+          "account_allocation_not_verified",
+          "implied_raw_quantity_is_not_an_integer",
+          "successor_tradability_not_registered"
+        ],
+        "successor": "SH601995",
+        "theoretical_successor_quantity": 77864.87521757935
+      }
+    ],
+    "qualification": "The archived account is a hypothetical Qlib simulation, with no implied real broker statement. It needs a separate raw-share/action-aware reconstructed replay and explicit counterfactual allocation assumptions or bounds; real account exports are a different evidence path.",
+    "source_positions_sha256": "a5141700cd32606e01acd098ba096c730fd061dadab9b41fdbc8096bdc1dc63f"
+  },
+  "archived_settlement_blockers": [
+    "original_raw_fill_and_account_history_not_reconstructed",
+    "all_archived_corporate_actions_and_allocations_not_verified",
+    "separate_corrected_portfolio_replay_not_executed"
+  ],
+  "archived_settlement_status": "blocked",
+  "audit_asof": "2026-11-27T00:00:00Z",
+  "blockers": [
+    "account_export_not_supplied",
+    "complete_account_action_coverage_not_supplied",
+    "independent_closing_statement_not_supplied"
+  ],
+  "campaign_id": "archived-transformer-account-settlement-inventory-20261127",
+  "currency": "CNY",
+  "evidence_kind": "missing",
+  "production_promoted": false,
+  "reconciliation": {
+    "all_matched": false,
+    "cash": false,
+    "nav": false,
+    "positions": false,
+    "receivables": false
+  },
+  "schema_version": 1,
+  "scope": "supplied_account_window",
+  "status": "blocked"
+}

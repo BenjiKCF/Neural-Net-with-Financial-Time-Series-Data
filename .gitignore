@@ -13,5 +13,7 @@ dist/
 build/
 .env
 .env.*
+.*.settlement.lock
 # Reassembled locally from the published, checksum-verified archive parts.
 /reports/production_roadmap/rolling_screening/rolling_evidence.tar.xz
+/reports/remaining_acceptance/prospective_pilot/registered_store.tar.xz

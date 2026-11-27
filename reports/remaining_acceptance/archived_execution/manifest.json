@@ -1,0 +1,83 @@
+{
+  "initial_cash": 100000000.0,
+  "operation": "capture_and_independently_reconcile_native_simulation",
+  "outputs": {
+    "assessment.json": {
+      "bytes": 1923,
+      "sha256": "98af6d0833368da3a0054da75e5834cea2911b09d93e7055ae509f74ad5500ac"
+    },
+    "daily_reconciliation.csv": {
+      "bytes": 65861,
+      "sha256": "9ccc09a1b36cf616935312bacf99091807a3f95c425359474c128a3bf394c322"
+    },
+    "event_lineage.json": {
+      "bytes": 4185,
+      "sha256": "cb92f8339abf65f19c2ef8e2c29a151cd46ecb71ab3df0be4e32a2f7c6ae4067"
+    },
+    "inputs/lifecycle_assessment.json": {
+      "bytes": 5754,
+      "sha256": "377fee7120d15d46fa9e535101e5ddae4ed96a9968ad4e5d3808815495355ff5"
+    },
+    "inputs/portfolio.csv": {
+      "bytes": 86640,
+      "sha256": "7d0f1550533d39c63723deb7ba33d29d95de977e1a5bcfc7302210b371078350"
+    },
+    "inputs/positions.json.gz": {
+      "bytes": 569204,
+      "sha256": "a5141700cd32606e01acd098ba096c730fd061dadab9b41fdbc8096bdc1dc63f"
+    },
+    "inputs/replay_manifest.json": {
+      "bytes": 24731,
+      "sha256": "f14ef8d6c99fc869bf48ccedcaaf71fb90c1b51b1af03b30b012ef43e7316d6d"
+    },
+    "native_parity.json": {
+      "bytes": 95,
+      "sha256": "a9f4ca5d5b5a313953252e99a5722429310e8f2c23028ee14c727608f70ceaa4"
+    },
+    "native_portfolio.csv": {
+      "bytes": 86649,
+      "sha256": "b460f3ce1e052c75404bc29a88ba315917521958f4d8b57aa11cddc5d9c238f6"
+    },
+    "native_positions.json.gz": {
+      "bytes": 594244,
+      "sha256": "437e3d0856ebb47017cab64e6e63a9617a6caf6391b44cd2cbb7ceabbe0c2bbf"
+    },
+    "orders.json.gz": {
+      "bytes": 240679,
+      "sha256": "29371a954546ecca90243d3e43f8596db3be5686e684c9ebaa2e0d3f4beb4e92"
+    }
+  },
+  "provider": {
+    "bytes": 730118170,
+    "file_count": 61788,
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8"
+  },
+  "runtime": {
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "pyqlib": "0.9.7"
+    },
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "source_sha256": {
+      "archived_reconstruction.py": "c060ffaa6edc8c726e82308c987428d0b00e6704c138692939a4350df11c101e",
+      "qlib_executor.py": "83c2596f569906663c18df6dc48033e57f0a365f706f963d47f6e6301c53ea1c"
+    }
+  },
+  "schema_version": 1,
+  "source_inputs": {
+    "assessment.json": {
+      "bytes": 5754,
+      "sha256": "377fee7120d15d46fa9e535101e5ddae4ed96a9968ad4e5d3808815495355ff5"
+    },
+    "predictions.csv.gz": {
+      "bytes": 2490798,
+      "sha256": "20c524950cb0e7d412bd1258a548ada987046fe9dd3242511570e0155435113c"
+    },
+    "replay_manifest.json": {
+      "bytes": 24731,
+      "sha256": "f14ef8d6c99fc869bf48ccedcaaf71fb90c1b51b1af03b30b012ef43e7316d6d"
+    }
+  }
+}

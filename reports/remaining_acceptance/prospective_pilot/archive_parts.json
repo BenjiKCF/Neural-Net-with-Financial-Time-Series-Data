@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "archive": {
+    "name": "registered_store.tar.xz",
+    "bytes": 9636920,
+    "sha256": "0cfc87e4b7207ad0148a761e022c3072e545ff76764ed6670a8b14ea971951e8"
+  },
+  "parts": [
+    {
+      "name": "registered_store.tar.xz.part-000",
+      "bytes": 8388576,
+      "sha256": "3ec36a7019c724d9dc1c4a5c38a3bafb5d5a6c4e9ca102e3e81a82d468ec3526"
+    },
+    {
+      "name": "registered_store.tar.xz.part-001",
+      "bytes": 1248344,
+      "sha256": "75ce961a8caa41bfa8dc3fb0a78f3c020f5c8e8825460f48a2cec324b6c5330c"
+    }
+  ]
+}

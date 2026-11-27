@@ -1,0 +1,141 @@
+{
+  "affected_final_weight": 0.06489845337614548,
+  "archived_final_date": "2026-11-25",
+  "archived_final_nav": 99061208.55047654,
+  "campaign_kind": "lifecycle_source_assessment_v1",
+  "corrected_returns_available": false,
+  "events": [
+    {
+      "adjusted_quantity": 52928.117289608526,
+      "archived_final_stale_value": 2046606.0272571403,
+      "archived_final_stale_weight": 0.020660014724273167,
+      "event": {
+        "allocated_quantity": null,
+        "allocation_source": null,
+        "cash_per_share": null,
+        "effective_at": "2025-03-04T00:00:00+08:00",
+        "event_id": "haitong-merger-20250304",
+        "instrument": "SH600837",
+        "kind": "merger",
+        "known_at": "2025-03-02T00:00:00+08:00",
+        "payment_at": null,
+        "ratio": 0.62,
+        "source": "https://static.cninfo.com.cn/finalpage/2025-03-01/1222675645.PDF",
+        "successor": "SH601211",
+        "tradable_at": null
+      },
+      "instrument": "SH600837",
+      "pre_event_snapshot": "2025-03-03",
+      "quantity_qualification": "Implied contemporaneous Qlib quote units; original executed raw shares and intervening action cashflows are not reconstructed by this multiplication.",
+      "raw_price": 10.410000138642626,
+      "raw_quantity": 196600.0,
+      "raw_quantity_distance_to_integer": 0.0,
+      "source_close_date": "2025-02-05",
+      "source_factor": 3.7144718170166016,
+      "source_factor_date": "2025-02-05",
+      "theoretical_successor_quantity": 121892.0,
+      "unresolved_reasons": [
+        "complete_corporate_action_replay_not_executed",
+        "account_allocation_not_verified",
+        "successor_tradability_not_registered"
+      ],
+      "value": 2046606.0272571403,
+      "whole_share_entitlement_bounds": [
+        121892,
+        121892
+      ]
+    },
+    {
+      "adjusted_quantity": 1973604.5970864801,
+      "archived_final_stale_value": 2056828.7739409693,
+      "archived_final_stale_weight": 0.020763210988819242,
+      "event": {
+        "allocated_quantity": null,
+        "allocation_source": null,
+        "cash_per_share": null,
+        "effective_at": "2025-09-05T00:00:00+08:00",
+        "event_id": "china-heavy-industry-merger-20250905",
+        "instrument": "SH601989",
+        "kind": "merger",
+        "known_at": "2025-08-31T00:00:00+08:00",
+        "payment_at": null,
+        "ratio": 0.1339,
+        "source": "https://static.cninfo.com.cn/finalpage/2025-08-30/1224625027.PDF",
+        "successor": "SH600150",
+        "tradable_at": null
+      },
+      "instrument": "SH601989",
+      "pre_event_snapshot": "2025-09-04",
+      "quantity_qualification": "Implied contemporaneous Qlib quote units; original executed raw shares and intervening action cashflows are not reconstructed by this multiplication.",
+      "raw_price": 5.099999547890171,
+      "raw_quantity": 403299.79534838645,
+      "raw_quantity_distance_to_integer": 0.2046516135451384,
+      "source_close_date": "2025-08-12",
+      "source_factor": 0.20434680581092834,
+      "source_factor_date": "2025-08-12",
+      "theoretical_successor_quantity": 54001.84259714894,
+      "unresolved_reasons": [
+        "complete_corporate_action_replay_not_executed",
+        "account_allocation_not_verified",
+        "implied_raw_quantity_is_not_an_integer",
+        "successor_tradability_not_registered"
+      ],
+      "value": 2056828.7739409693,
+      "whole_share_entitlement_bounds": [
+        54001,
+        54002
+      ]
+    },
+    {
+      "adjusted_quantity": 1748528.8248343216,
+      "archived_final_stale_value": 2325484.423299616,
+      "archived_final_stale_weight": 0.023475227663053072,
+      "event": {
+        "allocated_quantity": null,
+        "allocation_source": null,
+        "cash_per_share": null,
+        "effective_at": "2026-10-19T00:00:00+08:00",
+        "event_id": "cinda-merger-20261019",
+        "instrument": "SH601059",
+        "kind": "merger",
+        "known_at": "2026-10-17T00:00:00+08:00",
+        "payment_at": null,
+        "ratio": 0.521,
+        "source": "https://epaper.cs.com.cn/zgzqb/html/2026-10/16/nw.D110000zgzqb_20261016_5-B017.htm",
+        "successor": "SH601995",
+        "tradable_at": null
+      },
+      "instrument": "SH601059",
+      "pre_event_snapshot": "2026-10-16",
+      "quantity_qualification": "Implied contemporaneous Qlib quote units; original executed raw shares and intervening action cashflows are not reconstructed by this multiplication.",
+      "raw_price": 15.559999051607873,
+      "raw_quantity": 149452.7355423788,
+      "raw_quantity_distance_to_integer": 0.26445762120420113,
+      "source_close_date": "2026-09-14",
+      "source_factor": 0.08547341823577881,
+      "source_factor_date": "2026-09-14",
+      "theoretical_successor_quantity": 77864.87521757935,
+      "unresolved_reasons": [
+        "complete_corporate_action_replay_not_executed",
+        "account_allocation_not_verified",
+        "implied_raw_quantity_is_not_an_integer",
+        "successor_tradability_not_registered"
+      ],
+      "value": 2325484.423299616,
+      "whole_share_entitlement_bounds": [
+        77864,
+        77865
+      ]
+    }
+  ],
+  "interpretation": "Successor entitlements are sourced; the archived stale marks are not executable settlement values. No historical universe exclusion or last-price liquidation has been applied.",
+  "promotion_ready": false,
+  "provider_fingerprint": {
+    "bytes": 730118170,
+    "file_count": 61788,
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8"
+  },
+  "source_event_catalog_sha256": "5bbc7e840993bd0dfc078fbbf0b6b7f2e39c3618b3912cfd7d9ae69883f6712a",
+  "source_positions_sha256": "a5141700cd32606e01acd098ba096c730fd061dadab9b41fdbc8096bdc1dc63f",
+  "status": "research_only"
+}

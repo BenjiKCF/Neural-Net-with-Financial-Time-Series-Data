@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source": "https://github.com/chenditc/investment_data/releases/tag/2026-11-26",
+  "source_sha256": "5c7d2391e569896f22fdccd146f9a0466fc363b7bbabb528c68bd2cc56f11559",
+  "source_bytes": 573153280,
+  "parts": [
+    {
+      "file": "chenditc-2026-11-26.tar.gz.part-000",
+      "bytes": 293601280,
+      "sha256": "0ddda03351c68c574065a6feb7198d3d73b9d9f8fbb7bc36aafe373ad32cfa42"
+    },
+    {
+      "file": "chenditc-2026-11-26.tar.gz.part-001",
+      "bytes": 279552000,
+      "sha256": "cc87e827e7f3823c700240ea3c31ce1b1374879e03c1b4caf8e4915ec122b08e"
+    }
+  ],
+  "durable_save_status": "all_parts_and_manifest_saved",
+  "local_identity_metadata_applied": true,
+  "qualification": "Historical reference archive transfer verified. This is not a prospective data arrival, future observation, or completed month-long capacity test."
+}

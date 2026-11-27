@@ -1,0 +1,63 @@
+........................................................................ [ 10%]
+........................................................................ [ 20%]
+........................................................................ [ 30%]
+........................................................................ [ 41%]
+........................................................................ [ 51%]
+........................................................................ [ 61%]
+........................................................................ [ 71%]
+........................................................................ [ 82%]
+........................................................................ [ 92%]
+.....................................................                    [100%]
+=============================== warnings summary ===============================
+tests/test_advanced_research.py::test_registered_provider_experiment_retains_all_controls_predictions_and_hashes
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/mlflow/utils/pydantic_utils.py:33: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://pydantic.dev/docs/validation/2.14/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    return pydantic_model_validator(mode=mode)(func)
+
+tests/test_advanced_research.py::test_registered_provider_experiment_retains_all_controls_predictions_and_hashes
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/mlflow/gateway/config.py:454: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/
+    class Route(ConfigModel):
+
+tests/test_bundle_workflow.py: 2 warnings
+tests/test_cn_workflow.py: 4 warnings
+tests/test_ensembles.py: 14 warnings
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/pandas/core/nanops.py:1632: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+    return spearmanr(a, b)[0]
+
+tests/test_cn_inference_shards.py::test_assemble_all_rows_and_recompute_metrics
+tests/test_cn_inference_shards.py::test_assemble_all_rows_and_recompute_metrics
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/numpy/lib/function_base.py:2889: RuntimeWarning: Degrees of freedom <= 0 for slice
+    c = cov(x, y, rowvar, dtype=dtype)
+
+tests/test_cn_inference_shards.py::test_assemble_all_rows_and_recompute_metrics
+tests/test_cn_inference_shards.py::test_assemble_all_rows_and_recompute_metrics
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/numpy/lib/function_base.py:2748: RuntimeWarning: divide by zero encountered in divide
+    c *= np.true_divide(1, fact)
+
+tests/test_cn_portfolio.py: 28 warnings
+tests/test_cn_workflow.py: 28 warnings
+tests/test_ensembles.py: 63 warnings
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/qlib/utils/index_data.py:492: RuntimeWarning: Mean of empty slice
+    return np.nanmean(self.data)
+
+tests/test_data.py::test_invalid_data_never_publishes_partial_provider[date-2024-01-02T00:00:00+00:00]
+  /workspace/scratch/a98fa462bb23/financial-ts/src/financial_ts/data.py:75: FutureWarning: In a future version of pandas, parsing datetimes with mixed time zones will raise an error unless `utc=True`. Please specify `utc=True` to opt in to the new behaviour and silence this warning. To create a `Series` with mixed offsets and `object` dtype, please use `apply` and `datetime.datetime.strptime`
+    dates = pd.to_datetime(frame["date"], format="mixed", errors="raise")
+
+tests/test_qlib_visuals.py: 16 warnings
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/qlib/contrib/report/analysis_position/risk_analysis.py:104: FutureWarning:
+  
+  When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+
+tests/test_rolling.py: 59 warnings
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/pandas/core/nanops.py:1632: ConstantInputWarning:
+  
+  An input array is constant; the correlation coefficient is not defined.
+
+tests/test_rolling.py: 42 warnings
+tests/test_workflow.py: 8 warnings
+  /workspace/scratch/5a490b9e15fa/Neural-Net-with-Financial-Time-Series-Data/.venv/lib/python3.12/site-packages/qlib/utils/index_data.py:492: RuntimeWarning:
+  
+  Mean of empty slice
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+701 passed, 271 warnings in 65.76s (0:01:05)

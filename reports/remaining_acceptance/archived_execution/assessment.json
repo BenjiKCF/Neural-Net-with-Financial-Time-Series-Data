@@ -1,0 +1,50 @@
+{
+  "affected_final_weight": 0.06489845337614548,
+  "archived_backtest_repaired": false,
+  "independent_reconciliation": {
+    "adjusted_quantity_absolute_tolerance": 1e-07,
+    "all_sessions_reconciled": true,
+    "cumulative_cost": 6921540.665288038,
+    "cumulative_turnover": 6967977188.512432,
+    "filled_order_count": 2963,
+    "maximum_adjusted_quantity_error": 9.313225746154785e-10,
+    "maximum_cash_error": 2.421438694000244e-08,
+    "maximum_nav_error": 8.940696716308594e-08,
+    "money_absolute_tolerance": 0.01,
+    "order_count": 2963,
+    "session_count": 458
+  },
+  "native_portfolio_parity": {
+    "maximum_differences": {
+      "account": 8.940696716308594e-08,
+      "bench": 0.0,
+      "cash": 2.421438694000244e-08,
+      "cost": 4.30970363562988e-18,
+      "return": 9.636388909051163e-16,
+      "total_cost": 4.656612873077393e-10,
+      "total_turnover": 9.5367431640625e-07,
+      "turnover": 7.868705687030797e-15,
+      "value": 7.450580596923828e-08
+    },
+    "passed": true,
+    "sessions": 458
+  },
+  "native_position_parity": {
+    "maximum_numeric_difference": 8.940696716308594e-08,
+    "passed": true,
+    "sessions": 458
+  },
+  "orders_submitted": false,
+  "production_promoted": false,
+  "qualification": "Native simulation orders reproduced from the frozen scores and provider, not observed broker fills. Contemporaneous factors yield raw quote units, not a reconciled raw-share account. Historical stale-mark returns and their original qualification remain unchanged.",
+  "raw_share_account_reconciled": false,
+  "recorded_at": "2026-11-27T10:22:59.359709+00:00",
+  "remaining_requirements": [
+    "complete_sourced_corporate_action_cash_tax_and_successor_history",
+    "explicit_counterfactual_whole_share_allocations_or_bounds",
+    "separate_action_aware_strategy_replay"
+  ],
+  "schema_version": 1,
+  "scope": "reproduced_qlib_simulation_execution",
+  "status": "reproduced"
+}

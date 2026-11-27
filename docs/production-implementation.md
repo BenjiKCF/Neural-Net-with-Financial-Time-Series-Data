@@ -189,8 +189,9 @@ fts research-doubleadapt --provider .data/cn-20261126 \
 
 The screening budgets are deliberately small and are specified in the linked
 recipes. Their retained results are described above. The larger rolling recipe
-remains a separate, unexecuted experiment: a configuration and passing software
-tests do not supply its empirical results. For a new campaign, inspect the
+now has a [separate five-seed execution campaign](five-seed-campaign.md); its
+560-trial completion and acceptance remain pending. Passing software tests do
+not supply its empirical results. For a new campaign, inspect the
 generated protocol, every successful or failed attempt, aligned forecasts,
 selection decision, metrics and cost scenarios before drawing conclusions.
 
@@ -201,6 +202,10 @@ for exact resume and separate-analysis behavior. Historical periods already
 examined during development remain exploratory.
 
 ## Remaining acceptance gates
+
+The [remaining-acceptance continuation](remaining-acceptance.md) adds an exact-grid
+campaign auditor, account settlement verification and a genuinely future shadow
+pilot. Its evidence report retains the open requirements below.
 
 | Gate | What the software supplies | What still requires external or future evidence |
 | --- | --- | --- |

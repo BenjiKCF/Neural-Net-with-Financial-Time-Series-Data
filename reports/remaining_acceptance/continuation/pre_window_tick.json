@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "protocol_id": "e0130e4dbcb1e6a8240e1ce91e428623775c052e95f39c57b5cf83a5ccaf1edb",
+  "started_at": "2026-11-27T10:24:56.213392+00:00",
+  "local_session": "2026-11-27",
+  "service_source_sha256": "c4e2a4ee3924c00776b4896d6b26fdc45ccb0eb197b7d1e2fb6c13eaa1021ce3",
+  "orders_submitted": false,
+  "production_ready": false,
+  "status": "idle",
+  "phase": "outside_registered_calendar",
+  "assessment": {
+    "protocol_id": "e0130e4dbcb1e6a8240e1ce91e428623775c052e95f39c57b5cf83a5ccaf1edb",
+    "assessed_at": "2026-11-27T10:24:56.236745+00:00",
+    "status": "pending",
+    "evaluation_role": "operations_pilot",
+    "operational_acceptance": {
+      "status": "pending",
+      "reasons": [
+        "insufficient_observed_sessions",
+        "missing_or_failed_sessions"
+      ],
+      "expected_sessions": 20,
+      "captured_sessions": 0,
+      "success_fraction": 0.0,
+      "failed_attempts": 0
+    },
+    "candidate_quality": {
+      "status": "research_only",
+      "reasons": [
+        "insufficient_paired_mature_sessions",
+        "incomplete_label_coverage",
+        "no_finite_paired_labels",
+        "operations_pilot_cannot_establish_confirmation"
+      ],
+      "paired_mature_sessions": 0,
+      "label_coverage": 0.0,
+      "metrics": null,
+      "paired_comparisons": []
+    },
+    "missing_sessions": [],
+    "future_sessions": [
+      "2026-11-30",
+      "2026-12-01",
+      "2026-12-02",
+      "2026-12-03",
+      "2026-12-04",
+      "2026-12-07",
+      "2026-12-08",
+      "2026-12-09",
+      "2026-12-10",
+      "2026-12-11",
+      "2026-12-14",
+      "2026-12-15",
+      "2026-12-16",
+      "2026-12-17",
+      "2026-12-18",
+      "2026-12-21",
+      "2026-12-22",
+      "2026-12-23",
+      "2026-12-24",
+      "2026-12-25"
+    ],
+    "unmatured_sessions": [],
+    "missing_label_sessions": [],
+    "incident_owner": "Ben",
+    "production_ready": false,
+    "orders_submitted": false,
+    "remaining_deployment_gates": [
+      "account_settlement_and_execution_reconciliation",
+      "deployment_fault_rehearsals",
+      "model_and_data_rights",
+      "risk_limits_and_recorded_deployment_approval"
+    ]
+  },
+  "finished_at": "2026-11-27T10:24:56.237265+00:00"
+}

@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "source_code_sha256": "228fe3ce4003ccf6ba811364a668b676d5c5aa798d7fd08f07927f9f0374393d",
+  "sources": {
+    "__init__.py": "c76844d20b4425c16bf4b8e92ee4ed591a549d7e8f56fcd72dcf3c0dea1f0939",
+    "advanced_research.py": "eed2a2b1d5c5dc2766f2a462f5a252cc13226a7fe762f5bf166aac0b197efc92",
+    "architectures/__init__.py": "93ab517c6719aabe2d84546b058ef20c3f24aac6e005003e5d103b37a28f1d01",
+    "architectures/cross_stock.py": "ed33d316f1f3bdd1d7ac3e6edb925c2cc03744c88f6230bb6d3ec5f486f6611e",
+    "architectures/deepseek.py": "9bac6c850fe0f45ed77c7e6610f5c47af871a1a03eaab32b8097a1407fe57c3b",
+    "architectures/financial.py": "8bc39bb74d44a12f9511dd6ed1e6e5642f5e00832ef72ad22a0d444a284867fb",
+    "architectures/glm.py": "feb373eb8b98102341eb845f780af1c6ef8572d39ed6b3faa2a2b8f69be077e8",
+    "architectures/qwen.py": "9cf042bbc04edb4fa39c3f24dac84ad28e1835b623153d917298b3803c2331cb",
+    "architectures/timesfm.py": "7b34f744756b4817a9b6c08be24e95e0ca6cbfa1783d951cb686615da173ba48",
+    "backtest.py": "2181a0d90a617af5324e33b68602b78e4773e28e686a74235f6af02ce40320cd",
+    "baselines.py": "03f0307de8619ff5077a8cba97d6292c26db37022bd748ed919aae1c46fcb83e",
+    "benchmark.py": "ab850a45e0a97bee171ffd7c19caa94081931841a049390dc5a6f9729190b2fd",
+    "bundles.py": "3421028217c81f08d221aa16ad083994cd3bc617fa62ebca784d14a04818ac6e",
+    "campaign_control.py": "d045876b135d906cc162558b1902db2fd9eb22e81a1018957e74760f0725fabc",
+    "catalog.py": "5bbef034464bf3a940f6a232e25c0c07b70c9492fbd9ca6e7ddadb86d01f085a",
+    "chenditc.py": "f17533e49f310fc3590eb43891098c30b7adb9f14003f8fd774ae58d2ad124fb",
+    "cli.py": "237e48bdb4e960b24d8cf91f16d7fcaca69b2074b72febfd683ac1f26a6c6dd9",
+    "cn_benchmark.py": "9a1c87b55bfb1963db6638933a12d0d5f2300931865cd443e72eddb85f055aca",
+    "cn_inference_shards.py": "a11469ddb158eae68e73462ce312d95cda6f1d69592220916e4c0e46c757b66b",
+    "cn_portfolio.py": "f6d9ed97ae3ff519bb0d9ff489e7e78c9cf933c51bd02223e9383142a4bab89a",
+    "comparison.py": "f951aeae10eaeeeffdb233af34074003eb7c85b89e708e7ad070d396ff48d539",
+    "cross_sectional.py": "fcf3e53dae9c8551d4d047dd9aaa5fb333b9d76bf328f898f8abe580383af01b",
+    "data.py": "4ea3638aa65d68edd0f62d2d8f8ee469360ae679f90f02695dd5c036dda82998",
+    "data_contracts.py": "f36eb5b391df52a39bcc0cc559836c594573850959d10dd6d65e805342a993d1",
+    "doubleadapt.py": "944422a6d9cda14819c06f408c5044a9ee90211a279ee797e1dadbb15d52ec5e",
+    "ensembles.py": "2c95a71068cc784245b73efd7fa784e7b87d5b6b816d7798de605c2fc681ec1e",
+    "execution.py": "94e6df4e6db3436ea16c28ca37695eb93ff060228383f19d787bd30e84312bb2",
+    "handler.py": "4369b48ae254c5c81579c00b62ecd1d450e1a6188ea403fd1d1f9d3cf4c6eaa9",
+    "lifecycle.py": "381e4212c50b8b893b78fda924c68822096a028cc5e8ac190d19382bf8be27a6",
+    "loop_experiment.py": "1da85d90e970857857a62694e3ca53a62d8a46b50d31eb0aeef060c45266188a",
+    "model.py": "fdb146239994a75ee1803cd4b21c5355443f1e8bccc436344453b5438eb07352",
+    "objectives.py": "09dd79c2cf9957478439091a6312c95b03722df0d25ea56ba213f79d4a49c0fd",
+    "operations.py": "c32794a308bf49a7e6854282b397747473bb243b850587b5ea584bf2e23d06e9",
+    "paper_research.py": "9dbc2a04c3daf1b3f75635d02962dbbba6c65c347e6de8773d2667a97555294e",
+    "posttraining.py": "b798602515872dc387d3f7816e10caf0ea6b1a35e071cb4ddd856b4f74fee185",
+    "prospective.py": "1d80e480709c40556464f1c1311a47cfc8c444e798363c2cb52f2602dacf5188",
+    "qlib_timesfm.py": "449f2c6fceeb77924e4331429031c5258de12b28d9a6fa3cf81ae14e1e4c3cef",
+    "qlib_visuals.py": "899c3bea97fc49a62fd112cef45f0f0a71b6ed67fed0ce5ec8b8db490cae4fd1",
+    "record.py": "66c21c30c3a020d2f24aebb21b84e9b9aa76ea4191b7aa199ca152a0e4bb9cf5",
+    "research.py": "2e11993ada2f0693f688bf8888206f1e45d24dc9d832e53be772b4a215a8011b",
+    "rolling.py": "e50c16af8798534169c3cbe8e8ee34bc6fb7dc23d0200d6fd977411ea9ef6ecc",
+    "settlement.py": "980d37d5932b0c7ebb0777da53f3f8cdcd745aa101d9a77317a6d0eebdfeb4cc",
+    "shared_panel.py": "34a1e745dff0759f358090e337f1e1a2f3d0531ff16a13ab2f3fafc6ebf2ffbe",
+    "timesfm_comparison.py": "a57420079918da48e878165a9a4002210b2a1b4a8d0cdc4545599cb8532f42fc",
+    "timesfm_loop.py": "978c465279554476b0ecb6b734c925c6bf3734f9285a9edd16ef88277d394f5e",
+    "timesfm_pretrained.py": "40c4faeb7f94e4c86b75e4ada4bc87ce413cdcea8f5f24254f0a7554e38420ce",
+    "workflow.py": "1bd8404e7ba1d985d9a345583e6ded6a9dea51a1e2118e11c6f42c59f0d4352f"
+  },
+  "specification": {
+    "name": "csi300_registered_rolling_full",
+    "purpose": "Longer predeclared research campaign; run after compact screen and retain every outcome.",
+    "region": "cn",
+    "instruments": "csi300",
+    "rolling": {
+      "start": "2017-01-03",
+      "train_sessions": 756,
+      "valid_sessions": 126,
+      "test_sessions": 63,
+      "step_sessions": 63,
+      "max_folds": 16,
+      "expanding": false
+    },
+    "models": [
+      "zero",
+      "ridge",
+      "lightgbm",
+      "transformer",
+      "daily_transformer",
+      "master_style",
+      "quantformer_moe"
+    ],
+    "seeds": [
+      7,
+      42,
+      2026,
+      2027,
+      2028
+    ],
+    "epochs": 12,
+    "device": "cpu",
+    "num_threads": 2,
+    "warmup_sessions": 60,
+    "sequence_length": 32,
+    "selection_metric": "rank_ic",
+    "reference": "transformer",
+    "bootstrap": {
+      "block_lengths": [
+        5,
+        20,
+        60
+      ],
+      "draws": 2000,
+      "seed": 913
+    },
+    "backtest": {
+      "enabled": true,
+      "topk": 50,
+      "n_drop": 5,
+      "account": 100000000
+    },
+    "cost_scenarios": [
+      {
+        "id": "base",
+        "fee_multiplier": 1,
+        "account_multiplier": 1
+      },
+      {
+        "id": "fees_2x",
+        "fee_multiplier": 2,
+        "account_multiplier": 1
+      },
+      {
+        "id": "account_0.1x",
+        "fee_multiplier": 1,
+        "account_multiplier": 0.1
+      },
+      {
+        "id": "account_10x",
+        "fee_multiplier": 1,
+        "account_multiplier": 10
+      },
+      {
+        "id": "slippage_5bps",
+        "fee_multiplier": 1,
+        "account_multiplier": 1,
+        "slippage_bps": 5
+      }
+    ],
+    "export_inference_bundle": true,
+    "holdout_status": "Historical rolling development evidence, not fresh prospective confirmation. Register a later uninspected observation window separately.",
+    "model_params": {
+      "daily_transformer": {
+        "objective": "mse"
+      },
+      "master_style": {
+        "objective": "mse"
+      },
+      "quantformer_moe": {
+        "objective": "mse"
+      }
+    }
+  },
+  "specification_sha256": "83b04ee3ee08b3d6e7180a48c529d95c7de4b550c044b8e0982a2b7af9081aa8",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "pyqlib": "0.9.7",
+    "lightgbm": "4.7.0",
+    "torch": "2.15.0+cpu",
+    "mlflow": "2.22.5",
+    "filelock": "3.29.7"
+  },
+  "runtime_sha256": "f77b7fa588731c3395676dbf6dcfe11f02ad8171239b7447cff3acb163adaf63"
+}

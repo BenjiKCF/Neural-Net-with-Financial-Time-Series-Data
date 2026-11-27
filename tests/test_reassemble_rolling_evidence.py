@@ -74,6 +74,22 @@ def test_portable_cli_uses_only_the_parts_manifest(tmp_path):
     assert (tmp_path / reassembly.ARCHIVE_NAME).read_bytes() == data
 
 
+def test_registered_prospective_store_uses_the_same_integrity_and_no_clobber_checks(tmp_path):
+    path, manifest, data = _parts(tmp_path)
+    manifest["archive"]["name"] = "registered_store.tar.xz"
+    for index, part in enumerate(manifest["parts"]):
+        new_name = f"registered_store.tar.xz.part-{index:03d}"
+        (tmp_path / part["name"]).rename(tmp_path / new_name)
+        part["name"] = new_name
+    _write_manifest(path, manifest)
+    result = reassembly.reassemble(path)
+    output = tmp_path / "registered_store.tar.xz"
+    assert result["status"] == "verified" and output.read_bytes() == data
+    output.write_bytes(b"unrelated existing store")
+    with pytest.raises(ValueError, match="will not be overwritten"):
+        reassembly.reassemble(path)
+
+
 @pytest.mark.parametrize("fault", ["tampered", "truncated", "missing"])
 def test_bad_parts_never_publish_partial_archive(tmp_path, fault):
     path, manifest, _ = _parts(tmp_path)

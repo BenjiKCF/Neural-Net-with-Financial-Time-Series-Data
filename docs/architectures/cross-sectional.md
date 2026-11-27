@@ -1,8 +1,9 @@
 # Daily cross-sectional research models
 
-This source-only roadmap implementation adds three research models alongside
-the archived eight-model catalog. Recipes and tests are included; new trained
-weights, data-derived fixtures and experiment outputs are generated locally. Their batching and label contracts are shared,
+The roadmap implementation adds three research models alongside the archived
+eight-model catalog. Recipes, tests and the retained
+[rolling evidence](../rolling-screening.md) accompany the implementation. The
+bounded advanced study below preserves its original source, protocol and outputs. Their batching and label contracts are shared,
 so changes in the objective can be compared without silently changing which
 stocks the model observes.
 
@@ -144,6 +145,43 @@ A local run records raw and calibrated intervals, coverage and width for
 inspection. The separate [DoubleAdapt comparator](../doubleadapt.md) provides
 an explicit meta-learning control for incremental adaptation.
 
+## Completed bounded screen
+
+The committed [protocol](../../reports/production_roadmap/advanced_screening/protocol.json)
+uses 20 stocks eligible on 3 January 2023, seed 42, and two training epochs.
+Its test interval has only ten decision dates. This verifies the executable
+research path and gives exploratory comparisons, not a promotion decision.
+
+| Forecast control | 1-session RMSE | 5-session RMSE | 20-session RMSE |
+| --- | ---: | ---: | ---: |
+| Separate single-head controls | 0.01722550 | 0.04271744 | 0.07220644 |
+| Joint point heads | 0.01724603 | 0.04242284 | 0.06855765 |
+| Joint point and quantile heads | 0.01725589 | 0.04249786 | 0.06757884 |
+
+The quantile intervals initially covered 53%, 56%, and 61.5% of the respective
+raw outcomes. Calibration increased coverage to 97%, 99%, and 90.5%, with mean
+interval widths of approximately 9.67, 23.22, and 25.69 percentage points. Those
+wide intervals do not establish useful trading uncertainty. See the
+[calibration receipt](../../reports/production_roadmap/advanced_screening/calibration.json)
+and [full results](../../reports/production_roadmap/advanced_screening/results.json).
+
+| Later-period adaptation control | 1-session RMSE | 5-session RMSE | 20-session RMSE |
+| --- | ---: | ---: | ---: |
+| Frozen | 0.01299587 | 0.02869463 | 0.05508440 |
+| Guarded incremental update | 0.01230763 | 0.02638337 | 0.05874648 |
+| Full retraining | 0.01260085 | 0.02687704 | 0.05469139 |
+
+The incremental control improves the shorter horizons in this small period and
+worsens the 20-session horizon relative to frozen weights. No test-score winner
+is promoted. Broader folds/seeds, costed multi-horizon execution, prospective
+coverage, and broader matched DoubleAdapt experiments remain research
+requirements. The separate [compact DoubleAdapt screen](../doubleadapt.md) is
+retained with its own protocol and limitations. The saved
+[predictions](../../reports/production_roadmap/advanced_screening/predictions.csv),
+numerical checkpoints, fitted preprocessing, and
+[artifact hashes](../../reports/production_roadmap/advanced_screening/artifacts.json)
+make the completed run inspectable.
+
 ## Verify and interpret a local run
 
 The architecture and adapter tests use constructed inputs to check contracts:
@@ -156,8 +194,10 @@ python -m pytest -q tests/test_cross_stock.py tests/test_cross_sectional.py \
 Inspect the generated protocol before fitting and retain the full output after
 fitting. The advanced runner records preprocessing, segment membership, model
 configurations, numerical checkpoints, prediction indices, interval calibration
-and adaptation decisions. These files belong to that local campaign and are not
-published as part of this source-only release.
+and adaptation decisions. These files belong to that local campaign. The
+[published retained study](../../reports/production_roadmap/advanced_screening/results.json)
+is a separate historical record with its original artifact/source hashes;
+running the command creates a new result rather than replacing that record.
 
 Keep each architecture/objective ablation separate. Compare identical date and
 instrument panels, preserve epoch-zero controls, disclose extra pretraining or

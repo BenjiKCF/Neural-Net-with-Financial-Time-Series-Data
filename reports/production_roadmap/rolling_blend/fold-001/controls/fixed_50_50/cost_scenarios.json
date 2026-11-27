@@ -1,0 +1,194 @@
+{
+  "status": "completed",
+  "qualification": "Native portfolio replays vary explicit fees, fixed slippage assumptions and capital; multipliers are not a market impact or capacity model.",
+  "scenarios": [
+    {
+      "account_multiplier": 1,
+      "fee_multiplier": 1,
+      "id": "base",
+      "slippage_bps": 0.0,
+      "net_return": 0.2174280031525695,
+      "max_drawdown": -0.12636556924207754,
+      "mean_daily_turnover": 0.3620819888752135,
+      "trading_days": 21,
+      "sum_daily_cost_ratios": 0.0071395705034863685,
+      "mean_gross_exposure": 0.9703277570617287,
+      "maximum_gross_exposure": 0.9958214387109375,
+      "total_final_stale_weight": 0,
+      "portfolio_config": {
+        "strategy": {
+          "class": "TopkDropoutStrategy",
+          "module_path": "qlib.contrib.strategy",
+          "kwargs": {
+            "signal": {
+              "class": "DeterministicRankSignal",
+              "module_path": "financial_ts.cn_portfolio",
+              "kwargs": {
+                "signal": "<PRED>"
+              }
+            },
+            "topk": 20,
+            "n_drop": 4,
+            "risk_degree": 0.95
+          }
+        },
+        "backtest": {
+          "start_time": "2024-09-23",
+          "end_time": "2024-10-28",
+          "account": 10000000.0,
+          "benchmark": "SH000300",
+          "exchange_kwargs": {
+            "freq": "day",
+            "limit_threshold": 0.095,
+            "deal_price": "close",
+            "trade_unit": 100,
+            "open_cost": 0.0005,
+            "close_cost": 0.0015,
+            "min_cost": 5.0
+          }
+        }
+      }
+    },
+    {
+      "account_multiplier": 1,
+      "fee_multiplier": 2,
+      "id": "fees_2x",
+      "slippage_bps": 0.0,
+      "net_return": 0.20914614047961,
+      "max_drawdown": -0.12854483685216178,
+      "mean_daily_turnover": 0.361532937277612,
+      "trading_days": 21,
+      "sum_daily_cost_ratios": 0.014263483159157517,
+      "mean_gross_exposure": 0.9702849659153004,
+      "maximum_gross_exposure": 0.9959066990279155,
+      "total_final_stale_weight": 0,
+      "portfolio_config": {
+        "strategy": {
+          "class": "TopkDropoutStrategy",
+          "module_path": "qlib.contrib.strategy",
+          "kwargs": {
+            "signal": {
+              "class": "DeterministicRankSignal",
+              "module_path": "financial_ts.cn_portfolio",
+              "kwargs": {
+                "signal": "<PRED>"
+              }
+            },
+            "topk": 20,
+            "n_drop": 4,
+            "risk_degree": 0.95
+          }
+        },
+        "backtest": {
+          "start_time": "2024-09-23",
+          "end_time": "2024-10-28",
+          "account": 10000000.0,
+          "benchmark": "SH000300",
+          "exchange_kwargs": {
+            "freq": "day",
+            "limit_threshold": 0.095,
+            "deal_price": "close",
+            "trade_unit": 100,
+            "open_cost": 0.001,
+            "close_cost": 0.003,
+            "min_cost": 10.0
+          }
+        }
+      }
+    },
+    {
+      "account_multiplier": 0.1,
+      "fee_multiplier": 1,
+      "id": "account_0.1x",
+      "slippage_bps": 0.0,
+      "net_return": 0.20311689147582923,
+      "max_drawdown": -0.12424707510253608,
+      "mean_daily_turnover": 0.35149372932341383,
+      "trading_days": 21,
+      "sum_daily_cost_ratios": 0.0069251423813083985,
+      "mean_gross_exposure": 0.9594654926051599,
+      "maximum_gross_exposure": 0.9962020625724182,
+      "total_final_stale_weight": 0,
+      "portfolio_config": {
+        "strategy": {
+          "class": "TopkDropoutStrategy",
+          "module_path": "qlib.contrib.strategy",
+          "kwargs": {
+            "signal": {
+              "class": "DeterministicRankSignal",
+              "module_path": "financial_ts.cn_portfolio",
+              "kwargs": {
+                "signal": "<PRED>"
+              }
+            },
+            "topk": 20,
+            "n_drop": 4,
+            "risk_degree": 0.95
+          }
+        },
+        "backtest": {
+          "start_time": "2024-09-23",
+          "end_time": "2024-10-28",
+          "account": 1000000.0,
+          "benchmark": "SH000300",
+          "exchange_kwargs": {
+            "freq": "day",
+            "limit_threshold": 0.095,
+            "deal_price": "close",
+            "trade_unit": 100,
+            "open_cost": 0.0005,
+            "close_cost": 0.0015,
+            "min_cost": 5.0
+          }
+        }
+      }
+    },
+    {
+      "account_multiplier": 1,
+      "fee_multiplier": 1,
+      "id": "slippage_5bps",
+      "slippage_bps": 5,
+      "net_return": 0.21296603660350022,
+      "max_drawdown": -0.1274945723838692,
+      "mean_daily_turnover": 0.3617865454530091,
+      "trading_days": 21,
+      "sum_daily_cost_ratios": 0.01093371056981905,
+      "mean_gross_exposure": 0.9704953194931036,
+      "maximum_gross_exposure": 0.9959066356672244,
+      "total_final_stale_weight": 0,
+      "portfolio_config": {
+        "strategy": {
+          "class": "TopkDropoutStrategy",
+          "module_path": "qlib.contrib.strategy",
+          "kwargs": {
+            "signal": {
+              "class": "DeterministicRankSignal",
+              "module_path": "financial_ts.cn_portfolio",
+              "kwargs": {
+                "signal": "<PRED>"
+              }
+            },
+            "topk": 20,
+            "n_drop": 4,
+            "risk_degree": 0.95
+          }
+        },
+        "backtest": {
+          "start_time": "2024-09-23",
+          "end_time": "2024-10-28",
+          "account": 10000000.0,
+          "benchmark": "SH000300",
+          "exchange_kwargs": {
+            "freq": "day",
+            "limit_threshold": 0.095,
+            "deal_price": "close",
+            "trade_unit": 100,
+            "open_cost": 0.001,
+            "close_cost": 0.002,
+            "min_cost": 5.0
+          }
+        }
+      }
+    }
+  ]
+}

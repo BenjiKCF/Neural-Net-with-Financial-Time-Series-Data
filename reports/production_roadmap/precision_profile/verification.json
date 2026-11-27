@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-11-27T07:31:27.308708+00:00",
+  "checks": [
+    "Registered script SHA256 matches retained script",
+    "Summary protocol and input-receipt hashes match retained bytes",
+    "Original bundle weights unchanged after both precision workers",
+    "Exactly 10 successful measured calls per mode; p50/p95 independently recomputed",
+    "Per-mode measured score hashes identical across repetitions",
+    "Score comparison contains 300 unique stocks; max absolute score difference independently recomputed",
+    "Maximum ordinal rank shift independently recomputed as 9; failed predeclared 3-place gate retained"
+  ],
+  "measured_calls": 20,
+  "source_files": {
+    "bfloat16.json": "5e0dcbafaca7c1043e84b0a9987e92d53c336bbd85acd2d6d7673152ab2a84d9",
+    "float32.json": "e451d7083de926a2c8e6bb73870fdc8fbacfab2d6ed55ac924a35c0a44ee7083",
+    "input_receipt.json": "585e2e675554b4ce377f20b8a100f6fbc1d512003fed9d927dfebb8f90b0ba95",
+    "protocol.json": "294936f840bf683a13d96fb82d5641a84fc193e24448793f6d70cf4d59bc7376",
+    "score_comparison.csv": "a5622a697689fb30a94bf17ae9a52e8c19f972b3ae0d0d94b24854a2cf28d6ab",
+    "summary.json": "f061c8910067605879ed06e2069e8cfd42170cdcbed4eec303371baa007b7fd2"
+  }
+}

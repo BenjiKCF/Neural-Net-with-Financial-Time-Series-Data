@@ -1,9 +1,11 @@
 # Data availability, lifecycle accounting and paper execution
 
 The roadmap adds explicit input contracts and an independent raw-share ledger.
-This guide describes their interfaces and reproducible checks. This source-only
-release does not publish a new accounting assessment, data extract or repaired
-backtest. The [existing CSI300 accounting qualification](chenditc-benchmark.md#terminated-series-and-portfolio-valuation)
+This guide describes their interfaces, reproducible checks and the retained
+[archived-holdings assessment](../reports/production_roadmap/lifecycle_transformer/assessment.json).
+That assessment identifies sourced successors and unresolved raw-share/account
+allocations. It does not establish repaired investment returns. The
+[existing CSI300 accounting qualification](chenditc-benchmark.md#terminated-series-and-portfolio-valuation)
 continues to apply.
 
 ## Availability and immutable refreshes
@@ -114,6 +116,11 @@ unresolved status. `mark` returns `nav: null` when a required raw mark or
 settlement is unavailable. An indicative stale marking is labeled separately;
 it is not a usable NAV or a fabricated last-price liquidation.
 
+Valuation freshness requires a session calendar covering the cutoff date in
+`Asia/Shanghai`. For a weekend or holiday cutoff, include the following session
+so the calendar establishes the intervening nontrading dates. A truncated
+calendar is rejected before it can make an old mark appear current.
+
 ## Assess an existing run without overwriting it
 
 ```bash
@@ -128,6 +135,43 @@ holdings with contemporaneous factors. It writes to a separate directory.
 Review unresolved allocations, raw-unit discrepancies and successor trading
 dates before attempting a complete action-aware strategy replay. Merely finding
 a successor instrument does not repair historical portfolio returns.
+
+### Sourced terminated-series fixtures
+
+The [event catalog](../configs/lifecycle_events.json) records these issuer
+notices. Announcement dates were verified; `known_at` is conservatively the start
+of the following local calendar day, because exact publication times were not
+established.
+
+| Former instrument | Successor | Final shares per old share | Termination date | Primary issuer disclosure |
+| --- | --- | ---: | --- | --- |
+| SH600837, Haitong Securities | SH601211 | 0.62 | 2025-03-04 | [Haitong 2025-026](https://static.cninfo.com.cn/finalpage/2025-03-01/1222675645.PDF) |
+| SH601989, China Shipbuilding Industry | SH600150 | **0.1339** | 2025-09-05 | [Issuer 2025-062](https://static.cninfo.com.cn/finalpage/2025-08-30/1224625027.PDF) |
+| SH601059, Cinda Securities | SH601995 | 0.5210 | 2026-10-19 | [Cinda 2026-060, issuer disclosure in China Securities Journal](https://epaper.cs.com.cn/zgzqb/html/2026-10/16/nw.D110000zgzqb_20261016_5-B017.htm) |
+
+The final SH601989 ratio supersedes the earlier proposed 0.1335. Each notice
+describes whole-share allocations across holders based on fractional remainders,
+with a lottery for tied remainders. An isolated account therefore cannot simply
+round a fractional entitlement. Such an event remains unresolved and the old
+position remains frozen until `resolve_allocation` receives actual allocation
+evidence. Unknown successor trading dates also remain unresolved; a sourced
+resumption event can clear that restriction. Restrictions are conservative at
+the instrument level, including where an account already held the successor.
+
+### Retained assessment findings
+
+`assess_archived_lifecycles` checks the supplied provider fingerprint against
+the archived run, records the source-position and event-catalog hashes, and
+evaluates the pre-event holdings with contemporaneous source factors. It writes
+to a new directory and refuses to modify the archived run or provider.
+
+The retained [assessment](../reports/production_roadmap/lifecycle_transformer/assessment.json)
+reproduces **6.489845%** of the archived Transformer's final simulated NAV
+in the three terminated holdings. SH600837 implies 196,600 raw quote units and
+121,892 successor shares. The other two implied quantities are not integers;
+the report retains those discrepancies. It flags account allocation, successor
+tradability and the unexecuted complete action-aware strategy replay. No new
+return figure is presented as a repaired backtest.
 
 ## Dated paper execution
 
@@ -170,6 +214,12 @@ valuations. Identical reuse verifies the completed artifacts. Conflicting
 specifications, changed runtime/source identity and altered files fail.
 Interrupted sessions can be replayed from the registered initial account;
 failed attempts retain their own receipts. No live order is submitted.
+
+The retained [synthetic completion receipt](../reports/production_roadmap/paper_session_demo/completion.json)
+records one partial and one full fill, with independently reconciled final
+cash/NAV of CNY 9,975.105. Identical replay reused the completed receipt. These
+are synthetic execution checks, not live fills or a deployment decision, and
+remain tied to their original source/runtime identity.
 
 ## Verification and remaining acceptance
 

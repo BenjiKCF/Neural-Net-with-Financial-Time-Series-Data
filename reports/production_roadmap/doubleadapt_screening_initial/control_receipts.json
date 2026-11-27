@@ -1,0 +1,79 @@
+{
+  "selected_epoch": 2,
+  "validation_history": [
+    {
+      "epoch": 1,
+      "validation_mse": 0.0002997741976287216
+    },
+    {
+      "epoch": 2,
+      "validation_mse": 0.00029873920721001923
+    }
+  ],
+  "initial_fit_includes_mature_validation_after_selection": true,
+  "updates": [
+    {
+      "method": "frozen",
+      "task": "online-004",
+      "support_cutoff": "2023-04-07",
+      "query_mature_at": "2023-04-18",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "frozen",
+      "task": "online-005",
+      "support_cutoff": "2023-04-27",
+      "query_mature_at": "2023-05-11",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "frozen",
+      "task": "online-006",
+      "support_cutoff": "2023-05-22",
+      "query_mature_at": "2023-05-31",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "naive_incremental",
+      "task": "online-004",
+      "support_cutoff": "2023-04-07",
+      "query_mature_at": "2023-04-18",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "naive_incremental",
+      "task": "online-005",
+      "support_cutoff": "2023-04-27",
+      "query_mature_at": "2023-05-11",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "naive_incremental",
+      "task": "online-006",
+      "support_cutoff": "2023-05-22",
+      "query_mature_at": "2023-05-31",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "full_retrain",
+      "task": "online-004",
+      "support_cutoff": "2023-04-07",
+      "query_mature_at": "2023-04-18",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "full_retrain",
+      "task": "online-005",
+      "support_cutoff": "2023-04-27",
+      "query_mature_at": "2023-05-11",
+      "predictions_locked_before_labels": true
+    },
+    {
+      "method": "full_retrain",
+      "task": "online-006",
+      "support_cutoff": "2023-05-22",
+      "query_mature_at": "2023-05-31",
+      "predictions_locked_before_labels": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "method": "doubleadapt_paper",
+    "task": "online-004",
+    "file": "locked_predictions/doubleadapt_paper-online-004.csv",
+    "sha256": "194490e91625bfe267d4bac0a5ca5bf31d1fb81e66274400d1eb02018f8e086f",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "doubleadapt_paper",
+    "task": "online-005",
+    "file": "locked_predictions/doubleadapt_paper-online-005.csv",
+    "sha256": "7419ef11dcddbc18b935c693be920f80398d0a14d3ced14dee3eece37195735a",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "doubleadapt_paper",
+    "task": "online-006",
+    "file": "locked_predictions/doubleadapt_paper-online-006.csv",
+    "sha256": "581fae70d885960c7068e494654f156b624c31fe794260ad3d6f87ad4d0fdffe",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "frozen",
+    "task": "online-004",
+    "file": "locked_predictions/frozen-online-004.csv",
+    "sha256": "8a55d426c551480c77810b9d6523365347d67c997b557bdf1ff2c3a8bbac6cba",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "frozen",
+    "task": "online-005",
+    "file": "locked_predictions/frozen-online-005.csv",
+    "sha256": "150b154fbb786da9e47f42878762c21e65b8301120feff80a592d2ae7d7c3f4e",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "frozen",
+    "task": "online-006",
+    "file": "locked_predictions/frozen-online-006.csv",
+    "sha256": "0fe3dbdf115d0bf3888c93f375c4181b876d831516069d9ba65b8a5f8add97d5",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "naive_incremental",
+    "task": "online-004",
+    "file": "locked_predictions/naive_incremental-online-004.csv",
+    "sha256": "aa59d356e388cbe4ec834a76e903cbc28a2695f1a136487e73226753982b8d39",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "naive_incremental",
+    "task": "online-005",
+    "file": "locked_predictions/naive_incremental-online-005.csv",
+    "sha256": "a97ef9446ba1e923cae102d1c05b7f6bd8c66de076fd1ff3e1ee59682ce663c0",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "naive_incremental",
+    "task": "online-006",
+    "file": "locked_predictions/naive_incremental-online-006.csv",
+    "sha256": "ed6f8ddbf55050939c7c7dce3fdaf31b815f16b845fc90ccb4d8fe1987467008",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "full_retrain",
+    "task": "online-004",
+    "file": "locked_predictions/full_retrain-online-004.csv",
+    "sha256": "943d63f199d42f2477113ba81b184df5ab7b6291ef3809ce56084913744443ef",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "full_retrain",
+    "task": "online-005",
+    "file": "locked_predictions/full_retrain-online-005.csv",
+    "sha256": "a8499a834dd762f071877fa4e13135b6d1b365048eae72df61dbe1a260e3b67e",
+    "query_labels_in_file": false
+  },
+  {
+    "method": "full_retrain",
+    "task": "online-006",
+    "file": "locked_predictions/full_retrain-online-006.csv",
+    "sha256": "eeea1b3f6fe8658d970d7cb7681025f2e5a857f1cb14d353904a560ebab72603",
+    "query_labels_in_file": false
+  }
+]

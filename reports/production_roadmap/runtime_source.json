@@ -1,0 +1,5 @@
+{
+  "archive": "reports/production_roadmap/rolling_runtime_source.tar.gz",
+  "sha256": "f04e46e2ea403b25eb78f668f8c48e993868c4c5d13513957b440bb32d229b7e",
+  "note": "Frozen training source before optional DoubleAdapt comparator; package source hashes also registered in rolling protocol."
+}

@@ -309,7 +309,12 @@ class EventLedger:
         return copy.deepcopy(fill)
 
     def mark(self, marks: dict[str, PriceMark], *, asof, observed_calendar, maximum_staleness_sessions=0) -> dict:
-        """Return valid NAV only if every holding has a fresh raw-price mark."""
+        """Return valid NAV only if every holding has a fresh raw-price mark.
+
+        The session calendar must cover the exchange-local cutoff date, extending
+        to the following session for nontrading dates. A truncated calendar cannot
+        establish mark freshness beyond its last known session.
+        """
         from financial_ts.data_contracts import _calendar
 
         asof = self._advance(asof)
@@ -317,6 +322,8 @@ class EventLedger:
             raise ValueError("maximum_staleness_sessions must be a nonnegative integer")
         calendar = _calendar(observed_calendar)
         date = asof.tz_convert("Asia/Shanghai").tz_localize(None).normalize()
+        if calendar[-1] < date:
+            raise ValueError("Observed calendar does not cover the valuation cutoff date")
         now = calendar.searchsorted(date, side="right") - 1
         if now < 0:
             raise ValueError("Valuation cutoff precedes observed calendar")

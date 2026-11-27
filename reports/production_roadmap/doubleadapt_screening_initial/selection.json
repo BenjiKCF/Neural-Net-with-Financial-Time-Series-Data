@@ -1,0 +1,22 @@
+{
+  "selected_epoch": 0,
+  "validation_mse": 0.00020578184921760112,
+  "history": [
+    {
+      "epoch": 0,
+      "validation_mse": 0.00020578184921760112
+    },
+    {
+      "epoch": 1,
+      "validation_mse": 0.00020599551498889923
+    },
+    {
+      "epoch": 2,
+      "validation_mse": 0.0002062095154542476
+    }
+  ],
+  "normalizer_fit": "meta-training labels only",
+  "validation_updated_after_selection": true,
+  "method": "independent_DoubleAdapt_paper_method",
+  "upstream_reproduction": false
+}

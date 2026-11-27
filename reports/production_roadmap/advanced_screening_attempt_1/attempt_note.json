@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "reason_retained": "Training completed; CLI printing initially failed on NumPy scalar serialization. Replayed after JSON-safe API fix and raw float64 evaluation export correction.",
+  "superseded_by": "advanced_screening"
+}

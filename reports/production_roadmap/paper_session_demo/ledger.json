@@ -1,0 +1,77 @@
+{
+  "cash": 9975.105,
+  "currency": "CNY",
+  "raw_positions": {},
+  "receipts": [
+    {
+      "applied_at": "2025-01-03T15:00:00+08:00",
+      "cash_delta": -5010.0,
+      "fees": 5.0,
+      "fill_id": "buy-1",
+      "instrument": "DEMO",
+      "price": 10.01,
+      "quantity": 500.0,
+      "quantity_deltas": {
+        "DEMO": 500.0
+      },
+      "side": "buy"
+    },
+    {
+      "applied_at": "2025-01-06T09:00:00+08:00",
+      "cash_delta": 0.0,
+      "event": {
+        "allocated_quantity": null,
+        "allocation_source": null,
+        "cash_per_share": 0.2,
+        "effective_at": "2025-01-06T09:00:00+08:00",
+        "event_id": "dividend-1",
+        "instrument": "DEMO",
+        "kind": "cash_dividend",
+        "known_at": "2025-01-02T18:00:00+08:00",
+        "payment_at": "2025-01-06T17:00:00+08:00",
+        "ratio": 1.0,
+        "source": "https://example.org/synthetic-dividend-fixture",
+        "successor": null,
+        "tradable_at": null
+      },
+      "event_id": "dividend-1",
+      "instrument": "DEMO",
+      "quantity_after": 500.0,
+      "quantity_before": 500.0,
+      "quantity_deltas": {},
+      "receivable_added": 100.0,
+      "status": "applied"
+    },
+    {
+      "applied_at": "2025-01-06T15:00:00+08:00",
+      "cash_delta": 4885.1050000000005,
+      "fees": 9.895000000000001,
+      "fill_id": "sell-1",
+      "instrument": "DEMO",
+      "price": 9.790000000000001,
+      "quantity": 500.0,
+      "quantity_deltas": {
+        "DEMO": -500.0
+      },
+      "side": "sell"
+    },
+    {
+      "applied_at": "2025-01-06T17:00:00+08:00",
+      "cash_delta": 100.0,
+      "instrument": "DEMO",
+      "settlement_for": "dividend-1"
+    }
+  ],
+  "receivables": {},
+  "reconciliation": {
+    "cash": 9975.105,
+    "cash_reconciled": true,
+    "expected_cash": 9975.105,
+    "receipts": 4,
+    "shares_reconciled": true,
+    "state_sha256": "5f99c371a1cbf820cf8c9b178d94333debf902a9b1bcabf34836a3bab9461fbd",
+    "unresolved_events": 0
+  },
+  "restrictions": {},
+  "unresolved": {}
+}

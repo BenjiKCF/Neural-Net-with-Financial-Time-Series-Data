@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "registered_at_utc": "2026-11-27T07:33:39.133945+00:00",
+  "qualification": "historical software replay; hypothetical arrival times; not prospective or publication-time evidence",
+  "primary_run": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-000/master_style/seed-7/attempt-0001/workflow",
+  "rollback_run": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-000/master_style/seed-42/attempt-0001/workflow",
+  "primary_bundle_id": "e4825cbf1d6933d931377cf93a36581d4e6450781e8e3ed42ad174d098865950",
+  "secondary_bundle_id": "3ccdfdcb2bf0988271888a957de618b82b6649f83011c28f039d3f7dc44eaf3e",
+  "decision_date": "2024-08-21",
+  "absolute_score_tolerance": 1e-06,
+  "policy": {
+    "max_runtime_seconds": 600.0,
+    "max_memory_mb": 4096.0,
+    "minimum_coverage": 1.0,
+    "max_missing_feature_fraction": 0.25,
+    "max_abs_score": 10.0,
+    "max_data_age_hours": 96.0,
+    "min_cross_section": 2
+  },
+  "hypothetical_available_at": "2024-08-21T16:30:00+08:00",
+  "hypothetical_decision_cutoff": "2024-08-21T18:00:00+08:00",
+  "checks": [
+    "raw_provider_forecast_parity",
+    "registry_idempotency",
+    "atomic_publication",
+    "duplicate_idempotency",
+    "stale_data_rejection",
+    "late_data_rejection",
+    "failure_retry",
+    "conflicting_request_rejection",
+    "immutable_alias_pinning",
+    "compatible_rollback",
+    "production_promotion_blocked"
+  ],
+  "runtime_sources": {
+    "/workspace/scratch/f328bea0f8d6/runtime-screen/src/financial_ts/bundles.py": "3421028217c81f08d221aa16ad083994cd3bc617fa62ebca784d14a04818ac6e",
+    "/workspace/scratch/f328bea0f8d6/runtime-screen/src/financial_ts/operations.py": "e041e74ca2e241b61fc075952ba8cbfde1d067acc0a7a27b3b5af9fc6b8562c9"
+  }
+}

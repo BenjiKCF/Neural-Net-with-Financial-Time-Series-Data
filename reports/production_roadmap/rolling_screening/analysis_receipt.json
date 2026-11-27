@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "source_campaign": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127",
+  "summary_output_dir": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-audited-20261127",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "registered_source_code_sha256": "05dd6d449d27c2f586fe1685996d9602d4505748d026d60d5899187fbe0186f3",
+  "analysis_source_code_sha256": "25339ff4c9c57533ebb6f55c893007675af634c95ce6967a83745cade1ded6dd",
+  "analysis_module": {
+    "path": "/workspace/scratch/f328bea0f8d6/financial-ts/src/financial_ts/rolling.py",
+    "sha256": "498e43bee11607cf156fd0f33b54fb18db9c72e98819d725cba63320231e070e"
+  },
+  "original_comparison": {
+    "path": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/comparison.json",
+    "sha256": "20103757a24e1da144f039b5f9bbdaa3be4c3e7a3c9ed56a1f906e676b38291a"
+  },
+  "reason": "Regenerated derived summary from verified archived trial artifacts with current analysis code; registered trials and experiment settings unchanged.",
+  "bootstrap_policy": "Report insufficient_dates when block_length >= paired date count; a full-period circular block has no resampling variation. Report effective_blocks = date_count / block_length and qualify fewer than two full block lengths as very limited resampling information."
+}

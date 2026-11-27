@@ -1,0 +1,37 @@
+[43:MainThread](2026-11-27 15:10:21,370) INFO - qlib.Initialization - [config.py:452] - default_conf: client.
+[43:MainThread](2026-11-27 15:10:22,705) INFO - qlib.Initialization - [__init__.py:75] - qlib successfully initialized based on client settings.
+[43:MainThread](2026-11-27 15:10:22,705) INFO - qlib.Initialization - [__init__.py:77] - data_path={'__DEFAULT_FREQ': PosixPath('/workspace/scratch/be1ac217cace/financial-ts/.data/chenditc/2026-11-26')}
+[43:MainThread](2026-11-27 15:10:28,294) INFO - qlib.timer - [log.py:127] - Time cost: 1.226s | Loading data Done
+[43:MainThread](2026-11-27 15:10:28,316) INFO - qlib.timer - [log.py:127] - Time cost: 0.019s | FiniteFeatures Done
+[43:MainThread](2026-11-27 15:10:28,384) INFO - qlib.timer - [log.py:127] - Time cost: 0.068s | RobustZScoreNorm Done
+[43:MainThread](2026-11-27 15:10:28,400) INFO - qlib.timer - [log.py:127] - Time cost: 0.016s | Fillna Done
+[43:MainThread](2026-11-27 15:10:28,407) INFO - qlib.timer - [log.py:127] - Time cost: 0.006s | DropnaLabel Done
+[43:MainThread](2026-11-27 15:10:28,407) INFO - qlib.timer - [log.py:127] - Time cost: 0.113s | fit & process data Done
+[43:MainThread](2026-11-27 15:10:28,407) INFO - qlib.timer - [log.py:127] - Time cost: 1.339s | Init data Done
+[43:MainThread](2026-11-27 15:10:33,114) ERROR - qlib.workflow - [utils.py:41] - An exception has been raised[TypeError: Object of type float32 is not JSON serializable].
+  File "/workspace/scratch/f328bea0f8d6/financial-ts/scripts/run_advanced_research.py", line 21, in <module>
+    main()
+  File "/workspace/scratch/f328bea0f8d6/financial-ts/scripts/run_advanced_research.py", line 17, in main
+    print(json.dumps(result, indent=2, allow_nan=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 2 more times]
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type float32 is not JSON serializable

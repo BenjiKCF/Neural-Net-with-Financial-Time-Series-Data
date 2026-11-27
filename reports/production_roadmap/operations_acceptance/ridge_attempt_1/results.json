@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "qualification": "historical software replay; hypothetical arrival times; not prospective or publication-time evidence",
+  "checks": {
+    "raw_provider_forecast_parity": {
+      "status": "passed",
+      "count": 300,
+      "maximum_absolute_error": 7.538756628504284e-09,
+      "mean_absolute_error": 1.5199827196748474e-09
+    },
+    "registry_idempotency": {
+      "status": "passed",
+      "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+    },
+    "atomic_publication": {
+      "status": "passed",
+      "manifest": {
+        "alias_at_start": "shadow",
+        "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+        "count": 300,
+        "coverage": 1.0,
+        "data_fingerprint": {
+          "bytes": 730118170,
+          "file_count": 61788,
+          "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8"
+        },
+        "decision_cutoff": "2024-08-21T10:00:00+00:00",
+        "decision_date": "2024-08-21",
+        "missing_feature_fraction": 2.1231422505307857e-05,
+        "mode": "shadow_predictions",
+        "orders_submitted": false,
+        "policy": {
+          "max_abs_score": 10.0,
+          "max_data_age_hours": 96.0,
+          "max_memory_mb": 4096.0,
+          "max_missing_feature_fraction": 0.25,
+          "max_runtime_seconds": 600.0,
+          "min_cross_section": 2,
+          "minimum_coverage": 1.0
+        },
+        "predictions_sha256": "6c4fea7e08001ebb9221b69ed7543a7d1a39b5660ee1c1bea4186b2d02722c8d",
+        "request_id": "281b7be46680a6cf2de5ca5f7b090a0f050613a14e2816f3bccdb74075a601f8",
+        "resident_memory_mb": 286.1640625,
+        "runtime_seconds": 0.021632924002915388,
+        "schema_version": 1,
+        "score_max": 0.009179666444525426,
+        "score_mean": -0.0008300868392518828,
+        "score_min": -0.010416047216392147,
+        "score_std": 0.003500371507932019,
+        "source_revision": "2026-11-26",
+        "status": "ready"
+      }
+    },
+    "duplicate_idempotency": {
+      "status": "passed",
+      "request_id": "281b7be46680a6cf2de5ca5f7b090a0f050613a14e2816f3bccdb74075a601f8"
+    },
+    "stale_data_rejection": {
+      "status": "passed",
+      "observed_error": "Stale or future data: observed session must equal the expected decision session.",
+      "new_dated_artifact_published": false
+    },
+    "late_data_rejection": {
+      "status": "passed",
+      "observed_error": "Data was published after the registered decision cutoff.",
+      "new_dated_artifact_published": false
+    },
+    "failure_retry": {
+      "status": "passed",
+      "request_id": "281b7be46680a6cf2de5ca5f7b090a0f050613a14e2816f3bccdb74075a601f8",
+      "same_as_initial_request": true
+    },
+    "conflicting_request_rejection": {
+      "status": "passed",
+      "observed_error": "A conflicting batch is already published for this session.",
+      "new_dated_artifact_published": true,
+      "existing_artifact_unchanged": true
+    },
+    "immutable_alias_pinning": {
+      "status": "passed",
+      "observed_error": "Registry changed after preparation; retry with one immutable version.",
+      "new_dated_artifact_published": false
+    },
+    "compatible_rollback": {
+      "status": "passed",
+      "receipt": {
+        "action": "rollback",
+        "alias": "shadow",
+        "version": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+        "previous_version": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06",
+        "gate": {
+          "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+          "intended_use": "shadow",
+          "status": "passed",
+          "reasons": []
+        },
+        "evidence": {
+          "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+        },
+        "at": "2026-11-27T07:22:44.978241+00:00"
+      },
+      "reused_original_artifact": true
+    },
+    "production_promotion_blocked": {
+      "status": "passed",
+      "assessment": {
+        "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+        "intended_use": "production",
+        "status": "blocked",
+        "reasons": [
+          "model usage rights are unresolved or restricted",
+          "data usage rights are unresolved or restricted",
+          "causal_data has no passed, referenced evidence",
+          "lifecycle_accounting has no passed, referenced evidence",
+          "candidate_quality has no passed, referenced evidence",
+          "prospective_shadow has no passed, referenced evidence",
+          "operations has no passed, referenced evidence",
+          "execution_reconciliation has no passed, referenced evidence",
+          "recorded deployment decision is missing",
+          "service objectives or incident ownership is missing"
+        ]
+      }
+    }
+  },
+  "orders_submitted": false,
+  "prospective_evidence": false,
+  "publication_time_certified": false,
+  "production_promoted": false
+}

@@ -1,10 +1,13 @@
 # Numerical bundles and daily shadow operation
 
-This source-only release supplies executable research and operational components.
-Generate the bundles, predictions and verification receipts below from a local
-run; no new fitted bundle or market-data artifact accompanies this change. Use
-the [implementation map](production-implementation.md) and
-[promotion gates](production-roadmap.md#promotion-gates) together.
+The roadmap supplies executable research and operational components alongside
+[retained experimental evidence](production-implementation.md#published-research-evidence).
+The commands below create a new local campaign or operational replay. The
+[original acceptance receipt](../reports/production_roadmap/acceptance.json)
+describes the earlier research runtime; the
+[later software receipt](validation/production-software.json) verifies the
+subsequent calendar and manifest hardening. Use these separate records with the
+[promotion gates](production-roadmap.md#promotion-gates).
 
 ## 1. Run a registered rolling comparison
 
@@ -55,7 +58,9 @@ A failed candidate/seed cannot silently disappear from the selection budget.
 The runner marks a block length that covers the complete forecast sample as
 `insufficient_dates`: circular resampling then has no useful variation. Check
 the effective number of blocks and block-length sensitivity before interpreting
-any interval. [Rolling tests](../tests/test_rolling.py) exercise these boundaries.
+any interval. The [retained analysis audit](rolling-analysis-audit.md) preserves
+the original and separately corrected summaries.
+[Rolling tests](../tests/test_rolling.py) exercise these boundaries.
 
 ## 2. Export and inspect a model bundle
 
@@ -63,6 +68,11 @@ Registered rolling runs enable `export_inference_bundle: true`. A standalone
 `fts train` workflow can set the same key. The live Qlib training record exports
 its fitted model and inference processors without asking a deployment process to
 load Qlib's executable pickle artifacts.
+
+The option must be the YAML Boolean `true` or `false`; quoted strings, numbers
+and `null` are rejected before training. The integration tests exercise this
+through `fts train --config`, including numerical replay for ridge, LightGBM,
+Transformer and MASTER-style bundles.
 
 Each `inference_bundle/` contains:
 
@@ -159,6 +169,14 @@ input-manifest integrity. Preserve them as historical evidence and regenerate
 into a fresh output path using the actual arrival receipt. Editing old hashes or
 adding a version field does not migrate an artifact.
 
+The published [historical operation receipts](../reports/production_roadmap/operations_acceptance/summary.json)
+include version-1 outputs from the earlier runtime. Their original successful
+checks are historical evidence, not evidence that those directories satisfy the
+new version-2 reader. The later [software validation](validation/production-software.json)
+covers the strengthened checks separately. For a historical rehearsal, label
+hypothetical arrivals explicitly; only an actual arrival receipt can support
+prospective operation.
+
 An upstream application may instead supply raw factors as numerical arrays:
 `--input-npz batch.npz --input-manifest batch.json`. The NPZ contains `features`
 and optionally `padding`; it is loaded with `allow_pickle=False`. The manifest
@@ -238,7 +256,9 @@ python scripts/run_operations_acceptance.py --provider .data/cn-20261126 \
 
 Both run directories must contain completed workflows and exported bundles. The
 script uses explicit hypothetical historical arrival times; its result is a
-software rehearsal, not a prospective shadow record.
+software rehearsal, not a prospective shadow record. The retained
+[three-model historical rehearsal](production-implementation.md#historical-operational-acceptance)
+reports its original source and outputs separately from a new invocation.
 
 The [precision profiler](../scripts/profile_inference.py) compares float32 and
 CPU bfloat16 on the same weights and full same-date stock context in separate
@@ -254,7 +274,9 @@ python scripts/profile_inference.py --bundle runs/primary-model/inference_bundle
 Choose an eligible date after the bundle's fitting/selection cutoffs. Inspect
 runtime, resident memory, score differences, ranking and top-k changes together.
 The existence of a precision option is not evidence of speed, memory or quality
-improvement on a particular machine.
+improvement on a particular machine. The
+[retained CPU profile](precision-profile.md) favored float32: bfloat16 was slower
+and failed the declared rank-change gate on that measured machine.
 
 ## Environment and release checks
 

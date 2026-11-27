@@ -1,0 +1,204 @@
+{
+  "status": "completed",
+  "models": {
+    "doubleadapt_paper": {
+      "prediction_count": 300,
+      "evaluated_count": 300,
+      "unavailable_label_count": 0,
+      "rmse": 0.018611086532473564,
+      "mae": 0.01349418330937624,
+      "zero_return_rmse": 0.018403610214591026,
+      "directional_accuracy": 0.46,
+      "pooled_pearson_correlation": -0.03930612488861877,
+      "ic": -0.05887790771854139,
+      "rank_ic": -0.07934712795472307,
+      "ic_ir": -0.24208290004772856,
+      "rank_ic_ir": -0.3312987112498093,
+      "ic_days": 15,
+      "rank_ic_days": 15
+    },
+    "frozen": {
+      "prediction_count": 300,
+      "evaluated_count": 300,
+      "unavailable_label_count": 0,
+      "rmse": 0.01853937841951847,
+      "mae": 0.013479728251695633,
+      "zero_return_rmse": 0.018403610214591026,
+      "directional_accuracy": 0.48,
+      "pooled_pearson_correlation": -0.036644364003988836,
+      "ic": -0.055062994172352574,
+      "rank_ic": -0.0865752206915152,
+      "ic_ir": -0.20115461617111233,
+      "rank_ic_ir": -0.30986277966729675,
+      "ic_days": 15,
+      "rank_ic_days": 15
+    },
+    "naive_incremental": {
+      "prediction_count": 300,
+      "evaluated_count": 300,
+      "unavailable_label_count": 0,
+      "rmse": 0.018624667078256607,
+      "mae": 0.013488712720572948,
+      "zero_return_rmse": 0.018403610214591026,
+      "directional_accuracy": 0.44666666666666666,
+      "pooled_pearson_correlation": -0.04262939612855578,
+      "ic": -0.0405690726544352,
+      "rank_ic": -0.06720821253369921,
+      "ic_ir": -0.1623249200099561,
+      "rank_ic_ir": -0.275970199709886,
+      "ic_days": 15,
+      "rank_ic_days": 15
+    },
+    "full_retrain": {
+      "prediction_count": 300,
+      "evaluated_count": 300,
+      "unavailable_label_count": 0,
+      "rmse": 0.01854831911623478,
+      "mae": 0.013473078608512878,
+      "zero_return_rmse": 0.018403610214591026,
+      "directional_accuracy": 0.4633333333333333,
+      "pooled_pearson_correlation": -0.03900984630294568,
+      "ic": -0.05113360647804941,
+      "rank_ic": -0.08070503227480225,
+      "ic_ir": -0.1936248002987582,
+      "rank_ic_ir": -0.3094147678910562,
+      "ic_days": 15,
+      "rank_ic_days": 15
+    }
+  },
+  "paired_date_block_comparison": {
+    "frozen": {
+      "method": "paired circular moving blocks of dates; whole cross sections retained",
+      "difference": "candidate minus reference; negative RMSE and positive IC favor candidate",
+      "date_count": 15,
+      "row_count": 300,
+      "unavailable_label_rows": 0,
+      "block_length": 5,
+      "draws": 200,
+      "seed": 42,
+      "metrics": {
+        "rmse": {
+          "difference": 7.170918460184736e-05,
+          "lower_95": -6.0264977057014876e-05,
+          "upper_95": 0.00023086587679344364,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        },
+        "ic": {
+          "difference": -0.003814913546188818,
+          "lower_95": -0.03920799156387213,
+          "upper_95": 0.03239798795537456,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        },
+        "rank_ic": {
+          "difference": 0.007228092736792137,
+          "lower_95": -0.038285654014889196,
+          "upper_95": 0.053571628026630805,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        }
+      }
+    },
+    "naive_incremental": {
+      "method": "paired circular moving blocks of dates; whole cross sections retained",
+      "difference": "candidate minus reference; negative RMSE and positive IC favor candidate",
+      "date_count": 15,
+      "row_count": 300,
+      "unavailable_label_rows": 0,
+      "block_length": 5,
+      "draws": 200,
+      "seed": 42,
+      "metrics": {
+        "rmse": {
+          "difference": -1.358025113652045e-05,
+          "lower_95": -0.00013795181637899588,
+          "upper_95": 0.0001258687040630221,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        },
+        "ic": {
+          "difference": -0.018308835064106195,
+          "lower_95": -0.09956184331541482,
+          "upper_95": 0.0458412089164374,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        },
+        "rank_ic": {
+          "difference": -0.01213891542102386,
+          "lower_95": -0.10123921839243358,
+          "upper_95": 0.05628211835581931,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        }
+      }
+    },
+    "full_retrain": {
+      "method": "paired circular moving blocks of dates; whole cross sections retained",
+      "difference": "candidate minus reference; negative RMSE and positive IC favor candidate",
+      "date_count": 15,
+      "row_count": 300,
+      "unavailable_label_rows": 0,
+      "block_length": 5,
+      "draws": 200,
+      "seed": 42,
+      "metrics": {
+        "rmse": {
+          "difference": 6.276820066260236e-05,
+          "lower_95": -3.544362157465279e-05,
+          "upper_95": 0.0001814675619653921,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        },
+        "ic": {
+          "difference": -0.007744301240491985,
+          "lower_95": -0.032738171696156636,
+          "upper_95": 0.014708097702710046,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        },
+        "rank_ic": {
+          "difference": 0.0013579043200791794,
+          "lower_95": -0.028128197725863738,
+          "upper_95": 0.031894438505855806,
+          "valid_draws": 200,
+          "paired_usable_dates": 15
+        }
+      }
+    }
+  },
+  "selection": {
+    "selected_epoch": 0,
+    "validation_mse": 0.00020578184921760112,
+    "history": [
+      {
+        "epoch": 0,
+        "validation_mse": 0.00020578184921760112
+      },
+      {
+        "epoch": 1,
+        "validation_mse": 0.00020599551498889923
+      },
+      {
+        "epoch": 2,
+        "validation_mse": 0.0002062095154542476
+      }
+    ],
+    "normalizer_fit": "meta-training labels only",
+    "validation_updated_after_selection": true,
+    "method": "independent_DoubleAdapt_paper_method",
+    "upstream_reproduction": false
+  },
+  "deployment_approved": false,
+  "online_dates": 15,
+  "online_rows_per_model": 300,
+  "method": "independent_DoubleAdapt_paper_method",
+  "upstream_reproduction": false,
+  "paired_interpretation": "DoubleAdapt minus control; negative RMSE and positive IC favor DoubleAdapt",
+  "limitations": [
+    "exploratory bounded historical forecast screen",
+    "not an official-code or paper-score reproduction",
+    "no portfolio return or production approval",
+    "historical publication-time data vintages remain unqualified"
+  ]
+}

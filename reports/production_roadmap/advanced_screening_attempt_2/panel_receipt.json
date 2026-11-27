@@ -1,0 +1,76 @@
+{
+  "segments": {
+    "train": {
+      "dates": 40,
+      "samples": 800,
+      "finite_labels_by_horizon": [
+        800,
+        800,
+        800
+      ]
+    },
+    "valid": {
+      "dates": 10,
+      "samples": 200,
+      "finite_labels_by_horizon": [
+        200,
+        200,
+        200
+      ]
+    },
+    "calibration": {
+      "dates": 10,
+      "samples": 200,
+      "finite_labels_by_horizon": [
+        200,
+        200,
+        200
+      ]
+    },
+    "test": {
+      "dates": 10,
+      "samples": 200,
+      "finite_labels_by_horizon": [
+        200,
+        200,
+        200
+      ]
+    },
+    "update_train": {
+      "dates": 20,
+      "samples": 400,
+      "finite_labels_by_horizon": [
+        400,
+        400,
+        400
+      ]
+    },
+    "update_valid": {
+      "dates": 10,
+      "samples": 200,
+      "finite_labels_by_horizon": [
+        200,
+        200,
+        200
+      ]
+    },
+    "post_update_test": {
+      "dates": 10,
+      "samples": 200,
+      "finite_labels_by_horizon": [
+        200,
+        200,
+        200
+      ]
+    }
+  },
+  "processor_fit": [
+    "2023-01-03",
+    "2023-03-06"
+  ],
+  "provider": {
+    "sha256": "1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8",
+    "file_count": 61788,
+    "bytes": 730118170
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "account_multiplier": 0.1,
+  "fee_multiplier": 1,
+  "id": "account_0.1x",
+  "slippage_bps": 0.0,
+  "net_return": 0.14845559576488965,
+  "max_drawdown": -0.058413031894646306,
+  "mean_daily_turnover": 0.309488684047962,
+  "trading_days": 21,
+  "sum_daily_cost_ratios": 0.006008248038144385,
+  "mean_gross_exposure": 0.9523997946530003,
+  "maximum_gross_exposure": 0.995003534128961,
+  "total_final_stale_weight": 0,
+  "portfolio_config": {
+    "strategy": {
+      "class": "TopkDropoutStrategy",
+      "module_path": "qlib.contrib.strategy",
+      "kwargs": {
+        "signal": {
+          "class": "DeterministicRankSignal",
+          "module_path": "financial_ts.cn_portfolio",
+          "kwargs": {
+            "signal": "<PRED>"
+          }
+        },
+        "topk": 20,
+        "n_drop": 4,
+        "risk_degree": 0.95
+      }
+    },
+    "backtest": {
+      "start_time": "2024-09-23",
+      "end_time": "2024-10-28",
+      "account": 1000000.0,
+      "benchmark": "SH000300",
+      "exchange_kwargs": {
+        "freq": "day",
+        "limit_threshold": 0.095,
+        "deal_price": "close",
+        "trade_unit": 100,
+        "open_cost": 0.0005,
+        "close_cost": 0.0015,
+        "min_cost": 5.0
+      }
+    }
+  }
+}

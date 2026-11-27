@@ -45,6 +45,11 @@ jobs:
         run: fts backtest --predictions reports/financial_research/predictions.csv --spy-csv reports/financial_research/spy_prices.csv --output runs/ci-backtest
       - name: Audit recorded ES and weight-edit experiment
         run: python scripts/audit_posttraining.py --evidence reports/paper_posttraining
+      - name: Verify complete rolling research evidence
+        run: |
+          mkdir -p runs/ci-evidence
+          python -I scripts/reassemble_rolling_evidence.py --manifest reports/production_roadmap/rolling_screening/archive_parts.json > runs/ci-evidence/reassembly.json
+          python -I scripts/export_rolling_evidence.py --audit reports/production_roadmap/rolling_screening/archive_manifest.json > runs/ci-evidence/audit.json
       - name: Upload inspectable demo results
         if: always()
         uses: actions/upload-artifact@v4
@@ -58,4 +63,5 @@ jobs:
             runs/ci-demo/*/portfolio.csv
             runs/ci-demo/*/learning_curves.json
             runs/ci-paper/*.json
+            runs/ci-evidence/*.json
           if-no-files-found: ignore

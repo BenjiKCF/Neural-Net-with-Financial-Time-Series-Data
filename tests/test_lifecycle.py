@@ -139,6 +139,49 @@ def test_stale_and_future_marks_cannot_publish_a_usable_nav():
         ledger.mark({"A": PriceMark(5, DAY3, SOURCE)}, asof=DAY2, observed_calendar=CALENDAR)
 
 
+@pytest.mark.parametrize("cutoff", [
+    "2025-01-07T16:00:00+08:00",
+    "2025-06-02T16:00:00+08:00",
+    "2025-01-06T17:00:00Z",  # Already 7 January in the exchange timezone.
+])
+def test_valuation_rejects_calendar_ending_before_exchange_cutoff(cutoff):
+    ledger = EventLedger(100, {"A": 10})
+    with pytest.raises(ValueError, match="calendar does not cover the valuation cutoff"):
+        ledger.mark(
+            {"A": PriceMark(5, DAY3, SOURCE)},
+            asof=cutoff,
+            observed_calendar=CALENDAR,
+        )
+
+
+def test_weekend_valuation_requires_following_session_calendar_coverage():
+    ledger = EventLedger(100, {"A": 10})
+    marks = {"A": PriceMark(5, DAY2, SOURCE)}
+    cutoff = "2025-01-05T16:00:00+08:00"
+    # A calendar ending on Friday cannot establish that the next two days
+    # contain no sessions. Monday's entry makes that interval explicit.
+    with pytest.raises(ValueError, match="calendar does not cover the valuation cutoff"):
+        ledger.mark(marks, asof=cutoff, observed_calendar=CALENDAR[:2])
+    valuation = ledger.mark(marks, asof=cutoff, observed_calendar=CALENDAR)
+    assert valuation["nav"] == 150
+    assert valuation["promotion_ready"]
+    assert valuation["holdings"][0]["staleness_sessions"] == 0
+
+
+@pytest.mark.parametrize("cutoff", [
+    DAY3,
+    "2025-01-07T00:30:00+09:00",  # Still 6 January in the exchange timezone.
+])
+def test_valuation_accepts_calendar_ending_on_exchange_cutoff(cutoff):
+    ledger = EventLedger(100, {"A": 10})
+    valuation = ledger.mark(
+        {"A": PriceMark(5, DAY3, SOURCE)}, asof=cutoff, observed_calendar=CALENDAR
+    )
+    assert valuation["nav"] == 150
+    assert valuation["promotion_ready"]
+    assert valuation["holdings"][0]["staleness_sessions"] == 0
+
+
 def test_retroactive_entitlement_requires_replay_instead_of_using_current_holdings():
     ledger = EventLedger(1000, {"A": 100})
     ledger.record_fill("sell", "A", "sell", 50, 5, 0, asof=DAY3)

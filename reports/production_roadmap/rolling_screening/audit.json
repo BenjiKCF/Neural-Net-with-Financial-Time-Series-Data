@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "audited_summary_verified": true,
+  "checked_at_utc": "2026-11-27T07:45:14.552857+00:00",
+  "archive_sha256": "8f2716752bbd9aae87ce0293c4a658b79e9107c300fe0b470a2eccbeba35571b",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "files_verified": 1724,
+  "uncompressed_bytes_verified": 330818594,
+  "receipt_artifacts_verified": 1556,
+  "registered_trials": 40,
+  "attempts": 40,
+  "completed_trials": 40,
+  "failed_trials": 0,
+  "failed_attempts": 0,
+  "receipt_listed_artifacts": 1556,
+  "latest_trials": [
+    {
+      "trial_id": "fold-000/zero/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/zero/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/zero/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/zero/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/ridge/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/ridge/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/ridge/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/ridge/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/lightgbm/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/lightgbm/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/lightgbm/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/lightgbm/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/transformer/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/transformer/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/transformer/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/transformer/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_transformer/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_transformer/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_transformer/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_transformer/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/master_style/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/master_style/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/master_style/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/master_style/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/quantformer_moe/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/quantformer_moe/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/quantformer_moe/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/quantformer_moe/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_huber/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_huber/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_huber/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_huber/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_ic/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_ic/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_ic/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_ic/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_ranking/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_ranking/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-000/daily_ranking/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-000/daily_ranking/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/zero/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/zero/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/zero/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/zero/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/ridge/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/ridge/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/ridge/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/ridge/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/lightgbm/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/lightgbm/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/lightgbm/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/lightgbm/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/transformer/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/transformer/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/transformer/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/transformer/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_transformer/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_transformer/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_transformer/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_transformer/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/master_style/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/master_style/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/master_style/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/master_style/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/quantformer_moe/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/quantformer_moe/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/quantformer_moe/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/quantformer_moe/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_huber/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_huber/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_huber/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_huber/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_ic/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_ic/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_ic/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_ic/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_ranking/seed-7",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_ranking/seed-7/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "trial_id": "fold-001/daily_ranking/seed-42",
+      "attempt": 1,
+      "receipt_path": "trials/fold-001/daily_ranking/seed-42/attempt-0001/receipt.json",
+      "status": "completed",
+      "error": null
+    }
+  ],
+  "pickle_deserialized": false,
+  "files_extracted": false,
+  "original_absolute_paths_changed": false
+}

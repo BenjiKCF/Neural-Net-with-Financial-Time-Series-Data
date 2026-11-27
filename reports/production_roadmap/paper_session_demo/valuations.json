@@ -1,0 +1,35 @@
+[
+  {
+    "asof": "2025-01-03T16:00:00+08:00",
+    "cash": 4990.0,
+    "currency": "CNY",
+    "holdings": [
+      {
+        "instrument": "DEMO",
+        "quantity": 500.0,
+        "raw_price": 10,
+        "staleness_sessions": 0,
+        "tradable": true,
+        "value": 5000.0
+      }
+    ],
+    "indicative_nav": 9990.0,
+    "nav": 9990.0,
+    "promotion_ready": true,
+    "quantity_units": "raw shares",
+    "receivables": 0,
+    "unresolved": []
+  },
+  {
+    "asof": "2025-01-06T18:00:00+08:00",
+    "cash": 9975.105,
+    "currency": "CNY",
+    "holdings": [],
+    "indicative_nav": 9975.105,
+    "nav": 9975.105,
+    "promotion_ready": true,
+    "quantity_units": "raw shares",
+    "receivables": 0,
+    "unresolved": []
+  }
+]

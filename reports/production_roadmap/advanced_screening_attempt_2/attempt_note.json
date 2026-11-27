@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "reason_retained": "Completed numerical run retained before failure-state API guard and explicit frozen-feature-scaler metadata were added. No model optimization changes.",
+  "superseded_by": "advanced_screening"
+}

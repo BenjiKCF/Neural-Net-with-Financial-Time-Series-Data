@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "trial_id": "fold-001/lightgbm/seed-7",
+  "trial_sha256": "fd9b7befbbaba8708eeefcf50e49230c5cd264aa359fc0ab0ed7e74f35727897",
+  "protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "status": "completed",
+  "attempt": 1,
+  "started_at_utc": "2026-11-27T07:25:44.353987+00:00",
+  "previous_attempt": null,
+  "scenario_status": "completed",
+  "artifacts": {
+    "cost_scenarios.json": {
+      "sha256": "e3c88e92bc4c79f9eafd770805536487ad2e85af5aa87b662f0c14f09f9262bb",
+      "bytes": 5872
+    },
+    "daily_ic.csv": {
+      "sha256": "42d2a6cc6d23f42aa073037b66152afa262b27066d176e8c9b6e9e4e5d1df394",
+      "bytes": 1061
+    },
+    "inference_bundle/booster.txt": {
+      "sha256": "57e1ba34208da1c94bd8dbb21b7a1e1c89c2dccc005cbc9b0185f4793d054e76",
+      "bytes": 32064
+    },
+    "inference_bundle/environment.json": {
+      "sha256": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "bytes": 220
+    },
+    "inference_bundle/manifest.json": {
+      "sha256": "f63642b8362419828b5c8b92269b44735137b0911a2a857b7a30b2adbd557cd1",
+      "bytes": 968
+    },
+    "inference_bundle/metadata.json": {
+      "sha256": "727d9b69d37d7f6bf405253618ca2f03bbf344baf3e74bf21458b0d728cec992",
+      "bytes": 4341
+    },
+    "inference_bundle/model.json": {
+      "sha256": "baacc0a7dc9acf0c5d2949f594def33600fac271156db94c7da8051fbc55a3bc",
+      "bytes": 20
+    },
+    "inference_bundle/parity.json": {
+      "sha256": "2e3fedee9f431135946de754d57161bbcb512a43eed48955e1a86fe79cab269c",
+      "bytes": 77
+    },
+    "inference_bundle/preprocessing.json": {
+      "sha256": "e79dcb24b8dc4a1b153ce27ce9c9db59be82904db476dfc75490c6e874911529",
+      "bytes": 6146
+    },
+    "inference_bundle/reload_fixture.npz": {
+      "sha256": "2d2a9c96dfe5cee49b890154d8900d2a317dfbecf34d730269c5a912934d9212",
+      "bytes": 277287
+    },
+    "inference_bundle/schema.json": {
+      "sha256": "90516890face4bc850c3e794c7db0005be68a05a79437bdccc4a9a825d9136cc",
+      "bytes": 1374
+    },
+    "metrics.json": {
+      "sha256": "b3b59e2650908bc632d99aa08caadb4f9c8fc60cb5837a791d2fdba5b8c189ac",
+      "bytes": 3366
+    },
+    "mlruns/599469862947428788/ad262dd6d33c4c9c8a2fa0d578e165ce/artifacts/params.pkl": {
+      "sha256": "7646eec4d625a5e30626060a02e86d0951589d242342dada8ac7e0be353a22f2",
+      "bytes": 33170
+    },
+    "portfolio.csv": {
+      "sha256": "fdba6f2a097516517ad00fab47ed7b2baf2ad97da7635bb537d051d2a630bb0b",
+      "bytes": 3973
+    },
+    "predictions.csv": {
+      "sha256": "02d77cd91fcee609cdc7923e80f193f3fbd51c81fec877d74a6915ff3cae9e84",
+      "bytes": 324413
+    },
+    "qlib_task.yaml": {
+      "sha256": "62f8653e3ed9fd6781110946640d2acf9bf3c858074c53d5a2af09ef82c445f4",
+      "bytes": 7235
+    },
+    "resolved_config.json": {
+      "sha256": "7084589db1f335915cbbf13c7c6d2aed9a0c5b74b7b73a9ecbc59db48d5d93f9",
+      "bytes": 1252
+    },
+    "run.json": {
+      "sha256": "2c8782430a7cb28bbd09e1729c0d5288cf8d4ae88c0081eefccd48621d5476c5",
+      "bytes": 16374
+    },
+    "scenarios/account_0.1x/portfolio.csv": {
+      "sha256": "f32518de2857c1fd159aa9361d58bd24e2f18850c09dfe5c75339e3c6ae7a9d3",
+      "bytes": 3981
+    },
+    "scenarios/account_0.1x/positions.json.gz": {
+      "sha256": "6ef6abd2031ab07441e0a15c7a932a06af94ce377c57c2e19cb1ec72a4bd1ef9",
+      "bytes": 12438
+    },
+    "scenarios/account_0.1x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/account_0.1x/summary.json": {
+      "sha256": "04dbd3b0f279e8728d8bd555d36d75c3276b845aa185f09364dbea27316c87fa",
+      "bytes": 1231
+    },
+    "scenarios/base/portfolio.csv": {
+      "sha256": "fdba6f2a097516517ad00fab47ed7b2baf2ad97da7635bb537d051d2a630bb0b",
+      "bytes": 3973
+    },
+    "scenarios/base/positions.json.gz": {
+      "sha256": "60d45b58a00a2b57f765ebb696af068a0ef01f9be5c3141de0985bc031fc8dc6",
+      "bytes": 12394
+    },
+    "scenarios/base/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/base/summary.json": {
+      "sha256": "b6c4567e0356b414c4f4007d3f520c0f5e6c1b4eeb2ac97269d966d12773d3c5",
+      "bytes": 1222
+    },
+    "scenarios/fees_2x/portfolio.csv": {
+      "sha256": "9b759ca234e4497b135bc9209bb95993db8605a5cab4121e399747286a9cd8bb",
+      "bytes": 3964
+    },
+    "scenarios/fees_2x/positions.json.gz": {
+      "sha256": "2b16cb8f5ed0c7ebd17cccc2a70c92ae93ab8c52a2e01bcb1d3afbd91f22a6cc",
+      "bytes": 12444
+    },
+    "scenarios/fees_2x/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/fees_2x/summary.json": {
+      "sha256": "ab119481a8247900190384568ff5c8d36651c560f1fc255bcb769839e5363176",
+      "bytes": 1224
+    },
+    "scenarios/slippage_5bps/portfolio.csv": {
+      "sha256": "6c3382de8b207c528ea4e6526b0c0a9455d90919ba35aeecfbb8a84da7789195",
+      "bytes": 3970
+    },
+    "scenarios/slippage_5bps/positions.json.gz": {
+      "sha256": "50a4f2ea7962cf66c15261c802c03b5e76c25567bd576abf9745fbd3a38f4f0d",
+      "bytes": 12406
+    },
+    "scenarios/slippage_5bps/source_gap_holdings.json": {
+      "sha256": "3acbb26f493e88eb15f174a438eeb156695843d24ccf5d0e3b1478310686f17e",
+      "bytes": 325
+    },
+    "scenarios/slippage_5bps/summary.json": {
+      "sha256": "389a45ec38d36c5413d9974d99b8fa914c8954e5e1195a9bbed4422416b8e90b",
+      "bytes": 1228
+    },
+    "validation_daily_ic.csv": {
+      "sha256": "91be8dad48f463f37b99a0cc52c37b57880fe0903d88b5935e09ce25724506f3",
+      "bytes": 1581
+    },
+    "validation_predictions.csv": {
+      "sha256": "7f3fdb0df1240cf51271b72bbd0fcc3daa45813bd84b83ab340c7b756d5a9ed7",
+      "bytes": 492396
+    }
+  },
+  "finished_at_utc": "2026-11-27T07:26:57.492160+00:00",
+  "elapsed_seconds": 73.138035330001
+}

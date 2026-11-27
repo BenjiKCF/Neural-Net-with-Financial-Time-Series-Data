@@ -409,40 +409,76 @@ See [the loop architecture and API](docs/architectures/timesfm-loop.md), [checkp
 
 </details>
 
-## Toward production
+## Production roadmap implementation
 
-**The production roadmap now has an executable software foundation.** Version
-2.3 adds registered rolling evaluation, daily cross-stock models and ranking
-objectives, adaptation comparators, data/lifecycle contracts, numerical model
-bundles and a shadow-operation runner. The
-[implementation map](docs/production-implementation.md) links the source,
-tests and reproduction commands for each component.
+The roadmap now has runnable research and operational workflows: source-time data
+contracts, a corporate-action ledger, registered rolling evaluation, same-date
+objectives and attention models, numerical inference bundles, a version registry,
+and a daily shadow runner. [Implementation and evidence](docs/production-implementation.md)
+records the completed work and remaining promotion gates.
 
-| Area | Available now | Required before production acceptance |
-| --- | --- | --- |
-| Data and accounting | Availability contracts, refresh quarantine, raw-share event ledger and dated paper execution. | Publication evidence, actual allocations, complete action coverage and a separately qualified replay. |
-| Evaluation | Registered folds/seeds, mature-label selection, paired date-block comparisons and retained trial history. | Adequate rolling experiments and a genuinely uninspected confirmation period. |
-| DL research | Same-date MSE/Huber/IC/ranking; MASTER-style attention; QuantFormer-MoE; tree/neural blends; multi-horizon, uncertainty and adaptation controls. | Controlled evidence that a candidate improves on simpler baselines under the declared costs and budgets. |
-| Operation | Immutable bundles, registry, atomic daily output, delayed monitoring, rollback and scheduler examples. | Measured service objectives, prospective shadow observation and execution reconciliation. |
+**The retained 40-trial screen does not establish a new trading advantage.**
+It used two folds, two seeds and two neural epochs. Validation selected the
+ranking objective in both folds, followed by negative held-out Rank IC:
 
-This is a **source-only implementation release**. New weights, provider-derived
-fixtures and experiment outputs are generated locally; no new model-superiority
-claim or evidence archive accompanies this change. The existing 12-model CSI300
-results and native Qlib gallery above are preserved.
+| Registered selection | Validation Rank IC | Held-out Rank IC |
+| --- | ---: | ---: |
+| Fold 000 · `daily_ranking` | +0.0665 | −0.0291 |
+| Fold 001 · `daily_ranking` | +0.0776 | −0.0659 |
 
-Start with a registered local screen after preparing the provider in Quick start:
+[All candidates, budgets and interpretation](docs/rolling-screening.md). Both
+favorable and unfavorable outcomes remain visible; the held-out scores did not
+change the registered selection.
+
+| Capability | Run or inspect |
+| --- | --- |
+| Rolling folds, declared seeds and complete trial history | `fts rolling-evaluate` · [completed 40-trial screen](docs/rolling-screening.md) · [five-seed recipe](configs/rolling_full.json) |
+| Daily MSE/Huber/IC/ranking objectives; MASTER-style and regime MoE | [Cross-sectional models and controls](docs/architectures/cross-sectional.md) |
+| Validation-selected LightGBM/neural blends | `fts rolling-blend` · [completed 32-scenario comparison](docs/rolling-blend.md) |
+| Joint 1/5/20-session heads, quantiles and mature-label adaptation | `fts research-advanced` · [actual bounded screen](reports/production_roadmap/advanced_screening/results.json) |
+| DoubleAdapt-style meta-learning and matched controls | `fts research-doubleadapt` · [method and evidence](docs/doubleadapt.md) |
+| Measured inference latency, memory and precision | [FP32/bfloat16 profile](docs/precision-profile.md); FP32 retained after the rank-stability gate failed |
+| Availability, refresh quarantine and corporate actions | `fts snapshot-audit`, `fts lifecycle-assess` · [source-backed accounting](docs/data-lifecycle.md) |
+| Immutable inference, daily scheduling, monitoring and rollback | [Operations guide](docs/production-operation.md) · `fts daily-infer` · `fts scheduled-shadow` |
+| Durable paper execution | `fts paper-replay` · [reconciled demonstration](reports/production_roadmap/paper_session_demo/completion.json) |
 
 ```bash
-fts rolling-evaluate --provider .data/cn \
+fts download-chenditc --provider .data/cn-20261126 --release 2026-11-26
+fts rolling-evaluate --provider .data/cn-20261126 \
   --config configs/rolling_screening.json --output runs/rolling-screen
+fts rolling-blend --campaign runs/rolling-screen --output runs/rolling-blend
+fts paper-replay --spec configs/paper_session_demo.json --output runs/paper-demo
 ```
 
-The [operation guide](docs/production-operation.md) explains pinning the provider,
-registration, retries, bundles and daily output. Read the
-[architecture guide](docs/architectures/cross-sectional.md) and
-[DoubleAdapt method guide](docs/doubleadapt.md) for the model controls.
-The [roadmap](docs/production-roadmap.md) retains the full
-[promotion gates](docs/production-roadmap.md#promotion-gates).
+The new protocols retain unfavorable and failed trials. Model selection uses
+validation only. The advanced screen shows improvements for some horizons and
+regressions for others; it does not establish an overall superior model. The
+archived accounting assessment still identifies **6.49% of final simulated NAV**
+in unresolved terminated-series holdings. Prospective observations, complete
+lifecycle settlement and reviewed model/data rights remain required for promotion.
+The registry enforces separate research, shadow and production decisions.
+
+Native Qlib diagnostics are also saved for the exploratory rolling Transformer
+control, fold 000, seed 7. This is a declared control, with its unfavorable result
+retained. The [complete native gallery](docs/assets/rolling/transformer-fold000/report.html)
+includes portfolio, risk, group-return and IC diagnostics, with source hashes in
+its [manifest](docs/assets/rolling/transformer-fold000/manifest.json).
+
+![Rolling Transformer daily IC and rank IC](docs/assets/rolling/transformer-fold000/score-ic.png)
+
+The archived [563-test acceptance](reports/production_roadmap/acceptance.json)
+and frozen-source research retain their original identities. The later
+[570-test software verification](docs/validation/production-software.json) covers
+calendar-coverage and prediction-manifest hardening. The latest
+[600-test publication verification](docs/validation/production-publication.json)
+also covers standalone bundle export, valuation-calendar coverage and exact
+archive reassembly. CI reconstructs the archive and verifies all 1,724 files and
+1,556 receipt-listed artifacts. These are separate records; the retained
+experiments were not rerun on the later code.
+
+[Roadmap and gates](docs/production-roadmap.md) ·
+[Implementation evidence](docs/production-implementation.md) ·
+[Operating instructions](docs/production-operation.md)
 
 ## Explore further
 
@@ -451,7 +487,8 @@ The [roadmap](docs/production-roadmap.md) retains the full
 | Install it and understand my first output | [Getting started](docs/getting-started.md) |
 | Download chenditc data, reproduce CSI300, or interpret native Qlib plots | [CSI300 benchmark guide](docs/chenditc-benchmark.md) |
 | Change features, models, splits, or portfolio costs | [Workflow and configuration](docs/workflow-guide.md) |
-| Run the roadmap implementation | [Software map and reproduction](docs/production-implementation.md) · [Operation guide](docs/production-operation.md) |
+| Run or inspect the roadmap implementation | [Software and evidence map](docs/production-implementation.md) · [Operation guide](docs/production-operation.md) |
+| Review the rolling models and tree/neural ensemble | [40-trial screen](docs/rolling-screening.md) · [Blend results](docs/rolling-blend.md) · [Analysis audit](docs/rolling-analysis-audit.md) |
 | Understand remaining production acceptance | [Production roadmap and gates](docs/production-roadmap.md) · [Data and lifecycle contracts](docs/data-lifecycle.md) |
 | Inspect the archived six-model SPX benchmark | [Original validation report](docs/architecture-validation.md) |
 | Inspect the archived TimesFM comparison and SPY backtest | [Common-period research and backtest](docs/financial-research.md) |

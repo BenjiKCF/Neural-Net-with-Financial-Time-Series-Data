@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-000/master_style/seed-7/attempt-0001/workflow/inference_bundle",
+    "bundle_id": "e4825cbf1d6933d931377cf93a36581d4e6450781e8e3ed42ad174d098865950",
+    "files": {
+      "environment.json": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "manifest.json": "3096991e45d9e5f2b5efa44e27724517bbc83d2fb41613b8dfded2d9c13b14cf",
+      "metadata.json": "b9cce47d75598ddcf47ec12687688ea2d77f4991a247172c2538eb6b194e77e8",
+      "model.json": "657f3f3dacc06532a16273d863f74a2ef711937509c4d1e4ca8de51e000535f3",
+      "parity.json": "ff859430207b21a1cbff631dd71b49c03597f6a47dba63216351ccbac011a2cd",
+      "preprocessing.json": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "reload_fixture.npz": "88203e9c019145c4faae9f502e76b0e8dffec76c78c6c9f17a492853a4183b34",
+      "schema.json": "b6f57c54879e46bf13f9ab4010a2c4328863a9a47866003d9247624234e3bf5d",
+      "weights.npz": "e5a1126319fd7c352f0d7125b6da03d25456195296d3c0aea73bd3e22b8c917f"
+    }
+  },
+  {
+    "path": "/workspace/scratch/f328bea0f8d6/financial-ts/runs/roadmap-screening-20261127/trials/fold-000/master_style/seed-42/attempt-0001/workflow/inference_bundle",
+    "bundle_id": "3ccdfdcb2bf0988271888a957de618b82b6649f83011c28f039d3f7dc44eaf3e",
+    "files": {
+      "environment.json": "7ddf42188f2b5807a03ee4b88148cba180740ea1a200ebd4efd19e3a1708d5d6",
+      "manifest.json": "0e41e67037a200646e9ba09e753ea1dfe52dcdcd19bef1ece7805f8dfca48fc2",
+      "metadata.json": "371d1b3ccc08b811985505dd1623e1d90a672f5c896561523b5e56b4fb5b7599",
+      "model.json": "a6fa3a37f04c461f47f17ae1b91ee5e2a0ebc83f1f8ec1bbc9fbf99562dab2e2",
+      "parity.json": "2b29145d093fb45da13c5a6617b524c425d9c5eca94a8e1d8ddfdab69341c0f5",
+      "preprocessing.json": "613e46ffc3f86fdf322e165dc28c3d045afbe65093e5a7c72afcb59cab29c5fe",
+      "reload_fixture.npz": "d8a07a92136ab7aec3e8bba43c9833eb9125167c8f5b416d6e97b3778a24698b",
+      "schema.json": "b6f57c54879e46bf13f9ab4010a2c4328863a9a47866003d9247624234e3bf5d",
+      "weights.npz": "7d4b71d5362fdafaf6f203793d8eaa82a132e6bc92345b34ee48b928f5012906"
+    }
+  }
+]

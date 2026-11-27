@@ -1,0 +1,74 @@
+{
+  "aliases": {
+    "shadow": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+  },
+  "history": [
+    {
+      "action": "register",
+      "version": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+    },
+    {
+      "action": "alias",
+      "alias": "shadow",
+      "at": "2026-11-27T07:24:37.210678+00:00",
+      "evidence": {
+        "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+      },
+      "gate": {
+        "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+        "intended_use": "shadow",
+        "reasons": [],
+        "status": "passed"
+      },
+      "previous_version": null,
+      "version": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+    },
+    {
+      "action": "register",
+      "version": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06"
+    },
+    {
+      "action": "alias",
+      "alias": "shadow",
+      "at": "2026-11-27T07:24:37.280308+00:00",
+      "evidence": {
+        "bundle_id": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06"
+      },
+      "gate": {
+        "bundle_id": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06",
+        "intended_use": "shadow",
+        "reasons": [],
+        "status": "passed"
+      },
+      "previous_version": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+      "version": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06"
+    },
+    {
+      "action": "rollback",
+      "alias": "shadow",
+      "at": "2026-11-27T07:24:37.284906+00:00",
+      "evidence": {
+        "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+      },
+      "gate": {
+        "bundle_id": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+        "intended_use": "shadow",
+        "reasons": [],
+        "status": "passed"
+      },
+      "previous_version": "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06",
+      "version": "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d"
+    }
+  ],
+  "schema_version": 1,
+  "versions": {
+    "88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06": {
+      "path": "bundles/88ca3bbc5580da5dee3e7d0d90b2c0f96bb6b27cb50c9aa2e5b0beb90cebde06",
+      "registered_at": "2026-11-27T07:24:37.277536+00:00"
+    },
+    "eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d": {
+      "path": "bundles/eb124fc349a40444fda9db645c6d0a69f8f8874a285b08b6eca4c4cd7bdb6a7d",
+      "registered_at": "2026-11-27T07:24:37.204691+00:00"
+    }
+  }
+}

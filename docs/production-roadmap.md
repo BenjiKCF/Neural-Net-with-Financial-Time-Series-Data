@@ -1,14 +1,17 @@
 # Production roadmap
 
-**Updated 27 November 2026 (Hong Kong time). Status: source implementation
-available; scientific and production acceptance gates remain separate.**
+**Updated 27 November 2026 (Hong Kong time). Status: implementation and retained
+exploratory evidence available; production acceptance remains gated.**
 
 Version 2.3 implements the first research and shadow-operation software tranche.
-The [implementation map](production-implementation.md) connects each component
-to its source, tests and executable recipes. This source-only change supplies no
-new model weights, market-data extracts, experiment outputs or evidence archive.
-Use the [operation guide](production-operation.md) to generate and inspect a
-campaign in your own environment.
+The [implementation map and evidence](production-implementation.md) connect each
+component to its source, tests, recipes and retained experiments. The
+[40-trial rolling screen](rolling-screening.md),
+[complete campaign archive](../reports/production_roadmap/rolling_screening/README.md)
+and additional bounded studies are now available for inspection. Their original
+source/protocol identities are preserved; publication does not rerun those
+experiments with later software. Use the [operation guide](production-operation.md)
+to generate a separate campaign in your own environment.
 
 The goal remains reliable daily financial-DL research and inference, with
 causal selection, reproducible artifacts, realistic accounting and observable
@@ -212,7 +215,8 @@ score smoothing; it cannot be labeled realized transaction cost.
 **Working research name; implemented as `quantformer_moe`.** The
 `master_style` and `daily_transformer` controls use the same pipeline. Their
 [architecture guide](architectures/cross-sectional.md) documents the available
-ablations. No new performance advantage is established by this source release. The
+ablations. No performance advantage is established by the retained exploratory
+screen. The
 [official MASTER repository](https://github.com/SJTU-DMTai/MASTER) includes
 preprocessing and evaluation-data caveats, reinforcing the need to use our own
 pinned pipeline rather than importing headline scores or processed test dumps.
@@ -258,9 +262,11 @@ checkpoint or license for deployment, with documented rights for market data too
 
 [DoubleAdapt](https://github.com/SJTU-DMTai/DoubleAdapt) now has an
 [independent method comparator](doubleadapt.md), with frozen, incremental and
-full-retraining controls. Its configuration and tests are included. Compute
-local metrics against aligned raw returns and disclose implementation and
-compute differences before accepting the additional state and maintenance cost.
+full-retraining controls. Its configuration, tests and
+[compact-screen results](doubleadapt.md#actual-compact-screen-results) are
+included. The screen does not establish an advantage. Compute local metrics
+against aligned raw returns and disclose implementation and compute differences
+before accepting the additional state and maintenance cost.
 
 ## Production operation
 
@@ -363,11 +369,19 @@ fold, cost, uncertainty, or regime views where they answer a specific question.
 Retain the distinction between Qlib's additive chart conventions and the
 comparison's compounded-return conventions.
 
-**Source-only delivery status:** the original local experiment evidence is
-preserved unchanged. Publication of the additional data-bearing artifacts
-remains pending explicit approval, so the complete reporting-publication gate
-above remains open. Source, tests and reproduction instructions are the current
-delivery; they do not close that publication requirement.
+**Evidence-delivery status:** the retained roadmap experiments are published
+with their original [acceptance receipt](../reports/production_roadmap/acceptance.json),
+[source identity](../reports/production_roadmap/runtime_source.json),
+[archive verification instructions](../reports/production_roadmap/rolling_screening/README.md)
+and [result guides](production-implementation.md#published-research-evidence).
+The original 563-test receipt describes the earlier implementation; the later
+[570-test software receipt](validation/production-software.json) covers the
+calendar-coverage and prediction-manifest fixes. The new
+[600-test publication receipt](validation/production-publication.json) records
+standalone bundle-export and valuation-calendar review fixes, exact reassembly
+and complete archive verification. Earlier records are preserved without
+implying a new research run. Full-budget, prospective and production acceptance
+requirements remain separate from evidence publication.
 
 ## Primary references
 

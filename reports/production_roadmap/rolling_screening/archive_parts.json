@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "archive": {
+    "name": "rolling_evidence.tar.xz",
+    "bytes": 29713796,
+    "sha256": "8f2716752bbd9aae87ce0293c4a658b79e9107c300fe0b470a2eccbeba35571b"
+  },
+  "parts": [
+    {
+      "name": "rolling_evidence.tar.xz.part-000",
+      "bytes": 8388576,
+      "sha256": "b82ddfda0f22632e789927b111aa0f53bb4d13d160664b70c89010d218c6192c"
+    },
+    {
+      "name": "rolling_evidence.tar.xz.part-001",
+      "bytes": 8388576,
+      "sha256": "89db8d3c7ec0dadbaa58195ba48cbbcd405ef7fccf822a5c65b39898060dbce0"
+    },
+    {
+      "name": "rolling_evidence.tar.xz.part-002",
+      "bytes": 8388576,
+      "sha256": "f0b2c29112d89bbb402d488c178ff6c5f09ef268a009cb43fb22db9f7e89a061"
+    },
+    {
+      "name": "rolling_evidence.tar.xz.part-003",
+      "bytes": 4548068,
+      "sha256": "41909d83d3095e33f369a37712dfb5b629db8e75c19032647cb0fab6fa1c370d"
+    }
+  ]
+}

@@ -5,8 +5,10 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
+import yaml
 
 from financial_ts.bundles import NumericalPredictor, verify_bundle
+from financial_ts.cli import main
 from financial_ts.data import create_demo_csv, import_csv
 from financial_ts.operations import (
     build_provider_packet,
@@ -14,7 +16,6 @@ from financial_ts.operations import (
     run_daily_batch,
     set_alias,
 )
-from financial_ts.workflow import run_workflow
 
 
 @pytest.mark.integration
@@ -57,7 +58,9 @@ def test_live_qlib_bundle_replays_original_provider_forecasts(tmp_path, name):
         "backtest": {"enabled": False},
         "export_inference_bundle": True,
     }
-    run_workflow(config)
+    config_path = tmp_path / "workflow.yaml"
+    config_path.write_text(yaml.safe_dump(config), encoding="utf-8")
+    assert main(["train", "--config", str(config_path)]) == 0
     bundle = tmp_path / "run/inference_bundle"
     assert verify_bundle(bundle)["schema_version"] == 1
     assert json.loads((bundle / "parity.json").read_text())["status"] == "passed"

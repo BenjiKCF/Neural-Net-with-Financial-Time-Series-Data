@@ -1,0 +1,272 @@
+{
+  "status": "completed",
+  "model": "Transformer / fold-000 / seed 7",
+  "dataset": "Pinned chenditc CSI300; exploratory 2024 rolling fold",
+  "packages": {
+    "pyqlib": "0.9.7",
+    "plotly": "5.24.1",
+    "kaleido": "0.2.1"
+  },
+  "inputs": {
+    "evaluated_prediction_frame_sha256": "1904e583f1571b3f055ff019dbc77f1e3347e7d38a6e34d8fd6847de2ef5d918",
+    "portfolio_frame_sha256": "8e92bde7b3b7bc6d19f83e17dd73e2b41eb8f4294aa55c1f33d976af14c71dc8",
+    "prediction_rows": 6000,
+    "evaluated_rows": 5948,
+    "unavailable_label_rows": 52,
+    "prediction_dates": 20,
+    "instruments": 300,
+    "informative_ic_dates": 20,
+    "signal_start": "2024-08-21",
+    "signal_end": "2024-09-19",
+    "portfolio_start": "2024-08-22",
+    "portfolio_end": "2024-09-23",
+    "portfolio_days": 21,
+    "return_convention": "Native Qlib plots sum daily returns; the curves and drawdowns are additive, not compounded NAV. Native daily risk analysis annualizes with 238 sessions.",
+    "group_return_convention": "Five groups sorted by the model score. These are equal-weight label-return diagnostics before trading costs, not the executed portfolio. Group 1 has the highest scores. Long-short means Group 1 minus Group 5.",
+    "native_risk_sessions_per_year": 238,
+    "risk_metrics": [
+      {
+        "level_0": "excess_return_without_cost",
+        "level_1": "mean",
+        "risk": -0.0011582232
+      },
+      {
+        "level_0": "excess_return_without_cost",
+        "level_1": "std",
+        "risk": 0.0058856357
+      },
+      {
+        "level_0": "excess_return_without_cost",
+        "level_1": "annualized_return",
+        "risk": -0.2756571103
+      },
+      {
+        "level_0": "excess_return_without_cost",
+        "level_1": "information_ratio",
+        "risk": -3.0358991504
+      },
+      {
+        "level_0": "excess_return_without_cost",
+        "level_1": "max_drawdown",
+        "risk": -0.0331242301
+      },
+      {
+        "level_0": "excess_return_with_cost",
+        "level_1": "mean",
+        "risk": -0.0015403365
+      },
+      {
+        "level_0": "excess_return_with_cost",
+        "level_1": "std",
+        "risk": 0.0058919332
+      },
+      {
+        "level_0": "excess_return_with_cost",
+        "level_1": "annualized_return",
+        "risk": -0.3666000755
+      },
+      {
+        "level_0": "excess_return_with_cost",
+        "level_1": "information_ratio",
+        "risk": -4.0331674697
+      },
+      {
+        "level_0": "excess_return_with_cost",
+        "level_1": "max_drawdown",
+        "risk": -0.0386596587
+      }
+    ]
+  },
+  "omissions": [],
+  "charts": [
+    {
+      "name": "portfolio",
+      "native_function": "qlib.contrib.report.analysis_position.report_graph",
+      "json": "portfolio.json",
+      "png": "portfolio.png"
+    },
+    {
+      "name": "score-ic",
+      "native_function": "qlib.contrib.report.analysis_position.score_ic_graph",
+      "json": "score-ic.json",
+      "png": "score-ic.png"
+    },
+    {
+      "name": "risk-summary",
+      "native_function": "qlib.contrib.report.analysis_position.risk_analysis_graph",
+      "json": "risk-summary.json",
+      "png": "risk-summary.png"
+    },
+    {
+      "name": "monthly-annualized-return",
+      "native_function": "qlib.contrib.report.analysis_position.risk_analysis_graph",
+      "json": "monthly-annualized-return.json",
+      "png": "monthly-annualized-return.png"
+    },
+    {
+      "name": "monthly-max-drawdown",
+      "native_function": "qlib.contrib.report.analysis_position.risk_analysis_graph",
+      "json": "monthly-max-drawdown.json",
+      "png": "monthly-max-drawdown.png"
+    },
+    {
+      "name": "monthly-information-ratio",
+      "native_function": "qlib.contrib.report.analysis_position.risk_analysis_graph",
+      "json": "monthly-information-ratio.json",
+      "png": "monthly-information-ratio.png"
+    },
+    {
+      "name": "monthly-volatility",
+      "native_function": "qlib.contrib.report.analysis_position.risk_analysis_graph",
+      "json": "monthly-volatility.json",
+      "png": "monthly-volatility.png"
+    },
+    {
+      "name": "group-return",
+      "native_function": "qlib.contrib.report.analysis_model.model_performance_graph",
+      "json": "group-return.json",
+      "png": "group-return.png"
+    },
+    {
+      "name": "group-distribution",
+      "native_function": "qlib.contrib.report.analysis_model.model_performance_graph",
+      "json": "group-distribution.json",
+      "png": "group-distribution.png"
+    },
+    {
+      "name": "daily-ic",
+      "native_function": "qlib.contrib.report.analysis_model.model_performance_graph",
+      "json": "daily-ic.json",
+      "png": "daily-ic.png"
+    },
+    {
+      "name": "monthly-ic",
+      "native_function": "qlib.contrib.report.analysis_model.model_performance_graph",
+      "json": "monthly-ic.json",
+      "png": "monthly-ic.png"
+    },
+    {
+      "name": "ic-distribution",
+      "native_function": "qlib.contrib.report.analysis_model.model_performance_graph",
+      "json": "ic-distribution.json",
+      "png": "ic-distribution.png"
+    },
+    {
+      "name": "score-autocorrelation",
+      "native_function": "qlib.contrib.report.analysis_model.model_performance_graph",
+      "json": "score-autocorrelation.json",
+      "png": "score-autocorrelation.png"
+    }
+  ],
+  "interactive_report": "report.html",
+  "files": {
+    "daily-ic.json": {
+      "bytes": 2471,
+      "sha256": "3140eecf7e59eccb2f28e890b63c7471f3d051d9877001cb57f8ada867b8a9aa"
+    },
+    "daily-ic.png": {
+      "bytes": 100610,
+      "sha256": "29f27e74c545d17f633213ba84594b091bbf4e5f2e8d2537a9139c291c496ee9"
+    },
+    "group-distribution.json": {
+      "bytes": 42934,
+      "sha256": "78508f8e8049fdba455b831c6dd4a2b67fb74ae79cec77539d1c4fc76b022655"
+    },
+    "group-distribution.png": {
+      "bytes": 140921,
+      "sha256": "006151e804583dfcf66307e90466fee923abe02517fc480df039fc970ed120ad"
+    },
+    "group-return.json": {
+      "bytes": 7197,
+      "sha256": "85ddf761c25be0d8adb22ac06fd6754c54f7258800b5503700d5e0767c14afb1"
+    },
+    "group-return.png": {
+      "bytes": 245444,
+      "sha256": "d117fa35b5b25f17022ee9dcd145c7800eb349a61d236534caa66c740d6da8d8"
+    },
+    "ic-distribution.json": {
+      "bytes": 22564,
+      "sha256": "63760a7b9dc8e9eda862fd82239c836a68cf7d7cc3f1db3c9bbe5c636a73dc8d"
+    },
+    "ic-distribution.png": {
+      "bytes": 136884,
+      "sha256": "120fc60858ad3114d1c3fb4bd70dfde65f4fa66d7b3728ad5e03acaa2fb5c40e"
+    },
+    "monthly-annualized-return.json": {
+      "bytes": 928,
+      "sha256": "14a8f4c26b7740f759f81efd2bb92c056510807e006fd09d351c0d2304390ab7"
+    },
+    "monthly-annualized-return.png": {
+      "bytes": 105079,
+      "sha256": "66f20a478161feb8614f1ba4c52c8ad4883fababd5173c34f26e30a546cafe64"
+    },
+    "monthly-ic.json": {
+      "bytes": 763,
+      "sha256": "6d89fc0b0a4c94d04e17a67603f8a4360b89cc21d84e87c86a5951f6fe8f6f60"
+    },
+    "monthly-ic.png": {
+      "bytes": 112968,
+      "sha256": "59e456f5aa455521dca6f924be7d25249113292756a5c58895dd1a6fd18f9428"
+    },
+    "monthly-information-ratio.json": {
+      "bytes": 918,
+      "sha256": "484f9caaec956c5b672c58d78ea68464b80989c8e766b5f91c8cbbdd5e00ec20"
+    },
+    "monthly-information-ratio.png": {
+      "bytes": 107950,
+      "sha256": "5c658155d3c274b2b433e0ea76868a88d31a303e7eb95cef23990a1456f3ea86"
+    },
+    "monthly-max-drawdown.json": {
+      "bytes": 918,
+      "sha256": "0ba37c3838c576df0afbb53469a68f26df0fdcd8c5bf41cea61d4afd546915b2"
+    },
+    "monthly-max-drawdown.png": {
+      "bytes": 128321,
+      "sha256": "be6204c50dde9abbeda205bf479c47dd8461994aa78a3e4ff9e445fdd79f8aa3"
+    },
+    "monthly-volatility.json": {
+      "bytes": 907,
+      "sha256": "a7d8f2f4aeab497acabcc98698d8b4f2003d69fcf78d2a0df8df7167ff548c75"
+    },
+    "monthly-volatility.png": {
+      "bytes": 121564,
+      "sha256": "43fa4aab758223535ea3f5394d9496ef978daf80e5f0980634f92e480a8641c3"
+    },
+    "portfolio.json": {
+      "bytes": 11287,
+      "sha256": "6a0c3e46ee039480a54726dd401495dec031c02ec3227adea4d7c8dbc2769007"
+    },
+    "portfolio.png": {
+      "bytes": 422925,
+      "sha256": "969ad00e6c00889e6f732d40c8de5acaf13a5197d819d92d0dd891cf8e416d12"
+    },
+    "report.html": {
+      "bytes": 4666872,
+      "sha256": "27fcc9039ecce60597607bbccd7166527d24d829a579777de8d1b393d39b9bb7"
+    },
+    "risk-summary.json": {
+      "bytes": 2049,
+      "sha256": "93e3bf2d73fa1b6b587af340a1fbf7432baab0f50e673cce0a43fbdaca037b2b"
+    },
+    "risk-summary.png": {
+      "bytes": 144018,
+      "sha256": "9870107a8f90570b8133dcc58a93dfbee08eb75bc37af26a287f9503c2c88ea7"
+    },
+    "score-autocorrelation.json": {
+      "bytes": 1526,
+      "sha256": "2cb8b10e2b253ccdf0b1c49ef636fc6eae6e35e6591f94d364a6f0afc96ed38f"
+    },
+    "score-autocorrelation.png": {
+      "bytes": 146641,
+      "sha256": "8c5f7fd2bf5c33a79662a8efab89a7cb5d50779744544510184440860760419a"
+    },
+    "score-ic.json": {
+      "bytes": 2516,
+      "sha256": "be93843e48d7d622636e8a4dc0f15889eb16fa04b8c5c4a6c0e75e413dffcb33"
+    },
+    "score-ic.png": {
+      "bytes": 230972,
+      "sha256": "c025c3272d8262af9d50e2e2361e4a16892cec922434e0a1f983c1426e2fb40c"
+    }
+  }
+}

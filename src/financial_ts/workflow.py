@@ -101,6 +101,13 @@ def resolve_segments(
     }
 
 
+def _bundle_export_requested(config: dict) -> bool:
+    enabled = config.get("export_inference_bundle", False)
+    if type(enabled) is not bool:
+        raise ValueError("export_inference_bundle must be boolean.")
+    return enabled
+
+
 def load_config(path: str | Path) -> dict[str, Any]:
     """Load data-only YAML; paths are relative to the working directory."""
     with Path(path).open(encoding="utf-8") as stream:
@@ -123,10 +130,12 @@ def load_config(path: str | Path) -> dict[str, Any]:
         "segments",
         "model",
         "backtest",
+        "export_inference_bundle",
     }
     unknown = set(config) - allowed
     if unknown:
         raise ValueError(f"Unknown configuration fields: {sorted(unknown)}")
+    _bundle_export_requested(config)
     return config
 
 
@@ -546,6 +555,8 @@ def run_workflow(config: dict) -> dict:
     Qlib maintains global provider state: call separate workflows sequentially,
     or use separate processes for parallel experiments.
     """
+    export_inference_bundle = _bundle_export_requested(config)
+
     import qlib
     from qlib.data import D
     from qlib.model.trainer import task_train
@@ -704,9 +715,7 @@ def run_workflow(config: dict) -> dict:
         )
     except (OSError, subprocess.SubprocessError):
         metadata["git_commit"] = None
-    if config.get("export_inference_bundle", False):
-        if type(config["export_inference_bundle"]) is not bool:
-            raise ValueError("export_inference_bundle must be boolean.")
+    if export_inference_bundle:
         if name := config.get("model", {}).get("name"):
             if name in {"timesfm3_pretrained", "timesfm3_panel"}:
                 raise ValueError(

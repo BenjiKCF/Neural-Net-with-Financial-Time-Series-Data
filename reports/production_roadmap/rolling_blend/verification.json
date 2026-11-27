@@ -1,0 +1,30 @@
+{
+  "all_folds_completed": true,
+  "constituent_artifacts_verified": 308,
+  "constituent_attempts_verified": 8,
+  "failed_folds": [],
+  "forecast_panels_verified": 8,
+  "input_files_verified": 24,
+  "maximum_portfolio_statistic_difference": 0.0,
+  "maximum_score_arithmetic_difference": 0.0,
+  "native_scenarios_verified": 32,
+  "parent_protocol_sha256": "52489beb3bc0a813660da1d939962bbd2bc39aee8120150ff4dcfdaf973e87df",
+  "promotion_eligible": false,
+  "qualification": "Historical follow-up using the registered generic Qlib exchange/cost assumptions; no new holdout, no continuous portfolio across folds, no production promotion.",
+  "runtime_package": "/workspace/scratch/f328bea0f8d6/runtime-screen/src/financial_ts/__init__.py",
+  "selected_weights_independently_recomputed": [
+    {
+      "fold": "fold-000",
+      "lightgbm_weight": 0.0,
+      "validation_rank_ic": 0.046314778215121595
+    },
+    {
+      "fold": "fold-001",
+      "lightgbm_weight": 0.5,
+      "validation_rank_ic": 0.05294369649544191
+    }
+  ],
+  "source_code_sha256": "05dd6d449d27c2f586fe1685996d9602d4505748d026d60d5899187fbe0186f3",
+  "status": "passed",
+  "verified_at_utc": "2026-11-27T07:47:26.942148+00:00"
+}

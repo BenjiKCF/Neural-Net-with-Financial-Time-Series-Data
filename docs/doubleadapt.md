@@ -7,10 +7,13 @@ weights, ordinary incremental updates and full retraining. The simpler update
 in [`advanced_research.py`](../src/financial_ts/advanced_research.py) remains a
 separate method.
 
-This source-only release includes the method, tests and a registered screening
-recipe. New predictions, trained parameters and empirical comparison reports
-are generated locally. No advantage over the controls or exact reproduction
-of an upstream result is claimed by the implementation's presence.
+The method, tests and registered recipe accompany the retained
+[results](../reports/production_roadmap/doubleadapt_screening/results.json) and
+[protocol](../reports/production_roadmap/doubleadapt_screening/protocol.json).
+The compact screen does not establish an advantage over the controls. Its
+original predictions, numerical states and source identity are preserved;
+publishing them does not rerun the study on later code or reproduce an upstream
+benchmark.
 
 ## Method reference and scope
 
@@ -143,6 +146,58 @@ share the fixed meta-training target scale; they do not use DoubleAdapt's later
 parameters, gradients or online statistics. Retain their individual cutoffs,
 fitting budgets and predictions when comparing outcomes.
 
+## Actual compact-screen results
+
+Source: the immutable input release `chenditc/investment_data` dated
+`2026-11-26`, with provider SHA-256
+`1b6c53d8fa6a7caa1c59719e0621555f8930713c3deaacd9985dedc812ceb7a8`.
+Full release metadata and archive identity are in the protocol. There are 20
+stocks, 15 online query dates, and 300 evaluated date/instrument rows per method;
+no label is missing in this particular evaluation panel. All methods share the
+same zero-return RMSE of **0.0184036102**.
+
+| Method | RMSE | MAE | Mean daily IC | Mean daily Rank IC | Directional accuracy |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| DoubleAdapt paper method | 0.0186110865 | 0.0134941833 | -0.058878 | -0.079347 | 46.00% |
+| Frozen MLP | 0.0185393784 | 0.0134797283 | -0.055063 | -0.086575 | 48.00% |
+| Naive incremental MLP | 0.0186246671 | 0.0134887127 | -0.040569 | -0.067208 | 44.67% |
+| Full retrain MLP | 0.0185483191 | 0.0134730786 | -0.051134 | -0.080705 | 46.33% |
+
+The declared DoubleAdapt validation candidates were epoch zero, one, and two.
+Their validation MSEs were respectively `0.0002057818492`,
+`0.0002059955150`, and `0.0002062095155`. **Epoch zero was selected.** This means
+the offline meta-training passes did not improve the registered validation
+criterion within this budget. The selected initialization still undergoes the
+declared mature-validation and online meta updates. The receipts retain the
+attempted offline candidate updates as well; they must not be interpreted as
+all belonging to the selected checkpoint's ancestry.
+
+### Paired date-block uncertainty
+
+The implementation uses the repository's paired circular moving-block
+bootstrap, with five-session blocks, 200 draws, and seed 42. Each draw retains
+whole daily cross sections and exactly matched date/instrument labels. The
+differences below are **DoubleAdapt minus the control**. Negative RMSE
+differences and positive IC differences favor DoubleAdapt.
+
+| Control | RMSE difference | RMSE 95% interval | IC difference | IC 95% interval |
+| --- | ---: | --- | ---: | --- |
+| Frozen | +0.0000717092 | [-0.0000602650, +0.0002308659] | -0.003815 | [-0.039208, +0.032398] |
+| Naive incremental | -0.0000135803 | [-0.0001379518, +0.0001258687] | -0.018309 | [-0.099562, +0.045841] |
+| Full retrain | +0.0000627682 | [-0.0000354436, +0.0001814676] | -0.007744 | [-0.032738, +0.014708] |
+
+| Control | Rank IC difference | Rank IC 95% interval |
+| --- | ---: | --- |
+| Frozen | +0.007228 | [-0.038286, +0.053572] |
+| Naive incremental | -0.012139 | [-0.101239, +0.056282] |
+| Full retrain | +0.001358 | [-0.028128, +0.031894] |
+
+All intervals contain zero, and the sample contains only three five-session
+query blocks. These intervals are exploratory measures of uncertainty, not a
+broad significance or generalization claim. No test-driven tuning was
+performed after reading these results. There is no evidence here to promote
+this model or to replace an existing strategy.
+
 ## Run and inspect
 
 After installing the neural dependencies and obtaining a pinned provider:
@@ -153,6 +208,15 @@ fts research-doubleadapt --provider .data/cn-20261126 \
 
 python -m pytest -q tests/test_doubleadapt.py
 ```
+
+The retained experiment includes [prediction locks](../reports/production_roadmap/doubleadapt_screening/prediction_locks.json),
+[meta-update receipts](../reports/production_roadmap/doubleadapt_screening/meta_update_receipts.json),
+[control receipts](../reports/production_roadmap/doubleadapt_screening/control_receipts.json),
+[aligned forecasts](../reports/production_roadmap/doubleadapt_screening/predictions.csv)
+and [artifact hashes](../reports/production_roadmap/doubleadapt_screening/artifacts.json).
+Earlier attempts remain in the evidence directory with their diagnostics. The
+canonical `doubleadapt_screening` record reflects the prediction-lock correction;
+those earlier attempts are not additional tuning trials.
 
 The command writes a protocol before fitting and retains prediction locks,
 selection decisions, meta-update/control receipts, numerical states, aligned

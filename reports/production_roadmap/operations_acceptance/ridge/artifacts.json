@@ -1,0 +1,13 @@
+{
+  "files": {
+    "bundle_references.json": "095d30444d31f70d8bbb3f852acd1cd7e443214703591d4a2032782f9392a2f3",
+    "input_manifest.json": "1a124f192fedba5c3601ab0b6129d1c4d53b5e19923deaaa68ef73bd9518061d",
+    "protocol.json": "e0ac5970e0cf1b55b6dc676e214b64eed4ff5ddfc466b25da66af41eb6f30355",
+    "publication_manifest.json": "e06608b38d9ac27a17e1f010b51ae88742d0a10b8f5c915a55e6af759006cc4f",
+    "published_predictions.csv": "1a8db578faed6b34888bef89c08c9f1dded0c932721fc45188a601b474a2ef54",
+    "raw_provider_parity.csv": "f065a443b6186a19fde3ad1b9ccdd7736fcac6d031e41e099889a54baeab5ef5",
+    "registry_history.json": "4f239324ec438fddc874446fbed0da141b47da51aef59e615e5d227b1b2c6fc9",
+    "results.json": "08831d7ac16d7e601b86f47de0f5774a9d07a73446791bd4998958a2eb526055",
+    "status.json": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+  }
+}

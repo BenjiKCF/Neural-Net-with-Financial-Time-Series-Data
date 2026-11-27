@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-27T10:42:12.472880+00:00",
+  "python": "3.12.14",
+  "full_suite": {
+    "passed": 786,
+    "warnings": 285,
+    "seconds": 63.92,
+    "log": "pytest.txt",
+    "scope": "Integrated suite before the final empty-directory restoration fix"
+  },
+  "final_checkpoint_fix": {
+    "passed": 15,
+    "log": "checkpoint_recovery_pytest.txt",
+    "scope": "Targeted restoration tests after the final schema-required empty-directory fix; exact-head full CI runs after publication"
+  },
+  "ruff": "passed",
+  "git_diff_check": "passed",
+  "documentation_relative_links": {
+    "files": 8,
+    "missing": 0
+  },
+  "source_files_sha256": {
+    "src/financial_ts/arrival_feed.py": "dadcc97393633fae72a2157d5b3e6faab6aacad383a675cbba7f47fccdcbeb25",
+    "src/financial_ts/prospective_service.py": "6c97483013c1f27bfd5723bab91eabcf8ba9d3d5dc9251b4220804a26014c687",
+    "src/financial_ts/archived_reconstruction.py": "c060ffaa6edc8c726e82308c987428d0b00e6704c138692939a4350df11c101e",
+    "scripts/package_prospective_checkpoint.py": "4f6b837c980d46836d2b84b65ca122ea166e44db148310f43987e15c5a07c713",
+    "scripts/restore_prospective_store.py": "37cc4eba0dd9d3aaf8ffd95c24575cf231a0fec72de031c593d4d1bd96e6070b"
+  },
+  "portable_execution_evidence": {
+    "files_verified": 11,
+    "executions": 2963,
+    "sessions": 458,
+    "archived_backtest_repaired": false
+  },
+  "prospective_observations": 0,
+  "production_ready": false,
+  "orders_submitted": false
+}

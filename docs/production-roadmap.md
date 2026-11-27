@@ -29,17 +29,18 @@ released package versions.
 ## Software delivery status
 
 The [remaining acceptance work](remaining-acceptance.md) now includes execution
-of the full five-seed recipe, verified account-evidence intake and preregistered
-prospective capture. Required observations and full campaign results remain
+of the full five-seed recipe, a reconciled native simulation execution chain,
+verified account-evidence intake, and scheduled real-arrival prospective capture.
+Required observations, complete corporate-action settlement and full campaign results remain
 separate from completed implementation.
 
 | Component | Available source | Remaining acceptance boundary |
 | --- | --- | --- |
-| Availability and refreshes | Timestamp/lag contracts, immutable snapshot comparison and quarantine. | Original publication vintages or justified source-arrival evidence. |
-| Lifecycle and execution | Raw-share ledger, sourced event fixtures, dated trading rules and durable paper sessions. | Actual allocations, complete event coverage, successor tradability and revised portfolio replay. |
+| Availability and refreshes | Timestamp/lag contracts, actual-clock source collector, immutable snapshot comparison, quarantine and durable checkpoints. | Actual future arrivals and justified historical publication vintages. |
+| Lifecycle and execution | Raw-share ledger, sourced event fixtures, dated rules, durable paper sessions and a reproduced 2,963-execution/458-session native ledger. | Actual allocations, complete event coverage, successor tradability and a separate action-aware portfolio replay. |
 | Rolling evaluation | Registered folds/seeds, mature labels, simple controls, retained attempts and paired date-block comparisons. | Adequate campaign budget and uninspected confirmation observations. |
 | DL experiments | Same-date objectives, temporal/MASTER-style/MoE models, blends, horizons, intervals, pretraining and adaptation comparators. | Controlled empirical value over simpler models under matching information and declared budgets. |
-| Operation | Numerical bundles, registry, atomic predictions, delayed monitoring, scheduler examples and rollback. | Deployed service objectives, real arrival schedule, prospective shadow observation and execution reconciliation. |
+| Operation | Numerical bundles, registry, atomic predictions, delayed monitoring, scheduled research collection/publication and rollback. | Measured delivery under the schedule, deployment fault rehearsals, prospective shadow observation and execution reconciliation. |
 
 Tests and recipes are listed in the
 [implementation map](production-implementation.md#implementation-map).

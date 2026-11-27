@@ -29,6 +29,67 @@ There are two distinct evidence paths:
    account window. A synthetic paper account can exercise the software but does
    not become actual broker evidence.
 
+## Reproduced historical execution chain
+
+The next removable gap is now closed for the archived Transformer simulation.
+The [retained execution report](../reports/remaining_acceptance/archived_execution/assessment.json)
+reproduces **2,963 native simulated executions across 458 sessions**, from
+3 January 2025 through 25 November 2026, using the original scores, native
+TopkDropout recipe and exact provider fingerprint. No model was trained again.
+
+The recording executor observes Qlib's actual execution results, including
+adjusted filled quantities, contemporaneous factors, prices, cash values and
+fees. An independent numerical ledger applies those executions in order and
+compares **every daily** adjusted holding, cash balance, cumulative cost,
+cumulative turnover and NAV with the original archive. Native daily positions
+and portfolio metrics are separately compared with the archive. The maximum
+independent cash and NAV errors were approximately **0.0000000261 CNY** and
+**0.0000000894 CNY**, below the fixed one-cent tolerance. The
+[daily checks](../reports/remaining_acceptance/archived_execution/daily_reconciliation.csv),
+[captured executions](../reports/remaining_acceptance/archived_execution/orders.json.gz)
+and [checksummed manifest](../reports/remaining_acceptance/archived_execution/manifest.json)
+are retained and can be independently recomputed without loading a checkpoint.
+
+This establishes a reproduced native order chain consistent with the archived
+daily account. It does not turn that simulation into observed broker executions
+or establish a unique original intraday chain from end-of-day snapshots.
+
+The [event lineage](../reports/remaining_acceptance/archived_execution/event_lineage.json)
+also explains why a later adjustment factor cannot resolve the raw account:
+
+| Terminated instrument | Reproduced executions before the event | Sum of signed contemporaneous raw quote units | Later-factor implied quantity | Difference |
+| --- | ---: | ---: | ---: | ---: |
+| SH600837, Haitong | 3 | 196,597.796570 | 196,600.000000 | 2.203430 |
+| SH601989, China Heavy Industry | 9 | 402,298.640606 | 403,299.795348 | 1,001.154743 |
+| SH601059, Cinda | 11 | 149,216.064784 | 149,452.735542 | 236.670758 |
+
+These are diagnostic quote-unit comparisons, **not reconciled raw-share
+entitlements**. Adjustment factors vary across the execution dates. The software
+does not interpret their differences as a split, dividend, tax or allocation.
+Complete sourced actions and successor tradability, explicit counterfactual
+whole-share allocations or bounds, and a separate action-aware strategy replay
+remain necessary. The original **6.489845%** terminated-series exposure and
+historical return qualification remain unchanged.
+
+To reproduce the execution evidence in a new output directory:
+
+```bash
+PYTHONPATH=src python scripts/reconstruct_archived_execution.py \
+  --run-dir reports/chenditc_csi300/transformer \
+  --provider PATH_TO_EXACT_2026_11_26_PROVIDER \
+  --lifecycle-assessment reports/production_roadmap/lifecycle_transformer/assessment.json \
+  --output runs/archived-execution
+
+PYTHONPATH=src python scripts/reconstruct_archived_execution.py \
+  --verify --output reports/remaining_acceptance/archived_execution
+```
+
+The verifier checks retained file hashes, the original replay's own evidence
+identities, daily ledger arithmetic, full native portfolio parity and per-event
+execution lineage. A rewritten summary cannot promote a simulated account or
+substitute for a missing execution. This workflow does not modify the archived
+backtest, settlement protocol, model bundle or prospective registration.
+
 ## Run the evidence inventory
 
 ```bash
@@ -159,7 +220,8 @@ accounting receipt.
 ## Focused verification
 
 ```bash
-PYTHONPATH=src python -m pytest -q tests/test_settlement.py tests/test_lifecycle.py
+PYTHONPATH=src python -m pytest -q \
+  tests/test_settlement.py tests/test_lifecycle.py tests/test_archived_reconstruction.py
 ```
 
 The tests independently calculate raw shares, cash, withholding and NAV; cover

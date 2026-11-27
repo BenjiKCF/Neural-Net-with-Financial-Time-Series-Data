@@ -1,0 +1,6 @@
+# Receipt-listed evidence must retain identical bytes on every checkout.
+/reports/remaining_acceptance/archived_execution/** -text
+# Python's CSV writer emits standard CRLF records; preserve the recorded output.
+/reports/remaining_acceptance/archived_execution/daily_reconciliation.csv whitespace=cr-at-eol
+# Preserve the raw test runner output, including indented blank warning lines.
+/reports/remaining_acceptance/continuation/*pytest.txt -text -whitespace

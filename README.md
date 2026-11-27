@@ -16,11 +16,13 @@
 | --- | --- | --- |
 | An offline demo, then a verified market-data download. | Shared universe, target, chronological splits, and validation-only checkpoint selection. | Native Qlib charts, predictions, learning curves, portfolio returns, and data hashes. |
 
-**Remaining roadmap work:** the unchanged five-seed campaign is now executable
-through resumable isolated workers and a durable 80-shard workflow. New
-account-settlement verification and prospective forecast capture retain explicit
-evidence gates. A future 20-session operations pilot is preregistered; it is
-separate from model-quality confirmation. See the
+**Roadmap progress:** the unchanged five-seed campaign is executing through
+resumable workers and an 80-shard workflow. A recovered native execution ledger
+reconciles 2,963 simulated executions across 458 daily states; complete
+corporate-action settlement remains open. The registered 20-session operations
+pilot now has scheduled source collection, forecast publication and durable
+checkpoints, with 0/20 future observations before its 30 November start. It
+remains separate from model-quality confirmation. See the
 [current work and acceptance boundaries](docs/remaining-acceptance.md).
 
 ## Quick start

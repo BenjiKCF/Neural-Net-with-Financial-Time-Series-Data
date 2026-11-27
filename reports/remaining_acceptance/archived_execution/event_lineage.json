@@ -1,0 +1,123 @@
+{
+  "affected_final_weight": 0.06489845337614548,
+  "archived_backtest_repaired": false,
+  "events": [
+    {
+      "distinct_execution_factors": [
+        3.7144718170166016,
+        3.7144925594329834,
+        3.7145373821258545
+      ],
+      "event_id": "haitong-merger-20250304",
+      "executed_order_count": 3,
+      "executed_order_indices": [
+        13,
+        112,
+        213
+      ],
+      "instrument": "SH600837",
+      "later_factor_implied_raw_quantity": 196600.0,
+      "pre_event_snapshot": "2025-03-03",
+      "qualification": "Raw quote units across adjustment factors are not an action-aware raw account. No issuer cashflow, tax or account allocation has been inferred.",
+      "raw_quote_unit_difference": 2.2034298325597774,
+      "raw_share_account_reconciled": false,
+      "reconstructed_adjusted_quantity": 52928.117289608526,
+      "remaining_blockers": [
+        "complete_corporate_action_replay_not_executed",
+        "account_allocation_not_verified",
+        "successor_tradability_not_registered"
+      ],
+      "signed_sum_of_contemporaneous_raw_quote_units": 196597.79657016744,
+      "snapshot_adjusted_quantity": 52928.117289608526,
+      "successor": "SH601211"
+    },
+    {
+      "distinct_execution_factors": [
+        0.20327886939048767,
+        0.20331324636936188,
+        0.20334860682487488,
+        0.20337988436222076,
+        0.20342808961868286,
+        0.20345015823841095,
+        0.20419490337371826,
+        0.20429544150829315,
+        0.20436175167560577
+      ],
+      "event_id": "china-heavy-industry-merger-20250905",
+      "executed_order_count": 9,
+      "executed_order_indices": [
+        23,
+        214,
+        463,
+        521,
+        731,
+        742,
+        1044,
+        1147,
+        1218
+      ],
+      "instrument": "SH601989",
+      "later_factor_implied_raw_quantity": 403299.79534838645,
+      "pre_event_snapshot": "2025-09-04",
+      "qualification": "Raw quote units across adjustment factors are not an action-aware raw account. No issuer cashflow, tax or account allocation has been inferred.",
+      "raw_quote_unit_difference": 1001.1547425846802,
+      "raw_share_account_reconciled": false,
+      "reconstructed_adjusted_quantity": 1973604.5970864804,
+      "remaining_blockers": [
+        "complete_corporate_action_replay_not_executed",
+        "account_allocation_not_verified",
+        "implied_raw_quantity_is_not_an_integer",
+        "successor_tradability_not_registered"
+      ],
+      "signed_sum_of_contemporaneous_raw_quote_units": 402298.6406058018,
+      "snapshot_adjusted_quantity": 1973604.5970864801,
+      "successor": "SH600150"
+    },
+    {
+      "distinct_execution_factors": [
+        0.08486022800207138,
+        0.08486302942037582,
+        0.08486374467611313,
+        0.0848742127418518,
+        0.08488628268241882,
+        0.08502443134784698,
+        0.08524567633867264,
+        0.08525606244802475,
+        0.08525623381137848,
+        0.08544325828552246
+      ],
+      "event_id": "cinda-merger-20261019",
+      "executed_order_count": 11,
+      "executed_order_indices": [
+        304,
+        370,
+        979,
+        1062,
+        1208,
+        1345,
+        1547,
+        1575,
+        1950,
+        2364,
+        2768
+      ],
+      "instrument": "SH601059",
+      "later_factor_implied_raw_quantity": 149452.7355423788,
+      "pre_event_snapshot": "2026-10-16",
+      "qualification": "Raw quote units across adjustment factors are not an action-aware raw account. No issuer cashflow, tax or account allocation has been inferred.",
+      "raw_quote_unit_difference": 236.67075839242898,
+      "raw_share_account_reconciled": false,
+      "reconstructed_adjusted_quantity": 1748528.824834322,
+      "remaining_blockers": [
+        "complete_corporate_action_replay_not_executed",
+        "account_allocation_not_verified",
+        "implied_raw_quantity_is_not_an_integer",
+        "successor_tradability_not_registered"
+      ],
+      "signed_sum_of_contemporaneous_raw_quote_units": 149216.06478398637,
+      "snapshot_adjusted_quantity": 1748528.8248343216,
+      "successor": "SH601995"
+    }
+  ],
+  "scope": "reproduced_simulation_execution_lineage"
+}

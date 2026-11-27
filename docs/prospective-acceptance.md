@@ -1,5 +1,12 @@
 # Prospective evaluation and shadow acceptance
 
+**Continuation, 27 November:** the unchanged registered pilot now has a
+[scheduled research controller](prospective-service.md), a
+[real source-arrival collector](prospective-arrival-feed.md), and portable
+checkpoint custody. The original registration receipts below are preserved
+as history. Scheduling is enabled for the future window; observed forecasts
+remain 0/20 until actual sessions are captured.
+
 The prospective runner freezes a future observation window, candidate and
 reference numerical bundles, source hashes, dependency versions, daily cutoffs,
 label maturity endpoints, service objectives and statistical thresholds before
